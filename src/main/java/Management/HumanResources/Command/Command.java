@@ -7,5 +7,8 @@ package Management.HumanResources.Command;
  */
 
 public abstract class Command {
+    /* 
+     * @description: 命令基类的抽象执行命令方法
+     */
     public abstract void executeCommand();
 }
