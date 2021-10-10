@@ -1,5 +1,9 @@
 package Management.HumanResources;
 
+import Management.HumanResources.DataAccessObject.EmployeeDao;
+
+import java.util.List;
+
 /**
  * 雇员的基类
  * <b>实现了 Chain of Responsibility 模式</b>
@@ -11,6 +15,8 @@ public abstract class BaseEmployee {
     protected String name;
 
     protected String id;
+
+    protected Double salary;
 
     protected BaseEmployee leader;
 
@@ -31,4 +37,5 @@ public abstract class BaseEmployee {
     }
 
     public abstract void handleRequest(LeaveRequest request);
+
 }

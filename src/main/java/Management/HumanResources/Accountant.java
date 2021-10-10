@@ -5,6 +5,7 @@ package Management.HumanResources;
  * @Author 尚丙奇
  */
 
+import Management.HumanResources.DataAccessObject.EmployeeDao;
 import Management.HumanResources.FinancialSystem.Permission;
 import Presentation.Protocol.OutputManager;
 

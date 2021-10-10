@@ -1,5 +1,7 @@
 package Management.HumanResources;
 
+import java.util.List;
+
 /**
  * 工人类
  * @Author 尚丙奇
@@ -14,4 +16,6 @@ public class Worker extends BaseEmployee{
     public void handleRequest(LeaveRequest request) {
         leader.handleRequest(request);
     }
+
+
 }
