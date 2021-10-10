@@ -3,6 +3,7 @@ package Management.HumanResources;
 import java.util.Random;
 
 /**
+ * 部门经理类
  * @Author 尚丙奇
  */
 public class Manager extends BaseEmployee{

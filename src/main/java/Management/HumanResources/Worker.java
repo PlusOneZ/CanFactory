@@ -1,7 +1,7 @@
 package Management.HumanResources;
 
-import Management.HumanResources.BaseEmployee;
 /**
+ * 工人类
  * @Author 尚丙奇
  */
 public class Worker extends BaseEmployee{

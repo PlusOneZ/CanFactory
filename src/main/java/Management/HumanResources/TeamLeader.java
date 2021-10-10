@@ -1,5 +1,9 @@
 package Management.HumanResources;
 
+/**
+ * 组长类
+ * @Author 尚丙奇
+ */
 public class TeamLeader extends BaseEmployee{
 
     public static final int MAX_DAYS_OF_APPROVAL = 2;
