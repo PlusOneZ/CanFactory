@@ -17,8 +17,12 @@ import java.util.List;
 public abstract class Can {
 
     CanState state;
-
+    String CanName;
     List<Ingredient> ingredients;
 
-
+    /**
+     *
+     * @return 罐头的名称
+     */
+    public abstract String getCanName();
 }
