@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * 工厂每天的公告栏
- * TODO: 加上单例模式创建公告栏
+ * 单例模式
  * @author 汪明杰
  */
 public class Announcement {
@@ -18,14 +18,24 @@ public class Announcement {
     private ArrayList<String> news;
 
     //接受消息的读者
-    private ArrayList<Staff> readers;
+    private ArrayList<Staff> readers = null;
 
-    public Announcement(){
+    //单例模式
+    private static Announcement announcement;
+
+    private Announcement(){
         System.out.println("# 使用黑板模式(Blackboard)");
         this.readingState = false;
         this.news=new ArrayList<String>();
         this.readers=new ArrayList<Staff>();
         this.news.add("[公告栏已经上线了，欢迎大家积极阅读哦~]");
+    }
+
+    public static Announcement getInstance(){
+        if(Announcement.announcement == null){
+            Announcement.announcement = new Announcement();
+        }
+        return Announcement.announcement;
     }
 
     public void addMessage(Staff writer, String newMessage){
@@ -52,10 +62,9 @@ public class Announcement {
     }
 
     public static void main(String[] args) {
-        Announcement announcement = new Announcement();
-        Staff staff1 = new Staff("李华",announcement);
-        Staff staff2 = new Staff("王平", announcement);
-        Staff staff3 = new Staff("张三",announcement);
+        Staff staff1 = new Staff("李华");
+        Staff staff2 = new Staff("王平");
+        Staff staff3 = new Staff("张三");
         staff1.sendMessage("今日特供午饭铁板烧");
         staff2.sendMessage("生产千万条，安全第一条");
         staff3.sendMessage("国庆快乐");

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * 实现不同种类的罐头
  * 罐头的大小属性
  */
-public interface Size extends Serializable {
+public interface Size{
 
     public int getSize();
 

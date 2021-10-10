@@ -4,60 +4,76 @@ import Manufacturing.CanEntity.*;
 import Manufacturing.CanEntity.Material.IronMaterial;
 import Manufacturing.CanEntity.Size.BigSize;
 import Manufacturing.CanEntity.Size.SmallSize;
+import Presentation.Protocol.OutputManager;
 
 /**
  * 铁制罐头工厂
+ * 享元模式、抽象工厂模式、单例模式
  * @author 汪明杰
  */
 public class IronCanFactory extends AbstractCanFactory{
 
-    private VegetableCan smallVegetableCan;
-    private VegetableCan bigVegetableCan;
-    private FruitCan smallFruitCan;
-    private FruitCan bigFruitCan;
+    private static VegetableCan smallVegetableCan;
+    private static VegetableCan bigVegetableCan;
+    private static FruitCan smallFruitCan;
+    private static FruitCan bigFruitCan;
 
-    public IronCanFactory(){
+    // 单例模式
+    private static IronCanFactory ironCanFactory;
+
+    private IronCanFactory(){
         System.out.println("# 使用抽象工厂模式(Abstract Factory)");
-        this.smallVegetableCan = null;
-        this.bigVegetableCan = null;
-        this.smallFruitCan = null;
-        this.bigFruitCan = null;
+        IronCanFactory.smallVegetableCan = null;
+        IronCanFactory.bigVegetableCan = null;
+        IronCanFactory.smallFruitCan = null;
+        IronCanFactory.bigFruitCan = null;
         System.out.println("# 成功创建铁制罐头工厂");
+    }
+
+    public static IronCanFactory getInstance(){
+        if (IronCanFactory.ironCanFactory == null){
+            IronCanFactory.ironCanFactory = new IronCanFactory();
+        }
+        return IronCanFactory.ironCanFactory;
     }
 
     @Override
     public FactoryCan createBigFruitCan() {
         System.out.println("# 使用享元模式(Fly weight)");
-        if (this.bigFruitCan == null){
-            this.bigFruitCan = new FruitCan(new BigSize(), new IronMaterial());
+        if (IronCanFactory.bigFruitCan == null){
+            IronCanFactory.bigFruitCan = new FruitCan(new BigSize(), new IronMaterial());
         }
-        return this.bigFruitCan;
+        return IronCanFactory.bigFruitCan;
     }
 
     @Override
     public FactoryCan createSmallFruitCan() {
         System.out.println("# 使用享元模式(Fly weight)");
-        if (this.smallFruitCan == null){
-            this.smallFruitCan = new FruitCan(new SmallSize(), new IronMaterial());
+        if (IronCanFactory.smallFruitCan == null){
+            IronCanFactory.smallFruitCan = new FruitCan(new SmallSize(), new IronMaterial());
         }
-        return this.smallFruitCan;
+        return IronCanFactory.smallFruitCan;
     }
 
     @Override
     public FactoryCan createBigVegetableCan() {
         System.out.println("# 使用享元模式(Fly weight)");
-        if(this.bigVegetableCan == null){
-            this.bigVegetableCan = new VegetableCan(new BigSize(),new IronMaterial());
+        if(IronCanFactory.bigVegetableCan == null){
+            IronCanFactory.bigVegetableCan = new VegetableCan(new BigSize(),new IronMaterial());
         }
-        return this.bigVegetableCan;
+        return IronCanFactory.bigVegetableCan;
     }
 
     @Override
     public FactoryCan createSmallVegetableCan() {
-        System.out.println("# 使用享元模式(Fly weight)");
-        if (this.smallVegetableCan == null){
-            this.smallVegetableCan = new VegetableCan(new SmallSize(), new IronMaterial());
+        OutputManager.getInstance().print(
+                "# 使用享元模式",
+                "# 使用享元模式",
+                "# Using Fly weight Mode"
+        );
+        if (IronCanFactory.smallVegetableCan == null){
+            IronCanFactory.smallVegetableCan = new VegetableCan(new SmallSize(), new IronMaterial());
         }
-        return this.smallVegetableCan;
+        return IronCanFactory.smallVegetableCan;
     }
 }

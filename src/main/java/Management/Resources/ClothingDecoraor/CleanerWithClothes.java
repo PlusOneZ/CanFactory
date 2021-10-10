@@ -2,8 +2,8 @@ package Management.Resources.ClothingDecoraor;
 
 import Management.Resources.Staff.Staff;
 
-public class CleanerClothes extends StaffWithClothes{
-    public CleanerClothes(Staff staff) {
+public class CleanerWithClothes extends StaffWithClothes{
+    public CleanerWithClothes(Staff staff) {
         super(staff);
     }
 

@@ -7,7 +7,7 @@ import Management.Resources.Staff.Staff;
 public class DecoratorTest {
     public static void main(String[] args) {
         Staff staff1 = new Cleaner("李华");
-        CleanerClothes cleaner = new CleanerClothes(staff1);
+        CleanerWithClothes cleaner = new CleanerWithClothes(staff1);
         cleaner.putOnClothes();
 
         Staff staff2 = new SecurityStaff("王三");

@@ -2,11 +2,16 @@ package Management.QuantityTesting;
 
 import Management.Resources.Staff.Cleaner;
 import Management.Resources.Staff.SecurityStaff;
+import Presentation.Protocol.OutputManager;
 
 public class ManagerVisitor implements FactoryVisitor{
 
     public ManagerVisitor(){
-        System.out.println("# 使用访问者模式(Visitor)");
+        OutputManager.getInstance().print(
+                "# 使用访问者模式",
+                "# 使用訪問者模式",
+                "# Using Visitor Mode"
+        );
     }
 
     @Override

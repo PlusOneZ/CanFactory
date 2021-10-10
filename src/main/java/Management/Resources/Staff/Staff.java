@@ -8,17 +8,11 @@ import Management.Resources.Announcement;
  * @author 汪明杰
  */
 public class Staff {
-    //公告栏
-    Announcement announcement;
+
 
     //员工姓名
     String name;
 
-    //构造函数
-    public Staff(String name, Announcement announcement) {
-        this.name = name;
-        this.announcement=announcement;
-    }
 
     public Staff(){
 
@@ -35,7 +29,7 @@ public class Staff {
 
     //员工发送消息
     public void sendMessage(String message){
-        this.announcement.addMessage(this,message);
+        Announcement.getInstance().addMessage(this,message);
     }
 
     //员工接受消息
