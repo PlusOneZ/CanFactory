@@ -5,8 +5,10 @@ import Manufacturing.Ingredient.MixedIngredient;
 import java.util.List;
 
 /**
- * @author 梁乔 2021/10/10
- **/
+* 该类继承自Can抽象类，表示一种具体的罐头：肉类罐头
+* @author 梁乔
+* @date 2021-10-11 19:29
+*/
 public class MeatCan  extends Can{
 
     private List<MixedIngredient> MeatCanIntegredient;
