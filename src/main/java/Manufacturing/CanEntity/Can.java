@@ -26,8 +26,21 @@ public abstract class Can {
     }
 
     CanState state;
-
     List<Ingredient> ingredients;
+    int category;
 
+    public String getCanName(){
+        return CanName;
+    }
+    public List<Ingredient> getIngredients(){
+        return ingredients;
+    }
+    public float getWeight(){
+        return Weight;
+    }
+
+    public int getCategory(){
+        return category;
+    }
 
 }
