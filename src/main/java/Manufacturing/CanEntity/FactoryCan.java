@@ -14,6 +14,11 @@ public abstract class FactoryCan extends Can{
 
     protected Material material;
 
+    @Override
+    public boolean otherTests() {
+        return true;
+    }
+
     public FactoryCan(Size s, Material c){
         System.out.println("# 使用桥接模式(Bridge)");
         System.out.printf("# 创建了一个");

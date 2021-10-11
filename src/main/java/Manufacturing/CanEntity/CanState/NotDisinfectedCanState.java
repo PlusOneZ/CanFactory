@@ -4,6 +4,7 @@ import Presentation.Protocol.OutputManager;
 
 /**
  * 未消毒状态
+ * 罐头一开始被赋予这种状态。
  * @author 卓正一
  */
 public class NotDisinfectedCanState extends CanState {
