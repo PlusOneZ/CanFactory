@@ -24,7 +24,7 @@ public class TransportManager extends Manager {
      *
      * @param plan 运输方案
      */
-    public void DesignTransportPlan(TransportationPlan plan) {
+    public void designTransportPlan(TransportationPlan plan) {
         transportationPlan = plan;
     }
 
@@ -33,7 +33,7 @@ public class TransportManager extends Manager {
      *
      * @param carrier 承运商
      */
-    public void DelegateTransport(Carrier carrier) {
+    public void delegateTransport(Carrier carrier) {
         carrier.dispatch(transportationPlan);
     }
 

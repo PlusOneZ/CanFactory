@@ -1,4 +1,4 @@
-package Marketing.Promotion.SellStrategy;
+package Marketing.Promotion.Sale;
 
 import Presentation.Protocol.OutputManager;
 
@@ -7,7 +7,7 @@ import Presentation.Protocol.OutputManager;
  *
  * @author 吴英豪
  */
-public class TwoHundredMinusTwenty implements SellStrategy {
+public class TwoHundredMinusTwenty implements Sale {
     @Override
     public Double discount(Double originalPrice) {
         Double price = originalPrice;

@@ -1,4 +1,4 @@
-package Marketing.Promotion.SellStrategy;
+package Marketing.Promotion.Sale;
 
 import Presentation.Protocol.OutputManager;
 
@@ -7,7 +7,7 @@ import Presentation.Protocol.OutputManager;
  *
  * @author 吴英豪
  */
-public class TwentyPercentOff implements SellStrategy {
+public class TwentyPercentOff implements Sale {
     @Override
     public Double discount(Double originalPrice) {
         double price = originalPrice * 0.8;

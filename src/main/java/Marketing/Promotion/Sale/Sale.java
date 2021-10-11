@@ -1,4 +1,4 @@
-package Marketing.Promotion.SellStrategy;
+package Marketing.Promotion.Sale;
 
 /**
  * 策略模式
@@ -6,7 +6,7 @@ package Marketing.Promotion.SellStrategy;
  *
  * @author 吴英豪
  */
-public interface SellStrategy {
+public interface Sale {
     /**
      * 通过原价获得优惠价格
      *

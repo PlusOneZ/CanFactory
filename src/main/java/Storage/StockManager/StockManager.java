@@ -1,4 +1,4 @@
-package Storage.Stock;
+package Storage.StockManager;
 
 /**
  * 库存
@@ -6,11 +6,11 @@ package Storage.Stock;
  *
  * @author 吴英豪
  */
-public class Stock {
+public class StockManager {
     /**
      * <b>私有构造函数</b>
      */
-    private Stock() {
+    private StockManager() {
     }
 
     /**
@@ -18,9 +18,9 @@ public class Stock {
      *
      * @return 全局唯一的 Stock
      */
-    public static Stock getInstance() {
+    public static StockManager getInstance() {
         if (instance == null) {
-            instance = new Stock();
+            instance = new StockManager();
         }
         return instance;
     }
@@ -47,5 +47,5 @@ public class Stock {
     private Double stockAmount;
 
     //实例
-    static private Stock instance;
+    static private StockManager instance;
 }
