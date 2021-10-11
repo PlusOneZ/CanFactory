@@ -3,6 +3,7 @@ package Manufacturing.CanEntity.Material;
 
 /**
  * 材质
+ * 桥接模式
  * @author 汪明杰
  */
 public interface Material {

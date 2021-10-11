@@ -25,10 +25,14 @@ public class Announcement {
 
     private Announcement(){
         System.out.println("# 使用黑板模式(Blackboard)");
+        OutputManager.getInstance().print(
+                "# 使用黑板模式",
+                "# 使用黑板模式",
+                "# Using Blackboard mode"
+        );
         this.readingState = false;
-        this.news=new ArrayList<String>();
-        this.readers=new ArrayList<Staff>();
-        this.news.add("[公告栏已经上线了，欢迎大家积极阅读哦~]");
+        this.news= new ArrayList<>();
+        this.readers= new ArrayList<>();
     }
 
     public static Announcement getInstance(){
@@ -50,7 +54,12 @@ public class Announcement {
         this.readingState = true;
         this.news.add("["+newMessage+"]");
 
-        System.out.println("[公告栏]开始推送消息："+newMessage);
+        OutputManager.getInstance().print(
+                "[公告栏]开始推送消息："+newMessage,
+                "[公告欄]開始推送消息："+newMessage,
+                "[Blackboard] Start to push the message:"+newMessage
+        );
+        
         //向所有读者推送消息
         for(Staff reader:readers){
             reader.getMessage(newMessage);
@@ -61,14 +70,7 @@ public class Announcement {
         this.readingState = false;
     }
 
-    public static void main(String[] args) {
-        Staff staff1 = new Staff("李华");
-        Staff staff2 = new Staff("王平");
-        Staff staff3 = new Staff("张三");
-        staff1.sendMessage("今日特供午饭铁板烧");
-        staff2.sendMessage("生产千万条，安全第一条");
-        staff3.sendMessage("国庆快乐");
-    }
+
 
 
 }

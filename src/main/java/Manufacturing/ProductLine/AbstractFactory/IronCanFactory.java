@@ -22,12 +22,21 @@ public class IronCanFactory extends AbstractCanFactory{
     private static IronCanFactory ironCanFactory;
 
     private IronCanFactory(){
-        System.out.println("# 使用抽象工厂模式(Abstract Factory)");
+        OutputManager.getInstance().print(
+                "# 使用抽象工厂模式",
+                "# 使用抽象工廠模式",
+                "# Using Abstract Factory mode"
+        );
         IronCanFactory.smallVegetableCan = null;
         IronCanFactory.bigVegetableCan = null;
         IronCanFactory.smallFruitCan = null;
         IronCanFactory.bigFruitCan = null;
-        System.out.println("# 成功创建铁制罐头工厂");
+        System.out.println("成功创建铁制罐头工厂");
+        OutputManager.getInstance().print(
+                "成功创建铁制罐头工厂",
+                "成功創建鐵制罐頭工廠",
+                "Successfully created iron cannery"
+        );
     }
 
     public static IronCanFactory getInstance(){
@@ -39,7 +48,11 @@ public class IronCanFactory extends AbstractCanFactory{
 
     @Override
     public FactoryCan createBigFruitCan() {
-        System.out.println("# 使用享元模式(Fly weight)");
+        OutputManager.getInstance().print(
+                "# 使用享元模式",
+                "# 使用享元模式",
+                "# Using Fly weight Mode"
+        );
         if (IronCanFactory.bigFruitCan == null){
             IronCanFactory.bigFruitCan = new FruitCan(new BigSize(), new IronMaterial());
         }
@@ -48,7 +61,11 @@ public class IronCanFactory extends AbstractCanFactory{
 
     @Override
     public FactoryCan createSmallFruitCan() {
-        System.out.println("# 使用享元模式(Fly weight)");
+        OutputManager.getInstance().print(
+                "# 使用享元模式",
+                "# 使用享元模式",
+                "# Using Fly weight Mode"
+        );
         if (IronCanFactory.smallFruitCan == null){
             IronCanFactory.smallFruitCan = new FruitCan(new SmallSize(), new IronMaterial());
         }
@@ -57,7 +74,11 @@ public class IronCanFactory extends AbstractCanFactory{
 
     @Override
     public FactoryCan createBigVegetableCan() {
-        System.out.println("# 使用享元模式(Fly weight)");
+        OutputManager.getInstance().print(
+                "# 使用享元模式",
+                "# 使用享元模式",
+                "# Using Fly weight Mode"
+        );
         if(IronCanFactory.bigVegetableCan == null){
             IronCanFactory.bigVegetableCan = new VegetableCan(new BigSize(),new IronMaterial());
         }
