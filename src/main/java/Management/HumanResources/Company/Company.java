@@ -1,77 +1,108 @@
 package Management.HumanResources.Company;
 
-import Presentation.Protocol.OutputManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * 组合模式下的公司单例，下分为不同部门
+ * Company:公司实体，管理单元基类的一个实体类，
+ * <b>使用了单例模式</b>
  * @author 陈垲昕
- *
- * <b>实现了单例模式</b>
- *
- * TODO: 1. 公司实例更多方法的实现(比如：查找部门;删除部门（可以以后再实现）)
+ * @since 2021-10-11 7:02 下午
  */
-
-public class Company extends BaseComponent{
-
-    /*
-     * @description: 全局唯一的实例
-     */
-    static private Company instance;
-    
-    /* 
-     * @description: 含有公司各个部门的列表
-     */
-    private List<BaseComponent> components = new ArrayList<>();
+public class Company extends ManagementUnit {
 
     /**
-     * <b>单例获取函数</b>
-     * @param: 公司名 name
-     * @return: 全局唯一的 Company
+     * Company的单例模式实体，全局唯一
+     */
+    static private Company instance;
+
+    /**
+     * 公司的总经理，通过add方法添加
+     */
+    private Manager chiefManager;
+    
+    /**
+     * 组合模式中Company作为父类的单元列表
+     * <b>使用组合模式</b>
+     */
+    private List<ManagementUnit> unitList = new ArrayList<>();
+
+    /**
+     * 构造函数
+     * @param name : 公司名字
+     * @author 陈垲昕
+     * @since 2021-10-11 7:12 下午
      */
     private Company(String name){
         this.name=name;
     }
 
 
-
     /**
-     * <b>单例获取函数</b>
-     * @return 全局唯一的 Company
+     * 获取Company类唯一实例的方法，供外部类调用
+     * <b>单例模式相关</b>
+     * @return : Management.HumanResources.Company.Company 公司类的唯一实例
+     * @author 陈垲昕
+     * @since 2021-10-11 7:13 下午
      */
     public static Company getInstance(){
         if(instance==null){
+            //如果没有这个实例，进行内部的构造函数
+            //TODO: 允许创建公司名
             instance=new Company("default name");
         }
         return instance;
     }
 
     /**
-     * <b>信息展示函数函数，遍历了公司下的各个组分</b>
+     * 获取公司的总经理
+     * @return : Management.HumanResources.Company.Manager 总经理
+     * @author 陈垲昕
+     * @since 2021-10-11 7:57 下午
+     */
+    public Manager getChiefManagerfManager(){return this.chiefManager;}
+
+
+    /**
+     * 重写ManagementUnit中的showInfo方法，打印这个公司的信息
+     * （包括直系员工，下属部门，部门以下各个员工等）
+     * @author 陈垲昕
+     * @date 2021-10-11 7:14 下午
      */
     @Override
     public void showInfo() {
+        //TODO:添加OutputManager
+        System.out.println("公司名为"+this.getName());
 
-        OutputManager.getInstance().print(
-                "公司名为:"+this.getName(),
-                "公司名為"+this.getName(),
-                "The name of the company is:"+this.getName()
-        );
-
-        for(BaseComponent component:components){
-            component.showInfo();
+        //遍历公司列表，递归showInfo()
+        for(ManagementUnit unit: unitList){
+            unit.showInfo();
         }
 
     }
 
+
     /**
-     * <b>重写添加方法，公司添加部门</b>
-     * @param:  待添加的Component，也就是部门
+     * 重写列表中添加元素的方法，一般为公司员工或下属部门
+     * @param unit : 要添加的ManagementUnit，包括部门，员工等
+     * @author 陈垲昕
+     * @since 2021-10-11 7:15 下午
      */
     @Override
-    public void add(BaseComponent component){
-        this.components.add(component);
+    public void add(ManagementUnit unit){
+        this.unitList.add(unit);
+        if(unit instanceof Manager){
+            this.chiefManager = (Manager) unit;
+            this.chiefManager.setWorkingSector(this);
+            System.out.println("公司添加总经理"+unit.getName());
+        }
+        else if (unit instanceof Department) {
+            System.out.println("公司添加部门" + unit.getName());
+        }
+        else if (unit instanceof Staff){
+            ((Staff) unit).setWorkingSector(this);
+            System.out.println("公司添加职员"+unit.getName());
+        }
     }
 }
