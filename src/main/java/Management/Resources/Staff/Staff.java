@@ -1,7 +1,7 @@
 package Management.Resources.Staff;
 
-import Management.QuantityTesting.FactoryVisitor;
 import Management.Resources.Announcement;
+import Presentation.Protocol.OutputManager;
 
 /**
  * 员工基类
@@ -35,7 +35,12 @@ public class Staff {
     //员工接受消息
     public void getMessage(String message){
         System.out.println("员工["+this.name+"]接受消息："+message);
+        OutputManager.getInstance().print(
+                "员工["+this.name+"]接受消息："+message,
+                "員工"+"]接受消息："+message,
+                "Staff["+this.name+"] receives the message:"+message
+        );
     }
 
-    //public abstract void accept(FactoryVisitor visitor);
+
 }

@@ -43,6 +43,8 @@ public class OutputManager {
         language = lang;
     }
 
+    public Lang getLanguage() { return language; }
+
     private Lang language;
 
     /**
