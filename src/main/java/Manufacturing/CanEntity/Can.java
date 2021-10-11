@@ -1,10 +1,10 @@
 package Manufacturing.CanEntity;
 
+
 import Manufacturing.CanEntity.CanState.CanState;
 import Manufacturing.Ingredient.Ingredient;
 
 import java.util.List;
-
 
 /**
  * 罐头是流水线中的最终产物，它是由"ingredients"装填而来的。
@@ -14,7 +14,16 @@ import java.util.List;
  * <b>实现了 Decorator 模式</b>
  * @author 卓正一
  */
+
 public abstract class Can {
+    public String CanName = new String();
+    public float Price;
+    public float Weight;
+    Can(String Name,float Price,float weight ){
+        this.CanName = Name;
+        this.Price = Price;
+        this.Weight = weight;
+    }
 
     private CanState state;
     String CanName;
