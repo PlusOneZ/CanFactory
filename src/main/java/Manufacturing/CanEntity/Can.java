@@ -16,13 +16,20 @@ import java.util.List;
  */
 public abstract class Can {
 
-    CanState state;
+    private CanState state;
     String CanName;
     List<Ingredient> ingredients;
 
+
     /**
-     *
-     * @return 罐头的名称
-     */
+    * 获取罐头的状态
+     * @return : Manufacturing.CanEntity.CanState.CanState
+    * @author 梁乔
+    * @date 22:40 2021-10-11
+    */
+    public CanState getCanState(){
+        return state;
+    }
+
     public abstract String getCanName();
 }
