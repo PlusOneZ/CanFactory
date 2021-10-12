@@ -1,4 +1,4 @@
-package Manufacturing.ProductLine.AbstractFactory;
+package Manufacturing.ProductLine.AbstractCanFactory;
 
 import Manufacturing.CanEntity.*;
 import Manufacturing.CanEntity.Material.IronMaterial;
@@ -54,7 +54,7 @@ public class IronCanFactory extends AbstractCanFactory{
                 "# Using Fly weight Mode"
         );
         if (IronCanFactory.bigFruitCan == null){
-            IronCanFactory.bigFruitCan = new FruitCan(new BigSize(), new IronMaterial());
+            IronCanFactory.bigFruitCan = new FruitCan(BigSize.getInstance(), IronMaterial.getInstance());
         }
         return IronCanFactory.bigFruitCan;
     }
@@ -67,7 +67,7 @@ public class IronCanFactory extends AbstractCanFactory{
                 "# Using Fly weight Mode"
         );
         if (IronCanFactory.smallFruitCan == null){
-            IronCanFactory.smallFruitCan = new FruitCan(new SmallSize(), new IronMaterial());
+            IronCanFactory.smallFruitCan = new FruitCan(SmallSize.getInstance(), IronMaterial.getInstance());
         }
         return IronCanFactory.smallFruitCan;
     }
@@ -80,7 +80,7 @@ public class IronCanFactory extends AbstractCanFactory{
                 "# Using Fly weight Mode"
         );
         if(IronCanFactory.bigVegetableCan == null){
-            IronCanFactory.bigVegetableCan = new VegetableCan(new BigSize(),new IronMaterial());
+            IronCanFactory.bigVegetableCan = new VegetableCan(BigSize.getInstance(),IronMaterial.getInstance());
         }
         return IronCanFactory.bigVegetableCan;
     }
@@ -93,7 +93,7 @@ public class IronCanFactory extends AbstractCanFactory{
                 "# Using Fly weight Mode"
         );
         if (IronCanFactory.smallVegetableCan == null){
-            IronCanFactory.smallVegetableCan = new VegetableCan(new SmallSize(), new IronMaterial());
+            IronCanFactory.smallVegetableCan = new VegetableCan(SmallSize.getInstance(), IronMaterial.getInstance());
         }
         return IronCanFactory.smallVegetableCan;
     }

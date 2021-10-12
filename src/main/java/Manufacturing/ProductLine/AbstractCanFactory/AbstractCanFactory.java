@@ -1,4 +1,4 @@
-package Manufacturing.ProductLine.AbstractFactory;
+package Manufacturing.ProductLine.AbstractCanFactory;
 
 
 import Manufacturing.CanEntity.FactoryCan;

@@ -19,5 +19,5 @@ public interface FactoryVisitor {
 
     // 观察工厂生产情况
     // TODO: 结合生产线，观察某一生产线
-    public void visit();
+    // public void visit();
 }
