@@ -12,33 +12,10 @@ import java.util.Date;
  */
 public abstract class FactoryCan extends Can{
 
-    protected Size size;
-
-    protected Material material;
-
-
-    @Override
-    public boolean otherTests() {
-        return true;
-    }
-
-    // 保质时间
-    protected Date shelfTime;
-
-    // 生产时间
-    protected Date manufactureTime;
-
-    // 最高储存温度
-    protected int maxTemperature;
-
-    //最低储存温度
-    protected int minTemperature;
-
     public FactoryCan(Size s, Material c){
-        super("", 80, 9); // TODO： 修改到能用
         System.out.println("# 使用桥接模式(Bridge)");
         System.out.printf("# 创建了一个");
-        this.size=s;
+        setSize(s);
         if(s.isLarge()){
             System.out.printf("大的");
         }
@@ -46,7 +23,7 @@ public abstract class FactoryCan extends Can{
             System.out.printf("小的");
         }
 
-        this.material = c;
+        setMaterial(c);
         if (c.getType() == Material.MATERIAL.ALLOY){
             System.out.printf("铝制的");
         }
@@ -58,19 +35,6 @@ public abstract class FactoryCan extends Can{
         }
 
         System.out.println("的罐头");
-    }
-
-    // 是否过期
-    public boolean isOverdue(){
-        // TODO: 获取公有类的当前时间后，判断罐头是否过期
-
-        return true;
-    }
-
-    // 判断储存温度是否合适
-    public boolean isTemperatureAppropriate(){
-        // TODO: 获取储存箱的温度，判断储存环境是否合适
-        return true;
     }
 
 

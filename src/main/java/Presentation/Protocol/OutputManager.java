@@ -90,4 +90,13 @@ public class OutputManager {
         }
     }
 
+    public String selectStringForCurrentLanguage(String zh_cn, String zh_tw ,String en) {
+        switch (language) {
+            case en: return en;
+            case zh_CN: return zh_cn;
+            case zh_TW: return zh_tw;
+        }
+        return "";
+    }
+
 }

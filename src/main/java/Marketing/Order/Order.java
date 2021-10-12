@@ -17,7 +17,6 @@ public class Order<T extends Can> {
     private Date OrderGenerationTime;
 
     /**
-     *
      * @param orderNum 订单所需数量
      * @param orderComTime 订单的最晚完成时间
      * @param orderGenerationTime 订单的生成时间
