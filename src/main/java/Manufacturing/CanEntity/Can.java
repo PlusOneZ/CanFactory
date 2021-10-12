@@ -8,6 +8,7 @@ import Manufacturing.CanEntity.Size.Size;
 import Manufacturing.Ingredient.Ingredient;
 import Presentation.Protocol.OutputManager;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,6 +75,35 @@ public abstract class Can implements Testable {
     private String zhTwName;
     private String enName;
 
+    /**
+     * 保质时间
+     * 实现：汪明杰
+     * @since 2021-10-12 4:54 PM
+     */
+    private Date shelfTime;
+
+    /**
+     * 生产时间
+     * 实现：汪明杰
+     * @since 2021-10-12 4:55 PM
+     */
+    private Date manufactureTime;
+
+    /**
+     * 最高储存温度
+     * 实现：汪明杰
+     * @since 2021-10-12 4:55 PM
+     */
+    private int maxTemperature;
+
+    /**
+     * 最低储存温度
+     * 实现：汪明杰
+     * @since 2021-10-12 4:55 PM
+     */
+    private int minTemperature;
+
+
     @Override
     public final boolean getQualityTest() {
         if (state instanceof ErrorCanState) return false;
@@ -88,6 +118,29 @@ public abstract class Can implements Testable {
         if (state instanceof ErrorCanState) return false;
         return state.isDisinfected();
         // TODO: 通过测试机器进行
+    }
+
+    /**
+     * 判断是否过期
+     * @return : boolean
+     * @author 汪明杰
+     * @since 2021-10-12 4:56 PM
+     */
+    public boolean isOverdue(){
+        // TODO: 获取公有类的当前时间后，判断罐头是否过期
+
+        return true;
+    }
+
+    /**
+     * 判断温度是否合适
+     * @return : boolean
+     * @author 汪明杰
+     * @since 2021-10-12 4:56 PM
+     */
+    public boolean isTemperatureAppropriate(){
+        // TODO: 获取储存箱的温度，判断储存环境是否合适
+        return true;
     }
 
     /**
@@ -218,5 +271,37 @@ public abstract class Can implements Testable {
                 return enName;
         }
         return "";
+    }
+
+    public Date getShelfTime() {
+        return shelfTime;
+    }
+
+    public void setShelfTime(Date shelfTime) {
+        this.shelfTime = shelfTime;
+    }
+
+    public Date getManufactureTime() {
+        return manufactureTime;
+    }
+
+    public void setManufactureTime(Date manufactureTime) {
+        this.manufactureTime = manufactureTime;
+    }
+
+    public int getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public void setMaxTemperature(int maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
+    public int getMinTemperature() {
+        return minTemperature;
+    }
+
+    public void setMinTemperature(int minTemperature) {
+        this.minTemperature = minTemperature;
     }
 }
