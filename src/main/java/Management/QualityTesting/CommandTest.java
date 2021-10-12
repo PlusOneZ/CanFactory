@@ -32,6 +32,7 @@ public class CommandTest {
         testDepartment.add(staff2);
         testDepartment.add(staff3);
 
+        ////////////命令模式
         QualityTestingCommand qtCommand=new QualityTestingCommand(managerAD,staff1,staff2);
         QualityTestingCommand qtCommand2=new QualityTestingCommand(managerTD,staff2,staff3);
         managerAD.setManagerCommand(qtCommand);
