@@ -16,6 +16,12 @@ public abstract class FactoryCan extends Can{
 
     protected Material material;
 
+
+    @Override
+    public boolean otherTests() {
+        return true;
+    }
+
     // 保质时间
     protected Date shelfTime;
 
@@ -29,6 +35,7 @@ public abstract class FactoryCan extends Can{
     protected int minTemperature;
 
     public FactoryCan(Size s, Material c){
+        super("", 80, 9); // TODO： 修改到能用
         System.out.println("# 使用桥接模式(Bridge)");
         System.out.printf("# 创建了一个");
         this.size=s;
