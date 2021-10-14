@@ -13,7 +13,7 @@ import java.util.List;
  * @author 孟繁霖
  * @date 2021-10-11 23:31
  */
-public abstract class AbstractFactory {
+public abstract class Factory {
 
     /**
      * TODO:获取水果罐头加工流水线方法.
@@ -93,7 +93,34 @@ public abstract class AbstractFactory {
             int count = (freshLine.preTreat(rawMaterialList)).size();
             freshLine.produce(count);
         }
-
-
     }
+
+    /**
+     * 获取下一个生产线
+     * 通过迭代器获取
+     *
+     * @return : Manufacturing.ProductLine.ProductLine
+     * @author 孟繁霖
+     * @date 2021-10-14 21:51
+     */
+    public abstract ProductLine getNextLine();
+
+    /**
+     * 是否迭代到最后一个元素
+     *
+     * @return : boolean
+     * @author 孟繁霖
+     * @date 2021-10-14 21:56
+     */
+    public abstract boolean hasNextLine();
+
+    /**
+     * 获取生产线迭代器
+     *
+     * @return : Manufacturing.ProductLine.Iterator
+     * @author 孟繁霖
+     * @date 2021-10-14 22:01
+     */
+    public abstract Iterator iterator();
+
 }
