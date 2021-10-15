@@ -1,4 +1,4 @@
-package Manufacturing.ProductLine.AbstractFactory;
+package Manufacturing.ProductLine.AbstractFactoryEntity;
 
 import Manufacturing.CanEntity.*;
 import Manufacturing.CanEntity.Material.IronMaterial;
