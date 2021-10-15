@@ -9,11 +9,14 @@ import Manufacturing.CanEntity.Size.Size;
  * 桥接模式
  * @author 汪明杰
  */
-public class FruitCan extends FactoryCan{
+public class FruitCan extends Can{
 
     public FruitCan(Size s, Material c) {
-        super(s, c);
+        super.setSize(s);
+        super.setMaterial(c);
     }
+
+
 
 
 }

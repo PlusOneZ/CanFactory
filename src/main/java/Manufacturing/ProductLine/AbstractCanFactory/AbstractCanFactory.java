@@ -1,8 +1,6 @@
 package Manufacturing.ProductLine.AbstractCanFactory;
 
 
-import Manufacturing.CanEntity.FactoryCan;
-
 /**
  * 罐头抽象工厂
  * 抽象工厂模式、单例模式

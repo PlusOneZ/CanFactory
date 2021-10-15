@@ -1,7 +1,6 @@
 package Marketing.OrderCenter;
 
 
-import Manufacturing.CanEntity.MeatCan;
 import Marketing.Order.Order;
 import Marketing.ProductionPlanningCenter;
 
