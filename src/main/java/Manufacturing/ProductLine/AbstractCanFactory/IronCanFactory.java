@@ -47,7 +47,7 @@ public class IronCanFactory extends AbstractCanFactory{
     }
 
     @Override
-    public FactoryCan createBigFruitCan() {
+    public Can createBigFruitCan() {
         OutputManager.getInstance().print(
                 "# 使用享元模式",
                 "# 使用享元模式",
@@ -60,7 +60,7 @@ public class IronCanFactory extends AbstractCanFactory{
     }
 
     @Override
-    public FactoryCan createSmallFruitCan() {
+    public Can createSmallFruitCan() {
         OutputManager.getInstance().print(
                 "# 使用享元模式",
                 "# 使用享元模式",
@@ -73,7 +73,7 @@ public class IronCanFactory extends AbstractCanFactory{
     }
 
     @Override
-    public FactoryCan createBigVegetableCan() {
+    public Can createBigVegetableCan() {
         OutputManager.getInstance().print(
                 "# 使用享元模式",
                 "# 使用享元模式",
@@ -86,7 +86,7 @@ public class IronCanFactory extends AbstractCanFactory{
     }
 
     @Override
-    public FactoryCan createSmallVegetableCan() {
+    public Can createSmallVegetableCan() {
         OutputManager.getInstance().print(
                 "# 使用享元模式",
                 "# 使用享元模式",
