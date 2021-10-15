@@ -16,11 +16,19 @@ public class ManagerVisitor implements FactoryVisitor{
 
     @Override
     public void visit(SecurityStaff staff) {
-        System.out.println("保安["+staff.getName()+"]"+"：工作量为"+staff.getVerify());
+        OutputManager.getInstance().print(
+                "保安["+staff.getName()+"]"+"：工作量为"+staff.getVerify(),
+                "警衛["+staff.getName()+"]"+"：工作量為"+staff.getVerify(),
+                "The security staff ["+staff.getName()+"]"+"：The workload is"+staff.getVerify()
+        );
     }
 
     @Override
     public void visit(Cleaner staff) {
-        System.out.println("保洁员["+staff.getName()+"]"+"：工作量为"+staff.getCleanArea());
+        OutputManager.getInstance().print(
+                "保洁员["+staff.getName()+"]"+"：工作量为"+staff.getCleanArea(),
+                "保潔員["+staff.getName()+"]"+"：工作量為"+staff.getCleanArea(),
+                "The cleaner ["+staff.getName()+"]"+"：The workload is"+staff.getCleanArea()
+        );
     }
 }

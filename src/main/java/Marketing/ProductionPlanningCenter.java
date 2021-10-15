@@ -1,8 +1,6 @@
 package Marketing;
 
 import Manufacturing.CanEntity.Can;
-import Manufacturing.CanEntity.MeatCan;
-import Marketing.Order.Order;
 import Marketing.OrderCenter.Observer;
 import Marketing.OrderCenter.OrderDataSubject;
 import Presentation.Protocol.OutputManager;

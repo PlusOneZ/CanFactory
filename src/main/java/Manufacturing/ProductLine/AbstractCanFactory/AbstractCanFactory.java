@@ -1,7 +1,5 @@
-package Manufacturing.ProductLine.AbstractFactory;
+package Manufacturing.ProductLine.AbstractCanFactory;
 
-
-import Manufacturing.CanEntity.FactoryCan;
 
 /**
  * 罐头抽象工厂

@@ -1,9 +1,5 @@
 package Manufacturing.Machine;
 
-import Manufacturing.CanEntity.Can;
-import Manufacturing.CanEntity.MeatCan;
-import Marketing.OrderCenter.Observable;
-
 /**
  * 出产肉类罐头的机器，运用了工厂模式
  * @author 梁乔 2021/10/10
