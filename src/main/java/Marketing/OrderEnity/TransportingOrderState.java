@@ -54,4 +54,37 @@ public class TransportingOrderState extends OrderState{
                 "The order with order ID"+order.getOrderId()+"has completed the delivery!"
         );
     }
+
+    /**
+     * 获取订单状态的中文名称
+     * @return : java.lang.String
+     * @author 梁乔
+     * @date 21:10 2021-10-15
+     */
+    @Override
+    public String getCNStateName(){
+        return "运输中";
+    }
+
+    /**
+     *  获取订单状态的繁体名称
+     * @return : java.lang.String
+     * @author 梁乔
+     * @date 21:11 2021-10-15
+     */
+    @Override
+    public String getTWStateName(){
+        return "運輸中";
+    }
+
+    /**
+     * 获取订单状态的英文名称
+     * @return : java.lang.String
+     * @author 梁乔
+     * @date 21:37 2021-10-15
+     */
+    @Override
+    public String getENStateName(){
+        return "Transporting";
+    }
 }

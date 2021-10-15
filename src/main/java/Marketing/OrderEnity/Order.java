@@ -1,6 +1,9 @@
 package Marketing.OrderEnity;
 
 import Manufacturing.CanEntity.Can;
+import Marketing.Container;
+import Marketing.Iterator;
+import Marketing.OrderCenterEntity.OrderCenter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,10 +11,10 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * 订单类，泛型标识对应的罐头种类
+ * 订单类,实现了迭代器模式，状态模式
  * @author 梁乔 2021/10/10
  **/
-public class Order {
+public class Order implements Container {
 
     /**
      * 订单ID
@@ -70,6 +73,16 @@ public class Order {
     }
 
     /**
+    *   获取当前订单的金额类
+     * @return : Marketing.OrderEnity.OrderAmount
+    * @author 梁乔
+    * @date 22:02 2021-10-15
+    */
+   public OrderAmount getOrderAmount(){
+        return orderAmount;
+   }
+
+    /**
     * 设置发货时间
      * @param sendingTime : 发货时间
      * @return : void
@@ -112,4 +125,45 @@ public class Order {
         this.orderState = orderState;
     }
 
+    @Override
+    public Iterator getIterator() {
+        return new CanTypeIterator();
+    }
+
+    /**
+     * Nested class 订单罐头类型迭代器，用于订单内各罐头类型的遍历和查找
+     * @author 梁乔
+     * @date 2021-10-15 15:17
+     */
+    private class CanTypeIterator implements Iterator {
+
+        int index;
+
+        /**
+         * 当前index是否有下一个元素
+         * @return : boolean
+         * @author 梁乔
+         * @date 15:18 2021-10-15
+         */
+        @Override
+        public boolean hasNext() {
+            if(index < orderCanInformations.size())
+                return true;
+            return false;
+        }
+
+        /**
+         * 获取迭代器的下一个元素
+         * @return : java.lang.Object
+         * @author 梁乔
+         * @date 15:26 2021-10-15
+         */
+        @Override
+        public Object next() {
+            if(this.hasNext()){
+                return orderCanInformations.get(index++);
+            }
+            return null;
+        }
+    }
 }

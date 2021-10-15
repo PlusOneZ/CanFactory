@@ -56,4 +56,36 @@ public class ProducedOrderState extends OrderState{
         );
     }
 
+    /**
+     * 获取订单状态的中文名称
+     * @return : java.lang.String
+     * @author 梁乔
+     * @date 21:10 2021-10-15
+     */
+    @Override
+    public String getCNStateName(){
+        return "已生产";
+    }
+
+    /**
+     *  获取订单状态的繁体名称
+     * @return : java.lang.String
+     * @author 梁乔
+     * @date 21:11 2021-10-15
+     */
+    @Override
+    public String getTWStateName(){
+        return "已生產";
+    }
+
+    /**
+     * 获取订单状态的英文名称
+     * @return : java.lang.String
+     * @author 梁乔
+     * @date 21:37 2021-10-15
+     */
+    @Override
+    public String getENStateName(){
+        return "Produced";
+    }
 }

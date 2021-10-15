@@ -67,4 +67,11 @@ public abstract class OrderState {
     public void changeOrderState(Order order,OrderState orderState){
         order.changeOrderState(orderState);
     };
+
+    public abstract String getCNStateName();
+
+    public abstract String getTWStateName();
+
+    public abstract String getENStateName();
+
 }
