@@ -120,6 +120,7 @@ public abstract class Can implements Testable {
         // TODO: 通过测试机器进行
     }
 
+
     /**
      * 判断是否过期
      * @return : boolean
@@ -206,6 +207,7 @@ public abstract class Can implements Testable {
 
 
     // -------------------- getters and setters ------------------------- //
+
 
 
     /**
