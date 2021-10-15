@@ -1,6 +1,6 @@
 package Manufacturing.CanEntity.Material;
 
-
+// TODO：使用享元模式来产生材质信息。
 /**
  * 材质
  * 桥接模式

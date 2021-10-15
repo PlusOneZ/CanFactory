@@ -9,27 +9,10 @@ import java.util.List;
 * @author 梁乔
 * @date 2021-10-11 19:29
 */
-public class MeatCan  extends Can{
-
-    private List<MixedIngredient> MeatCanIntegredient;
-
-    /**
-     *
-     * @param newMeatIntegredient 传入的配方列表，罐头名称为固定值无法修改
-     */
-    public MeatCan(List<MixedIngredient> newMeatIntegredient){
-        MeatCanIntegredient=newMeatIntegredient;
-        CanName="MeatCan";
-    }
+public class MeatCan  extends Can {
 
     public MeatCan(){
-        CanName = "MeatCan";
+        setName("肉罐头", "肉罐頭", "Meat Can");
     }
-
-    public String getCanName(){
-        return CanName;
-    }
-
-
 
 }
