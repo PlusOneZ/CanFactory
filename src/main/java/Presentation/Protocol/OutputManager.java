@@ -43,6 +43,8 @@ public class OutputManager {
         language = lang;
     }
 
+    public Lang getLanguage() { return language; }
+
     private Lang language;
 
     /**
@@ -86,6 +88,15 @@ public class OutputManager {
                     "未设置语言 / 未設定語言 / Output Language Not Designated"
             );
         }
+    }
+
+    public String selectStringForCurrentLanguage(String zh_cn, String zh_tw ,String en) {
+        switch (language) {
+            case en: return en;
+            case zh_CN: return zh_cn;
+            case zh_TW: return zh_tw;
+        }
+        return "";
     }
 
 }

@@ -1,5 +1,7 @@
 package Manufacturing.Ingredient;
 
+import Presentation.Protocol.OutputManager;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,23 +18,50 @@ public abstract class MixedIngredient implements Ingredient {
      */
     @Override
     public final String showContents() {
-        StringBuilder ret = new StringBuilder(ingredientName + "(");
+        StringBuilder ret = new StringBuilder(
+                OutputManager.getInstance().selectStringForCurrentLanguage(
+                        zhCnName,
+                        zhTwName,
+                        enName
+                )
+                + " (");
         for (Ingredient i : contentIngredients ) {
             ret.append(i.showContents());
         }
+        ret.append(") ");
         return ret.toString();
     }
 
     /**
      * 混合原料构造器
-     * @param name 原料本身的名字
      * @param ingredients 组成这个原料的所有子原料，通过变长参数列表传入。
      */
-    public MixedIngredient(String name, Ingredient... ingredients) {
-        ingredientName = name;
+    public MixedIngredient(Ingredient... ingredients) {
         contentIngredients = Arrays.asList(ingredients);
     }
 
-    protected String ingredientName;
+    /**
+     * 设置多语言名字
+     * @author 卓正一
+     * @since 2021-10-12 4:17 PM
+     */
+    public void setName(String zhCnName, String zhTwName, String enName) {
+        this.zhCnName = zhCnName;
+        this.zhTwName = zhTwName;
+        this.enName = enName;
+    }
+
+    /**
+     * 以下三属性是为了多语言输出准备的。
+     * @since 2021-10-11 11:02 PM
+     */
+    private String zhCnName;
+    private String zhTwName;
+    private String enName;
+
+    public void addIngredient(Ingredient i) {
+        contentIngredients.add(i);
+    }
+
     protected List<Ingredient> contentIngredients;
 }

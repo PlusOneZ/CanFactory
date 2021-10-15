@@ -16,12 +16,19 @@ public class CEOVisitor implements FactoryVisitor{
 
     @Override
     public void visit(SecurityStaff staff) {
-
-        System.out.println("保安["+staff.getName()+"]"+"：工资为"+staff.getPayment());
+        OutputManager.getInstance().print(
+                "保安["+staff.getName()+"]"+"：工资为"+staff.getPayment(),
+                "警衛["+staff.getName()+"]"+"：薪水為"+staff.getPayment(),
+                "The security staff ["+staff.getName()+"]"+"：The salary is"+staff.getPayment()
+        );
     }
 
     @Override
     public void visit(Cleaner staff) {
-        System.out.println("保洁员["+staff.getName()+"]"+"：工资为"+staff.getPayment());
+        OutputManager.getInstance().print(
+                "保洁员["+staff.getName()+"]"+"：工资为"+staff.getPayment(),
+                "保潔員["+staff.getName()+"]"+"：薪水為"+staff.getPayment(),
+                "The cleaner ["+staff.getName()+"]"+"：The salary is"+staff.getPayment()
+        );
     }
 }
