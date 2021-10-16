@@ -1,4 +1,4 @@
-package Marketing.OrderEntity;
+package Marketing.OrderEnity;
 
 /**
  * @Author 王立友

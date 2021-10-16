@@ -19,3 +19,4 @@ public interface EmployeeDao {
     public void deleteEmployee(String Id);
     public void updateEmployee(String id, Double salary);
 }
+

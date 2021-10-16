@@ -50,6 +50,7 @@ public abstract class Can implements Testable {
      */
     List<Ingredient> ingredients;
 
+
     /**
      * 罐头大小，桥接模式。
      * 实现：汪明杰
@@ -102,6 +103,10 @@ public abstract class Can implements Testable {
      * @since 2021-10-12 4:55 PM
      */
     private int minTemperature;
+
+
+    protected Can() {
+    }
 
 
     @Override

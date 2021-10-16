@@ -8,7 +8,6 @@ package Manufacturing.CanEntity;
  */
 public class CanTest {
     public static void main(String[] args) {
-        Can meatCan = new MeatCan();
-        System.out.println(meatCan.getCanName());
+
     }
 }

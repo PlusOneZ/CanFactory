@@ -1,4 +1,4 @@
-package Marketing.OrderCenter;
+package Marketing;
 
 /**
  * 观察者抽象接口
