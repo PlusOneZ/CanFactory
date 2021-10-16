@@ -7,16 +7,28 @@ import Presentation.Protocol.OutputManager;
  * 员工请假的请求
  * <b>实现了 Chain of Responsibility 模式</b>
  * @author 尚丙奇
+ * @date 2021-10-16 14:00
  */
 public class LeaveRequest {
+
+    /**
+     * 请假者的姓名
+     */
     private String name;
 
-    private String id;
-
+    /**
+     * 请假天数
+     */
     private Integer days;
 
+    /**
+     * 请假原因
+     */
     private String reason;
 
+    /**
+     * 请假状态
+     */
     private String approveStatus = "待审批";
 
     public String getName() {
@@ -25,14 +37,6 @@ public class LeaveRequest {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Integer getDays() {

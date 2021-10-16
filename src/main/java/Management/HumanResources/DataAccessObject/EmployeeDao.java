@@ -6,9 +6,11 @@ import java.util.List;
 
 /**
  * Employee类的数据操作接口
+ * TODO: 删除
  * <b>使用了 DAO 模式</b>
  *
  * @Author 尚丙奇
+ * @date 2021-10-16 14:00
  */
 public interface EmployeeDao {
     public List<BaseEmployee> getAllEmployees();

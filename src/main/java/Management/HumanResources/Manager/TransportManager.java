@@ -9,7 +9,7 @@ import Marketing.Transportation.TransportationPlan;
  *
  * @author 吴英豪
  */
-public class TransportManager extends Manager {
+public class TransportManager {
     /**
      * 运输部经历制定运输方案
      *
