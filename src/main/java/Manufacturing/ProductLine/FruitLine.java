@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine;
 
-import Manufacturing.ProductLine.Fruit.RawMaterial;
-import Manufacturing.ProductLine.pretreatment.PretreatmentApp;
+import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine;
 
 
-import Manufacturing.ProductLine.Fruit.*;
+import Manufacturing.ProductLine.RawMaterial.*;
 
 import java.util.ArrayList;
 import java.util.List;
