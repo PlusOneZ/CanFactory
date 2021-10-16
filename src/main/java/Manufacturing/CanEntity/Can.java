@@ -50,6 +50,7 @@ public abstract class Can implements Testable {
      */
     List<Ingredient> ingredients;
 
+
     /**
      * 罐头大小，桥接模式。
      * 实现：汪明杰
@@ -104,6 +105,10 @@ public abstract class Can implements Testable {
     private int minTemperature;
 
 
+    protected Can() {
+    }
+
+
     @Override
     public final boolean getQualityTest() {
         if (state instanceof ErrorCanState) return false;
@@ -119,6 +124,7 @@ public abstract class Can implements Testable {
         return state.isDisinfected();
         // TODO: 通过测试机器进行
     }
+
 
     /**
      * 判断是否过期
@@ -206,6 +212,7 @@ public abstract class Can implements Testable {
 
 
     // -------------------- getters and setters ------------------------- //
+
 
 
     /**

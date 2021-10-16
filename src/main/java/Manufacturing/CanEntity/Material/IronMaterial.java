@@ -6,6 +6,18 @@ package Manufacturing.CanEntity.Material;
  * @author 汪明杰
  */
 public class IronMaterial implements Material{
+    static private IronMaterial ironMaterial = null;
+
+    private IronMaterial(){
+
+    }
+
+    public static IronMaterial getInstance(){
+        if (IronMaterial.ironMaterial == null){
+            IronMaterial.ironMaterial = new IronMaterial();
+        }
+        return IronMaterial.ironMaterial;
+    }
 
     @Override
     public MATERIAL getType() {

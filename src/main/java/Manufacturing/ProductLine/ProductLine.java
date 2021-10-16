@@ -1,4 +1,6 @@
 package Manufacturing.ProductLine;
 
-public interface ProductLine {
+public abstract class ProductLine {
+
+
 }

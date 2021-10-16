@@ -7,6 +7,19 @@ package Manufacturing.CanEntity.Size;
  */
 public class SmallSize implements Size{
 
+    static private SmallSize smallSize= null;
+
+    private SmallSize(){
+
+    }
+
+    public static Size getInstance(){
+        if (SmallSize.smallSize == null){
+            SmallSize.smallSize = new SmallSize();
+        }
+        return SmallSize.smallSize;
+    }
+
     @Override
     public int getSize() {
         return 10;
