@@ -1,6 +1,4 @@
-package Marketing.OrderCenterEntity;/**
- * @author 梁乔 2021/10/15
- **/
+package Marketing.OrderCenterEntity;
 
 import Marketing.Container;
 import Marketing.Iterator;
