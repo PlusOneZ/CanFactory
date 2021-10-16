@@ -1,4 +1,4 @@
-package Marketing.OrderEntity;
+package Marketing.OrderEnity;
 
 import Marketing.Promotion.Coupon;
 

@@ -1,4 +1,4 @@
-package Management.HumanResources.Manager;
+package Management.HumanResources.ManagerEntity;
 
 import Management.HumanResources.Carrier.Carrier;
 import Marketing.Transportation.TransportationPlan;
