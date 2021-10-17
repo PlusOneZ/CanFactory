@@ -1,5 +1,7 @@
 package Management.QualityTesting;
 
+import Management.HumanResources.BaseDepartment;
+import Management.HumanResources.DepartmentType;
 import Management.QualityTesting.Protocol.Testable;
 import Presentation.Protocol.OutputManager;
 
@@ -10,7 +12,8 @@ import Presentation.Protocol.OutputManager;
  * @author 卓正一
  * @since   2021-10-11 8:14 PM
  */
-public class QualityAssuranceDepartment {
+public class QualityAssuranceDepartment extends BaseDepartment {
+
 
     /*
      * 单例初始化
@@ -23,8 +26,12 @@ public class QualityAssuranceDepartment {
      * 私有构造函数
      * @author 卓正一
      * @since 2021-10-11 10:03 PM
+     *
+     * 改动了私有构造函数，设定了type为DepartmentType=QualityTesting
+     * @author 陈垲昕
+     * @since 2021-10-17 8:58 下午
      */
-    private QualityAssuranceDepartment() {}
+    private QualityAssuranceDepartment() {super.type=DepartmentType.QualityAssurance;}
 
     /**
      * 单例对象
