@@ -1,6 +1,7 @@
 package Management.HumanResources;
 
 import Management.HumanResources.DataAccessObject.EmployeeDao;
+import Presentation.Protocol.OutputManager;
 
 import java.util.List;
 
@@ -53,5 +54,18 @@ public abstract class BaseEmployee {
      * @date 2021-10-16 14:00
      */
     public abstract void handleRequest(LeaveRequest request);
+
+    /**
+     * 员工接受消息的函数
+     * @param message
+     */
+    public void getMessage(String message){
+        System.out.println("员工["+this.name+"]接受消息："+message);
+        OutputManager.getInstance().print(
+                "员工["+this.name+"]接受消息："+message,
+                "員工"+"]接受消息："+message,
+                "Staff["+this.name+"] receives the message:"+message
+        );
+    }
 
 }
