@@ -1,4 +1,4 @@
-package Marketing.Transportation;
+package Marketing.Scheme;
 
 /**
  * 委派模式
@@ -7,12 +7,12 @@ package Marketing.Transportation;
  * @author 吴英豪
  */
 
-public class TransportationPlan {
+public class TransportScheme extends Scheme {
     /**
      * @param landQuantityParam     陆运量
      * @param shippingQuantityParam 水运量
      */
-    public TransportationPlan(Double landQuantityParam, Double shippingQuantityParam) {
+    public TransportScheme(Double landQuantityParam, Double shippingQuantityParam) {
         landQuantity = landQuantityParam;
         shippingQuantity = shippingQuantityParam;
     }
