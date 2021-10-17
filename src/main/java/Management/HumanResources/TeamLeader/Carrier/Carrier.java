@@ -3,6 +3,7 @@ package Management.HumanResources.TeamLeader.Carrier;
 import Management.HumanResources.Staff.Driver.Driver;
 import Management.HumanResources.Staff.Driver.EngineMan;
 import Management.HumanResources.Staff.Driver.Shipmaster;
+import Management.HumanResources.TeamLeader.TeamLeader;
 import Marketing.Transportation.TransportationPlan;
 
 import java.util.HashMap;
@@ -10,21 +11,24 @@ import java.util.Map;
 
 
 /**
+ * ToDo: 根据购买原材料和运输罐头具体确定实体
  * 委派模式
  * 承运人
  *
  * @author 吴英豪
+ * @since 2021-10-17 22:23
  */
-public class Carrier {
+public class Carrier extends TeamLeader {
     /**
-     * 承运人根据运输方案安排运输人手
+     * 承运人根据运输方案安排运输人手（运送货物）
      *
      * @param plan 运输方案
      */
-    public void dispatch(TransportationPlan plan) {
+    public void dispatchTransport(TransportationPlan plan) {
         drivers.get("EngineMa").transport(plan.getLandQuantity());
         drivers.get("Shipmaster").transport(plan.getShippingQuantity());
     }
+
 
     /**
      * 承运人分配运输工作
