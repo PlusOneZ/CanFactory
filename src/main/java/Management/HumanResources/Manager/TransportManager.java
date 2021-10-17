@@ -1,4 +1,4 @@
-package Management.HumanResources.ManagerEntity;
+package Management.HumanResources.Manager;
 
 import Management.HumanResources.Carrier.Carrier;
 import Marketing.Transportation.TransportationPlan;
@@ -9,7 +9,7 @@ import Marketing.Transportation.TransportationPlan;
  *
  * @author 吴英豪
  */
-public class TransportManager {
+public class TransportManager extends Manager {
     /**
      * 运输部经历制定运输方案
      *
