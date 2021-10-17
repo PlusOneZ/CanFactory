@@ -1,7 +1,10 @@
 package Manufacturing.CanEntity.CanState;
 
 /**
+ * 罐头的状态
+ * <b>实现了状态模式</b>
  * @author 卓正一
+ * @since 2021-10-11 10:18 PM
  */
 public abstract class CanState {
 

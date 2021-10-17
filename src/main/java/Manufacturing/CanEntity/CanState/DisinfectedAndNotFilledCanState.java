@@ -7,6 +7,7 @@ import Presentation.Protocol.OutputManager;
  * @author 卓正一
  */
 public class DisinfectedAndNotFilledCanState extends CanState{
+
     @Override
     public boolean isDisinfected() {
         return true;
