@@ -1,5 +1,8 @@
 package Manufacturing.CanEntity;
 
+import Manufacturing.CanEntity.Material.IronMaterial;
+import Manufacturing.CanEntity.Size.BigSize;
+
 /**
  * 测试初始化罐头并打印
  *
@@ -8,7 +11,7 @@ package Manufacturing.CanEntity;
  */
 public class CanTest {
     public static void main(String[] args) {
-        Can meatCan = new MeatCan();
-        System.out.println(meatCan.getCanName());
+        Can vegetableCan = new VegetableCan(BigSize.getInstance(), IronMaterial.getInstance());
+        System.out.println(vegetableCan.getCanName());
     }
 }
