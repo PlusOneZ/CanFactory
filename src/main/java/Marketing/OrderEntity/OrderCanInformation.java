@@ -11,7 +11,7 @@ package Marketing.OrderEntity;
 public class OrderCanInformation {
 
     //建立orderCanInformation与can之间联系的罐头种类
-    private int canType;
+    private String canType;
 
     //订单中描述罐头的名称信息
     private String canName;
@@ -19,13 +19,13 @@ public class OrderCanInformation {
     //订单中该罐头的数量
     private int count;
 
-    public OrderCanInformation(int canType, String canName, int count){
+    public OrderCanInformation(String canType, String canName, int count){
         this.canType = canType;
         this.canName = canName;
         this.count = count;
     }
 
-    public int getCanType() {
+    public String getCanType() {
         return canType;
     }
     public String getCanName(){
@@ -39,7 +39,7 @@ public class OrderCanInformation {
         this.canName = canName;
     }
 
-    public void setCanType(int canType) {
+    public void setCanType(String canType) {
         this.canType = canType;
     }
 

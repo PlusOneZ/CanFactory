@@ -34,6 +34,11 @@ public class Order{
         this.placingTime = LocalDateTime.now();
     }
 
+    public ArrayList<OrderCanInformation> getOrderCanInformations() {
+        return orderCanInformations;
+    }
+
+
     public void setDeliveryTime(LocalDateTime deliveryTime) {
         this.deliveryTime = deliveryTime;
     }

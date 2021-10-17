@@ -14,10 +14,8 @@ import java.util.function.Function;
 
 public class WrappingConverter {
 
-    private Function<Can, WrappingCanInfo> fromCanEntityFunction;
-
     public WrappingConverter(){
-        new FromCanEntityFunction();
+        Function<Can, WrappingCanInfo> fromCanEntityFunction = new FromCanEntityFunction();
     }
 
     static class FromCanEntityFunction implements Function<Can, WrappingCanInfo>{
