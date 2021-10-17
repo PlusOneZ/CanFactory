@@ -55,6 +55,13 @@ public class Order implements Container {
     private Date latestDeliveryTime;
 
     /**
+     * TODO: 考虑订单中需要保存的用户信息;
+     * 这边以一个地址暂且代替用户信息，订单中需要保存必要的订单信息;
+     * 订单运送的地址
+     */
+    private String customerAddress;
+
+    /**
     * 订单构造函数，传入订单罐头信息和订单价格
      * @param orderCanInformations :订单罐头信息
      * @param orderAmount : 订单价格
@@ -70,6 +77,26 @@ public class Order implements Container {
         orderState = new OrderedOrderState();
         orderId = OrderIdGenerator.getGeneratID();
         //生成与订单生成时间相关的随机且唯一ID标识
+    }
+
+    /**
+     * 获得运货地址;
+     * @return : java.lang.String
+     * @author "王立友"
+     * @date 2021-10-17 16:55
+     */
+    public String getCustomerAddress() {
+        return customerAddress;
+    }
+
+    /**
+     * 获得最晚运送时间;
+     * @return : java.util.Date
+     * @author "王立友"
+     * @date 2021-10-17 18:09
+     */
+    public Date getLatestDeliveryTime() {
+        return latestDeliveryTime;
     }
 
     /**

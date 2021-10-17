@@ -19,6 +19,19 @@ public class StockCan {
      */
     private int count;
 
+    /**
+     * 构造函数;
+     * @param can :
+     * @param count :
+     * @return : null
+     * @author "王立友"
+     * @date 2021-10-17 18:39
+     */
+    public StockCan(Can can, int count){
+        this.can = can;
+        this.count = count;
+    }
+
     /** setter and getter **/
     public int getCount() {
         return count;
