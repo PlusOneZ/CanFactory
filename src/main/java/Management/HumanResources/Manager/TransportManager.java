@@ -1,6 +1,6 @@
 package Management.HumanResources.Manager;
 
-import Management.HumanResources.Carrier.Carrier;
+import Management.HumanResources.TeamLeader.Carrier.Carrier;
 import Marketing.Transportation.TransportationPlan;
 
 /**

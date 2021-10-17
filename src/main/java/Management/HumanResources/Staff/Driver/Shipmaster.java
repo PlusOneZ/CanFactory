@@ -8,7 +8,7 @@ import Presentation.Protocol.OutputManager;
  *
  * @author 吴英豪
  */
-public class Shipmaster implements Driver {
+public class Shipmaster extends Driver {
     @Override
     public void transport(Double quantity) {
         if (quantity <= 0) {

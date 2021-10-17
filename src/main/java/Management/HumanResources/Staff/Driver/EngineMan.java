@@ -9,7 +9,7 @@ import Presentation.Protocol.OutputManager;
  * @author 吴英豪
  */
 
-public class EngineMan implements Driver {
+public class EngineMan extends Driver {
     @Override
     public void transport(Double quantity) {
         if (quantity <= 0) {
