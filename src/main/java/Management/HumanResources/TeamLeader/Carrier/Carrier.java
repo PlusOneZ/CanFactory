@@ -4,7 +4,7 @@ import Management.HumanResources.Staff.Driver.Driver;
 import Management.HumanResources.Staff.Driver.EngineMan;
 import Management.HumanResources.Staff.Driver.Shipmaster;
 import Management.HumanResources.TeamLeader.TeamLeader;
-import Marketing.Transportation.TransportationPlan;
+import Marketing.Scheme.TransportScheme;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,11 +22,11 @@ public class Carrier extends TeamLeader {
     /**
      * 承运人根据运输方案安排运输人手（运送货物）
      *
-     * @param plan 运输方案
+     * @param scheme 运输方案
      */
-    public void dispatchTransport(TransportationPlan plan) {
-        drivers.get("EngineMa").transport(plan.getLandQuantity());
-        drivers.get("Shipmaster").transport(plan.getShippingQuantity());
+    public void dispatchTransport(TransportScheme scheme) {
+        drivers.get("EngineMa").transport(scheme.getLandQuantity());
+        drivers.get("Shipmaster").transport(scheme.getShippingQuantity());
     }
 
 

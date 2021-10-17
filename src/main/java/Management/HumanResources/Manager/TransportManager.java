@@ -1,7 +1,7 @@
 package Management.HumanResources.Manager;
 
 import Management.HumanResources.TeamLeader.Carrier.Carrier;
-import Marketing.Transportation.TransportationPlan;
+import Marketing.Scheme.TransportScheme;
 
 /**
  * 委派模式
@@ -20,17 +20,17 @@ public class TransportManager extends Manager {
     /**
      * 经理制定方案
      *
-     * @param plan 运输方案
+     * @param scheme 运输方案
      */
-    public void setTransportPlan(TransportationPlan plan) {
-        transportationPlan = plan;
+    public void setTransportScheme(TransportScheme scheme) {
+        transportScheme = scheme;
     }
 
     /**
      * ToDo: 需要的参数为订单列表，和wly对接
      * 运输部经历根据需求制定运输计划
      */
-    public void designTransportPlan(){
+    public void designTransportScheme() {
 
     }
 
@@ -40,8 +40,8 @@ public class TransportManager extends Manager {
      * @param carrier 承运商
      */
     public void delegateTransport(Carrier carrier) {
-        carrier.dispatchTransport(transportationPlan);
+        carrier.dispatchTransport(transportScheme);
     }
 
-    private TransportationPlan transportationPlan;
+    private TransportScheme transportScheme;
 }
