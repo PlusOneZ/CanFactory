@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.ProductLine.FreshLine;
-import Manufacturing.ProductLine.Fruit.RawMaterial;
+import Manufacturing.ProductLine.RawMaterial.RawMaterial;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package Manufacturing.ProductLine.Line;
 
-import Manufacturing.ProductLine.Fruit.RawMaterial;
+import Manufacturing.ProductLine.RawMaterial.RawMaterial;
 import Manufacturing.ProductLine.FruitLine;
-import Manufacturing.ProductLine.adapter.AppleProducer;
+import Manufacturing.ProductLine.Producer.AppleProducer;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;

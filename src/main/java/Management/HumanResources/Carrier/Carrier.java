@@ -1,8 +1,8 @@
 package Management.HumanResources.Carrier;
 
-import Management.HumanResources.Staff.Driver.Driver;
-import Management.HumanResources.Staff.Driver.EngineMan;
-import Management.HumanResources.Staff.Driver.Shipmaster;
+import Management.HumanResources.Staff.Staff.Driver.Driver;
+import Management.HumanResources.Staff.Staff.Driver.EngineMan;
+import Management.HumanResources.Staff.Staff.Driver.Shipmaster;
 import Marketing.Transportation.TransportationPlan;
 
 import java.util.HashMap;
