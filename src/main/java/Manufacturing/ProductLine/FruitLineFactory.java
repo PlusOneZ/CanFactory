@@ -5,6 +5,7 @@ import Manufacturing.ProductLine.Line.PeachLine;
 import Manufacturing.ProductLine.Line.PearLine;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -14,13 +15,24 @@ import java.util.HashMap;
  * @author 孟繁霖
  * @date 2021-10-11 23:48
  */
-public class FruitLineFactory extends AbstractFactory {
+public class FruitLineFactory extends Factory {
     /**
      * TODO:水果罐头生产线map
      * <b>应用享元模式，存储已有生产线对象，防止重复创建</b>
      */
     private static final HashMap<String, FruitLine> fruitLineMap = new HashMap<>();
 
+
+    /**
+     * Map.EntrySet迭代器
+     */
+    private static java.util.Iterator<Map.Entry<String, FruitLine>> iterator;
+
+    @Override
+    public Manufacturing.ProductLine.Iterator iterator() {
+        iterator = fruitLineMap.entrySet().iterator();
+        return new LineIterator<FruitLineFactory>(this);
+    }
 
     /**
      * TODO:获取指定类型的水果罐头生产线方法.<br>
@@ -65,5 +77,15 @@ public class FruitLineFactory extends AbstractFactory {
     @Override
     public FreshLine getFreshLine(String freshLineType) {
         return null;
+    }
+
+    @Override
+    public ProductLine getNextLine() {
+        return iterator.next().getValue();
+    }
+
+    @Override
+    public boolean hasNextLine() {
+        return iterator.hasNext();
     }
 }
