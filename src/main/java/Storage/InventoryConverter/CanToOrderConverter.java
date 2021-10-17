@@ -47,7 +47,7 @@ public class CanToOrderConverter {
                 String canName = stockCan.getCan().getCanName();
                 String canType = stockCan.getCan().getClass().getTypeName();
                 int count = stockCan.getCount();
-                OrderCanInformation orderCanInformation = new OrderCanInformation(canType, canName, count);
+                OrderCanInformation orderCanInformation = new OrderCanInformation(canName, count);
                 orderCanInformations.add(orderCanInformation);
             }
 

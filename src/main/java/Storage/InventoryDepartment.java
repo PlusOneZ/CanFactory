@@ -98,11 +98,11 @@ public class InventoryDepartment {
         //进行对比;
         for (OrderCanInformation orderCanInformation : orderCanInformations) {
 
-            String canType = orderCanInformation.getCanType();
+            String canName = orderCanInformation.getCanName();
 
-            //查找是否存在这个canType类型的罐头;
+            //查找是否存在这个类型的罐头;
             List<OrderCanInformation> findInventoryCan = inventoryCanInformations.stream().filter(
-                    information -> canType.equals(information.getCanType())).collect(Collectors.toList());
+                    information -> canName.equals(information.getCanName())).collect(Collectors.toList());
 
             //判断库存是否存在这个罐头或者是否库存达到所需数量;
             if (findInventoryCan.isEmpty()) {
@@ -114,7 +114,7 @@ public class InventoryDepartment {
         return true;
     }
 
-    private boolean reduceCan(StockCan stockCan, int count) {
+    private boolean decreaseCan(StockCan stockCan, int count) {
         int existingCount = stockCan.getCount();
         if (existingCount - count < 0) {
             OutputManager.getInstance().print(
@@ -141,13 +141,12 @@ public class InventoryDepartment {
         ArrayList<StockCan> stockCans = new ArrayList<>();
 
         for (OrderCanInformation orderCanInformation : orderCanInformations) {
-            String canType = orderCanInformation.getCanType();
-            int count = orderCanInformation.getCount();
+            String canName = orderCanInformation.getCanName();
 
             //这个过程就是在仓库寻找该罐头，然后再取出的一个过程;
             for (StockCan stockCan : canWareHouse.getStockCans()) {
-                if (stockCan.getCan().getClass().getTypeName().equals(canType)) {
-                    if (reduceCan(stockCan, orderCanInformation.getCount())) {
+                if (stockCan.getCan().getCanName().equals(canName)) {
+                    if (decreaseCan(stockCan, orderCanInformation.getCount())) {
                         stockCans.add(new StockCan(stockCan.getCan(), orderCanInformation.getCount()));
                     }
                     break;
@@ -233,6 +232,17 @@ public class InventoryDepartment {
         }
     }
 
+    /**
+     * 增加库存罐头数量
+     * @param stockCan : 存储的罐头
+     * @param count :  增加数量
+     * @author "王立友"
+     * @date 2021-10-17 23:19
+     */
+    public void increaseCan(StockCan stockCan, int count){
+        int curCount = stockCan.getCount();
+        stockCan.setCount(count + curCount);
+    }
 
     /**
      * 添加stockCans到库存中
@@ -249,8 +259,28 @@ public class InventoryDepartment {
         Iterator<StockCan> iterator = stockCans.iterator();
         while(iterator.hasNext()){
             StockCan stockCan = iterator.next();
-
+            boolean flag = false;
+            for(StockCan can : wareHouseCans){
+                if(stockCan.getCan().getCanName().equals(can.getCan().getCanName())){
+                    increaseCan(can, stockCan.getCount());
+                    flag = true;
+                }
+            }
+            if(flag == false){
+                wareHouseCans.add(stockCan);
+            }
         }
     }
+
+    /**
+     * 添加一个order到库存管理的代办订单队列;
+     * @param order :
+     * @author "王立友"
+     * @date 2021-10-17 23:28
+     */
+    public void addOrder(Order order){
+        unHandledOrders.add(order);
+    }
+
 
 }
