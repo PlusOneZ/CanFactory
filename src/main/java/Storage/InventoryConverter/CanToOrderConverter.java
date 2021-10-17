@@ -1,7 +1,7 @@
 package
         Storage.InventoryConverter;
 
-import Marketing.OrderEntity.OrderCanInformation;
+import Marketing.OrderEnity.OrderCanInformation;
 import Storage.StockCan;
 
 import java.util.ArrayList;
