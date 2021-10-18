@@ -24,7 +24,7 @@ public class WrappingConverter {
             WrappingCanInfo wrappingCanInfo = new WrappingCanInfo();
             wrappingCanInfo.setCanName(can.getCanName());
             wrappingCanInfo.setIngredients(can.getIngredients());
-            wrappingCanInfo.setWeight(can.getWeight());
+//            wrappingCanInfo.setWeight(can.getWeight());
             return wrappingCanInfo;
         }
     }
