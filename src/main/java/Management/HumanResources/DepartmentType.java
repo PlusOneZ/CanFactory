@@ -7,5 +7,5 @@ package Management.HumanResources;
  * @date 2021-10-16 14:00
  * */
 public enum DepartmentType {
-    QualityTesting, Security, Finance, None
+    QualityTesting, Security, Finance, Purchase, None
 }
