@@ -1,24 +1,42 @@
 package Management.HumanResources.TeamLeader;
 
+import Management.HumanResources.Staff.Purchaser;
 import Marketing.Scheme.PurchaseScheme;
-import org.json.JSONArray;
+import Presentation.Protocol.OutputManager;
 
 /**
  * 采购代理
  * TeamLeader层，负责安排采购员采购
  *
  * @author 吴英豪
- * @since 2021-10-18 10:51
+ * @since 2021-10-20 8:33
  */
-public class PurchaseAgent extends TeamLeader{
+public class PurchaseAgent extends TeamLeader {
 
     /**
-     * TODO：按照采购经理提供的订购方案，安排采购员采购，并整理实际采购量提供给经理，和xny对接
      * 采购代理安排专门的采购员进行采购
+     *
      * @param scheme 采购方案
-     * @return  采购结果
+     * @return 采购结果
      */
-    public JSONArray dispatchPurchase(PurchaseScheme scheme) {
-        return new JSONArray();
+    public boolean dispatchPurchase(PurchaseScheme scheme) {
+        OutputManager.getInstance().print(
+                "采购负责人收到采购计划",
+                "採購部長收到採購計劃",
+                "PurchaseAgent receives the purchaseAgent..."
+        );
+        // 委派采购员采购
+        OutputManager.getInstance().print(
+                "采购负责人安排采购员采购。",
+                "採購部長安排採購員採購。",
+                "PurchaseAgent arrange the purchaser..."
+        );
+
+        boolean result = false;
+        for (int i=0;i<scheme.getScheme().size();i++){
+            Purchaser purchaser = new Purchaser();
+            result |= purchaser.purchaseMaterial(scheme.getScheme().get(i));
+        }
+        return result;
     }
 }

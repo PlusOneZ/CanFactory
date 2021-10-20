@@ -3,6 +3,7 @@ package Management.HumanResources.Manager;
 
 import Management.HumanResources.TeamLeader.PurchaseAgent;
 import Marketing.Scheme.PurchaseScheme;
+import Presentation.Protocol.OutputManager;
 import org.json.JSONArray;
 
 /**
@@ -13,10 +14,10 @@ import org.json.JSONArray;
  * @author 吴英豪
  * @since 2021-10-17 23:30
  */
-public class PurchaseManager extends Manager{
+public class PurchaseManager extends Manager {
 
     public PurchaseManager() {
-        purchaseScheme = null;
+        purchaseScheme = new PurchaseScheme();
     }
 
     /**
@@ -29,30 +30,46 @@ public class PurchaseManager extends Manager{
     }
 
     /**
-     * Todo: 这里还需要详细设计，和xny对接
      * 设计采购方案
      */
     private void designPurchaseScheme(JSONArray demand) {
-
+        OutputManager.getInstance().print(
+                "采购部经理制定采购计划。",
+                "採購部經理制定採購計劃。",
+                "Purchasing Manager designs the purchase scheme."
+        );
+        for (int i = 0; i < demand.length(); i++) {
+            purchaseScheme.addDemand(demand.getJSONObject(i));
+        }
     }
 
     /**
-     * 委派承运商购买
-     * @param agent  采购代理
+     * 委派采购代理购买
+     *
+     * @param agent 采购代理
      * @return 实际购买量
      */
-    public JSONArray delegatePurchase(PurchaseAgent agent) {
-            return agent.dispatchPurchase(purchaseScheme);
+    public boolean delegatePurchase(PurchaseAgent agent) {
+        OutputManager.getInstance().print(
+                "正在将采购计划转交给采购负责人.....",
+                "正在將採購計劃轉交給採購部長.....",
+                "Transferring purchasing scheme to purchaseAgent...."
+        );
+        return agent.dispatchPurchase(purchaseScheme);
     }
 
     /**
-     * TODO： 提供给xny的接口，还需要补充
      * 采购部经理委派采购
      *
      * @param demand 购买需求
      * @return 实际购买量
      */
-    public JSONArray purchase(JSONArray demand) {
+    public boolean purchase(JSONArray demand) {
+        OutputManager.getInstance().print(
+                "采购部经理收到采购需求。",
+                "採購部經理收到採購需求。",
+                "Purchasing Manager receives the purchase demand."
+        );
         designPurchaseScheme(demand);
         return delegatePurchase(new PurchaseAgent());
     }
