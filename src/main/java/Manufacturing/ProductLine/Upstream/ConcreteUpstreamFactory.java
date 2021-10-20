@@ -25,6 +25,11 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         Integer i = r.nextInt(ingredientType.length);
         this.ingredient = ingredientType[i];
         this.weight = r.nextDouble() * 10;
+        OutputManager.getInstance().print(
+                "新建了上游工厂",
+                "新建了上遊工廠",
+                "Create a new upstream factory"
+        );
     }
 
     public void purchase() {
@@ -34,14 +39,6 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
                 "成功從上遊工廠進行購買",
                 "Successful purchase from upstream factory"
         );
-    }
-
-    /**
-     * 设置上游工厂的原材料种类
-     * @param type 原材料种类
-     */
-    public void setIngredientType(String type){
-        ingredient = type;
     }
 
     @Override
@@ -63,4 +60,3 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
 
 
 }
-

@@ -5,6 +5,8 @@ import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
 import Presentation.Protocol.OutputManager;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 /**
  * 采购员
  * 属于Staff层，主要职责为购买原材料
@@ -28,17 +30,22 @@ public class Purchaser extends Staff {
                 "Purchasing: " + plan.getString("ingredientType")
         );
 
-        ConcreteUpstreamFactory factory = new ConcreteUpstreamFactory();
-        factory.setIngredientType(plan.getString("ingredientType"));
-        JSONObject result = factory.getInfo();
-        factory.purchase();
+        //尝试从上游工厂购买
+        for (int i = 0; i < 8; i++) {
+            ConcreteUpstreamFactory factory = new ConcreteUpstreamFactory();
+            JSONObject result = factory.getInfo();
+            if (Objects.equals(result.getString("ingredientType"), plan.getString("ingredientType"))) {
+                factory.purchase();
+                //更新库存
+                PurchaseDepartment.getInstance().update(
+                        result.getString("ingredientType"),
+                        result.getDouble("weight"),
+                        PurchaseDepartment.Status.IN);
 
-        //更新库存
-        PurchaseDepartment.getInstance().update(
-                result.getString("ingredientType"),
-                result.getDouble("weight"),
-                PurchaseDepartment.Status.IN);
+                return true;
+            }
 
-        return true;
+        }
+        return false;
     }
 }

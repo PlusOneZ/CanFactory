@@ -32,10 +32,10 @@ public class PurchaseAgent extends TeamLeader {
                 "PurchaseAgent arrange the purchaser..."
         );
 
-        boolean result = false;
+        boolean result = true;
         for (int i=0;i<scheme.getScheme().size();i++){
             Purchaser purchaser = new Purchaser();
-            result |= purchaser.purchaseMaterial(scheme.getScheme().get(i));
+            result &= purchaser.purchaseMaterial(scheme.getScheme().get(i));
         }
         return result;
     }
