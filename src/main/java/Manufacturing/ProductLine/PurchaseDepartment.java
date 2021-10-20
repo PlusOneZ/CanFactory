@@ -2,9 +2,7 @@ package Manufacturing.ProductLine;
 
 import Management.HumanResources.BaseDepartment;
 import Management.HumanResources.DepartmentType;
-import Management.HumanResources.Manager.Manager;
 import Management.HumanResources.Manager.PurchaseManager;
-import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
 import Presentation.Protocol.OutputManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +18,7 @@ import org.json.JSONObject;
 
 public class PurchaseDepartment extends BaseDepartment {
 
-    public PurchaseDepartment() {
+    private PurchaseDepartment() {
 
         this.type = DepartmentType.Purchase;
 
@@ -55,6 +53,7 @@ public class PurchaseDepartment extends BaseDepartment {
 
     private JSONArray rawMaterial = new JSONArray();
     private PurchaseManager purchaseManager = new PurchaseManager();
+    static private PurchaseDepartment instance;
 
 //
 //    /**
@@ -74,6 +73,19 @@ public class PurchaseDepartment extends BaseDepartment {
 //        return false;
 //    }
 
+    /**
+     * 单例模式
+     * 采购部门
+     *
+     * @since 2021-10-20 09:04
+     * @return  采购部门单例
+     */
+    public static PurchaseDepartment getInstance(){
+        if(instance == null){
+            instance = new PurchaseDepartment();
+        }
+        return instance;
+    }
     /**
      * TODO:用于获取当前type在rawMaterial中的index
      */
@@ -129,8 +141,12 @@ public class PurchaseDepartment extends BaseDepartment {
      * @since 13:43 2021-10-19
      */
     public boolean purchaseIngredient(JSONArray material) {
-        if(purchaseManager.purchase(material)) return true;
-        return false;
+        OutputManager.getInstance().print(
+                "正在将采购需求交给采购部经理.....",
+                "正在將採購需求交給採購部經理....",
+                "Transferring purchasing requirements to purchasing manager......."
+        );
+        return purchaseManager.purchase(material);
     }
 
     /**
@@ -148,14 +164,54 @@ public class PurchaseDepartment extends BaseDepartment {
         return false;
     }
 
-
+    /**
+     * 采购流程的测试函数
+     * @param args main函数参数args
+     */
     public static void main(String[] args) {
-        PurchaseDepartment a = new PurchaseDepartment();
-        JSONObject x = new JSONObject();
-        x.put("ingredientType", "apple");
-        x.put("weight", 0.0);
-        a.getIngredient(x);
+        // 设置语言
+        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
+        //创建购买需求
+        JSONArray demand = new JSONArray();
+
+        JSONObject apple = new JSONObject();
+        apple.put("ingredientType", "apple");
+        apple.put("weight", 10.0);
+        JSONObject clove = new JSONObject();
+        clove.put("ingredientType", "clove");
+        clove.put("weight", 20.0);
+        JSONObject peach = new JSONObject();
+        peach.put("ingredientType", "peach");
+        peach.put("weight", 30.0);
+        JSONObject pear = new JSONObject();
+        pear.put("ingredientType", "pear");
+        pear.put("weight", 40.0);
+        JSONObject salmon = new JSONObject();
+        salmon.put("ingredientType", "salmon");
+        salmon.put("weight", 50.0);
+
+        demand.put(apple);
+        demand.put(clove);
+        demand.put(peach);
+        demand.put(pear);
+        demand.put(salmon);
+
+        //购买
+        if(PurchaseDepartment.getInstance().purchaseIngredient(demand)){
+            OutputManager.getInstance().print(
+                    "采购成功!",
+                    "採購成功!",
+                    "Purchasing Success! "
+            );
+        }
+        else{
+            OutputManager.getInstance().print(
+                    "采购失败!",
+                    "採購失敗!",
+                    "Purchasing Failed!"
+            );
+        }
     }
 
 }

@@ -1,6 +1,6 @@
 package Management.HumanResources.Manager;
 
-import Management.HumanResources.TeamLeader.Carrier.Carrier;
+import Management.HumanResources.TeamLeader.Carrier;
 import Marketing.Scheme.TransportScheme;
 
 /**
@@ -15,6 +15,7 @@ public class TransportManager extends Manager {
      * 默认构造函数
      */
     public TransportManager() {
+        transportScheme = null;
     }
 
     /**

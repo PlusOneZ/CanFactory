@@ -1,6 +1,10 @@
 package Management.HumanResources.Manager;
 
-import org.json.JSONObject;
+
+import Management.HumanResources.TeamLeader.PurchaseAgent;
+import Marketing.Scheme.PurchaseScheme;
+import Presentation.Protocol.OutputManager;
+import org.json.JSONArray;
 
 /**
  * 委派模式
@@ -10,41 +14,66 @@ import org.json.JSONObject;
  * @author 吴英豪
  * @since 2021-10-17 23:30
  */
-public class PurchaseManager {
+public class PurchaseManager extends Manager {
 
     public PurchaseManager() {
-
+        purchaseScheme = new PurchaseScheme();
     }
 
     /**
-     * 设置采购需求
+     * 设置采购方案
      *
-     * @param scheme 采购需求
+     * @param scheme 采购方案
      */
-    public void setPurchaseScheme(JSONObject scheme) {
+    public void setPurchaseScheme(PurchaseScheme scheme) {
         purchaseScheme = scheme;
     }
 
     /**
-     * Todo: 这里还需要详细设计，和xny对接
      * 设计采购方案
      */
-    public void designPurchaseScheme() {
-
+    private void designPurchaseScheme(JSONArray demand) {
+        OutputManager.getInstance().print(
+                "采购部经理制定采购计划。",
+                "採購部經理制定採購計劃。",
+                "Purchasing Manager designs the purchase scheme."
+        );
+        for (int i = 0; i < demand.length(); i++) {
+            purchaseScheme.addDemand(demand.getJSONObject(i));
+        }
     }
 
     /**
-     * TODO： 和xny对接，还需要补充
-     * 采购部经理委派采购
+     * 委派采购代理购买
      *
-     * @param purchaseDemand 购买需求
+     * @param agent 采购代理
      * @return 实际购买量
      */
-    public JSONObject purchase(JSONObject purchaseDemand) {
-        JSONObject temp = new JSONObject();
-        return temp;
+    public boolean delegatePurchase(PurchaseAgent agent) {
+        OutputManager.getInstance().print(
+                "正在将采购计划转交给采购负责人.....",
+                "正在將採購計劃轉交給採購部長.....",
+                "Transferring purchasing scheme to purchaseAgent...."
+        );
+        return agent.dispatchPurchase(purchaseScheme);
     }
 
-    //采购计划
-    private JSONObject purchaseScheme;
+    /**
+     * 采购部经理委派采购
+     *
+     * @param demand 购买需求
+     * @return 实际购买量
+     */
+    public boolean purchase(JSONArray demand) {
+        OutputManager.getInstance().print(
+                "采购部经理收到采购需求。",
+                "採購部經理收到採購需求。",
+                "Purchasing Manager receives the purchase demand."
+        );
+        designPurchaseScheme(demand);
+        return delegatePurchase(new PurchaseAgent());
+    }
+
+    //采购需求
+    private PurchaseScheme purchaseScheme;
 }

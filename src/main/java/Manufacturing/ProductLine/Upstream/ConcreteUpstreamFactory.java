@@ -20,7 +20,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
 
     private String[] ingredientType = new String[]{"apple", "clove", "peach", "pear", "salmon"};
 
-    ConcreteUpstreamFactory() {
+    public ConcreteUpstreamFactory() {
         Random r = new Random();
         Integer i = r.nextInt(ingredientType.length);
         this.ingredient = ingredientType[i];
@@ -60,4 +60,3 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
 
 
 }
-
