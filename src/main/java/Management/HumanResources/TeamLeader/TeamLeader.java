@@ -34,8 +34,8 @@ public abstract class TeamLeader extends BaseEmployee {
         else {
 
             OutputManager.getInstance().print(
-                    "组长没有权限批准" + request.getName() + request.getDays() + "天的请假申请，此请求已转达至该部门经理。",
-                    "組長沒有權限批准" + request.getName() + request.getDays() + "天的請假申請，此請求已轉達至該部門經理。",
+                    "组长没有权限批准" + request.getName() + request.getDays() + "天的请假申请，此请求已转达至该部门经理",
+                    "組長沒有權限批准" + request.getName() + request.getDays() + "天的請假申請，此請求已轉達至該部門經理",
                     "The team leader have no permission to accept the leave request of" + request.getName()
                             + "for" + request.getDays() + "Days. This request have been forwarded " +
                             "to the department manager."
