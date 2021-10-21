@@ -7,14 +7,14 @@ import Presentation.Protocol.OutputManager;
  * 员工请假的请求
  * <b>实现了 Chain of Responsibility 模式</b>
  * @author 尚丙奇
- * @date 2021-10-16 14:00
+ * @since 2021-10-16 14:00
  */
 public class LeaveRequest {
 
     /**
-     * 请假者的姓名
+     * 请假者
      */
-    private String name;
+    protected BaseEmployee requestee;
 
     /**
      * 请假天数
@@ -32,11 +32,15 @@ public class LeaveRequest {
     private String approveStatus = "待审批";
 
     public String getName() {
-        return name;
+        return requestee.getName();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public BaseEmployee getRequestee() {
+        return requestee;
+    }
+
+    public void setRequestee(BaseEmployee requestee) {
+        this.requestee = requestee;
     }
 
     public Integer getDays() {
@@ -65,13 +69,13 @@ public class LeaveRequest {
 
     public String toString(OutputManager.Lang lang) {
         if(lang == OutputManager.Lang.en){
-            return "[" + name + "]Asked for leave for" + days + "days, because of" + reason +". The approval result is" + approveStatus;
+            return "[" + requestee.getName() + "]Asked for leave for" + days + "days, because of" + reason +". The approval result is" + approveStatus;
         }
         else if(lang == OutputManager.Lang.zh_CN){
-            return "【" + name + "】请假" + days + "天，原因：" + reason + "，审批结果：" + approveStatus;
+            return "【" + requestee.getName() + "】请假" + days + "天，原因：" + reason + "，审批结果：" + approveStatus;
         }
         else if(lang == OutputManager.Lang.zh_TW){
-            return "【" + name + "】請假" + days + "天，原因：" + reason + "，審批結果：" + approveStatus;
+            return "【" + requestee.getName() + "】請假" + days + "天，原因：" + reason + "，審批結果：" + approveStatus;
         }
         else {
             return "The specific language is not supported.";

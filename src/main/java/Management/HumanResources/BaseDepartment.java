@@ -5,6 +5,7 @@ import Management.HumanResources.Manager.Manager;
 import Presentation.Protocol.OutputManager;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
 
 public abstract class BaseDepartment {
 
-    protected List<BaseEmployee> employees;
+    protected List<BaseEmployee> employees = new ArrayList<BaseEmployee>();
 
     protected Manager manager = null;
 
@@ -29,9 +30,13 @@ public abstract class BaseDepartment {
      * @param employee
      */
     public void register(BaseEmployee employee){
-        employees.add(employee);
+        this.employees.add(employee);
         employee.setDepartment(type);
-
+        OutputManager.getInstance().print(
+                type + "部门欢迎" + employee.getName() + "的加入!",
+                type + "部門歡迎" + employee.getName() + "的加入!",
+                "Welcome " + employee.getName() + " to the " + type +" department!"
+        );
         if(manager == null && (employee instanceof Manager) ){
             this.manager = (Manager)employee;
         }
