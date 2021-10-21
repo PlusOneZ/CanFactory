@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine;
 
-import Manufacturing.ProductLine.Fruit.RawMaterial;
-import Manufacturing.ProductLine.pretreatment.PretreatmentApp;
+import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @author 孟繁霖
  * @date 2021-10-11 23:47
  */
-public interface FruitLine {
+public interface FruitLine extends ProductLine{
     PretreatmentApp pretreatmentApp = new PretreatmentApp();
 
     /**

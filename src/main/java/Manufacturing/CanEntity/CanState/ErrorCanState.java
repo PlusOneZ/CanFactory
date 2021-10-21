@@ -57,7 +57,6 @@ public final class ErrorCanState extends CanState{
     public String getCanDescription() {
         return description;
     }
-
     private boolean filled;
     private boolean canned;
     private boolean disinfected;

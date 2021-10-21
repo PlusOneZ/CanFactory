@@ -11,7 +11,7 @@ import Presentation.Protocol.OutputManager;
  * 享元模式、抽象工厂模式、单例模式
  * @author 汪明杰
  */
-public class IronCanFactory extends AbstractCanFactory{
+public class IronCanFactory extends AbstractCanFactory {
 
     private static VegetableCan smallVegetableCan;
     private static VegetableCan bigVegetableCan;
