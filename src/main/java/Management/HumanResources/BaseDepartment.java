@@ -30,16 +30,30 @@ public abstract class BaseDepartment {
      * @param employee
      */
     public void register(BaseEmployee employee){
-        this.employees.add(employee);
+        if(employee instanceof Manager){
+            if(manager == null){
+                this.manager = (Manager)employee;
+                this.employees.add(employee);
+            }
+            else{
+                OutputManager.getInstance().errorMassage(
+                        "错误：" + type + "部门已经有经理，请勿重复添加",
+                        "錯誤：" + type + "部門已經有經理，請勿重複添加",
+                        "Fatal: The manager of " + type +" department already exists."
+                );
+            }
+        }
+        else{
+            this.employees.add(employee);
+        }
+
         employee.setDepartment(type);
         OutputManager.getInstance().print(
                 type + "部门欢迎" + employee.getName() + "的加入!",
                 type + "部門歡迎" + employee.getName() + "的加入!",
                 "Welcome " + employee.getName() + " to the " + type +" department!"
         );
-        if(manager == null && (employee instanceof Manager) ){
-            this.manager = (Manager)employee;
-        }
+
     }
 
     /**

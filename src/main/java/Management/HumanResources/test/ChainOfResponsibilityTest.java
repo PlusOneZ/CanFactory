@@ -49,6 +49,12 @@ public class ChainOfResponsibilityTest {
         request.setDays(15);
         request.setReason("要去当山本");
 
+        OutputManager.getInstance().print(
+                request.toString(OutputManager.Lang.zh_CN),
+                request.toString(OutputManager.Lang.zh_TW),
+                request.toString(OutputManager.Lang.en)
+        );
+
         testingWorker.handleRequest(request);
     }
 
