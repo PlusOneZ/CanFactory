@@ -54,6 +54,14 @@ public abstract class BaseEmployee {
         this.leader = leader;
     }
 
+    public Double getSalary(){
+        return salary;
+    }
+
+    public void setSalary(Double salary){
+        this.salary = salary;
+    }
+
     public BaseEmployee getLeader(){
         return leader;
     }
