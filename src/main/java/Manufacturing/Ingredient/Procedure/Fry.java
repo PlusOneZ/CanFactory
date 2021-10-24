@@ -14,35 +14,15 @@ import Presentation.Protocol.OutputManager;
  * @author 卓正一
  * @date 2021/10/24 4:44 PM
  */
-public class Fry extends BaseIngredient {
-    @Override
-    public String zhCnDescription() {
-        return "炸" + dealtIngredient.zhCnDescription();
-    }
+public class Fry extends Procedure {
 
-    @Override
-    public String zhTwDescription() {
-        return "炸" + dealtIngredient.zhTwDescription();
-    }
-
-    @Override
-    public String enDescription() {
-        return "Fried " + dealtIngredient.enDescription();
-    }
-
-    Fry(Ingredient ingredient) {
-        this.dealtIngredient = ingredient;
-    }
-
-    Ingredient dealtIngredient;
-
-    @Override
-    public String showContents() {
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+    public Fry(Ingredient ingredient) {
+        super(ingredient);
+        setName(
                 "炸",
                 "炸",
-                "Fried "
-        ) + dealtIngredient.showContents();
+                "Fried"
+        );
     }
 
     /**
@@ -51,7 +31,7 @@ public class Fry extends BaseIngredient {
      * @since 2021-10-24 3:42 PM
      */
     public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.en);
+        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         Ingredient i = new Fry(new CandiedApple(new Apple(), new Sugar()));
         System.out.println(i.showContents());
     }
