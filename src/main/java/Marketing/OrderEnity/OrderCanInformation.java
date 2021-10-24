@@ -18,9 +18,14 @@ public class OrderCanInformation {
     //订单中该罐头的数量
     private int count;
 
-    public OrderCanInformation( String canName, int count){
+
+    //订单中该罐头的单价
+    private int price;
+
+    public OrderCanInformation( String canName, int count, int price){
         this.canName = canName;
         this.count = count;
+        this.price = price;
     }
 
     public String getCanName(){
@@ -36,5 +41,9 @@ public class OrderCanInformation {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getPrice(){
+        return this.price;
     }
 }
