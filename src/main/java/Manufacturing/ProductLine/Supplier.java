@@ -2,6 +2,9 @@ package Manufacturing.ProductLine;
 
 
 import Manufacturing.ProductLine.RawMaterial.*;
+import jdk.swing.interop.SwingInterOpUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,25 +29,33 @@ public class Supplier {
      */
     public List<RawMaterial> provide(String kind, int count) {
         List<RawMaterial> rawMaterialList = new ArrayList<>();
+        JSONObject object = new JSONObject();
+        object.put("ingredientType",kind);
+        object.put("count",count);
+        JSONArray ingredients=PurchaseDepartment.getInstance().getIngredient(object);
+        if(ingredients.isEmpty()){
+            return null;
+        }
         if ("apple".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Apple(Math.random()*200));
+                rawMaterialList.add(new Apple(ingredients.getDouble(i)));
             }
         } else if ("pear".equals(kind)) {
+
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Pear(Math.random()*200));
+                rawMaterialList.add(new Pear(ingredients.getDouble(i)));
             }
         } else if ("peach".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Peach(Math.random()*200));
+                rawMaterialList.add(new Peach(ingredients.getDouble(i)));
             }
         } else if ("salmon".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Salmon(Math.random()*200));
+                rawMaterialList.add(new Salmon(ingredients.getDouble(i)));
             }
         } else if ("clove".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Clove(Math.random()*200));
+                rawMaterialList.add(new Clove(ingredients.getDouble(i)));
             }
         } else return null;
         return rawMaterialList;
