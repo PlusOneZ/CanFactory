@@ -1,6 +1,6 @@
-package Management.Resources;
+package Management.Assets;
 
-import Management.Resources.Staff.Staff;
+import Management.Assets.Staff.Staff;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;

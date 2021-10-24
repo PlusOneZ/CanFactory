@@ -8,5 +8,11 @@ package Management.HumanResources;
  * @since 2021-10-16 14:00
  */
 public enum DepartmentType {
-    QualityAssurance, Security, Finance, Purchase, None, All
+    QualityAssurance,  // 质保
+    Security,  // 安保
+    Finance,  // 财务
+    Purchase,  // 购货
+    Backup,  // 后勤
+    None,
+    All
 }

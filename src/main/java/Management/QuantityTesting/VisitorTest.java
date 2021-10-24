@@ -1,7 +1,7 @@
 package Management.QuantityTesting;
 
-import Management.Resources.Staff.Cleaner;
-import Management.Resources.Staff.SecurityStaff;
+import Management.HumanResources.Staff.Cleaner;
+import Management.HumanResources.Staff.SecurityStaff;
 import Presentation.Protocol.OutputManager;
 
 public class VisitorTest {
