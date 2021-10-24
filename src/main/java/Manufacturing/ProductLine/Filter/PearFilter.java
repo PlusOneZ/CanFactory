@@ -12,16 +12,14 @@ import java.util.List;
  * @date 2021-10-12 8:45
  */
 public class PearFilter implements Filter {
-    private final SizeFilter sizeFilter;
-    private final QualityFilter qualityFilter;
+    private final WeightFilter weightFilter;
 
-    public PearFilter(int sizeCriterion, int qualityCriterion) {
-        this.sizeFilter = new SizeFilter(sizeCriterion);
-        this.qualityFilter = new QualityFilter(qualityCriterion);
+    public PearFilter(Double weightCriterion) {
+        this.weightFilter = new WeightFilter(weightCriterion);
     }
 
     @Override
     public List<RawMaterial> select(List<RawMaterial> rawMaterialList) {
-        return qualityFilter.select(sizeFilter.select(rawMaterialList));
+        return weightFilter.select(rawMaterialList);
     }
 }

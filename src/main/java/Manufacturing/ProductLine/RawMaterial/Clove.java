@@ -8,29 +8,15 @@ package Manufacturing.ProductLine.RawMaterial;
  */
 public class Clove extends RawMaterial {
 
-    public Clove(int size, int quality) {
-        super.setSize(size);
-        super.setQuality(quality);
+    public Clove(Double weight) {
+        super.setWeight(weight);
         super.setKind("clove");
-    }
-
-    public int getSize() {
-        return super.getSize();
-    }
-
-    public int getQuality() {
-        return super.getQuality();
-    }
-
-    public String getKind() {
-        return super.getKind();
     }
 
     @Override
     public String toString() {
         return "Clove{" +
-                "quality=" + super.getQuality() +
-                ", size=" + super.getSize() +
+                "weight=" + super.getWeight() +
                 '}';
     }
 }
