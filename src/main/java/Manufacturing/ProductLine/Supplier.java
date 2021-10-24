@@ -33,7 +33,7 @@ public class Supplier {
         object.put("ingredientType",kind);
         object.put("count",count);
         JSONArray ingredients=PurchaseDepartment.getInstance().getIngredient(object);
-        if(ingredients.isEmpty()){
+        if(ingredients==null){
             return null;
         }
         if ("apple".equals(kind)) {

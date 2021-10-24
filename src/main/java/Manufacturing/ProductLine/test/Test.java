@@ -22,7 +22,7 @@ public class Test {
             factory.produceCan("fruit","pear",10,"rough");
             factory.produceCan("fruit","pear",10,"rough");
         } else {
-            OutputManager.getInstance().errorMassage(
+            OutputManager.getInstance().print(
                     "莫得工厂",
                     "莫得工廠",
                     "No Factory");
