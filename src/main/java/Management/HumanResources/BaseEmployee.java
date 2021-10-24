@@ -1,6 +1,5 @@
 package Management.HumanResources;
 
-import Management.HumanResources.DataAccessObject.EmployeeDao;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
  * <b>实现了 Chain of Responsibility 模式</b>
  * <b>实现了 Marker 模式</b>
  * @author 尚丙奇
- * @date 2021-10-16 14:00
+ * @since 2021-10-16 14:00
  * */
 public abstract class BaseEmployee {
 
@@ -38,20 +37,39 @@ public abstract class BaseEmployee {
         this.name = name;
     }
 
-    public void setDepartment(DepartmentType department){
-        department = department;
-    }
-
     public String getName() {
-        return name;
+        return this.name;
     }
 
+    public void setDepartment(DepartmentType department){
+        this.department = department;
+    }
+
+    public DepartmentType getDepartment(){
+        return this.department;
+    }
+
+    public void setLeader(BaseEmployee leader){
+        this.leader = leader;
+    }
+
+    public Double getSalary(){
+        return this.salary;
+    }
+
+    public void setSalary(Double salary){
+        this.salary = salary;
+    }
+
+    public BaseEmployee getLeader(){
+        return leader;
+    }
 
     /**
      * 处理请假请求的函数
      * @param request
      * @author 尚丙奇
-     * @date 2021-10-16 14:00
+     * @since 2021-10-16 14:00
      */
     public abstract void handleRequest(LeaveRequest request);
 

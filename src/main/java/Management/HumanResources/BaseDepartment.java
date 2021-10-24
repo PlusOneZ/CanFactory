@@ -5,18 +5,19 @@ import Management.HumanResources.Manager.Manager;
 import Presentation.Protocol.OutputManager;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 部门的基类
  *
  * @author 尚丙奇
- * @date 2021-10-16 15:14
+ * @since 2021-10-16 15:14
  */
 
 public abstract class BaseDepartment {
 
-    protected List<BaseEmployee> employees;
+    protected List<BaseEmployee> employees = new ArrayList<BaseEmployee>();
 
     protected Manager manager = null;
 
@@ -29,29 +30,61 @@ public abstract class BaseDepartment {
      * @param employee
      */
     public void register(BaseEmployee employee){
-        employees.add(employee);
-        employee.setDepartment(type);
-
-        if(manager == null && (employee instanceof Manager)){
-            this.manager = (Manager)employee;
+        if(employee instanceof Manager){
+            if(manager == null){
+                this.manager = (Manager)employee;
+                this.employees.add(employee);
+            }
+            else{
+                OutputManager.getInstance().errorMassage(
+                        "错误：" + type + "部门已经有经理，请勿重复添加",
+                        "錯誤：" + type + "部門已經有經理，請勿重複添加",
+                        "Fatal: The manager of " + type +" department already exists."
+                );
+            }
         }
+        else{
+            this.employees.add(employee);
+        }
+
+        employee.setDepartment(type);
+        OutputManager.getInstance().print(
+                type + "部门欢迎" + employee.getName() + "的加入!",
+                type + "部門歡迎" + employee.getName() + "的加入!",
+                "Welcome " + employee.getName() + " to the " + type +" department!"
+        );
+
     }
 
     /**
-     * 设置该部门的经理
-     * @param manager
+     * 根据姓名找到部门的某员工
+     * @param name
+     * @return employee
      */
-    public void setManager(Manager manager) {
-        if (manager != null) {
-            manager = manager;
+    public BaseEmployee getEmployee(String name){
+
+        for(BaseEmployee employee:this.employees){
+            if(employee.getName() == name){
+                return employee;
+            }
         }
-        else{
-            OutputManager.getInstance().errorMassage(
-                    "该部门已有经理，请勿重复设置",
-                    "該部門已有經理，請勿重複設置",
-                    "Manager already exists."
-                    );
-        }
+        return null;
+    }
+
+    /**
+     * 获取该部门的所有员工
+     * @return employees
+     */
+    public List<BaseEmployee> getAllEmployees(){
+        return this.employees;
+    }
+
+    /**
+     * 部门的名称
+     * @return
+     */
+    public String toString(){
+        return this.type.toString();
     }
 
     /**

@@ -1,4 +1,4 @@
-package Management.HumanResources.TeamLeader.Carrier;
+package Management.HumanResources.TeamLeader;
 
 import Management.HumanResources.Staff.Driver.Driver;
 import Management.HumanResources.Staff.Driver.EngineMan;
@@ -25,8 +25,6 @@ public class Carrier extends TeamLeader {
      * @param scheme 运输方案
      */
     public void dispatchTransport(TransportScheme scheme) {
-        drivers.get("EngineMa").transport(scheme.getLandQuantity());
-        drivers.get("Shipmaster").transport(scheme.getShippingQuantity());
     }
 
 
