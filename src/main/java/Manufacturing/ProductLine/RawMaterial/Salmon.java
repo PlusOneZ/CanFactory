@@ -8,29 +8,17 @@ package Manufacturing.ProductLine.RawMaterial;
  */
 public class Salmon extends RawMaterial {
 
-    public Salmon(int size, int quality) {
-        super.setQuality(quality);
-        super.setSize(size);
+    public Salmon(Double weight) {
+       super.setWeight(weight);
         super.setKind("salmon");
     }
 
-    public String getKind() {
-        return super.getKind();
-    }
 
-    public int getQuality() {
-        return super.getQuality();
-    }
-
-    public int getSize() {
-        return super.getSize();
-    }
 
     @Override
     public String toString() {
         return "Salmon{" +
-                "quality=" + super.getQuality() +
-                ", size=" + super.getSize() +
+                "quality=" + super.getWeight() +
                 '}';
     }
 }

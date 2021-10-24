@@ -14,55 +14,26 @@ public class RawMaterial {
     /**
      * TODO:原料大小
      */
-    private int size;
-    /**
-     * TODO:原料质量好坏（数值越大越好）
-     */
-    private int quality;
+    private Double weight;
 
     /**
-     * TODO:quality属性get方法.
-     *
-     * @return : int
-     * @author 孟繁霖
-     * @date 2021-10-12 8:36
-     */
-    public int getQuality() {
-        return quality;
+    * TODO:weight属性get方法
+    * @return : java.lang.Double
+    * @author 孟繁霖
+    * @date 2021-10-24 14:39
+    */
+    public Double getWeight() {
+        return weight;
     }
 
     /**
-     * TODO:quality属性set方法.
-     *
-     * @param quality :  原材料质量好坏评级
-     * @author 孟繁霖
-     * @date 2021-10-12 8:36
-     */
-    public void setQuality(int quality) {
-        this.quality = quality;
-    }
-
-
-    /**
-     * TODO:size属性set方法.
-     *
-     * @param size : 原材料大小
-     * @author 孟繁霖
-     * @date 2021-10-12 8:37
-     */
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    /**
-     * TODO:size属性get方法.
-     *
-     * @return : int
-     * @author 孟繁霖
-     * @date 2021-10-12 8:37
-     */
-    public int getSize() {
-        return size;
+    * TODO:weight属性set方法
+    * @param weight :  原材料质量
+    * @author 孟繁霖
+    * @date 2021-10-24 14:40
+    */
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
     /**

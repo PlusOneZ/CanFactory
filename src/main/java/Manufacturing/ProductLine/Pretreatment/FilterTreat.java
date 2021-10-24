@@ -15,11 +15,11 @@ import java.util.List;
 public class FilterTreat implements Pretreatment {
 
 
-    private final AppleFilter appleFilter = new AppleFilter(1, 5);
-    private final PearFilter pearFilter = new PearFilter(2, 3);
-    private final PeachFilter peachFilter = new PeachFilter(2, 3);
-    private final SalmonFilter salmonFilter = new SalmonFilter(1, 2);
-    private final CloveFilter cloveFilter = new CloveFilter(2, 3);
+    private final AppleFilter appleFilter = new AppleFilter(100.0);
+    private final PearFilter pearFilter = new PearFilter(100.0);
+    private final PeachFilter peachFilter = new PeachFilter(100.0);
+    private final SalmonFilter salmonFilter = new SalmonFilter(100.0);
+    private final CloveFilter cloveFilter = new CloveFilter(100.0);
 
 
     @Override

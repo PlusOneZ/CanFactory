@@ -8,29 +8,16 @@ package Manufacturing.ProductLine.RawMaterial;
  */
 public class Pear extends RawMaterial {
 
-    public Pear(int size, int quality) {
-        super.setSize(size);
-        super.setQuality(quality);
+    public Pear(Double weight) {
+        super.setWeight(weight);
         super.setKind("pear");
     }
 
-    public int getSize() {
-        return super.getSize();
-    }
-
-    public int getQuality() {
-        return super.getQuality();
-    }
-
-    public String getKind() {
-        return super.getKind();
-    }
 
     @Override
     public String toString() {
         return "Pear{" +
-                "quality=" + super.getQuality() +
-                ", size=" + super.getSize() +
+                "weight=" + super.getWeight() +
                 '}';
     }
 }

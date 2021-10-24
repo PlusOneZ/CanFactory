@@ -28,23 +28,23 @@ public class Supplier {
         List<RawMaterial> rawMaterialList = new ArrayList<>();
         if ("apple".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Apple(i, i + 5));
+                rawMaterialList.add(new Apple(Math.random()*200));
             }
         } else if ("pear".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Pear(i, i + 3));
+                rawMaterialList.add(new Pear(Math.random()*200));
             }
         } else if ("peach".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Peach(i, i + 6));
+                rawMaterialList.add(new Peach(Math.random()*200));
             }
         } else if ("salmon".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Salmon(i, i + 6));
+                rawMaterialList.add(new Salmon(Math.random()*200));
             }
         } else if ("clove".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Clove(i, i + 6));
+                rawMaterialList.add(new Clove(Math.random()*200));
             }
         } else return null;
         return rawMaterialList;

@@ -1,8 +1,7 @@
-package Management.Resources;
+package Management.Assets.Announcement;
 
-import Management.Resources.Staff.Staff;
+import Management.HumanResources.Staff.Staff;
 import Presentation.Protocol.OutputManager;
-
 import java.util.ArrayList;
 
 /**
@@ -43,6 +42,12 @@ public class Announcement {
     }
 
     public void addMessage(Staff writer, String newMessage){
+        OutputManager.getInstance().print(
+                "# 使用黑板模式",
+                "# 使用黑板模式",
+                "# Using Blackboard mode"
+        );
+
         if (this.readingState){
             OutputManager.getInstance().errorMassage(
                     "当前正在推送消息！",

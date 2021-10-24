@@ -25,8 +25,6 @@ public class Carrier extends TeamLeader {
      * @param scheme 运输方案
      */
     public void dispatchTransport(TransportScheme scheme) {
-        drivers.get("EngineMa").transport(scheme.getLandQuantity());
-        drivers.get("Shipmaster").transport(scheme.getShippingQuantity());
     }
 
 
