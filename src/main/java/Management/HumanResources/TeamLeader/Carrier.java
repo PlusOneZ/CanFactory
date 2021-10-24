@@ -3,7 +3,6 @@ package Management.HumanResources.TeamLeader;
 import Management.HumanResources.Staff.Driver.Driver;
 import Management.HumanResources.Staff.Driver.EngineMan;
 import Management.HumanResources.Staff.Driver.Shipmaster;
-import Management.HumanResources.TeamLeader.TeamLeader;
 import Marketing.Scheme.TransportScheme;
 
 import java.util.HashMap;
@@ -29,6 +28,7 @@ public class Carrier extends TeamLeader {
 
 
     /**
+     * TODO:需要修改代码
      * 承运人分配运输工作
      */
     public Carrier() {

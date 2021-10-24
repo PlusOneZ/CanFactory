@@ -1,8 +1,13 @@
 package Management.HumanResources.TeamLeader;
 
 import Management.HumanResources.Staff.Purchaser;
+import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
 import Marketing.Scheme.PurchaseScheme;
 import Presentation.Protocol.OutputManager;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 采购代理
@@ -33,10 +38,26 @@ public class PurchaseAgent extends TeamLeader {
         );
 
         boolean result = true;
-        for (int i=0;i<scheme.getScheme().size();i++){
+        List<Purchaser> purchaserList = new ArrayList<Purchaser>();
+
+        for (int i = 0; i < scheme.getScheme().size(); i++) {
             Purchaser purchaser = new Purchaser();
-            result &= purchaser.purchaseMaterial(scheme.getScheme().get(i));
+            for (int j = 0; j < 8; j++) {
+                purchaser.addFactory(new ConcreteUpstreamFactory());
+            }
+            purchaserList.add(purchaser);
         }
+
+        for (int i = 0;i<purchaserList.size();i++) {
+            JSONObject plan = scheme.getScheme().get(i);
+            OutputManager.getInstance().print(
+                    (i+1)+"号采购员正在购买：" + plan.getString("ingredientType"),
+                    (i+1)+"號採購員正在購買：" + plan.getString("ingredientType"),
+                    "No."+(i+1)+"purchaser is purchasing: " + plan.getString("ingredientType")
+            );
+            result &= purchaserList.get(i).purchaseMaterial(plan);
+        }
+
         return result;
     }
 }
