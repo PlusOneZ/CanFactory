@@ -18,7 +18,7 @@ public class TransportManager extends Manager {
      * 默认构造函数
      */
     public TransportManager() {
-        transportScheme = null;
+        transportScheme = new TransportScheme();
     }
 
     /**
@@ -27,6 +27,7 @@ public class TransportManager extends Manager {
      * @return 是否运输成功
      */
     public boolean transport(List<Order> orderList){
+
         return true;
     }
 
@@ -53,7 +54,7 @@ public class TransportManager extends Manager {
      * @param carrier 承运商
      */
     public void delegateTransport(Carrier carrier) {
-        carrier.dispatchTransport(transportScheme);
+        //carrier.dispatchTransport(transportScheme);
     }
 
     private TransportScheme transportScheme;
