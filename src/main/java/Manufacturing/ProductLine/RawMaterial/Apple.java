@@ -8,29 +8,16 @@ package Manufacturing.ProductLine.RawMaterial;
  */
 public class Apple extends RawMaterial {
 
-    public Apple(int size, int quality) {
-        super.setSize(size);
-        super.setQuality(quality);
+    public Apple(Double weight) {
+        super.setWeight(weight);
         super.setKind("apple");
     }
 
-    public int getSize() {
-        return super.getSize();
-    }
-
-    public int getQuality() {
-        return super.getQuality();
-    }
-
-    public String getKind() {
-        return super.getKind();
-    }
 
     @Override
     public String toString() {
         return "Apple{" +
-                "quality=" + super.getQuality() +
-                ", size=" + super.getSize() +
+                "weight=" + super.getWeight() +
                 '}';
     }
 }
