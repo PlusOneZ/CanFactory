@@ -12,16 +12,15 @@ import java.util.List;
  * @date 2021-10-12 8:41
  */
 public class SalmonFilter implements Filter {
-    private final SizeFilter sizeFilter;
-    private final QualityFilter qualityFilter;
 
-    public SalmonFilter(int sizeCriterion, int qualityCriterion) {
-        this.sizeFilter = new SizeFilter(sizeCriterion);
-        this.qualityFilter = new QualityFilter(qualityCriterion);
+    private final WeightFilter weightFilter;
+
+    public SalmonFilter(Double weightCriterion) {
+        this.weightFilter = new WeightFilter(weightCriterion);
     }
 
     @Override
     public List<RawMaterial> select(List<RawMaterial> rawMaterialList) {
-        return qualityFilter.select(sizeFilter.select(rawMaterialList));
+        return weightFilter.select(rawMaterialList);
     }
 }
