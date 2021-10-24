@@ -22,27 +22,7 @@ public class PurchaseDepartment extends BaseDepartment {
 
         this.type = DepartmentType.Purchase;
 
-        JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "apple");
-        apple.put("weight", 0.0);
-        JSONObject clove = new JSONObject();
-        clove.put("ingredientType", "clove");
-        clove.put("weight", 0.0);
-        JSONObject peach = new JSONObject();
-        peach.put("ingredientType", "peach");
-        peach.put("weight", 0.0);
-        JSONObject pear = new JSONObject();
-        pear.put("ingredientType", "pear");
-        pear.put("weight", 0.0);
-        JSONObject salmon = new JSONObject();
-        salmon.put("ingredientType", "salmon");
-        salmon.put("weight", 0.0);
-
-        rawMaterial.put(apple);
-        rawMaterial.put(clove);
-        rawMaterial.put(peach);
-        rawMaterial.put(pear);
-        rawMaterial.put(salmon);
+        rawMaterial = generateMaterialList();
 
         OutputManager.getInstance().print(
                 "新建了一个采购部门",
@@ -51,27 +31,36 @@ public class PurchaseDepartment extends BaseDepartment {
         );
     }
 
-    private JSONArray rawMaterial = new JSONArray();
+    private JSONArray rawMaterial;
     private PurchaseManager purchaseManager = new PurchaseManager();
     static private PurchaseDepartment instance;
 
-//
-//    /**
-//     * TODO:规约模式 代表是否满足采购的条件
-//     *
-//     * @param type :采购的种类
-//     * @return : boolean
-//     * @author 香宁雨
-//     * @since 2:27 2021-10-16
-//     */
-//    private boolean isSatisfiedBy(String type) {
-//        for (Object ingredient : rawMaterial) {
-//            String a = ((JSONObject) ingredient).getString("ingredientType");
-//            if (type == a)
-//                return true;
-//        }
-//        return false;
-//    }
+    public JSONArray generateMaterialList(){
+        JSONArray material = new JSONArray();
+        JSONObject apple = new JSONObject();
+        apple.put("ingredientType", "apple");
+        apple.put("count", 0);
+        JSONObject clove = new JSONObject();
+        clove.put("ingredientType", "clove");
+        clove.put("count", 0);
+        JSONObject peach = new JSONObject();
+        peach.put("ingredientType", "peach");
+        peach.put("count", 0);
+        JSONObject pear = new JSONObject();
+        pear.put("ingredientType", "pear");
+        pear.put("count", 0);
+        JSONObject salmon = new JSONObject();
+        salmon.put("ingredientType", "salmon");
+        salmon.put("count", 0);
+
+        material.put(apple);
+        material.put(clove);
+        material.put(peach);
+        material.put(pear);
+        material.put(salmon);
+
+        return material;
+    }
 
     /**
      * 单例模式
@@ -108,25 +97,25 @@ public class PurchaseDepartment extends BaseDepartment {
     /**
      * TODO:用于对库存进行更新
      * @param type :原材料的种类
-     * @param weight :原材料的重量
-     * @param state :原材料需要更新的状态
+     * @param count :原材料的个数
+     * @param state :原材料需要更新的状态0
      * @return : boolean 是否成功更新
      * @author 香宁雨
      * @since 13:40 2021-10-19
      */
-    public boolean update(String type, Double weight, Status state) {
+    public boolean update(String type, Integer count, Status state) {
         if (state == Status.IN) {
             Integer index = indexOfRawMaterial(type);
-            Double curWeight = rawMaterial.getJSONObject(index).getDouble("weight");
-            curWeight += weight;
-            rawMaterial.getJSONObject(index).put("weight", curWeight);
+            Integer curCount = rawMaterial.getJSONObject(index).getInt("count");
+            curCount += count;
+            rawMaterial.getJSONObject(index).put("count", curCount);
             return true;
         } else {
             Integer index = indexOfRawMaterial(type);
-            Double curWeight = rawMaterial.getJSONObject(index).getDouble("weight");
-            if (Double.doubleToLongBits(curWeight) >= Double.doubleToLongBits(weight)) {
-                curWeight -= weight;
-                rawMaterial.getJSONObject(index).put("weight", curWeight);
+            Double curCount = rawMaterial.getJSONObject(index).getDouble("count");
+            if (Double.doubleToLongBits(curCount) >= Double.doubleToLongBits(count)) {
+                curCount -= count;
+                rawMaterial.getJSONObject(index).put("count", curCount);
                 return true;
             }
             return false;
@@ -158,9 +147,8 @@ public class PurchaseDepartment extends BaseDepartment {
      */
     public boolean getIngredient(JSONObject material) {
         String type = material.getString("ingredientType");
-        Double weight = material.getDouble("weight");
-        System.out.println(update(type, weight, Status.OUT));
-        if (update(type, weight, Status.OUT)) return true;
+        Integer count = material.getInt("count");
+        if (update(type, count, Status.OUT)) return true;
         return false;
     }
 
@@ -177,19 +165,19 @@ public class PurchaseDepartment extends BaseDepartment {
 
         JSONObject apple = new JSONObject();
         apple.put("ingredientType", "apple");
-        apple.put("weight", 10.0);
+        apple.put("count", 10);
         JSONObject clove = new JSONObject();
         clove.put("ingredientType", "clove");
-        clove.put("weight", 20.0);
+        clove.put("count", 20);
         JSONObject peach = new JSONObject();
         peach.put("ingredientType", "peach");
-        peach.put("weight", 30.0);
+        peach.put("count", 21);
         JSONObject pear = new JSONObject();
         pear.put("ingredientType", "pear");
-        pear.put("weight", 40.0);
+        pear.put("count", 23);
         JSONObject salmon = new JSONObject();
         salmon.put("ingredientType", "salmon");
-        salmon.put("weight", 50.0);
+        salmon.put("count", 24);
 
         demand.put(apple);
         demand.put(clove);
