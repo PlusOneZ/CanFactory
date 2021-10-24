@@ -34,12 +34,12 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:25
      */
     public void disinfect(List<RawMaterial> rawMaterialList) {
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "--------正在杀菌---------",
                 "--------正在殺菌---------",
                 "-------Sterilizing-------");
         disinfectProcessor.treat(rawMaterialList);
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "--------杀菌完成---------",
                 "--------殺菌完成---------",
                 "---Sterilization completed---");
@@ -53,12 +53,12 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:25
      */
     public void peel(List<RawMaterial> rawMaterialList) {
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "--------开始剥皮---------",
                 "--------開始剝皮---------",
                 "------Start peeling------");
         peelProcessor.treat(rawMaterialList);
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "--------完成剥皮---------",
                 "--------完成剝皮---------",
                 "----Complete the peeling-----");
@@ -73,17 +73,17 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:26
      */
     public List<RawMaterial> filterTreat(List<RawMaterial> rawMaterialList) {
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "--开始筛选符合要求的原料--",
                 "--開始篩選符合要求的原料--",
                 "--Start to screen raw materials that meet the requirements--");
         rawMaterialList = filterTreatProcessor.treat(rawMaterialList);
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "---筛选完成，结果如下：---",
                 "---篩選完成，結果如下：---",
                 "---The screening is complete, and the results are as follows: ---");
         for (RawMaterial rawMaterial : rawMaterialList) {
-            OutputManager.getInstance().errorMassage(
+            OutputManager.getInstance().print(
                     rawMaterial.toString(),
                     rawMaterial.toString(),
                     rawMaterial.toString());
@@ -100,12 +100,12 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:27
      */
     public void clean(List<RawMaterial> rawMaterialList) {
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "--------开始清理---------",
                 "-----------開始清理---------",
                 "---------Start to clean up-------");
         cleanProcessor.treat(rawMaterialList);
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "--------清理完成---------",
                 "--------清理完成---------",
                 "--------Cleaning up---------");

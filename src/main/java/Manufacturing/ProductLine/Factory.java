@@ -54,7 +54,7 @@ public abstract class Factory {
     public final void produceCan(String canKind, String canName, int materialCount, String produceManner) {
 
 
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "**************采购**************",
                 "**************采購**************",
                 "************Purchase************"
@@ -63,20 +63,20 @@ public abstract class Factory {
         //购买原材料
         List<RawMaterial> rawMaterialList = supplier.provide(canName, materialCount);
         if (rawMaterialList != null) {
-            OutputManager.getInstance().errorMassage(
+            OutputManager.getInstance().print(
                     "********购买成功,原料如下********",
                     "********購買成功,原料如下********",
                     "Purchase successfully, the raw materials are as follows"
             );
             for (RawMaterial rawMaterial : rawMaterialList) {
-                OutputManager.getInstance().errorMassage(
+                OutputManager.getInstance().print(
                         rawMaterial.toString(),
                         rawMaterial.toString(),
                         rawMaterial.toString()
                 );
             }
         } else {
-            OutputManager.getInstance().errorMassage(
+            OutputManager.getInstance().print(
                     "*************购买失败************",
                     "*************購買失敗************",
                     "*******Failed purchase*******");
