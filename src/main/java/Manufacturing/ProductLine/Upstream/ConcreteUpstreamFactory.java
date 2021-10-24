@@ -12,7 +12,6 @@ import java.util.Random;
  * @author 香宁雨
  * @since 2021/10/11 23:28
  */
-
 public class ConcreteUpstreamFactory implements UpstreamFactory {
     private String ingredient;
 
@@ -41,6 +40,12 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         );
     }
 
+    /**
+     * TODO:此处写getInfo⽅法的描述
+     * @return : org.json.JSONObject
+     * @author 香宁雨
+     * @since 16:08 2021-10-24
+     */
     @Override
     public JSONObject getInfo() {
         JSONObject ingredient = new JSONObject();
