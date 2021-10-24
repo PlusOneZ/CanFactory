@@ -7,6 +7,8 @@ import Presentation.Protocol.OutputManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Random;
+
 
 /**
  * TODO:获取原材料信息并对其进行筛选
@@ -39,7 +41,7 @@ public class PurchaseDepartment extends BaseDepartment {
         JSONArray material = new JSONArray();
         JSONObject apple = new JSONObject();
         apple.put("ingredientType", "apple");
-        apple.put("count", 0);
+        apple.put("count", 30);
         JSONObject clove = new JSONObject();
         clove.put("ingredientType", "clove");
         clove.put("count", 0);
@@ -104,15 +106,13 @@ public class PurchaseDepartment extends BaseDepartment {
      * @since 13:40 2021-10-19
      */
     public boolean update(String type, Integer count, Status state) {
+        Integer index = indexOfRawMaterial(type);
+        Integer curCount = rawMaterial.getJSONObject(index).getInt("count");
         if (state == Status.IN) {
-            Integer index = indexOfRawMaterial(type);
-            Integer curCount = rawMaterial.getJSONObject(index).getInt("count");
             curCount += count;
             rawMaterial.getJSONObject(index).put("count", curCount);
             return true;
         } else {
-            Integer index = indexOfRawMaterial(type);
-            Double curCount = rawMaterial.getJSONObject(index).getDouble("count");
             if (Double.doubleToLongBits(curCount) >= Double.doubleToLongBits(count)) {
                 curCount -= count;
                 rawMaterial.getJSONObject(index).put("count", curCount);
@@ -145,61 +145,83 @@ public class PurchaseDepartment extends BaseDepartment {
      * @author 香宁雨
      * @since 13:48 2021-10-19
      */
-    public boolean getIngredient(JSONObject material) {
+//    public boolean getIngredient(JSONObject material) {
+//        String type = material.getString("ingredientType");
+//        Integer count = material.getInt("count");
+//        if (update(type, count, Status.OUT)) return true;
+//        return false;
+//    }
+
+    public JSONArray getIngredient(JSONObject material){
+        JSONArray ingredient = new JSONArray();
         String type = material.getString("ingredientType");
         Integer count = material.getInt("count");
-        if (update(type, count, Status.OUT)) return true;
-        return false;
+        if (update(type, count, Status.OUT)){
+            for(Integer i = 0;i<count;i++){
+//                JSONObject single = new JSONObject();
+                Random r = new Random();
+                Double weight = r.nextDouble()*200;
+//                single.put("weight",weight);
+                ingredient.put(weight);
+            }
+        }
+        System.out.println(ingredient);
+        return ingredient;
     }
+
 
     /**
      * 采购流程的测试函数
      * @param args main函数参数args
      */
     public static void main(String[] args) {
-        // 设置语言
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
-
-        //创建购买需求
-        JSONArray demand = new JSONArray();
-
         JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "apple");
-        apple.put("count", 10);
-        JSONObject clove = new JSONObject();
-        clove.put("ingredientType", "clove");
-        clove.put("count", 20);
-        JSONObject peach = new JSONObject();
-        peach.put("ingredientType", "peach");
-        peach.put("count", 21);
-        JSONObject pear = new JSONObject();
-        pear.put("ingredientType", "pear");
-        pear.put("count", 23);
-        JSONObject salmon = new JSONObject();
-        salmon.put("ingredientType", "salmon");
-        salmon.put("count", 24);
-
-        demand.put(apple);
-        demand.put(clove);
-        demand.put(peach);
-        demand.put(pear);
-        demand.put(salmon);
-
-        //购买
-        if(PurchaseDepartment.getInstance().purchaseIngredient(demand)){
-            OutputManager.getInstance().print(
-                    "采购成功!",
-                    "採購成功!",
-                    "Purchasing Success! "
-            );
-        }
-        else{
-            OutputManager.getInstance().print(
-                    "采购失败!",
-                    "採購失敗!",
-                    "Purchasing Failed!"
-            );
-        }
+        apple.put("ingredientType","apple");
+        apple.put("count",10);
+        PurchaseDepartment.getInstance().getIngredient(apple);
+//        // 设置语言
+//        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
+//
+//        //创建购买需求
+//        JSONArray demand = new JSONArray();
+//
+//        JSONObject apple = new JSONObject();
+//        apple.put("ingredientType", "apple");
+//        apple.put("count", 10);
+//        JSONObject clove = new JSONObject();
+//        clove.put("ingredientType", "clove");
+//        clove.put("count", 20);
+//        JSONObject peach = new JSONObject();
+//        peach.put("ingredientType", "peach");
+//        peach.put("count", 21);
+//        JSONObject pear = new JSONObject();
+//        pear.put("ingredientType", "pear");
+//        pear.put("count", 23);
+//        JSONObject salmon = new JSONObject();
+//        salmon.put("ingredientType", "salmon");
+//        salmon.put("count", 24);
+//
+//        demand.put(apple);
+//        demand.put(clove);
+//        demand.put(peach);
+//        demand.put(pear);
+//        demand.put(salmon);
+//
+//        //购买
+//        if(PurchaseDepartment.getInstance().purchaseIngredient(demand)){
+//            OutputManager.getInstance().print(
+//                    "采购成功!",
+//                    "採購成功!",
+//                    "Purchasing Success! "
+//            );
+//        }
+//        else{
+//            OutputManager.getInstance().print(
+//                    "采购失败!",
+//                    "採購失敗!",
+//                    "Purchasing Failed!"
+//            );
+//        }
     }
 
 }
