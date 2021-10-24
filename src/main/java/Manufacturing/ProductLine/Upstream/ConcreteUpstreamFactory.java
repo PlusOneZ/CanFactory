@@ -19,18 +19,28 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
 
     private String[] ingredientType = new String[]{"apple", "clove", "peach", "pear", "salmon"};
 
+    /**
+     * TODO:随机生成上游工厂的种类和数量
+     * @author 香宁雨
+     * @since 16:42 2021-10-24
+     */
     public ConcreteUpstreamFactory() {
         Random r = new Random();
         Integer i = r.nextInt(ingredientType.length);
         this.ingredient = ingredientType[i];
         this.count = r.nextInt(25);
         OutputManager.getInstance().print(
-                "新建了上游工厂",
-                "新建了上遊工廠",
-                "Create a new upstream factory"
+                "正在分配上游工厂...",
+                "正在分配上遊工廠...",
+                "Assigning upstream factory..."
         );
     }
 
+    /**
+     * TODO:从上游工厂购买产品并且将上游工厂中数量设置为0
+     * @author 香宁雨
+     * @since 16:44 2021-10-24
+     */
     public void purchase() {
         count = 0;
         OutputManager.getInstance().print(
@@ -41,7 +51,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
     }
 
     /**
-     * TODO:此处写getInfo⽅法的描述
+     * TODO:获取上游工厂所拥有的原材料信息
      * @return : org.json.JSONObject
      * @author 香宁雨
      * @since 16:08 2021-10-24
@@ -58,10 +68,5 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         );
         return ingredient;
     }
-
-
-    public static void main(String[] args) {
-    }
-
 
 }
