@@ -28,7 +28,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         Random r = new Random();
         Integer i = r.nextInt(ingredientType.length);
         this.ingredient = ingredientType[i];
-        this.count = r.nextInt(25);
+        this.count = r.nextInt(25) + 25;
         OutputManager.getInstance().print(
                 "正在分配上游工厂...",
                 "正在分配上遊工廠...",
