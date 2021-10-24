@@ -1,5 +1,7 @@
 package Management.HumanResources;
 
+import Management.Assets.Announcement.AnnouncementManager;
+import Management.HumanResources.Staff.Announcer;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
  * @author 尚丙奇
  * @since 2021-10-16 14:00
  * */
-public abstract class BaseEmployee {
+public abstract class BaseEmployee implements AnnouncementManager {
 
     /**
      * 雇员的名字
@@ -73,15 +75,21 @@ public abstract class BaseEmployee {
      */
     public abstract void handleRequest(LeaveRequest request);
 
+
+    @Override
+    public void subscribe(){
+        Announcer.getInstance().addSubscriber(this);
+    }
+
     /**
      * 员工接受消息的函数
      * @param message
      */
+    @Override
     public void getMessage(String message){
-        System.out.println("员工["+this.name+"]接受消息："+message);
         OutputManager.getInstance().print(
                 "员工["+this.name+"]接受消息："+message,
-                "員工"+"]接受消息："+message,
+                "員工["+this.name+"]接受消息："+message,
                 "Staff["+this.name+"] receives the message:"+message
         );
     }
