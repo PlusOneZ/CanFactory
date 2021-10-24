@@ -8,6 +8,7 @@ import com.csvreader.CsvWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 
@@ -21,7 +22,62 @@ import java.util.List;
 
 public class SalaryDaoImpl implements SalaryDao{
 
-    String filePath = "./Data/Salary.csv";
+    /**
+     * SalaryDao接口的全局单例
+     */
+    static private SalaryDaoImpl instance = null;
+
+    static {
+        try {
+            instance = new SalaryDaoImpl();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * SalaryDaoImpl的私有构造函数，由于初始时Salary.csv为空无需审阅，visited为true
+     * @author 陈垲昕
+     * @since 2021-10-24 3:07 下午
+     */
+    private SalaryDaoImpl() throws IOException {
+        //设置脏标记为已访问
+        this.visited=true;
+
+        File file = new File(filePath);
+        CsvWriter csvWriter = new CsvWriter(filePath, ',', StandardCharsets.UTF_8);
+        if (!file.exists()){
+            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+            file.createNewFile();
+            csvWriter.writeRecord(headers);
+        }
+
+        csvWriter.close();
+    }
+
+    /**
+     * getInstance单例实例
+     * @return : Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl 单例
+     * @author 陈垲昕
+     * @since 2021-10-24 3:08 下午
+     */
+    public static SalaryDaoImpl getInstance(){return instance;}
+
+    String filePath = "./src/main/java/Management/HumanResources/FinancialSystem/Salary.csv";
+
+    /**
+     * 脏标记模式的flag，visited为真表示已经访问过
+     */
+    Boolean visited;
+
+    public Boolean getVisited(){return this.visited;}
+
+    public void setVisited(){this.visited=true;}
+
+    public void setUnvisited(){this.visited=false;}
+
+
+
 
     /**
      * 获得该部门总的实发工资
@@ -35,8 +91,8 @@ public class SalaryDaoImpl implements SalaryDao{
             CsvReader csvReader = new CsvReader(filePath);
             csvReader.readHeaders();
             while(csvReader.readRecord()){
-                if(csvReader.get("部门") == department.toString()){
-                    sum += Double.valueOf(csvReader.get("实发工资"));
+                if(csvReader.get("部门").equals(department.toString())){
+                    sum += Double.parseDouble(csvReader.get("实发工资"));
                 }
             }
         }catch (IOException e){
@@ -89,6 +145,7 @@ public class SalaryDaoImpl implements SalaryDao{
         }
         csvWriter.close();
 
+        this.setUnvisited();
     }
 
     /**
@@ -117,6 +174,8 @@ public class SalaryDaoImpl implements SalaryDao{
 
         csvWriter.writeRecord(content);
         csvWriter.close();
+
+        this.setUnvisited();
 
     }
 }
