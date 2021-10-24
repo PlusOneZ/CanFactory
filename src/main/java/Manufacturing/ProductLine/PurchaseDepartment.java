@@ -7,7 +7,9 @@ import Presentation.Protocol.OutputManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Console;
 import java.util.Random;
+import java.util.Scanner;
 
 
 /**
@@ -184,20 +186,18 @@ public class PurchaseDepartment extends BaseDepartment {
                 Double weight = r.nextDouble() * 200 + 100;
                 ingredient.put(weight);
             }
-        }
-        if (ingredient.length() == 0){
-            ingredient = null;
-            OutputManager.getInstance().errorMassage(
-                    "未获取到原材料！",
-                    "未獲取到原材料！",
-                    "Raw material not obtained!"
-            );
-        }
-        else{
             OutputManager.getInstance().print(
                     "成功从采购部门获取原材料",
                     "成功從采購部門獲取原材料",
                     "Successfully obtain raw materials from purchasing department"
+            );
+        }
+        else{
+            ingredient = null;
+            OutputManager.getInstance().errorMassage(
+                    "采购部门库存不足，未获取到原材料！",
+                    "采購部門庫存不足，未獲取到原材料！",
+                    "The purchasing department has insufficient inventory and has not obtained raw materials!"
             );
         }
         return ingredient;
@@ -213,45 +213,88 @@ public class PurchaseDepartment extends BaseDepartment {
         // 设置语言
         OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
-        //创建购买需求
-        JSONArray demand = new JSONArray();
-
-        JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "apple");
-        apple.put("count", 10);
-        JSONObject clove = new JSONObject();
-        clove.put("ingredientType", "clove");
-        clove.put("count", 20);
-        JSONObject peach = new JSONObject();
-        peach.put("ingredientType", "peach");
-        peach.put("count", 21);
-        JSONObject pear = new JSONObject();
-        pear.put("ingredientType", "pear");
-        pear.put("count", 23);
-        JSONObject salmon = new JSONObject();
-        salmon.put("ingredientType", "salmon");
-        salmon.put("count", 24);
-
-        demand.put(apple);
-        demand.put(clove);
-        demand.put(peach);
-        demand.put(pear);
-        demand.put(salmon);
-
-        //购买
-        if (PurchaseDepartment.getInstance().purchaseIngredient(demand)) {
+        while(true){
             OutputManager.getInstance().print(
-                    "采购成功!",
-                    "採購成功!",
-                    "Purchasing Success! "
+                    "请选择想要进行的操作：\na. 输出当前采购部门中所拥有的原材料;\nb. 从采购部门获取原材料;\nc. 向采购部门提出采购需求;\nexit. 退出",
+                    "請選擇想要進行的操作：\na. 輸出當前采購部門中所擁有的原材料;\nb. 從采購部門獲取原材料;\nc. 向采購部門提出采購需求;\nexit. 退出",
+                    "Please select the operation you want to perform:\n " +
+                            "a. output the raw materials owned by the current purchasing department; \n" +
+                            "b. Obtain raw materials from the purchasing department; \n" +
+                            "c. Propose procurement requirements to the procurement department\n" +
+                            "exit. end program"
             );
-        } else {
-            OutputManager.getInstance().print(
-                    "采购失败!",
-                    "採購失敗!",
-                    "Purchasing Failed!"
-            );
+            Scanner scanner = new Scanner(System.in);
+            String operationType =scanner.nextLine();
+            if(operationType.equals("a")){
+                OutputManager.getInstance().print(
+                        "采购部门所拥有的原材料为:" + PurchaseDepartment.getInstance().rawMaterial,
+                        "采購部門所擁有的原材料為:"+ PurchaseDepartment.getInstance().rawMaterial,
+                        "The raw materials owned by the purchasing department are:"+ PurchaseDepartment.getInstance().rawMaterial
+                );
+            }
+            else if(operationType.equals("b")){
+                JSONObject apple = new JSONObject();
+                apple.put("ingredientType", "apple");
+                apple.put("count", 15);
+                JSONArray weights = PurchaseDepartment.getInstance().getIngredient(apple);
+                if(weights!=null){
+                    OutputManager.getInstance().print(
+                            "每个苹果的重量分别为:" + weights,
+                            "每個蘋果的重量分別為:" + weights,
+                            "The weight of each apple is:" + weights
+                    );
+                }
+            }
+            else if(operationType.equals("c")){
+                //创建购买需求
+                JSONArray demand = new JSONArray();
+
+                JSONObject apple = new JSONObject();
+                apple.put("ingredientType", "apple");
+                apple.put("count", 10);
+                JSONObject clove = new JSONObject();
+                clove.put("ingredientType", "clove");
+                clove.put("count", 20);
+                JSONObject peach = new JSONObject();
+                peach.put("ingredientType", "peach");
+                peach.put("count", 21);
+                JSONObject pear = new JSONObject();
+                pear.put("ingredientType", "pear");
+                pear.put("count", 23);
+                JSONObject salmon = new JSONObject();
+                salmon.put("ingredientType", "salmon");
+                salmon.put("count", 24);
+
+                demand.put(apple);
+                demand.put(clove);
+                demand.put(peach);
+                demand.put(pear);
+                demand.put(salmon);
+
+                //购买
+                if (PurchaseDepartment.getInstance().purchaseIngredient(demand)) {
+                    OutputManager.getInstance().print(
+                            "采购成功!",
+                            "採購成功!",
+                            "Purchasing Success! "
+                    );
+                } else {
+                    OutputManager.getInstance().print(
+                            "采购失败!",
+                            "採購失敗!",
+                            "Purchasing Failed!"
+                    );
+                }
+            }
+            else if(operationType.equals("exit")){
+                break;
+            }
+            else{
+                continue;
+            }
         }
+
+
     }
 
 }
