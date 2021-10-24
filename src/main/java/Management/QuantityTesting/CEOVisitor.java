@@ -17,17 +17,17 @@ public class CEOVisitor implements FactoryVisitor{
     public void visit(SecurityStaff staff) {
         OutputManager.getInstance().print(
                 "保安["+staff.getName()+"]"+"：工资为"+staff.getSalary(),
-                "警衛["+staff.getName()+"]"+"：薪水為"+staff.getPayment(),
-                "The security staff ["+staff.getName()+"]"+"：The salary is"+staff.getPayment()
+                "警衛["+staff.getName()+"]"+"：薪水為"+staff.getSalary(),
+                "The security staff ["+staff.getName()+"]"+"：The salary is"+staff.getSalary()
         );
     }
 
     @Override
     public void visit(Cleaner staff) {
         OutputManager.getInstance().print(
-                "保洁员["+staff.getName()+"]"+"：工资为"+staff.getPayment(),
-                "保潔員["+staff.getName()+"]"+"：薪水為"+staff.getPayment(),
-                "The cleaner ["+staff.getName()+"]"+"：The salary is"+staff.getPayment()
+                "保洁员["+staff.getName()+"]"+"：工资为"+staff.getSalary(),
+                "保潔員["+staff.getName()+"]"+"：薪水為"+staff.getSalary(),
+                "The cleaner ["+staff.getName()+"]"+"：The salary is"+staff.getSalary()
         );
     }
 }

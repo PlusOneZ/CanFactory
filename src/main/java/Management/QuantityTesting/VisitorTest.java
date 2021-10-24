@@ -4,10 +4,17 @@ import Management.HumanResources.Staff.Cleaner;
 import Management.HumanResources.Staff.SecurityStaff;
 import Presentation.Protocol.OutputManager;
 
+
+/**
+ * 观察者模式Visitor的测试类
+ *
+ * @author 汪明杰
+ * @since 2021-10-24 11:03
+ */
 public class VisitorTest {
     public static void main(String[] args) {
-        Cleaner cleaner = new Cleaner("张三");
-        SecurityStaff securityStaff = new SecurityStaff("李四");
+        Cleaner cleaner = new Cleaner("张三", 4000.0);
+        SecurityStaff securityStaff = new SecurityStaff("李四", 4500.0);
 
         OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         OutputManager.getInstance().print(

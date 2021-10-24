@@ -36,7 +36,7 @@ public class SecurityStaff extends Staff {
 
 
     public void accept(FactoryVisitor visitor) {
-        //visitor.visit(this);
+        visitor.visit(this);
     }
 
     // 检查的人的数量
