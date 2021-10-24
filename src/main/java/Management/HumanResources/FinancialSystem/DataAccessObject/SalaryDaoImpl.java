@@ -21,6 +21,9 @@ import java.util.List;
  */
 
 public class SalaryDaoImpl implements SalaryDao{
+    String filePath = "./src/main/java/Management/HumanResources/FinancialSystem/Salary.csv";
+    File file = new File(filePath);
+    CsvWriter csvWriter = new CsvWriter(filePath, ',', StandardCharsets.UTF_8);
 
     /**
      * SalaryDao接口的全局单例
@@ -44,14 +47,21 @@ public class SalaryDaoImpl implements SalaryDao{
         //设置脏标记为已访问
         this.visited=true;
 
-        File file = new File(filePath);
-        CsvWriter csvWriter = new CsvWriter(filePath, ',', StandardCharsets.UTF_8);
+
         if (!file.exists()){
             String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
             file.createNewFile();
             csvWriter.writeRecord(headers);
         }
+    }
 
+    /**
+     * 在所有写入完成后关闭文件
+     *
+     * @author 尚丙奇
+     * @since 2021-10-24 下午
+     */
+    public void closeFile(){
         csvWriter.close();
     }
 
@@ -63,7 +73,6 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     public static SalaryDaoImpl getInstance(){return instance;}
 
-    String filePath = "./src/main/java/Management/HumanResources/FinancialSystem/Salary.csv";
 
     /**
      * 脏标记模式的flag，visited为真表示已经访问过
@@ -121,17 +130,17 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void saveSalary(BaseDepartment department) throws IOException {
-        File file = new File(filePath);
-        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
-        if (!file.exists()){
-            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
-            file.createNewFile();
-            csvWriter.writeRecord(headers);
-        }
+//        File file = new File(filePath);
+//        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
+//        if (!file.exists()){
+//            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+//            file.createNewFile();
+//            csvWriter.writeRecord(headers);
+//        }
 
         List<BaseEmployee> employees = department.getAllEmployees();
 
-        for(BaseEmployee employee:employees){
+         for(BaseEmployee employee:employees){
             String[] content = new String[6];
             content[0] = employee.getName();
             content[1] = department.toString();
@@ -143,7 +152,6 @@ public class SalaryDaoImpl implements SalaryDao{
 
             csvWriter.writeRecord(content);
         }
-        csvWriter.close();
 
         this.setUnvisited();
     }
@@ -154,14 +162,14 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void updateSalary(BaseEmployee employee) throws IOException {
-        File file = new File(filePath);
-        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
-
-        if (!file.exists()){
-            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
-            file.createNewFile();
-            csvWriter.writeRecord(headers);
-        }
+//        File file = new File(filePath);
+//        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
+//
+//        if (!file.exists()){
+//            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+//            file.createNewFile();
+//            csvWriter.writeRecord(headers);
+//        }
 
         String[] content = new String[6];
         content[0] = employee.getName();
@@ -173,7 +181,7 @@ public class SalaryDaoImpl implements SalaryDao{
         content[5] = Double.toString(0.8 * employee.getSalary() * 40);
 
         csvWriter.writeRecord(content);
-        csvWriter.close();
+//        csvWriter.close();
 
         this.setUnvisited();
 
