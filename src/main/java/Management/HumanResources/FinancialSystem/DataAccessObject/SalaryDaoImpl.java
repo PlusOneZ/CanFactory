@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * SalaryDao接口的实现
- *<b>使用了 DAO 模式</b>
+ * <b>使用了 DAO 模式</b>
  *
  * @author 尚丙奇
  * @since 2021-10-22 15:20
@@ -87,6 +87,35 @@ public class SalaryDaoImpl implements SalaryDao{
 
             csvWriter.writeRecord(content);
         }
+        csvWriter.close();
+
+    }
+
+    /**
+     * 将一个员工的薪资写入到文件中
+     * @param employee
+     */
+    @Override
+    public void updateSalary(BaseEmployee employee) throws IOException {
+        File file = new File(filePath);
+        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
+
+        if (!file.exists()){
+            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+            file.createNewFile();
+            csvWriter.writeRecord(headers);
+        }
+
+        String[] content = new String[6];
+        content[0] = employee.getName();
+        content[1] = employee.getDepartment().toString();
+        content[2] = employee.getSalary().toString();
+        content[3] = Integer.toString(40);
+        Double tax = 0.2 * employee.getSalary() * 40;
+        content[4] = tax.toString();
+        content[5] = Double.toString(0.8 * employee.getSalary() * 40);
+
+        csvWriter.writeRecord(content);
         csvWriter.close();
 
     }

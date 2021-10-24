@@ -1,6 +1,7 @@
 package Management.HumanResources.FinancialSystem.DataAccessObject;
 
 import Management.HumanResources.BaseDepartment;
+import Management.HumanResources.BaseEmployee;
 
 import java.io.IOException;
 
@@ -15,4 +16,5 @@ public abstract interface SalaryDao {
         public Double getSumActualSalary(BaseDepartment department);
         public void setSalary(BaseDepartment department, String name, Double salary);
         public void saveSalary(BaseDepartment department) throws IOException;
+        public void updateSalary(BaseEmployee employee) throws IOException;
 }

@@ -1,6 +1,5 @@
 package Management.HumanResources;
 
-import Management.HumanResources.DataAccessObject.EmployeeDao;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;
@@ -39,7 +38,7 @@ public abstract class BaseEmployee {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setDepartment(DepartmentType department){
@@ -47,7 +46,7 @@ public abstract class BaseEmployee {
     }
 
     public DepartmentType getDepartment(){
-        return department;
+        return this.department;
     }
 
     public void setLeader(BaseEmployee leader){
@@ -55,7 +54,7 @@ public abstract class BaseEmployee {
     }
 
     public Double getSalary(){
-        return salary;
+        return this.salary;
     }
 
     public void setSalary(Double salary){
