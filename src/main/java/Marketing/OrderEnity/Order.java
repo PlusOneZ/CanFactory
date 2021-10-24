@@ -4,6 +4,7 @@ import Manufacturing.CanEntity.Can;
 import Marketing.Container;
 import Marketing.Iterator;
 import Marketing.OrderCenterEntity.OrderCenter;
+import Marketing.Promotion.Coupon;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -43,42 +44,73 @@ public class Order implements Container {
     private OrderAmount orderAmount;
 
     //订单下单时间
-    private LocalDateTime placingTime;
+    private Date placingTime;
 
     //订单发货时间
-    private LocalDateTime sendingTime;
+    private Date sendingTime;
 
     //订单交付完成时间
-    private LocalDateTime completionTime;
+    private Date completionTime;
 
     //订单最晚交付时间
     private Date latestDeliveryTime;
 
+
     /**
-     * TODO: 考虑订单中需要保存的用户信息;
      * 这边以一个地址暂且代替用户信息，订单中需要保存必要的订单信息;
      * 订单运送的地址
      */
     private String customerAddress;
 
+    public Date getPlacingTime(){
+        return this.placingTime;
+    }
+
+    public void setSendingTime(Date date){
+        this.sendingTime = date;
+    }
+
+    public void setCompletionTime(Date date){
+        this.completionTime = date;
+    }
+
+    public Date getSendingTime(){
+        return this.sendingTime;
+    }
+
+    public Date getCompletionTime(){
+        return this.completionTime;
+    }
+
     /**
     * 订单构造函数，传入订单罐头信息和订单价格
      * @param orderCanInformations :订单罐头信息
-     * @param orderAmount : 订单价格
      * @return : null
     * @author 王立友
     * @date 11:24 2021-10-15
     */
-    public Order(ArrayList<OrderCanInformation> orderCanInformations, OrderAmount orderAmount, Date latestDeliveryTime){
+    public Order(ArrayList<OrderCanInformation> orderCanInformations, Coupon coupon, Date latestDeliveryTime, String customerAddress){
         this.orderCanInformations = orderCanInformations;
         this.orderAmount = orderAmount;
-        this.placingTime = LocalDateTime.now();
         this.latestDeliveryTime = latestDeliveryTime;
         orderState = new OrderedOrderState();
         orderId = OrderIdGenerator.getGeneratID();
+        this.customerAddress = customerAddress;
+        this.placingTime = new Date();//当前时间
+        this.orderAmount = new OrderAmount(caculateOriginalPrice(), coupon);
         //生成与订单生成时间相关的随机且唯一ID标识
+
     }
 
+    public Integer caculateOriginalPrice(){
+        Integer price = new Integer(0);
+        //计算该订单的OrderAmount对象
+        for(Iterator it = getIterator(); it.hasNext();){
+            OrderCanInformation orderCanInformation = (OrderCanInformation) it.next();
+            price += (orderCanInformation.getCount()*orderCanInformation.getPrice());
+        }
+        return price;
+    }
     /**
      * 获得运货地址;
      * @return : java.lang.String
@@ -116,9 +148,6 @@ public class Order implements Container {
     * @author 王立友
     * @date 11:25 2021-10-15
     */
-    public void setDeliveryTime(LocalDateTime sendingTime) {
-        this.sendingTime = sendingTime;
-    }
 
     /**
     * 设置订单的完成时间
@@ -127,9 +156,6 @@ public class Order implements Container {
     * @author
     * @date 11:26 2021-10-15
     */
-    public void setCompletionTime(LocalDateTime completionTime) {
-        this.completionTime = completionTime;
-    }
 
     /**
      * 获取当前订单ID
