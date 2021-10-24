@@ -57,6 +57,37 @@ public abstract class BaseDepartment {
     }
 
     /**
+     * 根据姓名找到部门的某员工
+     * @param name
+     * @return employee
+     */
+    public BaseEmployee getEmployee(String name){
+
+        for(BaseEmployee employee:this.employees){
+            if(employee.getName() == name){
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取该部门的所有员工
+     * @return employees
+     */
+    public List<BaseEmployee> getAllEmployees(){
+        return this.employees;
+    }
+
+    /**
+     * 部门的名称
+     * @return
+     */
+    public String toString(){
+        return this.type.toString();
+    }
+
+    /**
      * 设置BaseDepartment当前的Command，如果Command授权部门不匹配则报错退出
      * <b>命令模式的一部分</b>
      * @param currentCommand :  当前可设置的command
