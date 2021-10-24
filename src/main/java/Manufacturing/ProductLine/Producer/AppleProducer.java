@@ -7,7 +7,7 @@ package Manufacturing.ProductLine.Producer;
  * @author 孟繁霖
  * @date 2021-10-12 8:55
  */
-public class AppleProducer implements FruitProducer {
+public class  AppleProducer implements FruitProducer {
     /**
      * TODO:水果罐头生产适配器
      */

@@ -1,19 +1,16 @@
 package Manufacturing.Machine;
 
-import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.Ingredient;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author 梁乔
+ * 机器
+ * @author 卓正一
+ * @since 2021-10-24 11:07 AM
  */
-public abstract class Machine {
-    private ArrayList<Can> CanList;
+public interface Machine {
+    Ingredient treat(Ingredient ingredient);
 
-    public void addNewCan(Can can){
-        CanList.add(can);
-    }
-
-    public abstract void createPackedCan();
+    Ingredient combine(Ingredient... ingredients);
 }

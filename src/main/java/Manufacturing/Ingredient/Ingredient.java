@@ -1,6 +1,7 @@
 package Manufacturing.Ingredient;
 
 import Presentation.Protocol.MultiLanguageDescription;
+import Presentation.Protocol.OutputManager;
 
 /**
  * 原料的接口，
@@ -14,4 +15,28 @@ public interface Ingredient extends MultiLanguageDescription {
      * @return 原料本身是什么的描述
      */
     String showContents();
+
+    /**
+     * 组合模式要求的接口，平时会打印错误并且不让操作，只有在 MixedIngredient 中会被覆盖并且允许添加。
+     * @author 卓正一
+     * @since 2021-10-24 11:16 AM
+     */
+    default void addIngredient(Ingredient i) {
+        String className = this.getClass().getTypeName();
+        OutputManager.getInstance().errorMassage(
+                className + " 不能增加内含物。",
+                className + " 不能增加內含物。",
+                className + " cannot have inner ingredients."
+        );
+    }
+
+    void setName(String zhCnName, String zhTwName, String enName);
+
+    void setCost(double cost);
+
+    void setWeight(double weight);
+
+    double getCost();
+
+    double getWeight();
 }

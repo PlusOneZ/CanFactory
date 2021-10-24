@@ -45,7 +45,7 @@ public class OutputManager {
 
     public Lang getLanguage() { return language; }
 
-    private Lang language;
+    private Lang language = Lang.zh_CN;
 
     /**
      * 向标准输出打印多语言信息
