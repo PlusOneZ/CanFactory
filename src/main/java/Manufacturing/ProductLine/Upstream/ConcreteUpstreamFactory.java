@@ -47,9 +47,9 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         ingredient.put("ingredientType", this.ingredient);
         ingredient.put("count", this.count);
         OutputManager.getInstance().print(
-                "当前上游工厂所拥有原材料及其重量为" + ingredient,
-                "當前上遊工廠所擁有原材料及其重量為" + ingredient,
-                "The current raw material and the weight owned by the upstream factory is" + ingredient
+                "当前上游工厂所拥有原材料及其个数为" + ingredient,
+                "當前上遊工廠所擁有原材料及其個數為" + ingredient,
+                "The current raw material and the count owned by the upstream factory is" + ingredient
         );
         return ingredient;
     }

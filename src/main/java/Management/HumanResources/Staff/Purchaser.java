@@ -39,7 +39,7 @@ public class Purchaser extends Staff {
                 //更新库存
                 PurchaseDepartment.getInstance().update(
                         result.getString("ingredientType"),
-                        result.getDouble("weight"),
+                        result.getInt("count"),
                         PurchaseDepartment.Status.IN);
 
                 return true;
