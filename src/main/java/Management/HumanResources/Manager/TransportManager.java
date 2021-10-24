@@ -1,7 +1,10 @@
 package Management.HumanResources.Manager;
 
 import Management.HumanResources.TeamLeader.Carrier;
+import Marketing.OrderEnity.Order;
 import Marketing.Scheme.TransportScheme;
+
+import java.util.List;
 
 /**
  * 委派模式
@@ -16,6 +19,15 @@ public class TransportManager extends Manager {
      */
     public TransportManager() {
         transportScheme = null;
+    }
+
+    /**
+     * 委派模式
+     * 运输经理负责运输
+     * @return 是否运输成功
+     */
+    public boolean transport(List<Order> orderList){
+        return true;
     }
 
     /**
