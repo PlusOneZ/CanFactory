@@ -11,16 +11,14 @@ import java.util.List;
  * @date 2021-10-12 8:49
  */
 public class AppleFilter implements Filter {
-    private final SizeFilter sizeFilter;
-    private final QualityFilter qualityFilter;
+    private final WeightFilter weightFilter;
 
-    public AppleFilter(int sizeCriterion, int qualityCriterion) {
-        this.sizeFilter = new SizeFilter(sizeCriterion);
-        this.qualityFilter = new QualityFilter(qualityCriterion);
+    public AppleFilter(Double weightCriterion) {
+        this.weightFilter = new WeightFilter(weightCriterion);
     }
 
     @Override
     public List<RawMaterial> select(List<RawMaterial> rawMaterialList) {
-        return qualityFilter.select(sizeFilter.select(rawMaterialList));
+        return weightFilter.select(rawMaterialList);
     }
 }

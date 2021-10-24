@@ -8,29 +8,15 @@ package Manufacturing.ProductLine.RawMaterial;
  */
 public class Peach extends RawMaterial {
 
-    public Peach(int size, int quality) {
-        super.setSize(size);
-        super.setQuality(quality);
+    public Peach(Double weight) {
+        super.setWeight(weight);
         super.setKind("peach");
-    }
-
-    public int getSize() {
-        return super.getSize();
-    }
-
-    public int getQuality() {
-        return super.getQuality();
-    }
-
-    public String getKind() {
-        return super.getKind();
     }
 
     @Override
     public String toString() {
         return "Peach{" +
-                "quality=" + super.getQuality() +
-                ", size=" + super.getSize() +
+                "weight=" + super.getWeight() +
                 '}';
     }
 }
