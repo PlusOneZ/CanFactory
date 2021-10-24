@@ -1,12 +1,9 @@
 package Management.HumanResources;
 
 import Management.HumanResources.Manager.TransportManager;
-import Marketing.OrderCenterEntity.OrderCenter;
-import Marketing.OrderCenterEntity.OrderProcessingCenter;
-import Marketing.OrderEnity.Order;
 import Presentation.Protocol.OutputManager;
+import Storage.TransportationCan;
 
-import java.util.List;
 
 /**
  * 运输部门
@@ -18,6 +15,7 @@ public class TransportDepartment extends BaseDepartment {
 
     private TransportDepartment() {
 
+        //TODO:这里需要修改一个运输部门的Type，为了防止Confilct 这里暂时还没有写
         this.type = DepartmentType.None;
 
         this.transportManager = new TransportManager();
@@ -42,15 +40,14 @@ public class TransportDepartment extends BaseDepartment {
     /**
      * 运输部门运输罐头
      *
-     * @return 运输是否成功
      */
-    public boolean transportCans(List<Order> orderList) {
+    public void transportCans(TransportationCan transportationCan) {
         OutputManager.getInstance().print(
-                "从订单中心获取订单......",
-                "從訂單中心獲取訂單......",
-                "From OrderProcessingCenter Getting Orders......"
+                "运输部正在准备运输罐头......",
+                "運輸部正在準備運輸罐頭......",
+                "The transportDepartment is preparing to transport the cans......"
         );
-        return this.transportManager.transport(orderList);
+        this.transportManager.transport(transportationCan);
     }
 
     // 运输部经理
@@ -58,31 +55,6 @@ public class TransportDepartment extends BaseDepartment {
     //采购部门实体
     static private TransportDepartment instance;
 
-
-    /**
-     * TODO: 可能需要单独提出来作为一个测试类
-     * 运输罐头过程测试函数
-     *
-     * @author 吴英豪
-     * @since 2021/10/24
-     */
-    public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
-
-        if (TransportDepartment.getInstance().transportCans(OrderProcessingCenter.getPendingOrders())) {
-            OutputManager.getInstance().print(
-                    "运输成功!",
-                    "運輸成功!",
-                    "Transporting Success! "
-            );
-        } else {
-            OutputManager.getInstance().print(
-                    "运输失败!",
-                    "運輸失敗!",
-                    "Transporting Failed!"
-            );
-        }
-    }
 }
 
 
