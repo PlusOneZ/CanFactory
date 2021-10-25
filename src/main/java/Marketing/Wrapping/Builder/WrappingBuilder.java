@@ -15,7 +15,8 @@ public abstract class WrappingBuilder {
 
     abstract void buildWrappingCanInfo(WrappingCanInfo wrappingCanInfo);
     abstract void buildWrappingFactoryInfo(WrappingFactoryInfo wrappingFactoryInfo);
-    // add the ad.
-    abstract WrappingCover build();
+    abstract void buildWrappingBackground(String wrappingBackground);
+
+    public abstract WrappingCover build();
 
 }

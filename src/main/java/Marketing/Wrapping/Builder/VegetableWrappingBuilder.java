@@ -1,17 +1,20 @@
-package Marketing.Wrapping.Builder;
+package
+        Marketing.Wrapping.Builder;
 
-import Marketing.Wrapping.Cover.FruitWrappingCover;
-import Marketing.Wrapping.WrappingCanInfo;
+import Marketing.Wrapping.Cover.VegetableWrappingCover;
 import Marketing.Wrapping.Cover.WrappingCover;
+import Marketing.Wrapping.WrappingCanInfo;
 import Marketing.Wrapping.WrappingFactoryInfo;
 
 /**
- * @Author 王立友
- * Builder模式的具体实现，可以通过组装方式
+ * 蔬菜类的建造者;
+ *
+ * @author 王立友
+ * @date 2021/10/25 0:59
  */
-public class FruitWrappingBuilder extends WrappingBuilder {
+public class VegetableWrappingBuilder extends WrappingBuilder{
 
-    private final WrappingCover wrappingCover = new FruitWrappingCover();
+    private final WrappingCover wrappingCover = new VegetableWrappingCover();
 
     @Override
     void buildWrappingCanInfo(WrappingCanInfo wrappingCanInfo){
