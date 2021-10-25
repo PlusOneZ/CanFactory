@@ -12,28 +12,37 @@ import java.util.Random;
  * @author 香宁雨
  * @since 2021/10/11 23:28
  */
-
 public class ConcreteUpstreamFactory implements UpstreamFactory {
     private String ingredient;
 
-    private Double weight;
+    private Integer count;
 
     private String[] ingredientType = new String[]{"apple", "clove", "peach", "pear", "salmon"};
 
+    /**
+     * TODO:随机生成上游工厂的种类和数量
+     * @author 香宁雨
+     * @since 16:42 2021-10-24
+     */
     public ConcreteUpstreamFactory() {
         Random r = new Random();
         Integer i = r.nextInt(ingredientType.length);
         this.ingredient = ingredientType[i];
-        this.weight = r.nextDouble() * 10;
+        this.count = r.nextInt(25) + 25;
         OutputManager.getInstance().print(
-                "新建了上游工厂",
-                "新建了上遊工廠",
-                "Create a new upstream factory"
+                "正在分配上游工厂...",
+                "正在分配上遊工廠...",
+                "Assigning upstream factory..."
         );
     }
 
+    /**
+     * TODO:从上游工厂购买产品并且将上游工厂中数量设置为0
+     * @author 香宁雨
+     * @since 16:44 2021-10-24
+     */
     public void purchase() {
-        weight = 0.0;
+        count = 0;
         OutputManager.getInstance().print(
                 "成功从上游工厂进行购买",
                 "成功從上遊工廠進行購買",
@@ -41,22 +50,23 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         );
     }
 
+    /**
+     * TODO:获取上游工厂所拥有的原材料信息
+     * @return : org.json.JSONObject
+     * @author 香宁雨
+     * @since 16:08 2021-10-24
+     */
     @Override
     public JSONObject getInfo() {
         JSONObject ingredient = new JSONObject();
         ingredient.put("ingredientType", this.ingredient);
-        ingredient.put("weight", this.weight);
+        ingredient.put("count", this.count);
         OutputManager.getInstance().print(
-                "当前上游工厂所拥有原材料及其重量为" + ingredient,
-                "當前上遊工廠所擁有原材料及其重量為" + ingredient,
-                "The current raw material and the weight owned by the upstream factory is" + ingredient
+                "当前上游工厂所拥有原材料及其个数为" + ingredient,
+                "當前上遊工廠所擁有原材料及其個數為" + ingredient,
+                "The current raw material and the count owned by the upstream factory is" + ingredient
         );
         return ingredient;
     }
-
-
-    public static void main(String[] args) {
-    }
-
 
 }

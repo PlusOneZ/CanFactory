@@ -7,14 +7,14 @@ import Presentation.Protocol.OutputManager;
  * <b>作为 Composite模式 的一部分</b>
  * @author 卓正一
  */
-public abstract class BaseIngredient implements Ingredient{
+public abstract class BaseIngredient implements Ingredient {
 
     @Override
-    public final String showContents() {
+    public String showContents() {
         return OutputManager.getInstance().selectStringForCurrentLanguage(
-                zhCnName,
-                zhTwName,
-                enName
+                zhCnDescription(),
+                zhTwDescription(),
+                enDescription()
         );
     }
 
@@ -37,5 +37,50 @@ public abstract class BaseIngredient implements Ingredient{
     private String zhTwName;
     private String enName;
 
+
+    @Override
+    public String zhCnDescription() {
+        return zhCnName+"{" +
+                "质量=" + weight +
+                '}';
+    }
+
+    @Override
+    public String zhTwDescription() {
+        return zhTwName+"{" +
+                "質量=" + weight +
+                '}';
+    }
+
+    @Override
+    public String enDescription() {
+        return enName+"{" +
+                "weight=" + weight +
+                '}';
+    }
+
     protected String baseIngredient;
+
+    private double cost;
+    private double weight;
+
+    @Override
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    @Override
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public double getCost() {
+        return cost;
+    }
+
+    @Override
+    public double getWeight() {
+        return weight;
+    }
 }

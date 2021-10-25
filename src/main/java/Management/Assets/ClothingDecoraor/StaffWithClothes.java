@@ -1,6 +1,7 @@
-package Management.Resources.ClothingDecoraor;
+package Management.Assets.ClothingDecoraor;
 
-import Management.Resources.Staff.Staff;
+
+import Management.HumanResources.Staff.Staff;
 import Presentation.Protocol.OutputManager;
 
 /**

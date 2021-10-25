@@ -27,6 +27,11 @@ public class TransportationCan {
     private String customerAddress;
 
     /**
+     * 订单中的订单ID
+     */
+    private Long orderId;
+
+    /**
      * 构造函数
      * @param latestDeliveryTime : 最晚交付时间
      * @param customerAddress :  顾客地址(暂且代表顾客信息)
@@ -53,6 +58,10 @@ public class TransportationCan {
         return latestDeliveryTime;
     }
 
+    public Long getOrderId(){
+        return orderId;
+    }
+
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
     }
@@ -63,5 +72,9 @@ public class TransportationCan {
 
     public void setStockCans(ArrayList<StockCan> stockCans) {
         this.stockCans = stockCans;
+    }
+
+    public void setOrderId(Long OrderId){
+        this.orderId = OrderId;
     }
 }

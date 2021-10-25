@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine.Filter;
 
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 
 import java.util.List;
 
@@ -13,16 +13,14 @@ import java.util.List;
  */
 public class PeachFilter implements Filter {
 
-    private final SizeFilter sizeFilter;
-    private final QualityFilter qualityFilter;
+    private final WeightFilter weightFilter;
 
-    public PeachFilter(int sizeCriterion, int qualityCriterion) {
-        this.sizeFilter = new SizeFilter(sizeCriterion);
-        this.qualityFilter = new QualityFilter(qualityCriterion);
+    public PeachFilter(Double weightCriterion) {
+        this.weightFilter = new WeightFilter(weightCriterion);
     }
 
     @Override
-    public List<RawMaterial> select(List<RawMaterial> rawMaterialList) {
-        return qualityFilter.select(sizeFilter.select(rawMaterialList));
+    public List<BaseIngredient> select(List<BaseIngredient> baseIngredientList) {
+        return weightFilter.select(baseIngredientList);
     }
 }

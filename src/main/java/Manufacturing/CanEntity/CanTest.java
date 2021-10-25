@@ -12,6 +12,7 @@ import Manufacturing.CanEntity.Size.BigSize;
 public class CanTest {
     public static void main(String[] args) {
         Can vegetableCan = new VegetableCan(BigSize.getInstance(), IronMaterial.getInstance());
+        vegetableCan.setName("蔬菜罐头", "蔬菜罐頭", "Vegetable Can");
         System.out.println(vegetableCan.getCanName());
     }
 }

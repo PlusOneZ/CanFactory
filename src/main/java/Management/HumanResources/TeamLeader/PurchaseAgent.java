@@ -1,8 +1,13 @@
 package Management.HumanResources.TeamLeader;
 
 import Management.HumanResources.Staff.Purchaser;
+import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
 import Marketing.Scheme.PurchaseScheme;
 import Presentation.Protocol.OutputManager;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 采购代理
@@ -32,11 +37,43 @@ public class PurchaseAgent extends TeamLeader {
                 "PurchaseAgent arrange the purchaser..."
         );
 
-        boolean result = true;
-        for (int i=0;i<scheme.getScheme().size();i++){
+        List<Purchaser> purchaserList = new ArrayList<Purchaser>();
+
+        for (int i = 0; i < scheme.getScheme().size(); i++) {
             Purchaser purchaser = new Purchaser();
-            result &= purchaser.purchaseMaterial(scheme.getScheme().get(i));
+            //安排上游工厂
+            dispatchFactory(purchaser);
+            purchaserList.add(purchaser);
         }
-        return result;
+
+        for (int i = 0;i<purchaserList.size();i++) {
+            JSONObject plan = scheme.getScheme().get(i);
+            OutputManager.getInstance().print(
+                    (i+1)+"号采购员正在购买：" + plan.getString("ingredientType"),
+                    (i+1)+"號採購員正在購買：" + plan.getString("ingredientType"),
+                    "No."+(i+1)+"purchaser is purchasing: " + plan.getString("ingredientType")
+            );
+            while(!purchaserList.get(i).purchaseMaterial(plan)){
+                OutputManager.getInstance().print(
+                        "采购失败，正在重新购买......",
+                        "採購失敗，正在重新購買......",
+                        "Purchasing Failed,purchasing again......"
+                );
+                dispatchFactory(purchaserList.get(i));
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 分配上游工厂
+     * @param purchaser 采购员
+     */
+    public void dispatchFactory(Purchaser purchaser){
+        purchaser.clearFactory();
+        for (int j = 0; j < 10; j++) {
+            purchaser.addFactory(new ConcreteUpstreamFactory());
+        }
     }
 }

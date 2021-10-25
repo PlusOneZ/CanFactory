@@ -20,13 +20,16 @@ public abstract class MixedIngredient implements Ingredient {
     public final String showContents() {
         StringBuilder ret = new StringBuilder(
                 OutputManager.getInstance().selectStringForCurrentLanguage(
-                        zhCnName,
-                        zhTwName,
-                        enName
+                        zhCnDescription(),
+                        zhTwDescription(),
+                        enDescription()
                 )
-                + " (");
-        for (Ingredient i : contentIngredients ) {
-            ret.append(i.showContents());
+                + "(");
+        for (int i = 0; i < contentIngredients.size(); i++) {
+            ret.append(contentIngredients.get(i).showContents());
+            if (i != contentIngredients.size() - 1) {
+                ret.append(", ");
+            }
         }
         ret.append(") ");
         return ret.toString();
@@ -52,6 +55,15 @@ public abstract class MixedIngredient implements Ingredient {
     }
 
     /**
+     * 组合模式，用于增加组合方式
+     * @author 卓正一
+     * @since 2021-10-24 3:15 PM
+     */
+    public void addIngredient(Ingredient i) {
+        contentIngredients.add(i);
+    }
+
+    /**
      * 以下三属性是为了多语言输出准备的。
      * @since 2021-10-11 11:02 PM
      */
@@ -59,9 +71,43 @@ public abstract class MixedIngredient implements Ingredient {
     private String zhTwName;
     private String enName;
 
-    public void addIngredient(Ingredient i) {
-        contentIngredients.add(i);
+    protected List<Ingredient> contentIngredients;
+
+    @Override
+    public String zhCnDescription() {
+        return zhCnName;
     }
 
-    protected List<Ingredient> contentIngredients;
+    @Override
+    public String zhTwDescription() {
+        return zhTwName;
+    }
+
+    @Override
+    public String enDescription() {
+        return enName;
+    }
+
+    private double cost;
+    private double weight;
+
+    @Override
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    @Override
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public double getCost() {
+        return cost;
+    }
+
+    @Override
+    public double getWeight() {
+        return weight;
+    }
 }

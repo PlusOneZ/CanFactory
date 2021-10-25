@@ -1,8 +1,8 @@
-package Management.Resources.ClothingDecoraor;
+package Management.Assets.ClothingDecoraor;
 
-import Management.Resources.Staff.Cleaner;
-import Management.Resources.Staff.SecurityStaff;
-import Management.Resources.Staff.Staff;
+import Management.HumanResources.Staff.Cleaner;
+import Management.HumanResources.Staff.SecurityStaff;
+import Management.HumanResources.Staff.Staff;
 import Presentation.Protocol.OutputManager;
 
 public class DecoratorTest {

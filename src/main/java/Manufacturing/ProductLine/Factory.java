@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine;
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;
@@ -54,29 +54,29 @@ public abstract class Factory {
     public final void produceCan(String canKind, String canName, int materialCount, String produceManner) {
 
 
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "**************采购**************",
                 "**************采購**************",
                 "************Purchase************"
         );
 
         //购买原材料
-        List<RawMaterial> rawMaterialList = supplier.provide(canName, materialCount);
-        if (rawMaterialList != null) {
-            OutputManager.getInstance().errorMassage(
+        List<BaseIngredient> baseIngredientList = supplier.provide(canName, materialCount);
+        if (baseIngredientList != null) {
+            OutputManager.getInstance().print(
                     "********购买成功,原料如下********",
                     "********購買成功,原料如下********",
                     "Purchase successfully, the raw materials are as follows"
             );
-            for (RawMaterial rawMaterial : rawMaterialList) {
-                OutputManager.getInstance().errorMassage(
-                        rawMaterial.toString(),
-                        rawMaterial.toString(),
-                        rawMaterial.toString()
+            for (BaseIngredient baseIngredient : baseIngredientList) {
+                OutputManager.getInstance().print(
+                        baseIngredient.zhCnDescription(),
+                        baseIngredient.zhTwDescription(),
+                        baseIngredient.enDescription()
                 );
             }
         } else {
-            OutputManager.getInstance().errorMassage(
+            OutputManager.getInstance().print(
                     "*************购买失败************",
                     "*************購買失敗************",
                     "*******Failed purchase*******");
@@ -86,11 +86,11 @@ public abstract class Factory {
         //获得相应种类的生产线并进行预处理和生产加工
         if ("fruit".equals(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
-            int count = (fruitLine.preTreat(rawMaterialList)).size();
+            int count = (fruitLine.preTreat(baseIngredientList)).size();
             fruitLine.produce(count, produceManner);
         } else if ("fresh".equals(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
-            int count = (freshLine.preTreat(rawMaterialList)).size();
+            int count = (freshLine.preTreat(baseIngredientList)).size();
             freshLine.produce(count);
         }
     }

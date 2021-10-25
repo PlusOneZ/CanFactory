@@ -8,7 +8,7 @@ import Manufacturing.CanEntity.Size.Size;
 import Manufacturing.Ingredient.Ingredient;
 import Presentation.Protocol.OutputManager;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -81,14 +81,14 @@ public abstract class Can implements Testable {
      * 实现：汪明杰
      * @since 2021-10-12 4:54 PM
      */
-    private Date shelfTime;
+    private LocalDate shelfTime;
 
     /**
      * 生产时间
      * 实现：汪明杰
      * @since 2021-10-12 4:55 PM
      */
-    private Date manufactureTime;
+    private LocalDate manufactureTime;
 
     /**
      * 最高储存温度
@@ -280,19 +280,19 @@ public abstract class Can implements Testable {
         return "";
     }
 
-    public Date getShelfTime() {
+    public LocalDate getShelfTime() {
         return shelfTime;
     }
 
-    public void setShelfTime(Date shelfTime) {
+    public void setShelfTime(LocalDate shelfTime) {
         this.shelfTime = shelfTime;
     }
 
-    public Date getManufactureTime() {
+    public LocalDate getManufactureTime() {
         return manufactureTime;
     }
 
-    public void setManufactureTime(Date manufactureTime) {
+    public void setManufactureTime(LocalDate manufactureTime) {
         this.manufactureTime = manufactureTime;
     }
 

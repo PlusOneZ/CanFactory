@@ -7,42 +7,36 @@ import Presentation.Protocol.OutputManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Console;
+import java.util.Random;
+import java.util.Scanner;
+
 
 /**
- * TODO:获取原材料信息并对其进行筛选
- * 实现了规约模式
+ * TODO:采购部门，采用单例模式，继承了BaseDepartment
  *
  * @author 香宁雨
  * @since 2021/10/11 23:45
  */
-
 public class PurchaseDepartment extends BaseDepartment {
 
+
+    private JSONArray rawMaterial;
+    private PurchaseManager purchaseManager = new PurchaseManager();
+    static private PurchaseDepartment instance;
+
+    /**
+     * TODO:PurchaseDepartment的构造函数
+     *
+     * @return : null
+     * @author 香宁雨
+     * @since 15:16 2021-10-24
+     */
     private PurchaseDepartment() {
 
         this.type = DepartmentType.Purchase;
 
-        JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "apple");
-        apple.put("weight", 0.0);
-        JSONObject clove = new JSONObject();
-        clove.put("ingredientType", "clove");
-        clove.put("weight", 0.0);
-        JSONObject peach = new JSONObject();
-        peach.put("ingredientType", "peach");
-        peach.put("weight", 0.0);
-        JSONObject pear = new JSONObject();
-        pear.put("ingredientType", "pear");
-        pear.put("weight", 0.0);
-        JSONObject salmon = new JSONObject();
-        salmon.put("ingredientType", "salmon");
-        salmon.put("weight", 0.0);
-
-        rawMaterial.put(apple);
-        rawMaterial.put(clove);
-        rawMaterial.put(peach);
-        rawMaterial.put(pear);
-        rawMaterial.put(salmon);
+        rawMaterial = generateMaterialList();
 
         OutputManager.getInstance().print(
                 "新建了一个采购部门",
@@ -51,41 +45,6 @@ public class PurchaseDepartment extends BaseDepartment {
         );
     }
 
-    private JSONArray rawMaterial = new JSONArray();
-    private PurchaseManager purchaseManager = new PurchaseManager();
-    static private PurchaseDepartment instance;
-
-//
-//    /**
-//     * TODO:规约模式 代表是否满足采购的条件
-//     *
-//     * @param type :采购的种类
-//     * @return : boolean
-//     * @author 香宁雨
-//     * @since 2:27 2021-10-16
-//     */
-//    private boolean isSatisfiedBy(String type) {
-//        for (Object ingredient : rawMaterial) {
-//            String a = ((JSONObject) ingredient).getString("ingredientType");
-//            if (type == a)
-//                return true;
-//        }
-//        return false;
-//    }
-
-    /**
-     * 单例模式
-     * 采购部门
-     *
-     * @since 2021-10-20 09:04
-     * @return  采购部门单例
-     */
-    public static PurchaseDepartment getInstance(){
-        if(instance == null){
-            instance = new PurchaseDepartment();
-        }
-        return instance;
-    }
     /**
      * TODO:用于获取当前type在rawMaterial中的index
      */
@@ -99,6 +58,55 @@ public class PurchaseDepartment extends BaseDepartment {
     }
 
     /**
+     * TODO:初始化一个原材料的list
+     *
+     * @return : org.json.JSONArray
+     * @author 香宁雨
+     * @since 15:17 2021-10-24
+     */
+    public JSONArray generateMaterialList() {
+        JSONArray material = new JSONArray();
+        JSONObject apple = new JSONObject();
+        apple.put("ingredientType", "apple");
+        apple.put("count", 30);
+        JSONObject clove = new JSONObject();
+        clove.put("ingredientType", "clove");
+        clove.put("count", 0);
+        JSONObject peach = new JSONObject();
+        peach.put("ingredientType", "peach");
+        peach.put("count", 0);
+        JSONObject pear = new JSONObject();
+        pear.put("ingredientType", "pear");
+        pear.put("count", 0);
+        JSONObject salmon = new JSONObject();
+        salmon.put("ingredientType", "salmon");
+        salmon.put("count", 0);
+
+        material.put(apple);
+        material.put(clove);
+        material.put(peach);
+        material.put(pear);
+        material.put(salmon);
+
+        return material;
+    }
+
+    /**
+     * 单例模式
+     * 采购部门
+     *
+     * @return 采购部门单例
+     * @since 2021-10-20 09:04
+     */
+    public static PurchaseDepartment getInstance() {
+        if (instance == null) {
+            instance = new PurchaseDepartment();
+        }
+        return instance;
+    }
+
+
+    /**
      * TODO:用于描述对库存的状态，其中IN为装入库存，OUT为取出库存
      */
     public enum Status {
@@ -107,26 +115,30 @@ public class PurchaseDepartment extends BaseDepartment {
 
     /**
      * TODO:用于对库存进行更新
-     * @param type :原材料的种类
-     * @param weight :原材料的重量
-     * @param state :原材料需要更新的状态
+     *
+     * @param type  :原材料的种类
+     * @param count :原材料的个数
+     * @param state :原材料需要更新的状态0
      * @return : boolean 是否成功更新
      * @author 香宁雨
      * @since 13:40 2021-10-19
      */
-    public boolean update(String type, Double weight, Status state) {
+    public boolean update(String type, Integer count, Status state) {
+        OutputManager.getInstance().print(
+                "正在更新库存...",
+                "正在更新庫存...",
+                "Updating inventory..."
+        );
+        Integer index = indexOfRawMaterial(type);
+        Integer curCount = rawMaterial.getJSONObject(index).getInt("count");
         if (state == Status.IN) {
-            Integer index = indexOfRawMaterial(type);
-            Double curWeight = rawMaterial.getJSONObject(index).getDouble("weight");
-            curWeight += weight;
-            rawMaterial.getJSONObject(index).put("weight", curWeight);
+            curCount += count;
+            rawMaterial.getJSONObject(index).put("count", curCount);
             return true;
         } else {
-            Integer index = indexOfRawMaterial(type);
-            Double curWeight = rawMaterial.getJSONObject(index).getDouble("weight");
-            if (Double.doubleToLongBits(curWeight) >= Double.doubleToLongBits(weight)) {
-                curWeight -= weight;
-                rawMaterial.getJSONObject(index).put("weight", curWeight);
+            if (Double.doubleToLongBits(curCount) >= Double.doubleToLongBits(count)) {
+                curCount -= count;
+                rawMaterial.getJSONObject(index).put("count", curCount);
                 return true;
             }
             return false;
@@ -134,8 +146,9 @@ public class PurchaseDepartment extends BaseDepartment {
     }
 
     /**
-     * TODO:生产部门所调用的购买接口
-     * @param material : JSONArray 传入JSONArray，其中包括所需要的所有原材料以及其所需要的重量
+     * TODO:生产部门所调用的购买接口，采用责任链模式
+     *
+     * @param material : JSONArray 传入JSONArray，其中包括所需要的所有原材料以及其所需要的个数
      * @return : boolean 是否购买成功
      * @author 香宁雨
      * @since 13:43 2021-10-19
@@ -150,68 +163,138 @@ public class PurchaseDepartment extends BaseDepartment {
     }
 
     /**
-     * TODO:原材料加工时从采购部门获得所有的原料
-     * @param material : JSONObject 所需要的原料，每次只传入一个
-     * @return : boolean
+     * TODO: 原材料加工时需要从采购部门获得的材料
+     *
+     * @param material :  所需要的原材料，包括所需要材料的类型和个数
+     * @return : org.json.JSONArray 返回一个重量的JSONArray，代表每个原材料的重量，单位为g
      * @author 香宁雨
-     * @since 13:48 2021-10-19
+     * @since 15:19 2021-10-24
      */
-    public boolean getIngredient(JSONObject material) {
+    public JSONArray getIngredient(JSONObject material) {
+        OutputManager.getInstance().print(
+                "正在从采购部门获取原料...",
+                "正在從采購部門獲取原料..." ,
+                "Obtaining raw materials from purchasing department..."
+        );
+
+        JSONArray ingredient = new JSONArray();
         String type = material.getString("ingredientType");
-        Double weight = material.getDouble("weight");
-        System.out.println(update(type, weight, Status.OUT));
-        if (update(type, weight, Status.OUT)) return true;
-        return false;
+        Integer count = material.getInt("count");
+        if (update(type, count, Status.OUT)) {
+            for (Integer i = 0; i < count; i++) {
+                Random r = new Random();
+                Double weight = r.nextDouble() * 200 + 100;
+                ingredient.put(weight);
+            }
+            OutputManager.getInstance().print(
+                    "成功从采购部门获取原材料",
+                    "成功從采購部門獲取原材料",
+                    "Successfully obtain raw materials from purchasing department"
+            );
+        }
+        else{
+            ingredient = null;
+            OutputManager.getInstance().errorMassage(
+                    "采购部门库存不足，未获取到原材料！",
+                    "采購部門庫存不足，未獲取到原材料！",
+                    "The purchasing department has insufficient inventory and has not obtained raw materials!"
+            );
+        }
+        return ingredient;
     }
+
 
     /**
      * 采购流程的测试函数
+     *
      * @param args main函数参数args
      */
     public static void main(String[] args) {
         // 设置语言
         OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
-        //创建购买需求
-        JSONArray demand = new JSONArray();
-
-        JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "apple");
-        apple.put("weight", 10.0);
-        JSONObject clove = new JSONObject();
-        clove.put("ingredientType", "clove");
-        clove.put("weight", 20.0);
-        JSONObject peach = new JSONObject();
-        peach.put("ingredientType", "peach");
-        peach.put("weight", 30.0);
-        JSONObject pear = new JSONObject();
-        pear.put("ingredientType", "pear");
-        pear.put("weight", 40.0);
-        JSONObject salmon = new JSONObject();
-        salmon.put("ingredientType", "salmon");
-        salmon.put("weight", 50.0);
-
-        demand.put(apple);
-        demand.put(clove);
-        demand.put(peach);
-        demand.put(pear);
-        demand.put(salmon);
-
-        //购买
-        if(PurchaseDepartment.getInstance().purchaseIngredient(demand)){
+        while(true){
             OutputManager.getInstance().print(
-                    "采购成功!",
-                    "採購成功!",
-                    "Purchasing Success! "
+                    "请选择想要进行的操作：\na. 输出当前采购部门中所拥有的原材料;\nb. 从采购部门获取原材料;\nc. 向采购部门提出采购需求;\nexit. 退出",
+                    "請選擇想要進行的操作：\na. 輸出當前采購部門中所擁有的原材料;\nb. 從采購部門獲取原材料;\nc. 向采購部門提出采購需求;\nexit. 退出",
+                    "Please select the operation you want to perform:\n " +
+                            "a. output the raw materials owned by the current purchasing department; \n" +
+                            "b. Obtain raw materials from the purchasing department; \n" +
+                            "c. Propose procurement requirements to the procurement department\n" +
+                            "exit. end program"
             );
+            Scanner scanner = new Scanner(System.in);
+            String operationType =scanner.nextLine();
+            if(operationType.equals("a")){
+                OutputManager.getInstance().print(
+                        "采购部门所拥有的原材料为:" + PurchaseDepartment.getInstance().rawMaterial,
+                        "采購部門所擁有的原材料為:"+ PurchaseDepartment.getInstance().rawMaterial,
+                        "The raw materials owned by the purchasing department are:"+ PurchaseDepartment.getInstance().rawMaterial
+                );
+            }
+            else if(operationType.equals("b")){
+                JSONObject apple = new JSONObject();
+                apple.put("ingredientType", "apple");
+                apple.put("count", 15);
+                JSONArray weights = PurchaseDepartment.getInstance().getIngredient(apple);
+                if(weights!=null){
+                    OutputManager.getInstance().print(
+                            "每个苹果的重量分别为:" + weights,
+                            "每個蘋果的重量分別為:" + weights,
+                            "The weight of each apple is:" + weights
+                    );
+                }
+            }
+            else if(operationType.equals("c")){
+                //创建购买需求
+                JSONArray demand = new JSONArray();
+
+                JSONObject apple = new JSONObject();
+                apple.put("ingredientType", "apple");
+                apple.put("count", 10);
+                JSONObject clove = new JSONObject();
+                clove.put("ingredientType", "clove");
+                clove.put("count", 20);
+                JSONObject peach = new JSONObject();
+                peach.put("ingredientType", "peach");
+                peach.put("count", 21);
+                JSONObject pear = new JSONObject();
+                pear.put("ingredientType", "pear");
+                pear.put("count", 23);
+                JSONObject salmon = new JSONObject();
+                salmon.put("ingredientType", "salmon");
+                salmon.put("count", 24);
+
+                demand.put(apple);
+                demand.put(clove);
+                demand.put(peach);
+                demand.put(pear);
+                demand.put(salmon);
+
+                //购买
+                if (PurchaseDepartment.getInstance().purchaseIngredient(demand)) {
+                    OutputManager.getInstance().print(
+                            "采购成功!",
+                            "採購成功!",
+                            "Purchasing Success! "
+                    );
+                } else {
+                    OutputManager.getInstance().print(
+                            "采购失败!",
+                            "採購失敗!",
+                            "Purchasing Failed!"
+                    );
+                }
+            }
+            else if(operationType.equals("exit")){
+                break;
+            }
+            else{
+                continue;
+            }
         }
-        else{
-            OutputManager.getInstance().print(
-                    "采购失败!",
-                    "採購失敗!",
-                    "Purchasing Failed!"
-            );
-        }
+
+
     }
 
 }

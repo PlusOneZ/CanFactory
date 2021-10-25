@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine.Pretreatment;
 
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ public interface Pretreatment {
     /**
      * TODO:处理方法，对原料列表预处理
      *
-     * @param rawMaterialList :  原材料列表
+     * @param baseIngredientList :  原材料列表
      * @return : java.util.List<Manufacturing.ProductLine.Fruit.RawMaterial>
      * @author 孟繁霖
      * @date 2021-10-11 23:28
      */
-    List<RawMaterial> treat(List<RawMaterial> rawMaterialList);
+    List<BaseIngredient> treat(List<BaseIngredient> baseIngredientList);
 }

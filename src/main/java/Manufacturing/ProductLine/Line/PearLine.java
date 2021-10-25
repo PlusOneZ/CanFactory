@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine.Line;
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.PearProducer;
 import Presentation.Protocol.OutputManager;
@@ -15,32 +15,37 @@ import java.util.List;
  */
 public class PearLine implements FruitLine {
     @Override
-    public List<RawMaterial> preTreat(List<RawMaterial> rawMaterialList) {
-        OutputManager.getInstance().errorMassage(
+    public List<BaseIngredient> preTreat(List<BaseIngredient> baseIngredientList) {
+        OutputManager.getInstance().print(
                 "******正在对梨进行预处理********",
                 "******正在對梨進行預處理********",
                 "******Pears are being preprocessed********");
-        rawMaterialList = pretreatmentApp.filterTreat(rawMaterialList);
-        pretreatmentApp.peel(rawMaterialList);
-        pretreatmentApp.disinfect(rawMaterialList);
-        OutputManager.getInstance().errorMassage(
+        baseIngredientList = pretreatmentApp.filterTreat(baseIngredientList);
+        pretreatmentApp.peel(baseIngredientList);
+        pretreatmentApp.disinfect(baseIngredientList);
+        OutputManager.getInstance().print(
                 "*********梨预处理完成*********",
                 "*********梨預處理完成*********",
                 "*********Pear preprocessing completed*********");
-        return rawMaterialList;
+        return baseIngredientList;
     }
 
     @Override
     public void produce(int count, String produceManner) {
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "**********正在对梨进行加工*********",
                 "**********正在對梨進行加工*********",
                 "**********Pears are being processed*********");
         PearProducer pearProducer = new PearProducer(produceManner);
         pearProducer.produce();
-        OutputManager.getInstance().errorMassage(
+        OutputManager.getInstance().print(
                 "共生产" + count + "个梨罐头",
                 "共生產" + count + "個梨罐頭",
                 "Totally produced" + count + "pear can!");
+    }
+
+    @Override
+    public String getConcreteName() {
+        return "pearLine";
     }
 }
