@@ -3,6 +3,8 @@ package Marketing.Wrapping;
 
 import Manufacturing.Ingredient.Ingredient;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,21 +16,67 @@ import java.util.List;
 
 public class WrappingCanInfo {
 
+    /**
+     * 罐头中文名字;
+     */
     private String canName;
-    private float weight;
+
+    /**
+     * 罐头尺寸
+     */
+    private int size;
+    /**
+     * 罐头原料表
+     */
     private List<Ingredient> ingredients;
+    /**
+     * 罐头保质期
+     */
+    private LocalDate shelfTime;
+    /**
+     * 罐头生产日期
+     */
+    private LocalDate manufactureTime;
 
 
-    public void setIngredients(List<Ingredient> ingredients){
-        this.ingredients = ingredients;
+    public String getCanName() {
+        return canName;
     }
 
-    public void setCanName(String canName){
+    /***************** setter and getter ******************/
+    public void setCanName(String canName) {
         this.canName = canName;
     }
 
-    public void setWeight(float weight){
-        this.weight = weight;
+    public int getSize() {
+        return size;
     }
 
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public LocalDate getShelfTime() {
+        return shelfTime;
+    }
+
+    public void setShelfTime(LocalDate shelfTime) {
+        this.shelfTime = shelfTime;
+    }
+
+    public LocalDate getManufactureTime() {
+        return manufactureTime;
+    }
+
+    public void setManufactureTime(LocalDate manufactureTime) {
+        this.manufactureTime = manufactureTime;
+    }
 }
