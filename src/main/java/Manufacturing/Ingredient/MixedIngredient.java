@@ -24,9 +24,12 @@ public abstract class MixedIngredient implements Ingredient {
                         zhTwDescription(),
                         enDescription()
                 )
-                + " (");
-        for (Ingredient i : contentIngredients ) {
-            ret.append(i.showContents());
+                + "(");
+        for (int i = 0; i < contentIngredients.size(); i++) {
+            ret.append(contentIngredients.get(i).showContents());
+            if (i != contentIngredients.size() - 1) {
+                ret.append(", ");
+            }
         }
         ret.append(") ");
         return ret.toString();

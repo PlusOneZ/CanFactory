@@ -38,6 +38,8 @@ public class PurchaseManager extends Manager {
                 "採購部經理制定採購計劃。",
                 "Purchasing Manager designs the purchase scheme."
         );
+        //首先清空方案
+        purchaseScheme.clearPurchaseScheme();
         for (int i = 0; i < demand.length(); i++) {
             purchaseScheme.addDemand(demand.getJSONObject(i));
         }

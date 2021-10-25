@@ -1,34 +1,35 @@
 package Manufacturing.Ingredient.Procedure;
 
-import Manufacturing.Ingredient.ConcreteIngredient.Apple;
+import Manufacturing.Ingredient.ConcreteIngredient.Beef;
 import Manufacturing.Ingredient.Ingredient;
 import Presentation.Protocol.OutputManager;
 
 /**
- * 煮（原材料），装饰器
+ * TODO:此处写Decoct类的描述
  *
  * @author 卓正一
- * @date 2021/10/24 2:49 PM
+ * @date 2021/10/24 5:03 PM
  */
-public class Cook extends Procedure {
+public class Decoct extends Procedure {
 
-    Cook(Ingredient ingredient) {
+    Decoct(Ingredient ingredient) {
         super(ingredient);
         setName(
-                "煮",
-                "煮",
-                "Cooked "
+                "煎",
+                "煎",
+                "Decocted "
         );
     }
 
     /**
      * 测试函数
+     *
      * @author 卓正一
      * @since 2021-10-24 3:42 PM
      */
     public static void main(String[] args) {
         OutputManager.getInstance().setLanguage(OutputManager.Lang.en);
-        Ingredient i = new Cook(new Apple());
+        Ingredient i = new Decoct(new Beef());
         System.out.println(i.showContents());
     }
 }

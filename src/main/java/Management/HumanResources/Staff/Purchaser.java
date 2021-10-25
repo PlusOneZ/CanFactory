@@ -5,6 +5,8 @@ import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
 import Presentation.Protocol.OutputManager;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -16,6 +18,25 @@ import java.util.Objects;
  */
 public class Purchaser extends Staff {
 
+    public Purchaser() {
+        upstreamFactories = new ArrayList<ConcreteUpstreamFactory>();
+    }
+
+    /**
+     *  添加上游工厂
+     * @param factory 需要去购买的上游工厂
+     */
+    public void addFactory(ConcreteUpstreamFactory factory){
+        this.upstreamFactories.add(factory);
+    }
+
+    /**
+     * 清除上游工厂
+     */
+    public void clearFactory(){
+        this.upstreamFactories.clear();
+    }
+
     /**
      * 采购员进行采购
      *
@@ -23,16 +44,8 @@ public class Purchaser extends Staff {
      * @return 是否采购成功
      */
     public boolean purchaseMaterial(JSONObject plan) {
-        //从上游工厂购买
-        OutputManager.getInstance().print(
-                "正在购买：" + plan.getString("ingredientType"),
-                "正在購買：" + plan.getString("ingredientType"),
-                "Purchasing: " + plan.getString("ingredientType")
-        );
-
-        //尝试从上游工厂购买
-        for (int i = 0; i < 8; i++) {
-            ConcreteUpstreamFactory factory = new ConcreteUpstreamFactory();
+        //试图从上游工厂进行购买
+        for (ConcreteUpstreamFactory factory : upstreamFactories) {
             JSONObject result = factory.getInfo();
             if (Objects.equals(result.getString("ingredientType"), plan.getString("ingredientType"))) {
                 factory.purchase();
@@ -44,8 +57,12 @@ public class Purchaser extends Staff {
 
                 return true;
             }
-
         }
+
         return false;
+
     }
+
+    // 采购员需要从这些工厂里购买信息
+    private List<ConcreteUpstreamFactory> upstreamFactories;
 }
