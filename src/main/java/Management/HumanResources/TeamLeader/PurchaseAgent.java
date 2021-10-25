@@ -37,14 +37,12 @@ public class PurchaseAgent extends TeamLeader {
                 "PurchaseAgent arrange the purchaser..."
         );
 
-        boolean result = true;
         List<Purchaser> purchaserList = new ArrayList<Purchaser>();
 
         for (int i = 0; i < scheme.getScheme().size(); i++) {
             Purchaser purchaser = new Purchaser();
-            for (int j = 0; j < 8; j++) {
-                purchaser.addFactory(new ConcreteUpstreamFactory());
-            }
+            //安排上游工厂
+            dispatchFactory(purchaser);
             purchaserList.add(purchaser);
         }
 
@@ -55,9 +53,27 @@ public class PurchaseAgent extends TeamLeader {
                     (i+1)+"號採購員正在購買：" + plan.getString("ingredientType"),
                     "No."+(i+1)+"purchaser is purchasing: " + plan.getString("ingredientType")
             );
-            result &= purchaserList.get(i).purchaseMaterial(plan);
+            while(!purchaserList.get(i).purchaseMaterial(plan)){
+                OutputManager.getInstance().print(
+                        "采购失败，正在重新购买......",
+                        "採購失敗，正在重新購買......",
+                        "Purchasing Failed,purchasing again......"
+                );
+                dispatchFactory(purchaserList.get(i));
+            }
         }
 
-        return result;
+        return true;
+    }
+
+    /**
+     * 分配上游工厂
+     * @param purchaser 采购员
+     */
+    public void dispatchFactory(Purchaser purchaser){
+        purchaser.clearFactory();
+        for (int j = 0; j < 10; j++) {
+            purchaser.addFactory(new ConcreteUpstreamFactory());
+        }
     }
 }
