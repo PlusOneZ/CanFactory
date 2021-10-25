@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine.Filter;
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +23,11 @@ public class WeightFilter implements Filter {
     }
 
     @Override
-    public List<RawMaterial> select(List<RawMaterial> rawMaterialList) {
-        List<RawMaterial> res = new ArrayList<>();
-        for (RawMaterial rawMaterial : rawMaterialList) {
-            if (rawMaterial.getWeight() > criterion) {
-                res.add(rawMaterial);
+    public List<BaseIngredient> select(List<BaseIngredient> baseIngredientList) {
+        List<BaseIngredient> res = new ArrayList<>();
+        for (BaseIngredient baseIngredient : baseIngredientList) {
+            if (baseIngredient.getWeight() > criterion) {
+                res.add(baseIngredient);
             }
         }
         return res;

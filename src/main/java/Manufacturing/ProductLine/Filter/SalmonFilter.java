@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine.Filter;
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class SalmonFilter implements Filter {
     }
 
     @Override
-    public List<RawMaterial> select(List<RawMaterial> rawMaterialList) {
-        return weightFilter.select(rawMaterialList);
+    public List<BaseIngredient> select(List<BaseIngredient> baseIngredientList) {
+        return weightFilter.select(baseIngredientList);
     }
 }

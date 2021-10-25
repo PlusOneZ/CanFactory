@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine.Filter;
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ public interface Filter {
     /**
      * TODO:过滤筛选方法.
      *
-     * @param rawMaterialList :  待筛选过滤的原材料列表
+     * @param baseIngredientList :  待筛选过滤的原材料列表
      * @return : java.util.List<Manufacturing.ProductLine.Fruit.RawMaterial>
      * @author 孟繁霖
      * @date 2021-10-12 8:48
      */
-    List<RawMaterial> select(List<RawMaterial> rawMaterialList);
+    List<BaseIngredient> select(List<BaseIngredient> baseIngredientList);
 }

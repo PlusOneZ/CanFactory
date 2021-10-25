@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine.Pretreatment;
 
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Disinfect implements Pretreatment {
     @Override
-    public List<RawMaterial> treat(List<RawMaterial> rawMaterialList) {
-        return rawMaterialList;
+    public List<BaseIngredient> treat(List<BaseIngredient> baseIngredientList) {
+        return baseIngredientList;
     }
 }
