@@ -13,6 +13,7 @@ public enum DepartmentType {
     Finance,  // 财务
     Purchase,  // 购货
     Backup,  // 后勤
+    Transport, // 运输
     None,
     All
 }
