@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine;
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;
@@ -61,18 +61,18 @@ public abstract class Factory {
         );
 
         //购买原材料
-        List<RawMaterial> rawMaterialList = supplier.provide(canName, materialCount);
-        if (rawMaterialList != null) {
+        List<BaseIngredient> baseIngredientList = supplier.provide(canName, materialCount);
+        if (baseIngredientList != null) {
             OutputManager.getInstance().print(
                     "********购买成功,原料如下********",
                     "********購買成功,原料如下********",
                     "Purchase successfully, the raw materials are as follows"
             );
-            for (RawMaterial rawMaterial : rawMaterialList) {
+            for (BaseIngredient baseIngredient : baseIngredientList) {
                 OutputManager.getInstance().print(
-                        rawMaterial.toString(),
-                        rawMaterial.toString(),
-                        rawMaterial.toString()
+                        baseIngredient.zhCnDescription(),
+                        baseIngredient.zhTwDescription(),
+                        baseIngredient.enDescription()
                 );
             }
         } else {
@@ -86,11 +86,11 @@ public abstract class Factory {
         //获得相应种类的生产线并进行预处理和生产加工
         if ("fruit".equals(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
-            int count = (fruitLine.preTreat(rawMaterialList)).size();
+            int count = (fruitLine.preTreat(baseIngredientList)).size();
             fruitLine.produce(count, produceManner);
         } else if ("fresh".equals(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
-            int count = (freshLine.preTreat(rawMaterialList)).size();
+            int count = (freshLine.preTreat(baseIngredientList)).size();
             freshLine.produce(count);
         }
     }

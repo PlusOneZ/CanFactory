@@ -37,19 +37,26 @@ public abstract class BaseIngredient implements Ingredient {
     private String zhTwName;
     private String enName;
 
+
     @Override
     public String zhCnDescription() {
-        return zhCnName;
+        return zhCnName+"{" +
+                "质量=" + weight +
+                '}';
     }
 
     @Override
     public String zhTwDescription() {
-        return zhTwName;
+        return zhTwName+"{" +
+                "質量=" + weight +
+                '}';
     }
 
     @Override
     public String enDescription() {
-        return enName;
+        return enName+"{" +
+                "weight=" + weight +
+                '}';
     }
 
     protected String baseIngredient;

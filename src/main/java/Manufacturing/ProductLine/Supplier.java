@@ -1,7 +1,9 @@
 package Manufacturing.ProductLine;
 
 
-import Manufacturing.ProductLine.RawMaterial.*;
+import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.Ingredient.ConcreteIngredient.*;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -26,8 +28,9 @@ public class Supplier {
      * @author 孟繁霖
      * @date 2021-10-11 23:51
      */
-    public List<RawMaterial> provide(String kind, int count) {
-        List<RawMaterial> rawMaterialList = new ArrayList<>();
+    public List<BaseIngredient> provide(String kind, int count) {
+
+        List<BaseIngredient> baseIngredientList=new ArrayList<>();
         JSONObject object = new JSONObject();
         object.put("ingredientType",kind);
         object.put("count",count);
@@ -35,28 +38,39 @@ public class Supplier {
         if(ingredients==null){
             return null;
         }
-        if ("apple".equals(kind)) {
-            for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Apple(ingredients.getDouble(i)));
-            }
-        } else if ("pear".equals(kind)) {
 
+        if("apple".equals(kind)){
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Pear(ingredients.getDouble(i)));
+                Apple apple =new Apple();
+                apple.setWeight(ingredients.getDouble(i));
+                baseIngredientList.add(apple);
+            }
+        }
+        else if ("pear".equals(kind)) {
+            for (int i = 0; i < count; i++) {
+                Pear pear=new Pear();
+                pear.setWeight(ingredients.getDouble(i));
+                baseIngredientList.add(pear);
             }
         } else if ("peach".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Peach(ingredients.getDouble(i)));
+                Peach peach=new Peach();
+                peach.setWeight(ingredients.getDouble(i));
+                baseIngredientList.add(peach);
             }
         } else if ("salmon".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Salmon(ingredients.getDouble(i)));
+                Salmon salmon=new Salmon();
+                salmon.setWeight(ingredients.getDouble(i));
+                baseIngredientList.add(salmon);
             }
         } else if ("clove".equals(kind)) {
             for (int i = 0; i < count; i++) {
-                rawMaterialList.add(new Clove(ingredients.getDouble(i)));
+                Clove clove=new Clove();
+                clove.setWeight(ingredients.getDouble(i));
+                baseIngredientList.add(clove);
             }
         } else return null;
-        return rawMaterialList;
+        return baseIngredientList;
     }
 }

@@ -1,9 +1,7 @@
 package Manufacturing.ProductLine.test;
 
 
-import Manufacturing.ProductLine.Factory;
-import Manufacturing.ProductLine.FactoryProducer;
-import Manufacturing.ProductLine.Iterator;
+import Manufacturing.ProductLine.*;
 import Presentation.Protocol.OutputManager;
 
 /**
@@ -15,6 +13,8 @@ import Presentation.Protocol.OutputManager;
 public class Test {
     public static void main(String[] args) {
         OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
+
+        //生产罐头测试
         Factory factory = FactoryProducer.getAbstractFactory("fruitLine");
         if (factory != null) {
             factory.produceCan("fruit", "apple", 6, "fine");
@@ -27,9 +27,10 @@ public class Test {
                     "莫得工廠",
                     "No Factory");
         }
+        //迭代器测试
         Iterator i= factory.iterator();
         while(i.hasNext()){
-            System.out.println(i.next());
+            System.out.println(((ProductLine)i.next()).getConcreteName());
         }
     }
 }

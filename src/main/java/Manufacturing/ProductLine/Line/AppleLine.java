@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine.Line;
 
-import Manufacturing.ProductLine.RawMaterial.RawMaterial;
+import Manufacturing.Ingredient.BaseIngredient;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.AppleProducer;
 import Presentation.Protocol.OutputManager;
@@ -15,21 +15,22 @@ import java.util.List;
  */
 public class AppleLine implements FruitLine {
 
+
     @Override
-    public List<RawMaterial> preTreat(List<RawMaterial> rawMaterialList) {
+    public List<BaseIngredient> preTreat(List<BaseIngredient> baseIngredientList) {
 
         OutputManager.getInstance().print(
                 "**********正在对苹果进行预处理*********",
                 "**********正在對蘋果進行預處理*********",
                 "**********Apple is being preprocessed*********");
-        rawMaterialList = pretreatmentApp.filterTreat(rawMaterialList);
-        pretreatmentApp.peel(rawMaterialList);
-        pretreatmentApp.disinfect(rawMaterialList);
+        baseIngredientList = pretreatmentApp.filterTreat(baseIngredientList);
+        pretreatmentApp.peel(baseIngredientList);
+        pretreatmentApp.disinfect(baseIngredientList);
         OutputManager.getInstance().print(
                 "*************苹果预处理完成***********",
                 "*************蘋果預處理完成***********",
                 "********Apple preprocessing is completed*****");
-        return rawMaterialList;
+        return baseIngredientList;
     }
 
     @Override
@@ -44,5 +45,10 @@ public class AppleLine implements FruitLine {
                 "共生产" + count + "个苹果罐头",
                 "共生產" + count + "個蘋果罐頭",
                 "Totally produced" + count + "apple can!");
+    }
+
+    @Override
+    public String getConcreteName() {
+        return "appleLine";
     }
 }
