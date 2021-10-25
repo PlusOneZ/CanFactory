@@ -1,6 +1,7 @@
 package
         Storage.Mediator;
 
+import Management.HumanResources.TransportDepartment;
 import Manufacturing.CanEntity.Can;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
@@ -28,7 +29,7 @@ public class DepartmentMediator {
     /**
      * 运输管理部门
      */
-    //TransportationDepartment transportationDepartment = Transportationment.getInstance();
+    TransportDepartment transportDepartment = TransportDepartment.getInstance();
     /**
      * 包装管理部门
      */
@@ -39,11 +40,11 @@ public class DepartmentMediator {
      * 中介者的运输罐头的实现，通过调用运输管理部门的接口，实现相关操作
      * TODO：待完成
      * @param transportationCan :  运输产品信息
-     * @author "王立友"
-     * @date 2021-10-17 21:04
+     * @author "王立友" "吴英豪"
+     * @date 2021-10-26 0:02
      */
     public void transportCans(TransportationCan transportationCan){
-
+        transportDepartment.transportCans(transportationCan);
     }
 
     /**

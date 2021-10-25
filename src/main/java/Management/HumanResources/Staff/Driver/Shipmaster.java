@@ -1,6 +1,10 @@
 package Management.HumanResources.Staff.Driver;
 
+import Marketing.OrderCenterEntity.OrderProcessingMediator;
 import Presentation.Protocol.OutputManager;
+import Storage.TransportationCan;
+
+import java.util.Date;
 
 /**
  * 委派模式
@@ -10,17 +14,33 @@ import Presentation.Protocol.OutputManager;
  */
 public class Shipmaster extends Driver {
     @Override
-    public void transport(Double quantity) {
-        if (quantity <= 0) {
-            OutputManager.getInstance().print(
-                    "不需要水运。",
-                    "不需要水運。",
-                    "No need for water transportation.");
-        } else {
-            OutputManager.getInstance().print(
-                    "水运量:" + quantity,
-                    "水運量:" + quantity,
-                    "Shipping quantity:" + quantity);
-        }
+    public void transport(TransportationCan transportationCan) {
+        OutputManager.getInstance().print(
+                "司机正在通过水运运输罐头......",
+                "司機正在通過水運運輸罐頭......",
+                "The driver is transporting cans by ship......"
+        );
+
+        OutputManager.getInstance().print(
+                "正在从水路运往" + transportationCan.getCustomerAddress(),
+                "正在從水路運往" + transportationCan.getCustomerAddress(),
+                "Purchasing to " + transportationCan.getCustomerAddress()
+        );
+
+        OutputManager.getInstance().print(
+                "货物交付时间为:" + new Date(),
+                "貨物交付時間為:" + new Date(),
+                "The DeliveryTime is " + new Date()
+        );
+
+        //完成訂單的交付
+        OrderProcessingMediator.getInstance().deliverOneOrder(transportationCan.getOrderId());
+
+        OutputManager.getInstance().print(
+                "运输成功！",
+                "運輸成功！",
+                "Transporting Success!"
+        );
+
     }
 }

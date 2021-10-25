@@ -1,6 +1,10 @@
 package Management.HumanResources.Staff.Driver;
 
+import Marketing.OrderCenterEntity.OrderProcessingMediator;
 import Presentation.Protocol.OutputManager;
+import Storage.TransportationCan;
+
+import java.util.Date;
 
 /**
  * 委派模式
@@ -11,17 +15,33 @@ import Presentation.Protocol.OutputManager;
 
 public class EngineMan extends Driver {
     @Override
-    public void transport(Double quantity) {
-        if (quantity <= 0) {
-            OutputManager.getInstance().print(
-                    "不需要陆运。",
-                    "不需要陸運。",
-                    "No need for land transportation.");
-        } else {
-            OutputManager.getInstance().print(
-                    "陆运量:" + quantity,
-                    "陸運量:" + quantity,
-                    "Land quantity:" + quantity);
-        }
+    public void transport(TransportationCan transportationCan) {
+        OutputManager.getInstance().print(
+                "司机正在通过陆运运输罐头......",
+                "司機正在通過陸運運輸罐頭......",
+                "The driver is transporting cans by road......"
+        );
+
+        OutputManager.getInstance().print(
+                "正在从陆运运往" + transportationCan.getCustomerAddress(),
+                "正在從陸運運往" + transportationCan.getCustomerAddress(),
+                "Purchasing to " + transportationCan.getCustomerAddress()
+        );
+
+        OutputManager.getInstance().print(
+                "货物交付时间为:" + new Date(),
+                "貨物交付時間為:" + new Date(),
+                "The DeliveryTime is " + new Date()
+        );
+
+        //完成訂單的交付
+        OrderProcessingMediator.getInstance().deliverOneOrder(transportationCan.getOrderId());
+
+        OutputManager.getInstance().print(
+                "运输成功！",
+                "運輸成功！",
+                "Transporting Success!"
+        );
+
     }
 }

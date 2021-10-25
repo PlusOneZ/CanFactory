@@ -4,6 +4,7 @@ import Management.HumanResources.Staff.Driver.Driver;
 import Management.HumanResources.Staff.Driver.EngineMan;
 import Management.HumanResources.Staff.Driver.Shipmaster;
 import Marketing.Scheme.TransportScheme;
+import Presentation.Protocol.OutputManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,18 +25,25 @@ public class Carrier extends TeamLeader {
      * @param scheme 运输方案
      */
     public void dispatchTransport(TransportScheme scheme) {
+        OutputManager.getInstance().print(
+                "承运商收到运输计划，并开始安排司机运输",
+                "承運商收到運輸計劃，並開始安排司機運輸",
+                "The carrier receives the transport plan and begins to arrange for a driver to transport it"
+        );
+        Driver driver;
+        if (scheme.getTransportType() == TransportScheme.TransportType.Land) {
+            driver = new EngineMan();
+        } else {
+            driver = new Shipmaster();
+        }
+        driver.transport(scheme.getTransportationCan());
     }
 
 
     /**
-     * TODO:需要修改代码
      * 承运人分配运输工作
      */
     public Carrier() {
-        drivers = new HashMap<String, Driver>();
-        drivers.put("EngineMa", new EngineMan());
-        drivers.put("Shipmaster", new Shipmaster());
     }
 
-    private final Map<String, Driver> drivers;
 }
