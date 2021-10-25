@@ -36,6 +36,13 @@ public class PurchaseScheme extends Scheme {
         return scheme;
     }
 
+    /**
+     * 清除采购计划
+     */
+    public void clearPurchaseScheme(){
+        scheme.clear();
+    }
+
     private List<JSONObject> scheme;
 
 }

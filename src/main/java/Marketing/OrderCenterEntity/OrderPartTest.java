@@ -74,7 +74,7 @@ public class OrderPartTest {
             String customerAddress = new Scanner(System.in).next();
 
             Coupon coupon = new Coupon(new TwentyPercentOff());
-            OrderCenter.getInstance().createOneOrder(orderCanInformationArrayList, coupon, da1te, customerAddress);
+            OrderCenter.getInstance().createOneOrder(orderCanInformationArrayList, coupon, date, customerAddress);
 
             System.out.println("是否继续创建新的订单？y表示是，n表示n");
             String inputChoice = new Scanner(System.in).next();

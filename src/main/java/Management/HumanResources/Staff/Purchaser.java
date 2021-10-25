@@ -31,6 +31,13 @@ public class Purchaser extends Staff {
     }
 
     /**
+     * 清除上游工厂
+     */
+    public void clearFactory(){
+        this.upstreamFactories.clear();
+    }
+
+    /**
      * 采购员进行采购
      *
      * @param plan 具体的采购计划
