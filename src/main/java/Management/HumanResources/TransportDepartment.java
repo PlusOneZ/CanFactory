@@ -15,8 +15,7 @@ public class TransportDepartment extends BaseDepartment {
 
     private TransportDepartment() {
 
-        //TODO:这里需要修改一个运输部门的Type，为了防止Confilct 这里暂时还没有写
-        this.type = DepartmentType.None;
+        this.type = DepartmentType.Transport;
 
         this.transportManager = new TransportManager();
 
