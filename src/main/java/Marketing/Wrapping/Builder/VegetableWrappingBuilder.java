@@ -12,27 +12,32 @@ import Marketing.Wrapping.WrappingFactoryInfo;
  * @author 王立友
  * @date 2021/10/25 0:59
  */
-public class VegetableWrappingBuilder extends WrappingBuilder{
+public class VegetableWrappingBuilder extends WrappingBuilder {
 
     private final WrappingCover wrappingCover = new VegetableWrappingCover();
 
     @Override
-    void buildWrappingCanInfo(WrappingCanInfo wrappingCanInfo){
+    void buildWrappingCanInfo(WrappingCanInfo wrappingCanInfo) {
         wrappingCover.setWrappingCanInfo(wrappingCanInfo);
     }
 
     @Override
-    void buildWrappingFactoryInfo(WrappingFactoryInfo wrappingFactoryInfo){
+    void buildWrappingFactoryInfo(WrappingFactoryInfo wrappingFactoryInfo) {
         wrappingCover.setWrappingFactoryInfo(wrappingFactoryInfo);
     }
 
     @Override
-    void buildWrappingBackground(String wrappingBackground){
+    void buildWrappingBackground(String wrappingBackground) {
         wrappingCover.setWrappingBackground(wrappingBackground);
     }
 
     @Override
-    public WrappingCover build(){
+    void buildCanPrice(double canPrice) {
+        wrappingCover.setCanPrice(canPrice);
+    }
+
+    @Override
+    public WrappingCover build() {
         return wrappingCover;
     }
 }

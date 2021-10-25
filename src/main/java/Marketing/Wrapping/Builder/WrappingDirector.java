@@ -25,10 +25,11 @@ public class WrappingDirector {
      * @author "王立友"
      * @date 2021-10-24 16:02
      */
-    public void construct(WrappingCanInfo wrappingCanInfo, WrappingFactoryInfo wrappingFactoryInfo, String wrappingBackground){
+    public void construct(WrappingCanInfo wrappingCanInfo, WrappingFactoryInfo wrappingFactoryInfo, String wrappingBackground, double canPrice){
 
         wrappingBuilder.buildWrappingCanInfo(wrappingCanInfo);
         wrappingBuilder.buildWrappingFactoryInfo(wrappingFactoryInfo);
         wrappingBuilder.buildWrappingBackground(wrappingBackground);
+        wrappingBuilder.buildCanPrice(canPrice);
     }
 }

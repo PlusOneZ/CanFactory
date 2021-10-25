@@ -16,6 +16,7 @@ public abstract class WrappingBuilder {
     abstract void buildWrappingCanInfo(WrappingCanInfo wrappingCanInfo);
     abstract void buildWrappingFactoryInfo(WrappingFactoryInfo wrappingFactoryInfo);
     abstract void buildWrappingBackground(String wrappingBackground);
+    abstract void buildCanPrice(double canPrice);
 
     public abstract WrappingCover build();
 

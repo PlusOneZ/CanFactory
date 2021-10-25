@@ -26,6 +26,11 @@ public abstract class WrappingCover {
      */
     protected String wrappingBackground;
 
+    /**
+     * 罐头价格信息;
+     */
+    protected double canPrice;
+
 
     protected WrappingCover(){}
 
@@ -49,5 +54,11 @@ public abstract class WrappingCover {
     }
     public String getWrappingBackground(){
         return wrappingBackground;
+    }
+    public double getCanPrice(){
+        return canPrice;
+    }
+    public void setCanPrice(double canPrice){
+        this.canPrice = canPrice;
     }
 }
