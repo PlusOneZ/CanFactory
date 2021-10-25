@@ -1,6 +1,7 @@
 package Manufacturing.ProductLine;
 
 
+import Manufacturing.Ingredient.BaseIngredient;
 import Manufacturing.ProductLine.RawMaterial.*;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.json.JSONArray;
@@ -29,6 +30,7 @@ public class Supplier {
      */
     public List<RawMaterial> provide(String kind, int count) {
         List<RawMaterial> rawMaterialList = new ArrayList<>();
+        List<BaseIngredient> baseIngredientList=new ArrayList<>();
         JSONObject object = new JSONObject();
         object.put("ingredientType",kind);
         object.put("count",count);
@@ -36,6 +38,16 @@ public class Supplier {
         if(ingredients==null){
             return null;
         }
+        if("apple".equals(kind)){
+            for (int i = 0; i < count; i++) {
+                Manufacturing.Ingredient.ConcreteIngredient.Apple apple =new Manufacturing.Ingredient.ConcreteIngredient.Apple();
+                apple.setWeight(ingredients.getDouble(i));
+                baseIngredientList.add(apple);
+                System.out.println(apple.zhCnDescription());
+            }
+        }
+
+
         if ("apple".equals(kind)) {
             for (int i = 0; i < count; i++) {
                 rawMaterialList.add(new Apple(ingredients.getDouble(i)));
