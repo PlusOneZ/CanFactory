@@ -53,6 +53,7 @@ public class TransportingOrderState extends OrderState{
                 "訂單號為"+order.getOrderId()+"的訂單完成交付！",
                 "The order with order ID"+order.getOrderId()+"has completed the delivery!"
         );
+        changeOrderState(order,new DeliveredOrderState());//修改相应的订单状态
     }
 
     /**
