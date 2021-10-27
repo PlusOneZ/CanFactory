@@ -2,7 +2,7 @@ package Mutex;
 
 import Management.BaseWorker;
 import Management.HumanResources.CannedWorker;
-import Manufacturing.Machine.CleanMachine;
+import Manufacturing.Machine.GeneralMachine.CleanMachine;
 import Presentation.Protocol.OutputManager;
 
 /**
