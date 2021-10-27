@@ -17,7 +17,7 @@ public class Cook extends Procedure {
         setName(
                 "煮",
                 "煮",
-                "Cooked "
+                "Cooked"
         );
     }
 

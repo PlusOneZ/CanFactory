@@ -16,6 +16,8 @@ public class Apple extends BaseIngredient {
                 "蘋果",
                 "Apple"
         );
+
+        this.setCost(3.5);
     }
 
 }
