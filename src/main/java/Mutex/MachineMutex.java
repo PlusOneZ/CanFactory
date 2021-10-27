@@ -2,8 +2,7 @@ package Mutex;
 
 
 import Management.BaseWorker;
-import Management.HumanResources.Staff.Worker;
-import Manufacturing.Machine.Machine;
+import Manufacturing.Machine.IngredientMachine;
 import Presentation.Protocol.OutputManager;
 
 /**
@@ -25,7 +24,7 @@ public class MachineMutex implements Mutex {
      * @param machine   正在申请的机器
      * @return 是否有资格使用此机器
      */
-    public boolean acquire(BaseWorker applicant, Machine machine) {
+    public boolean acquire(BaseWorker applicant, IngredientMachine machine) {
         if ((machineOwner == null) || (lockedMachine == null)) {
             machineOwner = applicant;
             lockedMachine = machine;
@@ -62,7 +61,7 @@ public class MachineMutex implements Mutex {
      *
      * @return 被使用的机器
      */
-    public Machine getMachine() {
+    public IngredientMachine getMachine() {
         return lockedMachine;
     }
 
@@ -70,6 +69,6 @@ public class MachineMutex implements Mutex {
     private BaseWorker machineOwner;
 
     // 被锁住的机器
-    private Machine lockedMachine;
+    private IngredientMachine lockedMachine;
 
 }

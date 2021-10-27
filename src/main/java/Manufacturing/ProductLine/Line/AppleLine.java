@@ -1,17 +1,11 @@
 package Manufacturing.ProductLine.Line;
 
-import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
-import Manufacturing.Ingredient.Ingredient;
-import Manufacturing.Machine.Machine;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.AppleProducer;
 import Presentation.Protocol.OutputManager;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * TODO:苹果罐头生产线类

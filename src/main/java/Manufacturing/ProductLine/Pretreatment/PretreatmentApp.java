@@ -5,7 +5,7 @@ import Manufacturing.Machine.GeneralMachine.CleanMachine;
 import Manufacturing.Machine.GeneralMachine.DisinfectMachine;
 import Manufacturing.Machine.GeneralMachine.FilterMachine;
 import Manufacturing.Machine.GeneralMachine.PeelMachine;
-import Manufacturing.Machine.Machine;
+import Manufacturing.Machine.IngredientMachine;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
@@ -25,10 +25,10 @@ public class PretreatmentApp {
 //    private final Pretreatment filterTreatProcessor;
 //    private final Pretreatment cleanProcessor;
 
-    private final Machine disinfectMachine;
-    private final Machine peelMachine;
-    private final Machine filterTreatMachine;
-    private final Machine cleanMachine;
+    private final IngredientMachine disinfectMachine;
+    private final IngredientMachine peelMachine;
+    private final IngredientMachine filterTreatMachine;
+    private final IngredientMachine cleanMachine;
 
     public PretreatmentApp() {
 //        disinfectProcessor = new Disinfect();
