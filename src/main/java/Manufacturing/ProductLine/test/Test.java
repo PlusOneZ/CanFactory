@@ -7,6 +7,7 @@ import Presentation.Protocol.OutputManager;
 /**
 * TODO:生产线相关设计模式测试类
 *
+*<p>抽象工厂模式，工厂模式、迭代器模式、享元模式测试</p>
 * @author 孟繁霖
 * @date 2021-10-12 9:19
 */
