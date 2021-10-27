@@ -1,8 +1,14 @@
 package Manufacturing.ProductLine.Pretreatment;
 
-import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.GeneralMachine.CleanMachine;
+import Manufacturing.Machine.GeneralMachine.DisinfectMachine;
+import Manufacturing.Machine.GeneralMachine.FilterMachine;
+import Manufacturing.Machine.GeneralMachine.PeelMachine;
+import Manufacturing.Machine.Machine;
 import Presentation.Protocol.OutputManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,16 +20,26 @@ import java.util.List;
  * @date 2021-10-12 8:24
  */
 public class PretreatmentApp {
-    private final Pretreatment disinfectProcessor;
-    private final Pretreatment peelProcessor;
-    private final Pretreatment filterTreatProcessor;
-    private final Pretreatment cleanProcessor;
+//    private final Pretreatment disinfectProcessor;
+//    private final Pretreatment peelProcessor;
+//    private final Pretreatment filterTreatProcessor;
+//    private final Pretreatment cleanProcessor;
+
+    private final Machine disinfectMachine;
+    private final Machine peelMachine;
+    private final Machine filterTreatMachine;
+    private final Machine cleanMachine;
 
     public PretreatmentApp() {
-        disinfectProcessor = new Disinfect();
-        peelProcessor = new Peel();
-        filterTreatProcessor = new FilterTreat();
-        cleanProcessor = new Clean();
+//        disinfectProcessor = new Disinfect();
+//        peelProcessor = new Peel();
+//        filterTreatProcessor = new FilterTreat();
+//        cleanProcessor = new Clean();
+
+        disinfectMachine = new DisinfectMachine();
+        peelMachine = new PeelMachine();
+        filterTreatMachine = new FilterMachine(90.);
+        cleanMachine = new CleanMachine();
     }
 
     /**
@@ -33,12 +49,15 @@ public class PretreatmentApp {
      * @author 孟繁霖
      * @date 2021-10-12 8:25
      */
-    public void disinfect(List<BaseIngredient> baseIngredientList) {
+    public void disinfect(List<Ingredient> baseIngredientList) {
         OutputManager.getInstance().print(
                 "--------正在杀菌---------",
                 "--------正在殺菌---------",
                 "-------Sterilizing-------");
-        disinfectProcessor.treat(baseIngredientList);
+//        disinfectProcessor.treat(baseIngredientList);
+        for (int i = 0; i < baseIngredientList.size(); i++) {
+            baseIngredientList.set(i, disinfectMachine.treat(baseIngredientList.get(i)));
+        }
         OutputManager.getInstance().print(
                 "--------杀菌完成---------",
                 "--------殺菌完成---------",
@@ -52,12 +71,15 @@ public class PretreatmentApp {
      * @author 孟繁霖
      * @date 2021-10-12 8:25
      */
-    public void peel(List<BaseIngredient> baseIngredientList) {
+    public void peel(List<Ingredient> baseIngredientList) {
         OutputManager.getInstance().print(
                 "--------开始剥皮---------",
                 "--------開始剝皮---------",
                 "------Start peeling------");
-        peelProcessor.treat(baseIngredientList);
+//        peelProcessor.treat(baseIngredientList);
+        for (int i = 0; i < baseIngredientList.size(); i++) {
+            baseIngredientList.set(i, peelMachine.treat(baseIngredientList.get(i)));
+        }
         OutputManager.getInstance().print(
                 "--------完成剥皮---------",
                 "--------完成剝皮---------",
@@ -72,24 +94,29 @@ public class PretreatmentApp {
      * @author 孟繁霖
      * @date 2021-10-12 8:26
      */
-    public List<BaseIngredient> filterTreat(List<BaseIngredient> baseIngredientList) {
+    public List<Ingredient> filterTreat(List<Ingredient> baseIngredientList) {
         OutputManager.getInstance().print(
                 "--开始筛选符合要求的原料--",
                 "--開始篩選符合要求的原料--",
                 "--Start to screen raw materials that meet the requirements--");
-        baseIngredientList = filterTreatProcessor.treat(baseIngredientList);
+//        baseIngredientList = filterTreatProcessor.treat(baseIngredientList);
+        List<Ingredient> temp = new ArrayList<Ingredient>();
+        for (Ingredient ingredient: baseIngredientList) {
+            if (filterTreatMachine.treat(ingredient) != null)
+                temp.add(ingredient);
+        }
         OutputManager.getInstance().print(
                 "---筛选完成，结果如下：---",
                 "---篩選完成，結果如下：---",
                 "---The screening is complete, and the results are as follows: ---");
-        for (BaseIngredient baseIngredient : baseIngredientList) {
+        for (Ingredient baseIngredient : temp) {
             OutputManager.getInstance().print(
                     baseIngredient.zhCnDescription(),
                     baseIngredient.zhTwDescription(),
                     baseIngredient.enDescription()
             );
         }
-        return baseIngredientList;
+        return temp;
 
     }
 
@@ -100,12 +127,15 @@ public class PretreatmentApp {
      * @author 孟繁霖
      * @date 2021-10-12 8:27
      */
-    public void clean(List<BaseIngredient> baseIngredientList) {
+    public void clean(List<Ingredient> baseIngredientList) {
         OutputManager.getInstance().print(
                 "--------开始清理---------",
                 "-----------開始清理---------",
                 "---------Start to clean up-------");
-        cleanProcessor.treat(baseIngredientList);
+//        cleanProcessor.treat(baseIngredientList);
+        for (int i = 0; i < baseIngredientList.size(); i++) {
+            baseIngredientList.set(i, cleanMachine.treat(baseIngredientList.get(i)));
+        }
         OutputManager.getInstance().print(
                 "--------清理完成---------",
                 "--------清理完成---------",

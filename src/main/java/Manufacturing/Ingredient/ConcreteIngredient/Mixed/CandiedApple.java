@@ -1,5 +1,7 @@
-package Manufacturing.Ingredient.ConcreteIngredient;
+package Manufacturing.Ingredient.ConcreteIngredient.Mixed;
 
+import Manufacturing.Ingredient.ConcreteIngredient.Apple;
+import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.MixedIngredient;
 
 /**
@@ -17,6 +19,5 @@ public class CandiedApple extends MixedIngredient {
                 "Candied Apple"
         );
     }
-
 
 }

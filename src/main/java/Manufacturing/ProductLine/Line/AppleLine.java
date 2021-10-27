@@ -1,6 +1,7 @@
 package Manufacturing.ProductLine.Line;
 
-import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.Machine;
 import Manufacturing.ProductLine.FruitLine;
@@ -20,18 +21,13 @@ import java.util.stream.Collectors;
  */
 public class AppleLine implements FruitLine {
 
-    private List<Machine> pretreatmentMachine = new ArrayList<>();
-
     public AppleLine() {
 
     }
 
-    public AppleLine(Machine ... machines) {
-        pretreatmentMachine.addAll(Arrays.stream(machines).collect(Collectors.toList()));
-    }
 
     @Override
-    public List<BaseIngredient> preTreat(List<BaseIngredient> baseIngredientList) {
+    public List<Ingredient> preTreat(List<Ingredient> baseIngredientList) {
 
         OutputManager.getInstance().print(
                 "**********正在对苹果进行预处理*********",

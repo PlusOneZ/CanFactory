@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine;
 
-import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface FruitLine extends ProductLine{
      * @author 孟繁霖
      * @date 2021-10-11 23:47
      */
-    List<BaseIngredient> preTreat(List<BaseIngredient> baseIngredientList);
+    List<Ingredient> preTreat(List<Ingredient> baseIngredientList);
 
     /**
      * TODO:此处写produce方法的描述

@@ -1,10 +1,8 @@
 package Manufacturing.Ingredient.Procedure;
 
-import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.BaseIngredient;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
-import Manufacturing.Ingredient.ConcreteIngredient.CandiedApple;
-import Manufacturing.Ingredient.ConcreteIngredient.Sugar;
+import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
+import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
 import Presentation.Protocol.OutputManager;
 

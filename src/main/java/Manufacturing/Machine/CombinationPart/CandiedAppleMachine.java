@@ -1,8 +1,8 @@
 package Manufacturing.Machine.CombinationPart;
 
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
-import Manufacturing.Ingredient.ConcreteIngredient.CandiedApple;
-import Manufacturing.Ingredient.ConcreteIngredient.Sugar;
+import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
+import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.Machine;
 import Presentation.Protocol.OutputManager;
@@ -20,6 +20,12 @@ public class CandiedAppleMachine implements Machine {
         return ingredient;
     }
 
+    /**
+     * 将苹果和糖合并成糖渍苹果
+     * @return : 一个糖渍苹果
+     * @author 卓正一
+     * @since 2021-10-27 10:19 PM
+     */
     @Override
     public Ingredient combine(Ingredient... ingredients) {
         Ingredient[] ingredientList = ingredients.clone();
