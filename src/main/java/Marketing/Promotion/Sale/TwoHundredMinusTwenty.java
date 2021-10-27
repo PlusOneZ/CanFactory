@@ -10,6 +10,10 @@ import Presentation.Protocol.OutputManager;
 public class TwoHundredMinusTwenty implements Sale {
     @Override
     public Double discount(Double originalPrice) {
+        OutputManager.getInstance().print(
+                "产品原价为:" + originalPrice,
+                "產品原價爲:" + originalPrice,
+                "The product's originalPrice is" + originalPrice);
         Double price = originalPrice;
         if (originalPrice >= 200) {
             price = originalPrice - (originalPrice / 200 * 20);
