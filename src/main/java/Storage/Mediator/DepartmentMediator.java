@@ -1,8 +1,13 @@
 package
         Storage.Mediator;
 
+import Management.HumanResources.TransportDepartment;
+import Manufacturing.CanEntity.Can;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
+import Marketing.Wrapping.WrappedCan;
+import Marketing.Wrapping.WrappingDepartment;
+import Presentation.Protocol.OutputManager;
 import Storage.InventoryDepartment;
 import Storage.StockCan;
 import Storage.TransportationCan;
@@ -24,18 +29,22 @@ public class DepartmentMediator {
     /**
      * 运输管理部门
      */
-    //TransportationDepartment transportationDepartment = Transportationment.getInstance();
+    TransportDepartment transportDepartment = TransportDepartment.getInstance();
+    /**
+     * 包装管理部门
+     */
+    WrappingDepartment wrappingDepartment = WrappingDepartment.getInstance();
 
 
     /**
      * 中介者的运输罐头的实现，通过调用运输管理部门的接口，实现相关操作
      * TODO：待完成
      * @param transportationCan :  运输产品信息
-     * @author "王立友"
-     * @date 2021-10-17 21:04
+     * @author "王立友" "吴英豪"
+     * @date 2021-10-26 0:02
      */
     public void transportCans(TransportationCan transportationCan){
-
+        transportDepartment.transportCans(transportationCan);
     }
 
     /**
@@ -86,6 +95,28 @@ public class DepartmentMediator {
         inventoryDepartment.reviewOrder();
     }
 
+    /********************* WrappingDepartment Interface ***********************/
 
+    /**
+     * 供生产部门调用的包装罐头的接口，输入一个罐头可以返回一个包装好的罐头;
+     * @param can :
+     * @return : Marketing.Wrapping.WrappedCan
+     * @author "王立友"
+     * @date 2021-10-24 17:05
+     */
+    public WrappedCan wrapCan(Can can){
+        OutputManager.getInstance().print(
+                "调用包装部门对"+can.getCanName()+"进行封面包装",
+                "調用包裝部門對"+can.getCanName()+"進行封麵包裝",
+                "Call the packaging department to cover "+can.getCanName()
+        );
+        WrappedCan wrappedCan = wrappingDepartment.wrapCan(can);
+        OutputManager.getInstance().print(
+                "包装完成",
+                "包裝完成",
+                "Packaging is complete"
+        );
+        return wrappedCan;
+    }
 
 }

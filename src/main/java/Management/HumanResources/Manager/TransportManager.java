@@ -25,11 +25,11 @@ public class TransportManager extends Manager {
      * 委派模式
      * 运输经理负责运输
      */
-    public void transport(TransportationCan transportationCan){
+    public void transport(TransportationCan transportationCan) {
         OutputManager.getInstance().print(
-                "运输经理已接收订单信息",
-                "運輸經理已接收訂單信息",
-                "The PurchaseManager has received the order information"
+                "运输经理已接收运输罐头信息",
+                "運輸經理已接收運輸罐頭信息",
+                "The PurchaseManager has received the transportationCan information"
         );
         designTransportScheme(transportationCan);
         delegateTransport(new Carrier());
@@ -45,7 +45,6 @@ public class TransportManager extends Manager {
     }
 
     /**
-     * ToDo: 需要的参数为订单列表，和wly对接
      * 运输部经历根据需求制定运输计划
      */
     public void designTransportScheme(TransportationCan transportationCan) {
@@ -55,13 +54,33 @@ public class TransportManager extends Manager {
                 "The TransportManager is making the transport plan"
         );
 
-        //这里需要写一些制定计划
+        transportScheme.setTransportationCan(transportationCan);
+
+        int max = 100, min = 1;
+        int random = (int) (Math.random() * (max - min) + min);
+        if (random % 2 == 1) {
+            transportScheme.setTransportType(TransportScheme.TransportType.Land);
+        } else {
+            transportScheme.setTransportType(TransportScheme.TransportType.Ship);
+        }
+
+        OutputManager.getInstance().print(
+                "运输经理制定运输计划完毕",
+                "運輸經理制定運輸計劃完畢",
+                "The TransportManager has made the transport plan"
+        );
+
     }
 
     /**
      * 发货时，经理委托承运商运货
      */
     public void delegateTransport(Carrier carrier) {
+        OutputManager.getInstance().print(
+                "运输经理委派承运商进行运输",
+                "運輸經理委派承運商進行運輸",
+                "The transport manager delegated the transport to the carrier"
+        );
         carrier.dispatchTransport(transportScheme);
     }
 

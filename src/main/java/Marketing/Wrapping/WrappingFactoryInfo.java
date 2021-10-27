@@ -47,4 +47,24 @@ public class WrappingFactoryInfo {
     public void setFactoryWebsite(String factoryWebsite) {
         this.factoryWebsite = factoryWebsite;
     }
+
+    public String getFactoryName() {
+        return factoryName;
+    }
+
+    public String getFactoryPhone() {
+        return factoryPhone;
+    }
+
+    public String getFactoryAddress() {
+        return factoryAddress;
+    }
+
+    public String getFactoryWebsite() {
+        return factoryWebsite;
+    }
+
+    public String getFactoryTip() {
+        return factoryTip;
+    }
 }
