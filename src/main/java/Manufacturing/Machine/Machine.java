@@ -1,8 +1,7 @@
 package Manufacturing.Machine;
 
 import Manufacturing.Ingredient.Ingredient;
-
-import java.util.ArrayList;
+import Presentation.Protocol.OutputManager;
 
 /**
  * 机器
@@ -12,5 +11,12 @@ import java.util.ArrayList;
 public interface Machine {
     Ingredient treat(Ingredient ingredient);
 
-    Ingredient combine(Ingredient... ingredients);
+    default Ingredient combine(Ingredient... ingredients) {
+        OutputManager.getInstance().print(
+                "CleanMachine 不能结合原材料",
+                "CleanMachine 不能結合原材料",
+                "CleanMachine cannot combine ingredients."
+        );
+        return null;
+    }
 }

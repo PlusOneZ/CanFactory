@@ -1,11 +1,16 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.Machine;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.AppleProducer;
 import Presentation.Protocol.OutputManager;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * TODO:苹果罐头生产线类
@@ -15,6 +20,15 @@ import java.util.List;
  */
 public class AppleLine implements FruitLine {
 
+    private List<Machine> pretreatmentMachine = new ArrayList<>();
+
+    public AppleLine() {
+
+    }
+
+    public AppleLine(Machine ... machines) {
+        pretreatmentMachine.addAll(Arrays.stream(machines).collect(Collectors.toList()));
+    }
 
     @Override
     public List<BaseIngredient> preTreat(List<BaseIngredient> baseIngredientList) {
