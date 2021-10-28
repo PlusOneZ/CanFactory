@@ -14,5 +14,7 @@ public class LotusRoot extends BaseIngredient {
                 "藕",
                 "Lotus Root"
         );
+
+        setCost(9.0);
     }
 }

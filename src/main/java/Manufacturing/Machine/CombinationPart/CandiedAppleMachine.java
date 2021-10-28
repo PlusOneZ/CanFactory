@@ -29,19 +29,16 @@ public class CandiedAppleMachine implements IngredientMachine {
     @Override
     public Ingredient combine(Ingredient... ingredients) {
         Ingredient[] ingredientList = ingredients.clone();
-        if (ingredientList[0] instanceof Apple) {
-            if (ingredientList[1] instanceof Sugar) {
-                return new CandiedApple((Apple) ingredientList[0], (Sugar) ingredientList[1]);
-            }
-        }
+        return new CandiedApple(ingredientList[0], ingredientList[1]);
 
-        OutputManager.getInstance().errorMassage(
-                "检测到错误，不能生产糖渍苹果！",
-                "檢測到錯誤，不能生產糖漬蘋果！",
-                "Error detected, cannot produce candied apple!"
-        );
 
-        return null;
+//        OutputManager.getInstance().errorMassage(
+//                "检测到错误，不能生产糖渍苹果！",
+//                "檢測到錯誤，不能生產糖漬蘋果！",
+//                "Error detected, cannot produce candied apple!"
+//        );
+//
+//        return null;
     }
 
 

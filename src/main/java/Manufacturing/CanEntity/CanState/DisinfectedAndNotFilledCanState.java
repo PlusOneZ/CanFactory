@@ -35,8 +35,7 @@ public class DisinfectedAndNotFilledCanState extends CanState{
 
     @Override
     public CanState handleFilling() {
-
-        return null;
+        return new FilledCanState();
     }
 
     @Override

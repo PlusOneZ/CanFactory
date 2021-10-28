@@ -2,6 +2,7 @@ package Manufacturing.Ingredient.ConcreteIngredient.Mixed;
 
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Ingredient.MixedIngredient;
 
 /**
@@ -11,7 +12,7 @@ import Manufacturing.Ingredient.MixedIngredient;
  */
 public class CandiedApple extends MixedIngredient {
 
-    public CandiedApple(Apple apple, Sugar sugar) {
+    public CandiedApple(Ingredient apple, Ingredient sugar) {
         super(apple, sugar);
         setName(
                 "糖渍苹果",

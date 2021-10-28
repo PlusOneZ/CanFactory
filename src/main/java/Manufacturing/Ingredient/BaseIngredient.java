@@ -67,8 +67,8 @@ public abstract class BaseIngredient implements Ingredient {
 
     protected String baseIngredient;
 
-    private double cost;
-    private double weight;
+    protected double cost;
+    protected double weight;
 
     @Override
     public void setCost(double cost) {
