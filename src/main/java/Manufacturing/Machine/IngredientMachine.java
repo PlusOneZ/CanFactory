@@ -8,7 +8,7 @@ import Presentation.Protocol.OutputManager;
  * @author 卓正一
  * @since 2021-10-24 11:07 AM
  */
-public interface Machine {
+public interface IngredientMachine {
     Ingredient treat(Ingredient ingredient);
 
     default Ingredient combine(Ingredient... ingredients) {

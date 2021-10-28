@@ -1,5 +1,6 @@
 package Manufacturing.ProductLine.Line;
 
+import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.FreshLine;
 import Presentation.Protocol.OutputManager;
@@ -31,7 +32,7 @@ public class CloveLine implements FreshLine {
     }
 
     @Override
-    public void produce(int count) {
+    public List<Can> produce(int count) {
         OutputManager.getInstance().print(
                 "*******正在对丁香鱼进行加工*******",
                 "*******正在對丁香魚進行加工*******",
@@ -40,6 +41,7 @@ public class CloveLine implements FreshLine {
                 "共生产" + count + "个丁香鱼罐头",
                 "共生產" + count + "個丁香魚罐頭",
                 "Totally produced" + count + "clove can!");
+        return null;
     }
 
     @Override

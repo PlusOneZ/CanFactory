@@ -32,6 +32,11 @@ public class Procedure extends BaseIngredient {
         this.dealtIngredient = ingredient;
     }
 
+    @Override
+    public double getCost() {
+        return cost + dealtIngredient.getCost();
+    }
+
     protected Ingredient dealtIngredient;
 
     @Override

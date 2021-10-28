@@ -1,7 +1,7 @@
 package Manufacturing.Machine.GeneralMachine;
 
 import Manufacturing.Ingredient.Ingredient;
-import Manufacturing.Machine.Machine;
+import Manufacturing.Machine.IngredientMachine;
 
 /**
  * 筛选机器，可能会返回 null
@@ -9,7 +9,7 @@ import Manufacturing.Machine.Machine;
  * @author 卓正一
  * @since  2021/10/26 12:23 AM
  */
-public class FilterMachine implements Machine {
+public class FilterMachine implements IngredientMachine {
 
     public FilterMachine(double criteria) {
         this.criteria = criteria;

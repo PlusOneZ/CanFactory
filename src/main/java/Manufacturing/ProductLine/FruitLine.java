@@ -1,5 +1,6 @@
 package Manufacturing.ProductLine;
 
+import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 
@@ -34,4 +35,8 @@ public interface FruitLine extends ProductLine{
      */
     void produce(int count, String produceManner);
 
+    // TODO: 改写继承类并且移除这一句话
+    default List<Can> produce(int count) {
+        return null;
+    }
 }

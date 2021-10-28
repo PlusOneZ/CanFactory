@@ -1,5 +1,6 @@
 package Manufacturing.ProductLine;
 
+import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 
@@ -25,13 +26,4 @@ public interface FreshLine extends ProductLine{
      * @date 2021-10-11 23:41
      */
     List<Ingredient> preTreat(List<Ingredient> baseIngredientList);
-
-    /**
-     * TODO:加工罐头
-     *
-     * @param count :  加工的罐头数量
-     * @author 孟繁霖
-     * @date 2021-10-11 23:42
-     */
-    void produce(int count);
 }
