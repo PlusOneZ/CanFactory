@@ -71,7 +71,11 @@ public class InventoryDepartment {
 
         CanToOrderConverter canToOrderConverter = new CanToOrderConverter();
         CanWareHouse wareHouse = CanWareHouse.getInstance();
-        return canToOrderConverter.getFromCanEntityFunction().apply(wareHouse.getStockCans());
+        ArrayList<OrderCanInformation> orderCanInformations = canToOrderConverter.getFromCanEntityFunction().apply(wareHouse.getStockCans());
+        OutputManager.getInstance().print("实现转换器模式：完成存储罐头到订单罐头信息的转换.",
+                "實現轉換器模式：完成存儲罐頭到訂單罐頭信息的轉換.",
+                "Realize the converter mode: complete the conversion of stored canned food to order canned food information.");
+        return orderCanInformations;
     }
 
 
@@ -91,7 +95,7 @@ public class InventoryDepartment {
         ArrayList<OrderCanInformation> orderCanInformations = order.getOrderCanInformations();
 
         /**
-         * 获得仓库中的订单信息;
+         * 获得仓库中的罐头订单信息;
          */
         ArrayList<OrderCanInformation> inventoryCanInformations = getInventoryInformation();
 
@@ -106,25 +110,39 @@ public class InventoryDepartment {
 
             //判断库存是否存在这个罐头或者是否库存达到所需数量;
             if (findInventoryCan.isEmpty()) {
+                OutputManager.getInstance().print("罐头仓库中不含有" + canName,
+                        "罐頭倉庫中不含有" + canName,
+                        canName + "are not contained in the canned warehouse");
                 return false;
             } else if (findInventoryCan.get(0).getCount() < orderCanInformation.getCount()) {
+                OutputManager.getInstance().print("罐头仓库中" + canName + "数量不足", "罐頭倉庫中" + canName + "數量不足",
+                        "The number of " + canName + " in the canning warehouse is insufficient");
                 return false;
             }
         }
+        OutputManager.getInstance().print("罐头仓库的库存可以满足该订单.",
+                "罐頭倉庫的庫存可以滿足該訂單.",
+                "The inventory of the can warehouse can satisfy the order.");
         return true;
     }
 
     private boolean decreaseCan(StockCan stockCan, int count) {
         int existingCount = stockCan.getCount();
+        String canName = stockCan.getWrappedCan().getCan().getCanName();
         if (existingCount - count < 0) {
             OutputManager.getInstance().print(
-                    "存货量不够!",
-                    "存貨量不够",
-                    "The inventory of products is not enough!"
+                    "无法取货" + canName + ",存货量不够!",
+                    "無法取貨" + canName + ",存貨量不够",
+                    "Unable to pick up " + canName + ", the inventory of products is not enough!"
             );
             return false;
         }
         stockCan.setCount(existingCount - count);
+        OutputManager.getInstance().print(
+                "已经在仓库中取出:" + canName,
+                "已經在倉庫中取出:" + canName,
+                canName + " have been taken out in the warehouse"
+        );
         return true;
     }
 
@@ -132,7 +150,7 @@ public class InventoryDepartment {
      * 通过订单中的orderCanInfo取货;
      *
      * @param orderCanInformations : 订单信息;
-     * @return : java.util.ArrayList<Storage.StockCan>
+     * @return : java.util.ArrayList<Storage.StockCan> 取罐头的罐头列表;
      * @author "王立友"
      * @date 2021-10-17 18:20
      */
@@ -145,14 +163,17 @@ public class InventoryDepartment {
 
             //这个过程就是在仓库寻找该罐头，然后再取出的一个过程;
             for (StockCan stockCan : canWareHouse.getStockCans()) {
-                if (stockCan.getCan().getCanName().equals(canName)) {
+                if (stockCan.getWrappedCan().getCan().getCanName().equals(canName)) {
                     if (decreaseCan(stockCan, orderCanInformation.getCount())) {
-                        stockCans.add(new StockCan(stockCan.getCan(), orderCanInformation.getCount()));
+                        stockCans.add(new StockCan(stockCan.getWrappedCan(), orderCanInformation.getCount()));
                     }
                     break;
                 }
             }
         }
+        OutputManager.getInstance().print("已经取出订单中需要的存储罐头!",
+                "已經取出訂單中需要的存儲罐頭!",
+                "The storage cans needed in the order have been taken out!");
         return stockCans;
     }
 
@@ -170,8 +191,15 @@ public class InventoryDepartment {
         //准备好货物与订单信息;
         OrderToTransportationCanConverter orderToTransportationCanConverter = new OrderToTransportationCanConverter();
         TransportationCan transportationCan = orderToTransportationCanConverter.getFromOrderFunction().apply(order);
+        OutputManager.getInstance().print("实现转换器模式：实现订单信息抽取至运输包裹.",
+                "實現轉換器模式：實現訂單信息抽取至運輸包裹.",
+                "Realize the converter mode: Realize the extraction of order information to the shipping package.");
+
         transportationCan.setStockCans(takeCans(order.getOrderCanInformations()));
 
+        OutputManager.getInstance().print("已经准备好订单信息与货物至运输包裹!",
+                "已經準備好訂單信息與貨物至運輸包裹!",
+                "The order information and the goods to the shipping package have been prepared!");
         return transportationCan;
     }
 
@@ -234,39 +262,50 @@ public class InventoryDepartment {
 
     /**
      * 增加库存罐头数量
+     *
      * @param stockCan : 存储的罐头
-     * @param count :  增加数量
+     * @param count    :  增加数量
      * @author "王立友"
      * @date 2021-10-17 23:19
      */
-    public void increaseCan(StockCan stockCan, int count){
+    public void increaseCan(StockCan stockCan, int count) {
+        String canName = stockCan.getWrappedCan().getCan().getCanName();
         int curCount = stockCan.getCount();
         stockCan.setCount(count + curCount);
+        OutputManager.getInstance().print(canName + "的库存数量已经增加.",
+                canName + "的庫存數量已經增加.",
+                "The inventory of " + canName + " has increased.");
     }
 
     /**
      * 添加stockCans到库存中
+     *
      * @param stockCans :
      * @author "王立友"
      * @date 2021-10-17 21:38
      */
-    public void addCanInventory(ArrayList<StockCan> stockCans){
+    public void addCanInventory(ArrayList<StockCan> stockCans) {
         /**
          * 如果存在这个罐头就添加数量，如果不存在这个罐头就实例化再存入仓库;
          */
         CanWareHouse canWareHouse = CanWareHouse.getInstance();
         ArrayList<StockCan> wareHouseCans = canWareHouse.getStockCans();
         Iterator<StockCan> iterator = stockCans.iterator();
-        while(iterator.hasNext()){
+
+        while (iterator.hasNext()) {
             StockCan stockCan = iterator.next();
+            String canName = stockCan.getWrappedCan().getCan().getCanName();
             boolean flag = false;
-            for(StockCan can : wareHouseCans){
-                if(stockCan.getCan().getCanName().equals(can.getCan().getCanName())){
+            for (StockCan can : wareHouseCans) {
+                if (canName.equals(can.getWrappedCan().getCan().getCanName())) {
                     increaseCan(can, stockCan.getCount());
                     flag = true;
                 }
             }
-            if(flag == false){
+            if (!flag) {
+                OutputManager.getInstance().print("仓库中不存在" + canName + ",已新增该类罐头",
+                        "倉庫中不存在" + canName + ",已新增該類罐頭",
+                        canName + " do not exist in the warehouse, and this type of canned food has been newly added");
                 wareHouseCans.add(stockCan);
             }
         }
@@ -274,11 +313,15 @@ public class InventoryDepartment {
 
     /**
      * 添加一个order到库存管理的代办订单队列;
+     *
      * @param order :
      * @author "王立友"
      * @date 2021-10-17 23:28
      */
-    public void addOrder(Order order){
+    public void addOrder(Order order) {
+        OutputManager.getInstance().print("将订单编号为:"+order.getOrderId()+"加入库存待办订单队列.",
+                "將訂單編號為:"+order.getOrderId()+"加入庫存待辦訂單隊列.",
+                "Add the order number: "+order.getOrderId()+" to the inventory pending order queue.");
         unHandledOrders.add(order);
     }
 

@@ -28,7 +28,7 @@ public class OrderToTransportationCanConverter {
              * @date 2021-10-17 16:50
              */
             public TransportationCan apply(Order order) {
-                return new TransportationCan(order.getLatestDeliveryTime(),order.getCustomerAddress());
+                return new TransportationCan(order.getLatestDeliveryTime(),order.getCustomerAddress(), order.getOrderId());
             }
         };
     }

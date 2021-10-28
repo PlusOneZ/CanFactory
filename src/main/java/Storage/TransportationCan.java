@@ -39,9 +39,10 @@ public class TransportationCan {
      * @author "王立友"
      * @date 2021-10-17 16:59
      */
-    public TransportationCan(Date latestDeliveryTime, String customerAddress){
+    public TransportationCan(Date latestDeliveryTime, String customerAddress, Long orderId){
         this.customerAddress = customerAddress;
         this.latestDeliveryTime = latestDeliveryTime;
+        this.orderId = orderId;
     }
 
     /** setter and getter **/

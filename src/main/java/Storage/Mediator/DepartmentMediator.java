@@ -44,6 +44,9 @@ public class DepartmentMediator {
      * @date 2021-10-26 0:02
      */
     public void transportCans(TransportationCan transportationCan){
+        OutputManager.getInstance().print("将运输包裹分配运输部门,通知运输部门运输货物.",
+                "將運輸包裹分配運輸部門,通知運輸部門運輸貨物.",
+                "Assign the shipping package to the transportation department and notify the transportation department to transport the goods");
         transportDepartment.transportCans(transportationCan);
     }
 
@@ -55,7 +58,9 @@ public class DepartmentMediator {
      * @date 2021-10-17 21:05
      */
     public void productCans(ArrayList<OrderCanInformation> orderCanInformations){
-
+        OutputManager.getInstance().print("将待生产的订单罐头信息分配给生产部门,通知生产部门生产罐头",
+                "將待生產的訂單罐頭信息分配給生產部門,通知生產部門生產罐頭",
+                "Distribute the order canned food information to be produced to the production department, and notify the production department to produce cans");
     }
 
     /****************** InventoryDepartment Interface **********************/
@@ -70,6 +75,9 @@ public class DepartmentMediator {
         /**
          * 利用中介者来告诉库存管理部门补充货物的数量;
          */
+        OutputManager.getInstance().print("已经通知库存管理部门对生产好的罐头进行存储",
+                "已經通知庫存管理部門對生產好的罐頭進行存儲",
+                "The inventory management department has been notified to store the produced cans.");
         inventoryDepartment.addCanInventory(stockCans);
         /**
          * 补充货源之后督促库存管理部门再一次进行订单扫描;
@@ -87,6 +95,9 @@ public class DepartmentMediator {
         /**
          * 利用中介者来告诉库存管理部门这个未处理的订单;
          */
+        OutputManager.getInstance().print("已经通知库存管理部门处理订单",
+                "已經通知庫存管理部門處理訂單",
+                "The inventory management department has been notified to process the order.");
         inventoryDepartment.addOrder(order);
 
         /**
