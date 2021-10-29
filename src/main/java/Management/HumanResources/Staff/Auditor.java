@@ -42,13 +42,13 @@ public class Auditor extends Staff {
 
 
     /**
-     * 审计员审计Report的操作
+     * 审计员审计Report的操作: 通过脏标记判断是否需要审阅，如果需要审阅则进行审阅
      * @author 陈垲昕
      * @since 2021-10-21 10:14 下午
      */
     public void auditSalaryReport(){
 
-        //report的脏标记已访问过的话，则无需
+        //report的脏标记已访问过的话，则无需继续
         if(salaryTable.getVisited()){
             OutputManager.getInstance().print(
                     "员工薪水表已经被审阅过，无需重复审阅",
@@ -64,6 +64,8 @@ public class Auditor extends Staff {
                 "The Auditor"+this.getName()+" has reviewed the finance report. "
         );
 
+
+        // 重设脏标记
         salaryTable.setVisited();
 
 

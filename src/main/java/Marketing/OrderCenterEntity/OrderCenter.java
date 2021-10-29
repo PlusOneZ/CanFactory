@@ -71,13 +71,11 @@ public class OrderCenter implements Container {
                 "訂單中心的訂單數據:",
                 "Order data in the order center:"
         );
-        System.out.println("-----------------------------------------");
         OutputManager.getInstance().print(
                 "订单中心使用到了单例模式，订单迭代使用了迭代器模式." ,
                 "訂單中心使用到了單例模式，訂單迭代使用了迭代器模式.",
                 "The order center uses the singleton mode, and the order iteration uses the iterator mode."
         );
-        System.out.println("-----------------------------------------");
         OutputManager.getInstance().print(
                 "订单数目："+factoryOrderList.size() ,
                 "訂單數目："+factoryOrderList.size(),
@@ -132,7 +130,6 @@ public class OrderCenter implements Container {
                         "The Completion time of the order:"+deliverTime
                 );
             }
-            System.out.println("--------------------------------------");
             OutputManager.getInstance().print(
                     "订单明细:",
                     "訂單明細:",
@@ -140,7 +137,6 @@ public class OrderCenter implements Container {
             );
             //对于每个订单，分罐头类型的数量逐个迭代
             for(Iterator it = od.getIterator(); it.hasNext();){
-                System.out.println("--------------------------------------");
                 //获取当前迭代订单的当前迭代的订单罐头信息
                 OrderCanInformation oci = (OrderCanInformation)it.next();
                 OutputManager.getInstance().print(
@@ -153,7 +149,6 @@ public class OrderCenter implements Container {
                         "罐頭數量:"+oci.getCount(),
                         "Can Amount:"+oci.getCount()
                 );
-                System.out.println("--------------------------------------");
             }
 
             OutputManager.getInstance().print(
@@ -172,6 +167,7 @@ public class OrderCenter implements Container {
                     "訂單的運輸費用"+od.getOrderAmount().getTransportationAmount(),
                     "The Transportation price of the order:"+od.getOrderAmount().getTransportationAmount()
             );
+            System.out.println("--------------------------------------");
         }
     }
 

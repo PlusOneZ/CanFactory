@@ -20,9 +20,9 @@ public class OrderCanInformation {
 
 
     //订单中该罐头的单价
-    private int price;
+    private double price;
 
-    public OrderCanInformation( String canName, int count, int price){
+    public OrderCanInformation( String canName, int count, double price){
         this.canName = canName;
         this.count = count;
         this.price = price;
@@ -43,7 +43,20 @@ public class OrderCanInformation {
         this.count = count;
     }
 
-    public int getPrice(){
-        return this.price;
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderCanInformation{" +
+                "canName='" + canName + '\'' +
+                ", count=" + count +
+                ", price=" + price +
+                '}';
     }
 }

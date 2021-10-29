@@ -39,4 +39,6 @@ public class Accountant extends Staff implements Permission {
                 "會計" + name + "訪問了財務系統。",
                 "Accountant " + name + "accessed the financial system.");
     }
+
+
 }

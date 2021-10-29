@@ -44,10 +44,10 @@ public class CanToOrderConverter {
             ArrayList<OrderCanInformation> orderCanInformations = new ArrayList<>();
 
             for (StockCan stockCan : stockCans) {
-                String canName = stockCan.getCan().getCanName();
-                String canType = stockCan.getCan().getClass().getTypeName();
+                String canName = stockCan.getWrappedCan().getCan().getCanName();
                 int count = stockCan.getCount();
-                OrderCanInformation orderCanInformation = new OrderCanInformation(canName, count,99);
+                double price = stockCan.getWrappedCan().getWrappingCover().getCanPrice();
+                OrderCanInformation orderCanInformation = new OrderCanInformation(canName, count, price);
                 orderCanInformations.add(orderCanInformation);
             }
 

@@ -1,8 +1,9 @@
 package
-        Storage.Mediator;
+        Mediator;
 
 import Management.HumanResources.TransportDepartment;
 import Manufacturing.CanEntity.Can;
+import Marketing.OrderCenterEntity.OrderCenter;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Wrapping.WrappedCan;
@@ -22,6 +23,16 @@ import java.util.ArrayList;
  */
 public class DepartmentMediator {
 
+
+    private static DepartmentMediator  departmentMediator = new DepartmentMediator();
+
+    private DepartmentMediator(){
+
+    }
+
+    public static DepartmentMediator getInstance(){
+        return departmentMediator;
+    }
     /**
      * 库存管理部门
      */
@@ -34,7 +45,10 @@ public class DepartmentMediator {
      * 包装管理部门
      */
     WrappingDepartment wrappingDepartment = WrappingDepartment.getInstance();
-
+    /**
+     * 订单中心
+     */
+    OrderCenter orderCenter = OrderCenter.getInstance();
 
     /**
      * 中介者的运输罐头的实现，通过调用运输管理部门的接口，实现相关操作
@@ -44,6 +58,9 @@ public class DepartmentMediator {
      * @date 2021-10-26 0:02
      */
     public void transportCans(TransportationCan transportationCan){
+        OutputManager.getInstance().print("将运输包裹分配运输部门,通知运输部门运输货物.",
+                "將運輸包裹分配運輸部門,通知運輸部門運輸貨物.",
+                "Assign the shipping package to the transportation department and notify the transportation department to transport the goods");
         transportDepartment.transportCans(transportationCan);
     }
 
@@ -55,7 +72,9 @@ public class DepartmentMediator {
      * @date 2021-10-17 21:05
      */
     public void productCans(ArrayList<OrderCanInformation> orderCanInformations){
-
+        OutputManager.getInstance().print("将待生产的订单罐头信息分配给生产部门,通知生产部门生产罐头",
+                "將待生產的訂單罐頭信息分配給生產部門,通知生產部門生產罐頭",
+                "Distribute the order canned food information to be produced to the production department, and notify the production department to produce cans");
     }
 
     /****************** InventoryDepartment Interface **********************/
@@ -70,6 +89,9 @@ public class DepartmentMediator {
         /**
          * 利用中介者来告诉库存管理部门补充货物的数量;
          */
+        OutputManager.getInstance().print("已经通知库存管理部门对生产好的罐头进行存储",
+                "已經通知庫存管理部門對生產好的罐頭進行存儲",
+                "The inventory management department has been notified to store the produced cans.");
         inventoryDepartment.addCanInventory(stockCans);
         /**
          * 补充货源之后督促库存管理部门再一次进行订单扫描;
@@ -87,6 +109,9 @@ public class DepartmentMediator {
         /**
          * 利用中介者来告诉库存管理部门这个未处理的订单;
          */
+        OutputManager.getInstance().print("已经通知库存管理部门处理订单",
+                "已經通知庫存管理部門處理訂單",
+                "The inventory management department has been notified to process the order.");
         inventoryDepartment.addOrder(order);
 
         /**
@@ -117,6 +142,63 @@ public class DepartmentMediator {
                 "Packaging is complete"
         );
         return wrappedCan;
+    }
+
+    /********************* OrderCenter Interface ***********************/
+    /**
+     * 委托中介者来获取待处理（已下单状态）的订单列表，方便运输中心调用
+     * @return : java.util.ArrayList<Marketing.OrderEnity.Order>
+     * @author 梁乔
+     * @date 11:17 2021-10-24
+     */
+    public ArrayList<Order> getPendingOrders(){
+        return orderCenter.getPendingOrders();
+    }
+
+    /**
+     * 按照订单id搜索某一订单
+     * @param OrderId : 要搜索的订单id
+     * @return : Marketing.OrderEnity.Order
+     * @author
+     * @date 14:45 2021-10-24
+     */
+    public Order orderExists(Long OrderId){
+        return orderCenter.orderExists(OrderId);
+    }
+
+
+    /**
+     * 完成一个订单的生产
+     * @param orderId :订单ID
+     * @return : boolean
+     * @author 梁乔
+     * @date 20:27 2021-10-16
+     */
+    public boolean completeProductionOfOneOrder(Long orderId){
+        return orderCenter.completeProductionOfOneOrder(orderId);
+    }
+
+
+    /**
+     * 开始运输某一订单
+     * @param orderId :订单ID
+     * @return : boolean
+     * @author 梁乔
+     * @date 14:51 2021-10-24
+     */
+    public boolean startToTransportOneOrder(Long orderId){
+        return orderCenter.startToTransportOneOrder(orderId);
+    }
+
+    /**
+     * 交付一个订单
+     * @param orderId : 订单ID
+     * @return : boolean
+     * @author 梁乔
+     * @date 15:02 2021-10-24
+     */
+    public boolean deliverOneOrder(Long orderId){
+        return orderCenter.deliverOneOrder(orderId);
     }
 
 }

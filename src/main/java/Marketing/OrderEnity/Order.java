@@ -102,8 +102,8 @@ public class Order implements Container {
 
     }
 
-    public Integer caculateOriginalPrice(){
-        Integer price = new Integer(0);
+    public Double caculateOriginalPrice(){
+        Double price = 0.;
         //计算该订单的OrderAmount对象
         for(Iterator it = getIterator(); it.hasNext();){
             OrderCanInformation orderCanInformation = (OrderCanInformation) it.next();
