@@ -130,7 +130,12 @@ public abstract class MixedIngredient implements Ingredient {
 
     @Override
     public double getCost() {
-        return cost;
+        double innerCost = 0.;
+        for (Ingredient i :
+                contentIngredients) {
+            innerCost += i.getCost();
+        }
+        return cost + innerCost;
     }
 
     @Override

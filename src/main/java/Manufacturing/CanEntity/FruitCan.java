@@ -16,7 +16,4 @@ public class FruitCan extends Can{
         super.setMaterial(c);
     }
 
-
-
-
 }

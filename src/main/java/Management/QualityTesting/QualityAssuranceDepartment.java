@@ -31,7 +31,9 @@ public class QualityAssuranceDepartment extends BaseDepartment {
      * @author 陈垲昕
      * @since 2021-10-17 8:58 下午
      */
-    private QualityAssuranceDepartment() {super.type=DepartmentType.QualityAssurance;}
+    private QualityAssuranceDepartment() {
+        super.type=DepartmentType.QualityAssurance;
+    }
 
     /**
      * 单例对象

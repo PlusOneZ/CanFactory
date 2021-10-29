@@ -1,5 +1,6 @@
 package Manufacturing.Machine.CombinationPart;
 
+import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
@@ -14,6 +15,7 @@ import Presentation.Protocol.OutputManager;
  * @date 2021/10/27 9:07 PM
  */
 public class CandiedAppleMachine implements IngredientMachine {
+
     @Override
     public Ingredient treat(Ingredient ingredient) {
         // 不会发生任何事

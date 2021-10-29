@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * TODO:此处写CandiedAppleLine类的描述
+ * 糖漬蘋果的生產線
  *
  * @author 卓正一
  * @since 2021/10/28 9:19 AM
@@ -100,5 +100,22 @@ public class CandiedAppleLine extends AutomatedLine {
                 cans) {
             System.out.println(can);
         }
+    }
+
+    public static Can produceSample() {
+        CandiedAppleMachine candiedAppleMachine = new CandiedAppleMachine();
+        IronCanMachine ironCanMachine = new IronCanMachine();
+        Can can = IronCanFactory.getInstance().createSmallFruitCan();
+        // TODO: 修改这种命名方式
+        can.setName(
+                "糖渍苹果罐头",
+                "糖漬蘋果罐頭",
+                "Candied Apple Can"
+        );
+        ironCanMachine.preTreat(can);
+        Ingredient candiedApple = candiedAppleMachine.combine(new Apple(), new Sugar());
+        ironCanMachine.fill(can, candiedApple);
+        ironCanMachine.can(can);
+        return can;
     }
 }

@@ -65,8 +65,6 @@ public abstract class BaseIngredient implements Ingredient {
         return enName;
     }
 
-    protected String baseIngredient;
-
     protected double cost;
     protected double weight;
 
