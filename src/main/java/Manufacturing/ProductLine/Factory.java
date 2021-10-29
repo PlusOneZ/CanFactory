@@ -1,8 +1,13 @@
 package Manufacturing.ProductLine;
 
+import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
+import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine;
+import Manufacturing.ProductLine.Line.CandiedAppleLine;
 import Presentation.Protocol.OutputManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,8 +49,8 @@ public abstract class Factory {
      * <b>实现了模板方法模式</b>
      * <i>无论哪种生产线生产罐头都要分采购、预处理、加工生产三个过程</i>
      *
-     * @param canKind       : 罐头种类，仅限两种（fruit、fresh）
-     * @param canName       : 罐头名，仅限（apple、peach、pear/salmon、clove），需要与canKind对应，没做检验
+     * @param canKind       : 罐头种类，仅限三种（fruit、fresh、automated）
+     * @param canName       : 罐头名，仅限（apple、peach、pear、salmon、clove），需要与canKind对应，没做检验
      * @param materialCount : 采购原材料数量
      * @param produceManner :  加工方式，细加工（fine），粗加工(rough)
      * @author 孟繁霖
@@ -88,6 +93,15 @@ public abstract class Factory {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
             freshLine.produce(count);
+        }
+        else if("automated".equals(canKind)){
+            List<Ingredient>sugarList=new ArrayList<>();
+            for(int i=0;i<materialCount;i++){
+            sugarList.add(new Sugar());
+            }
+            CandiedAppleLine candiedAppleLine =new CandiedAppleLine(ingredientList,sugarList);
+            int count=(candiedAppleLine.preTreat(ingredientList)).size();
+            candiedAppleLine.produce(count);
         }
     }
 
