@@ -38,7 +38,7 @@ public class PretreatmentApp {
 
         disinfectMachine = new DisinfectMachine();
         peelMachine = new PeelMachine();
-        filterTreatMachine = new FilterMachine(90.);
+        filterTreatMachine = new FilterMachine(150);
         cleanMachine = new CleanMachine();
     }
 
@@ -67,18 +67,18 @@ public class PretreatmentApp {
     /**
      * TODO:剥皮方法
      *
-     * @param baseIngredientList :  原材料列表
+     * @param ingredientList :  原材料列表
      * @author 孟繁霖
      * @date 2021-10-12 8:25
      */
-    public void peel(List<Ingredient> baseIngredientList) {
+    public void peel(List<Ingredient> ingredientList) {
         OutputManager.getInstance().print(
                 "--------开始剥皮---------",
                 "--------開始剝皮---------",
                 "------Start peeling------");
 //        peelProcessor.treat(baseIngredientList);
-        for (int i = 0; i < baseIngredientList.size(); i++) {
-            baseIngredientList.set(i, peelMachine.treat(baseIngredientList.get(i)));
+        for (int i = 0; i < ingredientList.size(); i++) {
+            ingredientList.set(i, peelMachine.treat(ingredientList.get(i)));
         }
         OutputManager.getInstance().print(
                 "--------完成剥皮---------",
@@ -89,19 +89,19 @@ public class PretreatmentApp {
     /**
      * TODO: 过滤筛选方法.
      *
-     * @param baseIngredientList :  原材料列表
+     * @param ingredientList :  原材料列表
      * @return : java.util.List<Manufacturing.ProductLine.Fruit.RawMaterial>
      * @author 孟繁霖
      * @date 2021-10-12 8:26
      */
-    public List<Ingredient> filterTreat(List<Ingredient> baseIngredientList) {
+    public List<Ingredient> filterTreat(List<Ingredient> ingredientList) {
         OutputManager.getInstance().print(
                 "--开始筛选符合要求的原料--",
                 "--開始篩選符合要求的原料--",
                 "--Start to screen raw materials that meet the requirements--");
 //        baseIngredientList = filterTreatProcessor.treat(baseIngredientList);
         List<Ingredient> temp = new ArrayList<Ingredient>();
-        for (Ingredient ingredient: baseIngredientList) {
+        for (Ingredient ingredient: ingredientList) {
             if (filterTreatMachine.treat(ingredient) != null)
                 temp.add(ingredient);
         }
@@ -109,12 +109,8 @@ public class PretreatmentApp {
                 "---筛选完成，结果如下：---",
                 "---篩選完成，結果如下：---",
                 "---The screening is complete, and the results are as follows: ---");
-        for (Ingredient baseIngredient : temp) {
-            OutputManager.getInstance().print(
-                    baseIngredient.zhCnDescription(),
-                    baseIngredient.zhTwDescription(),
-                    baseIngredient.enDescription()
-            );
+        for (Ingredient ingredient : temp) {
+            System.out.println(ingredient.showContentsWithWeight());
         }
         return temp;
 
@@ -123,18 +119,18 @@ public class PretreatmentApp {
     /**
      * TODO:清理方法
      *
-     * @param baseIngredientList :  原材料列表
+     * @param ingredientList :  原材料列表
      * @author 孟繁霖
      * @date 2021-10-12 8:27
      */
-    public void clean(List<Ingredient> baseIngredientList) {
+    public void clean(List<Ingredient> ingredientList) {
         OutputManager.getInstance().print(
                 "--------开始清理---------",
                 "-----------開始清理---------",
                 "---------Start to clean up-------");
 //        cleanProcessor.treat(baseIngredientList);
-        for (int i = 0; i < baseIngredientList.size(); i++) {
-            baseIngredientList.set(i, cleanMachine.treat(baseIngredientList.get(i)));
+        for (int i = 0; i < ingredientList.size(); i++) {
+            ingredientList.set(i, cleanMachine.treat(ingredientList.get(i)));
         }
         OutputManager.getInstance().print(
                 "--------清理完成---------",

@@ -38,7 +38,7 @@ public class CandiedAppleLine extends AutomatedLine {
     private final IronCanMachine ironCanMachine = new IronCanMachine();
 
 
-    CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
+    public CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
         if (apples.isEmpty() || sugarList.isEmpty()) {
             OutputManager.getInstance().errorMassage(
                     "原料为空，不能生产！",

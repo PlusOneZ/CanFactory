@@ -1,8 +1,16 @@
 package Manufacturing.ProductLine.test;
 
 
+import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.ConcreteIngredient.Apple;
+import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.*;
+import Manufacturing.ProductLine.Line.CandiedAppleLine;
 import Presentation.Protocol.OutputManager;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
 * TODO:生产线相关设计模式测试类

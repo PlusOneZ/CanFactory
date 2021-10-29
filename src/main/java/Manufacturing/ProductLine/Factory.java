@@ -61,19 +61,15 @@ public abstract class Factory {
         );
 
         //购买原材料
-        List<Ingredient> baseIngredientList = supplier.provide(canName, materialCount);
-        if (baseIngredientList != null) {
+        List<Ingredient> ingredientList = supplier.provide(canName, materialCount);
+        if (ingredientList != null) {
             OutputManager.getInstance().print(
                     "********购买成功,原料如下********",
                     "********購買成功,原料如下********",
                     "Purchase successfully, the raw materials are as follows"
             );
-            for (Ingredient baseIngredient : baseIngredientList) {
-                OutputManager.getInstance().print(
-                        baseIngredient.zhCnDescription(),
-                        baseIngredient.zhTwDescription(),
-                        baseIngredient.enDescription()
-                );
+            for (Ingredient ingredient : ingredientList) {
+                System.out.println(ingredient.showContentsWithWeight());
             }
         } else {
             OutputManager.getInstance().print(
@@ -86,11 +82,11 @@ public abstract class Factory {
         //获得相应种类的生产线并进行预处理和生产加工
         if ("fruit".equals(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
-            int count = (fruitLine.preTreat(baseIngredientList)).size();
+            int count = (fruitLine.preTreat(ingredientList)).size();
             fruitLine.produce(count, produceManner);
         } else if ("fresh".equals(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
-            int count = (freshLine.preTreat(baseIngredientList)).size();
+            int count = (freshLine.preTreat(ingredientList)).size();
             freshLine.produce(count);
         }
     }

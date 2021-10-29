@@ -15,20 +15,20 @@ import java.util.List;
  */
 public class CloveLine implements FreshLine {
     @Override
-    public List<Ingredient> preTreat(List<Ingredient> baseIngredientList) {
+    public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
         OutputManager.getInstance().print(
                 "******正在对丁香鱼进行预处理********",
                 "******正在對丁香魚進行預處理********",
                 "******Pretreating clove fish********");
-        baseIngredientList = pretreatmentApp.filterTreat(baseIngredientList);
-        pretreatmentApp.disinfect(baseIngredientList);
-        pretreatmentApp.clean(baseIngredientList);
+        ingredientList = pretreatmentApp.filterTreat(ingredientList);
+        pretreatmentApp.disinfect(ingredientList);
+        pretreatmentApp.clean(ingredientList);
         OutputManager.getInstance().print(
                 "*********丁香鱼预处理完成*********",
                 "*********丁香魚預處理完成*********",
                 "*********Clove fish pretreatment completed*********");
-        return baseIngredientList;
+        return ingredientList;
     }
 
     @Override
