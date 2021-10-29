@@ -6,7 +6,7 @@ import Marketing.OrderEnity.OrderCanInformation;
 import Presentation.Protocol.OutputManager;
 import Storage.InventoryConverter.CanToOrderConverter;
 import Storage.InventoryConverter.OrderToTransportationCanConverter;
-import Storage.Mediator.DepartmentMediator;
+import Mediator.DepartmentMediator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,12 +30,8 @@ public class InventoryDepartment {
     /**
      * 库存管理部门维护的待办订单队列.
      */
-    private ArrayList<Order> unHandledOrders;
+    private ArrayList<Order> unHandledOrders = new ArrayList<>();
 
-    /**
-     * 中介者
-     */
-    private DepartmentMediator departmentMediator;
 
     /**
      * 私有构造函数
@@ -213,7 +209,7 @@ public class InventoryDepartment {
      */
     public void transportCans(Order order) {
         //库存部门不能发货，调用中介者实现发货;
-        departmentMediator.transportCans(prepareCans(order));
+        DepartmentMediator.getInstance().transportCans(prepareCans(order));
     }
 
     /**
@@ -225,7 +221,7 @@ public class InventoryDepartment {
      */
     public void productCans(Order order) {
         //库存部门同样不能生产货物,调用中介者实现货物生产;
-        departmentMediator.productCans(order.getOrderCanInformations());
+        DepartmentMediator.getInstance().productCans(order.getOrderCanInformations());
     }
 
 
@@ -256,7 +252,7 @@ public class InventoryDepartment {
                 /**
                  * 不能发货,需要通知生产部门生产货物;
                  */
-                prepareCans(currentOrder);
+                productCans(currentOrder);
             }
         }
     }
@@ -320,6 +316,7 @@ public class InventoryDepartment {
      * @author "王立友"
      * @date 2021-10-17 23:28
      */
+
     public void addOrder(Order order) {
         OutputManager.getInstance().print("将订单编号为:" + order.getOrderId() + "加入库存待办订单队列.",
                 "將訂單編號為:" + order.getOrderId() + "加入庫存待辦訂單隊列.",

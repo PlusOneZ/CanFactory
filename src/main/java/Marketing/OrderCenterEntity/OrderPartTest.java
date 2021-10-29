@@ -1,17 +1,14 @@
 package Marketing.OrderCenterEntity;
 
 import Marketing.OrderEnity.Order;
-import Marketing.OrderEnity.OrderAmount;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Promotion.Coupon;
 import Marketing.Promotion.Sale.TwentyPercentOff;
 import Presentation.Protocol.OutputManager;
-import Storage.Mediator.DepartmentMediator;
+import Mediator.DepartmentMediator;
 
-import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -184,7 +181,7 @@ public class OrderPartTest {
 
         //订单创建完毕，调用中介者处理订单
         //获取待处理的订单列表
-        ArrayList<Order> pendingOrder = OrderProcessingMediator.getInstance().getPendingOrders();
+        ArrayList<Order> pendingOrder = DepartmentMediator.getInstance().getPendingOrders();
         for(Order order : pendingOrder){
             DepartmentMediator.getInstance().handleOrder(order);
         }
