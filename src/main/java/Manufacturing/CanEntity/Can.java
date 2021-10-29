@@ -322,6 +322,7 @@ public abstract class Can implements Testable {
                 ingredients) {
             cost += i.getCost();
         }
+
         return cost;
     }
 

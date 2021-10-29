@@ -6,6 +6,7 @@ import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Promotion.Coupon;
 import Marketing.Promotion.Sale.TwentyPercentOff;
 import Presentation.Protocol.OutputManager;
+import Storage.Mediator.DepartmentMediator;
 
 import java.awt.*;
 import java.text.ParseException;
@@ -179,6 +180,18 @@ public class OrderPartTest {
                 continue;
         }
         OrderCenter.getInstance().displayOrderData();//显示当前所有订单的数据
+
+
+        //订单创建完毕，调用中介者处理订单
+        //获取待处理的订单列表
+        ArrayList<Order> pendingOrder = OrderProcessingMediator.getInstance().getPendingOrders();
+        for(Order order : pendingOrder){
+            DepartmentMediator.getInstance().handleOrder(order);
         }
+
+
+
+
+    }
     }
 
