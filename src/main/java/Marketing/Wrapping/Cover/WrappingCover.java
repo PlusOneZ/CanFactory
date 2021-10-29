@@ -32,33 +32,40 @@ public abstract class WrappingCover {
     protected double canPrice;
 
 
-    protected WrappingCover(){}
+    protected WrappingCover() {
+    }
 
-    public void setWrappingCanInfo(WrappingCanInfo wrappingCanInfo){
+    public void setWrappingCanInfo(WrappingCanInfo wrappingCanInfo) {
         this.wrappingCanInfo = wrappingCanInfo;
     }
 
-    public void setWrappingFactoryInfo(WrappingFactoryInfo wrappingFactoryInfo){
+    public void setWrappingFactoryInfo(WrappingFactoryInfo wrappingFactoryInfo) {
         this.wrappingFactoryInfo = wrappingFactoryInfo;
     }
 
-    public void setWrappingBackground(String wrappingBackground){
+    public void setWrappingBackground(String wrappingBackground) {
         this.wrappingBackground = wrappingBackground;
     }
 
-    public WrappingCanInfo getWrappingCanInfo(){
+    public WrappingCanInfo getWrappingCanInfo() {
         return wrappingCanInfo;
     }
-    public WrappingFactoryInfo getWrappingFactoryInfo(){
+
+    public WrappingFactoryInfo getWrappingFactoryInfo() {
         return wrappingFactoryInfo;
     }
-    public String getWrappingBackground(){
+
+    public String getWrappingBackground() {
         return wrappingBackground;
     }
-    public double getCanPrice(){
+
+    public double getCanPrice() {
         return canPrice;
     }
-    public void setCanPrice(double canPrice){
+
+    public void setCanPrice(double canPrice) {
         this.canPrice = canPrice;
     }
+
+
 }

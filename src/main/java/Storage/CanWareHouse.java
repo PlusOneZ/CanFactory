@@ -25,7 +25,9 @@ public class CanWareHouse {
     /**
      * 私有化构造函数
      */
-    private CanWareHouse() {}
+    private CanWareHouse() {
+        stockCans = new ArrayList<>();
+    }
 
     /**
      * 获得单例

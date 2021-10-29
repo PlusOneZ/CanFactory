@@ -50,4 +50,13 @@ public class OrderCanInformation {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "OrderCanInformation{" +
+                "canName='" + canName + '\'' +
+                ", count=" + count +
+                ", price=" + price +
+                '}';
+    }
 }

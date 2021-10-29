@@ -78,4 +78,6 @@ public class TransportationCan {
     public void setOrderId(Long OrderId){
         this.orderId = OrderId;
     }
+
+
 }

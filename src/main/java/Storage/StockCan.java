@@ -50,4 +50,6 @@ public class StockCan {
     public void setWrappedCan(WrappedCan wrappedCan) {
         this.wrappedCan = wrappedCan;
     }
+
+
 }

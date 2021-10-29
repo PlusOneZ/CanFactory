@@ -42,4 +42,6 @@ public class WrappedCan {
     public void setWrappingCover(WrappingCover wrappingCover) {
         this.wrappingCover = wrappingCover;
     }
+
+
 }

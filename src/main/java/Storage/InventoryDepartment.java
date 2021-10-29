@@ -126,7 +126,7 @@ public class InventoryDepartment {
         return true;
     }
 
-    private boolean decreaseCan(StockCan stockCan, int count) {
+    public boolean decreaseCan(StockCan stockCan, int count) {
         int existingCount = stockCan.getCount();
         String canName = stockCan.getWrappedCan().getCan().getCanName();
         if (existingCount - count < 0) {
@@ -138,10 +138,11 @@ public class InventoryDepartment {
             return false;
         }
         stockCan.setCount(existingCount - count);
+        int currentCount = stockCan.getCount();
         OutputManager.getInstance().print(
-                "已经在仓库中取出:" + canName,
-                "已經在倉庫中取出:" + canName,
-                canName + " have been taken out in the warehouse"
+                "已经在仓库中取出:" + canName + ",目前的数量为: " + currentCount,
+                "已經在倉庫中取出:" + canName + ",目前的數量為: " + currentCount,
+                canName + " have been taken out in the warehouse, the current number is " + currentCount
         );
         return true;
     }
@@ -272,9 +273,10 @@ public class InventoryDepartment {
         String canName = stockCan.getWrappedCan().getCan().getCanName();
         int curCount = stockCan.getCount();
         stockCan.setCount(count + curCount);
-        OutputManager.getInstance().print(canName + "的库存数量已经增加.",
-                canName + "的庫存數量已經增加.",
-                "The inventory of " + canName + " has increased.");
+        int countNow = stockCan.getCount();
+        OutputManager.getInstance().print(canName + "的库存数量已经增加,目前的数量为:" + countNow,
+                canName + "的庫存數量已經增加,目前的數量為:" + countNow,
+                "The inventory of " + canName + " has increased, the current number is " + countNow);
     }
 
     /**
@@ -303,9 +305,9 @@ public class InventoryDepartment {
                 }
             }
             if (!flag) {
-                OutputManager.getInstance().print("仓库中不存在" + canName + ",已新增该类罐头",
-                        "倉庫中不存在" + canName + ",已新增該類罐頭",
-                        canName + " do not exist in the warehouse, and this type of canned food has been newly added");
+                OutputManager.getInstance().print("仓库中不存在" + canName + ",已新增该类罐头, 目前的数量为: " + stockCan.getCount(),
+                        "倉庫中不存在" + canName + ",已新增該類罐頭, 目前的數量為: " + stockCan.getCount(),
+                        canName + " do not exist in the warehouse, and this type of canned food has been newly added, the current number is " + stockCan.getCount());
                 wareHouseCans.add(stockCan);
             }
         }
@@ -319,9 +321,9 @@ public class InventoryDepartment {
      * @date 2021-10-17 23:28
      */
     public void addOrder(Order order) {
-        OutputManager.getInstance().print("将订单编号为:"+order.getOrderId()+"加入库存待办订单队列.",
-                "將訂單編號為:"+order.getOrderId()+"加入庫存待辦訂單隊列.",
-                "Add the order number: "+order.getOrderId()+" to the inventory pending order queue.");
+        OutputManager.getInstance().print("将订单编号为:" + order.getOrderId() + "加入库存待办订单队列.",
+                "將訂單編號為:" + order.getOrderId() + "加入庫存待辦訂單隊列.",
+                "Add the order number: " + order.getOrderId() + " to the inventory pending order queue.");
         unHandledOrders.add(order);
     }
 
