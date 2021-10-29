@@ -22,6 +22,16 @@ import java.util.ArrayList;
  */
 public class DepartmentMediator {
 
+
+    private  static DepartmentMediator  departmentMediator = new DepartmentMediator();
+
+    private DepartmentMediator(){
+
+    }
+
+    public static DepartmentMediator getInstance(){
+        return departmentMediator;
+    }
     /**
      * 库存管理部门
      */
