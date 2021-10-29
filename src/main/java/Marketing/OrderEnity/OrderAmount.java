@@ -25,6 +25,8 @@ public class OrderAmount {
         this.originalAmount = originalAmount;
         this.coupon = coupon;
         this. promotionAmount = coupon.getPreferentialPrice(originalAmount);
+        //运输费用默认为每1元订单的费用为0.0021元
+        this.transportationAmount = 0.0021 * promotionAmount;
     }
 
     public Coupon getCoupon() {
