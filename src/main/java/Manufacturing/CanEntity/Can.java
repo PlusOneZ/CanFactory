@@ -339,4 +339,20 @@ public abstract class Can implements Testable {
         }
         return ret.toString();
     }
+
+    /**
+     * 克隆一个罐头
+     * 享元模式
+     * @return : Can
+     * @author 汪明杰
+     * @since 2021-10-29 9:02 PM
+     */
+    public Can Clone(){
+        try {
+            return (Can)this.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return this;
+        }
+    }
 }
