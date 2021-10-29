@@ -1,7 +1,7 @@
 package Management.HumanResources.Staff.Driver;
 
-import Marketing.OrderCenterEntity.OrderProcessingMediator;
 import Presentation.Protocol.OutputManager;
+import Mediator.DepartmentMediator;
 import Storage.TransportationCan;
 
 import java.util.Date;
@@ -34,7 +34,7 @@ public class Shipmaster extends Driver {
         );
 
         //完成訂單的交付
-        OrderProcessingMediator.getInstance().deliverOneOrder(transportationCan.getOrderId());
+        DepartmentMediator.getInstance().deliverOneOrder(transportationCan.getOrderId());
 
         OutputManager.getInstance().print(
                 "运输成功！",

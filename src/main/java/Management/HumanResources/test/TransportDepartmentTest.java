@@ -2,12 +2,12 @@ package Management.HumanResources.test;
 
 import Management.HumanResources.TransportDepartment;
 import Marketing.OrderCenterEntity.OrderCenter;
-import Marketing.OrderCenterEntity.OrderProcessingMediator;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Promotion.Coupon;
 import Marketing.Promotion.Sale.TwentyPercentOff;
 import Presentation.Protocol.OutputManager;
+import Mediator.DepartmentMediator;
 import Storage.StockCan;
 import Storage.TransportationCan;
 
@@ -42,7 +42,7 @@ public class TransportDepartmentTest {
                 orderCanInformationArrayList, coupon, new Date(), customerAddress);
 
         // 生成运输罐头
-        ArrayList<Order> orderList = OrderProcessingMediator.getInstance().getPendingOrders();
+        ArrayList<Order> orderList = DepartmentMediator.getInstance().getPendingOrders();
         for(Order order : orderList){
             TransportationCan transportationCan = new TransportationCan(new Date(), customerAddress, order.getOrderId());
             //transportationCan.setOrderId(order.getOrderId());

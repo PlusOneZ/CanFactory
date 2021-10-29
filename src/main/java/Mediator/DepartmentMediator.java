@@ -1,8 +1,9 @@
 package
-        Storage.Mediator;
+        Mediator;
 
 import Management.HumanResources.TransportDepartment;
 import Manufacturing.CanEntity.Can;
+import Marketing.OrderCenterEntity.OrderCenter;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Wrapping.WrappedCan;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 public class DepartmentMediator {
 
 
-    private  static DepartmentMediator  departmentMediator = new DepartmentMediator();
+    private static DepartmentMediator  departmentMediator = new DepartmentMediator();
 
     private DepartmentMediator(){
 
@@ -44,7 +45,10 @@ public class DepartmentMediator {
      * 包装管理部门
      */
     WrappingDepartment wrappingDepartment = WrappingDepartment.getInstance();
-
+    /**
+     * 订单中心
+     */
+    OrderCenter orderCenter = OrderCenter.getInstance();
 
     /**
      * 中介者的运输罐头的实现，通过调用运输管理部门的接口，实现相关操作
@@ -138,6 +142,63 @@ public class DepartmentMediator {
                 "Packaging is complete"
         );
         return wrappedCan;
+    }
+
+    /********************* OrderCenter Interface ***********************/
+    /**
+     * 委托中介者来获取待处理（已下单状态）的订单列表，方便运输中心调用
+     * @return : java.util.ArrayList<Marketing.OrderEnity.Order>
+     * @author 梁乔
+     * @date 11:17 2021-10-24
+     */
+    public ArrayList<Order> getPendingOrders(){
+        return orderCenter.getPendingOrders();
+    }
+
+    /**
+     * 按照订单id搜索某一订单
+     * @param OrderId : 要搜索的订单id
+     * @return : Marketing.OrderEnity.Order
+     * @author
+     * @date 14:45 2021-10-24
+     */
+    public Order orderExists(Long OrderId){
+        return orderCenter.orderExists(OrderId);
+    }
+
+
+    /**
+     * 完成一个订单的生产
+     * @param orderId :订单ID
+     * @return : boolean
+     * @author 梁乔
+     * @date 20:27 2021-10-16
+     */
+    public boolean completeProductionOfOneOrder(Long orderId){
+        return orderCenter.completeProductionOfOneOrder(orderId);
+    }
+
+
+    /**
+     * 开始运输某一订单
+     * @param orderId :订单ID
+     * @return : boolean
+     * @author 梁乔
+     * @date 14:51 2021-10-24
+     */
+    public boolean startToTransportOneOrder(Long orderId){
+        return orderCenter.startToTransportOneOrder(orderId);
+    }
+
+    /**
+     * 交付一个订单
+     * @param orderId : 订单ID
+     * @return : boolean
+     * @author 梁乔
+     * @date 15:02 2021-10-24
+     */
+    public boolean deliverOneOrder(Long orderId){
+        return orderCenter.deliverOneOrder(orderId);
     }
 
 }
