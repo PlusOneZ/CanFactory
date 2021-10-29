@@ -3,12 +3,14 @@ package Manufacturing.CanEntity;
 import Management.QualityTesting.Protocol.Testable;
 import Manufacturing.CanEntity.CanState.CanState;
 import Manufacturing.CanEntity.CanState.ErrorCanState;
+import Manufacturing.CanEntity.CanState.NotDisinfectedCanState;
 import Manufacturing.CanEntity.Material.Material;
 import Manufacturing.CanEntity.Size.Size;
 import Manufacturing.Ingredient.Ingredient;
 import Presentation.Protocol.OutputManager;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -106,6 +108,8 @@ public abstract class Can implements Testable {
 
 
     protected Can() {
+        ingredients = new ArrayList<Ingredient>();
+        state = new NotDisinfectedCanState();
     }
 
 
@@ -310,5 +314,28 @@ public abstract class Can implements Testable {
 
     public void setMinTemperature(int minTemperature) {
         this.minTemperature = minTemperature;
+    }
+
+    public double getCanCost() {
+        double cost = 0.;
+        for (Ingredient i :
+                ingredients) {
+            cost += i.getCost();
+        }
+        return cost;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder ret = new StringBuilder(getCanName() +
+                OutputManager.getInstance().selectStringForCurrentLanguage(
+                        "；配料：",
+                        "；配料：",
+                        "; Ingredients: "
+                ));
+        for (Ingredient in : ingredients) {
+            ret.append(in.showContents());
+        }
+        return ret.toString();
     }
 }

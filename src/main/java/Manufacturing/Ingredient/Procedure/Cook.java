@@ -12,12 +12,13 @@ import Presentation.Protocol.OutputManager;
  */
 public class Cook extends Procedure {
 
-    Cook(Ingredient ingredient) {
+    public Cook(Ingredient ingredient) {
         super(ingredient);
+        cost = 1.0;
         setName(
                 "煮",
                 "煮",
-                "Cooked "
+                "Cooked"
         );
     }
 

@@ -1,5 +1,10 @@
 package Manufacturing.ProductLine;
 
+import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.Ingredient;
+
+import java.util.List;
+
 /**
 * 生产线总接口
 *
@@ -16,4 +21,14 @@ public interface ProductLine {
     */
     String getConcreteName();
 
+    List<Ingredient> preTreat(List<Ingredient> baseIngredientList);
+
+    /**
+     * 加工罐头
+     *
+     * @param count :  加工的罐头数量
+     * @author 孟繁霖
+     * @since  2021-10-11 23:42
+     */
+    List<Can> produce(int count);
 }

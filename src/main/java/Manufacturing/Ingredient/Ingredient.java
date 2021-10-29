@@ -16,6 +16,8 @@ public interface Ingredient extends MultiLanguageDescription {
      */
     String showContents();
 
+    String showContentsWithWeight();
+
     /**
      * 组合模式要求的接口，平时会打印错误并且不让操作，只有在 MixedIngredient 中会被覆盖并且允许添加。
      * @author 卓正一

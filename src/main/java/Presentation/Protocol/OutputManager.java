@@ -48,6 +48,20 @@ public class OutputManager {
     private Lang language = Lang.zh_CN;
 
     /**
+     * 输出模式，可以选择详细、简单和只有设计模式输出。
+     * @since 2021-10-25 7:41 PM
+     */
+    public enum Mode {
+        detailed, brief, patternOnly
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+    }
+
+    private Mode mode = Mode.detailed;
+
+    /**
      * 向标准输出打印多语言信息
      * <i>功能委托给 outputToStream 函数</i>
      * @param zh_cn 简体中文文本
@@ -56,6 +70,35 @@ public class OutputManager {
      */
     public void print(String zh_cn, String zh_tw ,String en) {
         outputToStream(System.out, zh_cn, zh_tw, en);
+    }
+
+    /**
+     * 向标准输出打印多语言信息
+     * <i>功能委托给 outputToStream 函数</i>
+     * @param zh_cn 简体中文文本
+     * @param zh_tw 台湾繁体中文文本
+     * @param en 英文文本
+     * @param appendix 附加的文本
+     */
+    public void print(String zh_cn, String zh_tw ,String en, String appendix) {
+        outputToStream(
+                System.out,
+                zh_cn + appendix,
+                zh_tw + appendix,
+                en + appendix
+        );
+    }
+
+    /**
+     * 向标准输出打印多语言信息
+     * <i>功能委托给 outputToStream 函数</i>
+     * @param zh_cn 简体中文文本
+     * @param zh_tw 台湾繁体中文文本
+     * @param en 英文文本
+     */
+    public void printBrief(String zh_cn, String zh_tw ,String en) {
+        if (mode != Mode.patternOnly)
+            outputToStream(System.out, zh_cn, zh_tw, en);
     }
 
     /**

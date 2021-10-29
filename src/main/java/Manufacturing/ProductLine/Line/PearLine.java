@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine.Line;
 
-import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.PearProducer;
 import Presentation.Protocol.OutputManager;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class PearLine implements FruitLine {
     @Override
-    public List<BaseIngredient> preTreat(List<BaseIngredient> baseIngredientList) {
+    public List<Ingredient> preTreat(List<Ingredient> baseIngredientList) {
         OutputManager.getInstance().print(
                 "******正在对梨进行预处理********",
                 "******正在對梨進行預處理********",

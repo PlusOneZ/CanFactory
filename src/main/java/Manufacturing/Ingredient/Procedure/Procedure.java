@@ -23,11 +23,18 @@ public class Procedure extends BaseIngredient {
 
     @Override
     public String enDescription() {
-        return super.enDescription() + " " + dealtIngredient.enDescription();
+        return super.enDescription()
+                + (super.enDescription().isEmpty() ? "" : " ")
+                + dealtIngredient.enDescription();
     }
 
     public Procedure(Ingredient ingredient) {
         this.dealtIngredient = ingredient;
+    }
+
+    @Override
+    public double getCost() {
+        return cost + dealtIngredient.getCost();
     }
 
     protected Ingredient dealtIngredient;
