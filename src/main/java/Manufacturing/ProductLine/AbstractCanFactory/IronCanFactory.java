@@ -56,7 +56,7 @@ public class IronCanFactory extends AbstractCanFactory {
         if (IronCanFactory.bigFruitCan == null){
             IronCanFactory.bigFruitCan = new FruitCan(BigSize.getInstance(), IronMaterial.getInstance());
         }
-        return IronCanFactory.bigFruitCan;
+        return IronCanFactory.bigFruitCan.Clone();
     }
 
     @Override
@@ -69,7 +69,7 @@ public class IronCanFactory extends AbstractCanFactory {
         if (IronCanFactory.smallFruitCan == null){
             IronCanFactory.smallFruitCan = new FruitCan(SmallSize.getInstance(), IronMaterial.getInstance());
         }
-        return IronCanFactory.smallFruitCan;
+        return IronCanFactory.smallFruitCan.Clone();
     }
 
     @Override
@@ -82,7 +82,7 @@ public class IronCanFactory extends AbstractCanFactory {
         if(IronCanFactory.bigVegetableCan == null){
             IronCanFactory.bigVegetableCan = new VegetableCan(BigSize.getInstance(),IronMaterial.getInstance());
         }
-        return IronCanFactory.bigVegetableCan;
+        return IronCanFactory.bigVegetableCan.Clone();
     }
 
     @Override
@@ -95,6 +95,6 @@ public class IronCanFactory extends AbstractCanFactory {
         if (IronCanFactory.smallVegetableCan == null){
             IronCanFactory.smallVegetableCan = new VegetableCan(SmallSize.getInstance(), IronMaterial.getInstance());
         }
-        return IronCanFactory.smallVegetableCan;
+        return IronCanFactory.smallVegetableCan.Clone();
     }
 }
