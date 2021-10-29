@@ -81,5 +81,8 @@ public class FinancialDepartmentTest {
 
         financialDepartment.giveCommand();
         //理论输出： 无需审计
+
+
+        financialDepartment.viewAuditHistoryList();
     }
 }
