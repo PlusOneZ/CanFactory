@@ -35,6 +35,33 @@ public abstract class MixedIngredient implements Ingredient {
         return ret.toString();
     }
 
+    @Override
+    public final String showContentsWithWeight() {
+        StringBuilder ret = new StringBuilder(
+                OutputManager.getInstance().selectStringForCurrentLanguage(
+                        zhCnDescription(),
+                        zhTwDescription(),
+                        enDescription()
+                )
+                        + "(");
+        double weight = 0.;
+        for (int i = 0; i < contentIngredients.size(); i++) {
+            ret.append(contentIngredients.get(i).showContents());
+            weight += contentIngredients.get(i).getWeight();
+            if (i != contentIngredients.size() - 1) {
+                ret.append(", ");
+            }
+        }
+        ret.append(") ");
+        ret.append(OutputManager.getInstance().selectStringForCurrentLanguage(
+                "{质量 = " + weight + '}',
+                "{質量 = " + weight + '}',
+                "{weight = " + weight + '}'
+        ));
+
+        return ret.toString();
+    }
+
     /**
      * 混合原料构造器
      * @param ingredients 组成这个原料的所有子原料，通过变长参数列表传入。

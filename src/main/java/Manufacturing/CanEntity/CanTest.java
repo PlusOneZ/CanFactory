@@ -2,6 +2,9 @@ package Manufacturing.CanEntity;
 
 import Manufacturing.CanEntity.Material.IronMaterial;
 import Manufacturing.CanEntity.Size.BigSize;
+import Manufacturing.Ingredient.ConcreteIngredient.LotusRoot;
+import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Ingredient.Procedure.Cook;
 import Presentation.Protocol.OutputManager;
 
 /**
@@ -18,7 +21,20 @@ public class CanTest {
                 "# Using Bridge mode"
         );
         Can vegetableCan = new VegetableCan(BigSize.getInstance(), IronMaterial.getInstance());
-        vegetableCan.setName("蔬菜罐头", "蔬菜罐頭", "Vegetable Can");
+        vegetableCan.setName(
+                "藕片罐头",
+                "藕片罐頭",
+                "Lotus Root Can"
+        );
+
+        Ingredient lotusRoot = new LotusRoot();
+        vegetableCan.getDisinfection();
+        vegetableCan.addIngredient(new Cook(lotusRoot));
+
+        System.out.println(vegetableCan.getCanCost());
+
         System.out.println(vegetableCan.getCanName());
+
+        System.out.println(vegetableCan);
     }
 }

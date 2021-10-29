@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine;
 
-import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.Ingredient.Ingredient;
 import Presentation.Protocol.OutputManager;
 
 import java.util.List;
@@ -61,14 +61,14 @@ public abstract class Factory {
         );
 
         //购买原材料
-        List<BaseIngredient> baseIngredientList = supplier.provide(canName, materialCount);
+        List<Ingredient> baseIngredientList = supplier.provide(canName, materialCount);
         if (baseIngredientList != null) {
             OutputManager.getInstance().print(
                     "********购买成功,原料如下********",
                     "********購買成功,原料如下********",
                     "Purchase successfully, the raw materials are as follows"
             );
-            for (BaseIngredient baseIngredient : baseIngredientList) {
+            for (Ingredient baseIngredient : baseIngredientList) {
                 OutputManager.getInstance().print(
                         baseIngredient.zhCnDescription(),
                         baseIngredient.zhTwDescription(),

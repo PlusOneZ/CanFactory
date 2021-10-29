@@ -12,5 +12,6 @@ public class VegetableCan extends Can{
     public VegetableCan(Size s, Material c) {
         super.setSize(s);
         super.setMaterial(c);
+        setName("蔬菜罐头", "蔬菜罐頭", "Vegetable Can");
     }
 }

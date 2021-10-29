@@ -2,6 +2,7 @@ package Manufacturing.ProductLine.Pretreatment.Test;
 
 import Manufacturing.Ingredient.BaseIngredient;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 import Presentation.Protocol.OutputManager;
 
@@ -18,7 +19,7 @@ import java.util.List;
 public class FacadeTest {
     public static void main(String[] args) {
         PretreatmentApp pretreatmentApp=new PretreatmentApp();
-        List<BaseIngredient> baseIngredientList=new ArrayList<>();
+        List<Ingredient> baseIngredientList=new ArrayList<>();
         for (int i = 0; i <10; i++) {
             Apple apple =new Apple();
             Double d=100+Math.random()*200;
@@ -29,7 +30,7 @@ public class FacadeTest {
                 "获取的原料分别为:",
                 "獲取的原料分別為:",
                 "The raw materials obtained are:");
-        for (BaseIngredient baseIngredient : baseIngredientList) {
+        for (Ingredient baseIngredient : baseIngredientList) {
             OutputManager.getInstance().print(
                     baseIngredient.zhCnDescription(),
                     baseIngredient.zhTwDescription(),

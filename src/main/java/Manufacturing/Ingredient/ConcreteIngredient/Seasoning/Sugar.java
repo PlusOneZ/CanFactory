@@ -1,4 +1,4 @@
-package Manufacturing.Ingredient.ConcreteIngredient;
+package Manufacturing.Ingredient.ConcreteIngredient.Seasoning;
 
 import Manufacturing.Ingredient.BaseIngredient;
 

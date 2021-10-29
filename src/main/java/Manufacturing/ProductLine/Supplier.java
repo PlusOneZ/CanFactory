@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine;
 
 
-import Manufacturing.Ingredient.BaseIngredient;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Ingredient.ConcreteIngredient.*;
 
 import org.json.JSONArray;
@@ -28,9 +28,9 @@ public class Supplier {
      * @author 孟繁霖
      * @date 2021-10-11 23:51
      */
-    public List<BaseIngredient> provide(String kind, int count) {
+    public List<Ingredient> provide(String kind, int count) {
 
-        List<BaseIngredient> baseIngredientList=new ArrayList<>();
+        List<Ingredient> baseIngredientList=new ArrayList<>();
         JSONObject object = new JSONObject();
         object.put("ingredientType",kind);
         object.put("count",count);

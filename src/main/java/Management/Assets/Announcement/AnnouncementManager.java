@@ -23,8 +23,15 @@ public interface AnnouncementManager {
         );
     }
 
+    /**
+     * 该get函数为员工.getMessage()
+     * @param message
+     */
     void getMessage(String message);
 
+    /**
+     * 该函数为员工所执行函数
+     */
     void subscribe();
 
     default void addSubscriber(BaseEmployee baseEmployee){
