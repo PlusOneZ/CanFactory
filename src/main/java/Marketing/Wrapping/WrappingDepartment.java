@@ -79,9 +79,10 @@ public class WrappingDepartment {
      */
     private double computeCanPrice(WrappingCanInfo wrappingCanInfo) {
         //首先设定的是罐头的底价;
-        String canName = wrappingCanInfo.getCanName();
-        Double price = CanInfoController.getInstance().getCanPriceByName(canName);
-        return price;
+//        String canName = wrappingCanInfo.getCanName();
+//        Double price = CanInfoController.getInstance().getCanPriceByName(canName);
+//        return price;
+        return 4.0;
     }
 
 
