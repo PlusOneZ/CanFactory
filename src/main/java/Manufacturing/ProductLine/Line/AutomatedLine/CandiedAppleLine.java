@@ -65,12 +65,7 @@ public class CandiedAppleLine extends AutomatedLine {
         for (int i = 0; i < count; i++) {
             try {
                 Ingredient candiedApple = candiedAppleMachine.combine(apples.get(i), sugarList.get(i));
-                Can can = IronCanFactory.getInstance().createSmallFruitCan();
-                can.setName(
-                        "糖渍苹果罐头",
-                        "糖漬蘋果罐頭",
-                        "Candied Apple Can"
-                );
+                Can can = IronCanFactory.getInstance().createSmallCan("CandiedApple");
                 ironCanMachine.preTreat(can);
                 ironCanMachine.fill(can, candiedApple);
                 ironCanMachine.can(can);
@@ -107,13 +102,8 @@ public class CandiedAppleLine extends AutomatedLine {
     public static Can produceSample() {
         CandiedAppleMachine candiedAppleMachine = new CandiedAppleMachine();
         IronCanMachine ironCanMachine = new IronCanMachine();
-        Can can = IronCanFactory.getInstance().createSmallFruitCan();
-        // TODO: 修改这种命名方式
-        can.setName(
-                "糖渍苹果罐头",
-                "糖漬蘋果罐頭",
-                "Candied Apple Can"
-        );
+        Can can = IronCanFactory.getInstance().createSmallCan("CandiedApple");
+
         ironCanMachine.preTreat(can);
         Ingredient candiedApple = candiedAppleMachine.combine(new Apple(), new Sugar());
         ironCanMachine.fill(can, candiedApple);
