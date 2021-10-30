@@ -105,6 +105,11 @@ public class OutputManager {
         outputToStream(System.out, zh_cn, zh_tw, en);
     }
 
+    public void printLanguageIrrelevantContent(String content) {
+        // TODO 这个要单独修改
+        System.out.println(content);
+    }
+
     /**
      * 向错误输出打印多语言信息
      * <i>功能委托给 outputToStream 函数</i>
