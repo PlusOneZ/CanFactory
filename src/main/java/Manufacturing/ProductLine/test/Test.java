@@ -71,7 +71,7 @@ public class Test {
         departmentMediator.addCanInventory(stockCanArrayList);
 
         System.out.println(HerringLine.produceSample().toString());
-        
+
         //迭代器测试
         Iterator i= factory.iterator();
         while(i.hasNext()){
