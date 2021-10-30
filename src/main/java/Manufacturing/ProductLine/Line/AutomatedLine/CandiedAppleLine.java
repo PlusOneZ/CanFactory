@@ -1,4 +1,4 @@
-package Manufacturing.ProductLine.Line;
+package Manufacturing.ProductLine.Line.AutomatedLine;
 
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
@@ -7,7 +7,6 @@ import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
-import Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class CandiedAppleLine extends AutomatedLine {
     private final IronCanMachine ironCanMachine = new IronCanMachine();
 
 
-    CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
+    public CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
         if (apples.isEmpty() || sugarList.isEmpty()) {
             OutputManager.getInstance().errorMassage(
                     "原料为空，不能生产！",

@@ -22,6 +22,8 @@ public class Test {
             factory.produceCan("fruit","peach",7,"fine");
             factory.produceCan("fruit","pear",10,"rough");
             factory.produceCan("fruit","pear",10,"rough");
+            factory.produceCan("automated","apple",10,"rough");
+
         } else {
             OutputManager.getInstance().print(
                     "莫得工厂",
