@@ -3,9 +3,11 @@ package Manufacturing.ProductLine.Line;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Herring;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.GeneralMachine.HerringFilterMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FreshLine;
+import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import java.util.List;
  * @date 2021-10-12 8:32
  */
 public class HerringLine implements FreshLine {
+
+    private PretreatmentApp pretreatmentApp = new PretreatmentApp(new HerringFilterMachine());
 
     private List<Ingredient> ingredients=new ArrayList<>();
     private final IronCanMachine ironCanMachine = new IronCanMachine();

@@ -56,7 +56,7 @@ public class Supplier {
                 salmon.setWeight(ingredients.getDouble(i));
                 baseIngredientList.add(salmon);
             }
-        } else if ("ferring".equals(canName)) {
+        } else if ("herring".equals(canName)) {
             for (int i = 0; i < count; i++) {
                 Herring herring =new Herring();
                 herring.setWeight(ingredients.getDouble(i));

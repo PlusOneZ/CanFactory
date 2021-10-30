@@ -59,13 +59,13 @@ public class FreshLineFactory extends Factory {
             } else {
                 return freshLineMap.get("salmonLine");
             }
-        } else if ("clove".equals(freshLineType)) {
-            if (!freshLineMap.containsKey("cloveLine")) {
+        } else if ("herring".equals(freshLineType)) {
+            if (!freshLineMap.containsKey("herringLine")) {
                 HerringLine herringLine = new HerringLine();
-                freshLineMap.put("cloveLine", herringLine);
+                freshLineMap.put("herringLine", herringLine);
                 return herringLine;
             } else {
-                return freshLineMap.get("cloveLine");
+                return freshLineMap.get("herringLine");
             }
         } else return null;
     }
