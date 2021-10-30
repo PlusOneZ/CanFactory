@@ -1,7 +1,11 @@
+import CanFactory.CanFactory;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello Factory!");
+        CanFactory factory = CanFactory.getInstance();
+
+        factory.run();
 
     }
 }

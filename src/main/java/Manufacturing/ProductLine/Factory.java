@@ -1,11 +1,10 @@
 package Manufacturing.ProductLine;
 
+
 import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
-import Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine;
-import Manufacturing.ProductLine.Line.CandiedAppleLine;
+import Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
@@ -95,7 +94,7 @@ public abstract class Factory {
         } else if ("fresh".equals(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
-            return freshLine.produce(count,produceManner);
+            return freshLine.produce(count);
         }
         else if("automated".equals(canKind)){
             List<Ingredient>sugarList=new ArrayList<>();
@@ -104,7 +103,7 @@ public abstract class Factory {
             }
             CandiedAppleLine candiedAppleLine =new CandiedAppleLine(ingredientList,sugarList);
             int count=(candiedAppleLine.preTreat(ingredientList)).size();
-            return candiedAppleLine.produce(count,produceManner);
+            return candiedAppleLine.produce(count);
         }else{
             return null;
         }

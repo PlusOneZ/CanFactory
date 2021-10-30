@@ -1,4 +1,4 @@
-package Manufacturing.ProductLine.Line;
+package Manufacturing.ProductLine.Line.AutomatedLine;
 
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
@@ -7,7 +7,6 @@ import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
-import Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class CandiedAppleLine extends AutomatedLine {
     }
 
     @Override
-    public List<Can> produce(int count,String producerManner) {
+    public List<Can> produce(int count) {
         List<Can> product = new ArrayList<>();
         apples = preTreat(apples);
         for (int i = 0; i < count; i++) {
@@ -95,7 +94,10 @@ public class CandiedAppleLine extends AutomatedLine {
         List<Ingredient> sugarList = Arrays.asList(new Sugar(), new Sugar(), new Sugar(), new Sugar(), new Sugar());
 
         CandiedAppleLine candiedAppleLine = new CandiedAppleLine(apples, sugarList);
-        List<Can> cans = candiedAppleLine.produce(4,"fine");
+
+
+        List<Can> cans = candiedAppleLine.produce(4);
+
         for (Can can :
                 cans) {
             System.out.println(can);

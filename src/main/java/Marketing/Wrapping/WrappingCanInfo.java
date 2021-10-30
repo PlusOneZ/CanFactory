@@ -32,11 +32,11 @@ public class WrappingCanInfo {
     /**
      * 罐头保质期
      */
-    private LocalDate shelfTime;
+    private Date shelfTime;
     /**
      * 罐头生产日期
      */
-    private LocalDate manufactureTime;
+    private Date manufactureTime;
 
 
     public String getCanName() {
@@ -64,19 +64,19 @@ public class WrappingCanInfo {
         this.ingredients = ingredients;
     }
 
-    public LocalDate getShelfTime() {
+    public Date getShelfTime() {
         return shelfTime;
     }
 
-    public void setShelfTime(LocalDate shelfTime) {
+    public void setShelfTime(Date shelfTime) {
         this.shelfTime = shelfTime;
     }
 
-    public LocalDate getManufactureTime() {
+    public Date getManufactureTime() {
         return manufactureTime;
     }
 
-    public void setManufactureTime(LocalDate manufactureTime) {
+    public void setManufactureTime(Date manufactureTime) {
         this.manufactureTime = manufactureTime;
     }
 }

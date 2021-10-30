@@ -32,7 +32,7 @@ public class PurchaseManager extends Manager {
     /**
      * 设计采购方案
      */
-    private void designPurchaseScheme(JSONArray demand) {
+    public void designPurchaseScheme(JSONArray demand) {
         OutputManager.getInstance().print(
                 "采购部经理制定采购计划。",
                 "採購部經理制定採購計劃。",

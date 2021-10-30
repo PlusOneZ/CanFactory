@@ -15,16 +15,16 @@ public class Disinfect extends Procedure {
     public Disinfect(Ingredient ingredient) {
         super(ingredient);
 
-        OutputManager.getInstance().print(
-                "消毒了" + showContents(),
-                "消毒了" + showContents(),
-                "Disinfected " + showContents()
-        );
-
         setName(
                 "",
                 "",
                 ""
+        );
+
+        OutputManager.getInstance().print(
+                "消毒了" + showContents(),
+                "消毒了" + showContents(),
+                "Disinfected " + showContents()
         );
     }
 }

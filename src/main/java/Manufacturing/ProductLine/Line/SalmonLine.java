@@ -38,6 +38,10 @@ public class SalmonLine implements FreshLine {
     }
 
     @Override
+    public List<Can> produce(int count) {
+        return null;
+    }
+
     public List<Can> produce(int count,String produceManner) {
         OutputManager.getInstance().print(
                 "**********正在对三文鱼进行加工**********",
