@@ -6,6 +6,5 @@ public class Main {
         CanFactory factory = CanFactory.getInstance();
 
         factory.run();
-
     }
 }
