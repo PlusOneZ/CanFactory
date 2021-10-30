@@ -39,9 +39,9 @@ public class ChainOfResponsibilityTest {
         testingWorker.setLeader(testingTeamLeader1);
 
         // 分别将其注册到该部门
-        qualityTestingDepartment.register(testingManager);
-        qualityTestingDepartment.register(testingTeamLeader1);
-        qualityTestingDepartment.register(testingWorker);
+        qualityTestingDepartment.register(testingManager,true);
+        qualityTestingDepartment.register(testingTeamLeader1,true);
+        qualityTestingDepartment.register(testingWorker,true);
 
         // 创建一条请假请求
         LeaveRequest request = new LeaveRequest();
