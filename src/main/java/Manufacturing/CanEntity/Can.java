@@ -285,19 +285,19 @@ public abstract class Can implements Testable {
         return "";
     }
 
-    public LocalDate getShelfTime() {
+    public Date getShelfTime() {
         return shelfTime;
     }
 
-    public void setShelfTime(LocalDate shelfTime) {
+    public void setShelfTime(Date shelfTime) {
         this.shelfTime = shelfTime;
     }
 
-    public LocalDate getManufactureTime() {
+    public Date getManufactureTime() {
         return manufactureTime;
     }
 
-    public void setManufactureTime(LocalDate manufactureTime) {
+    public void setManufactureTime(Date manufactureTime) {
         this.manufactureTime = manufactureTime;
     }
 
