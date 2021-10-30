@@ -102,13 +102,13 @@ public class CompanyManagementTest {
         while(true) {
             OutputManager.getInstance().print(
                     "请输入序号进行所需要的操作：\n" +
-                            "[1 - 注册员工]\t[2 - 审计报告]\t[3 - 查看审计记录]\t[4 - 请假处理]\t[5 - 退出系统]\n" +
+                            "[1 - 注册员工]\t[2 - 审计报告]\t[3 - 查看审计记录]\t[4 - 请假处理]\t[5 - 检查员工权限]\t[6 - 退出系统]\n" +
                             "您的输入：",
                     "請輸入序號進行所需要的操作：\n" +
-                            "[1 - 註冊員工]\t[2 - 審計報告]\t[3 - 查看備忘錄]\t[4 - 請假處理]\t[5 - 退出系統]\n" +
+                            "[1 - 註冊員工]\t[2 - 審計報告]\t[3 - 查看備忘錄]\t[4 - 請假處理]\t[5 - 檢查員工權限]\t[6 - 退出系統]\n" +
                             "您的輸入：",
                     "Please input the following number for corresponding mission:\n" +
-                            "[1 - employee registration]\t[2 - salary report audit]\t[3 - view history memento]\t[4 - leave request procedure]\t[5 - exit system]\n" +
+                            "[1 - employee registration]\t[2 - salary report audit]\t[3 - view history memento]\t[4 - leave request procedure]\t[5 - check employee authority]\t[6 - exit system]\n" +
                             "Your input: "
             );
 
@@ -173,6 +173,9 @@ public class CompanyManagementTest {
                 //TODO: 请假处理
             }
             else if(num==5){
+                //TODO: 测试标记模式
+            }
+            else if(num==6){
                 break;
             }
             else{
