@@ -1,6 +1,8 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.ConcreteIngredient.Peach;
+import Manufacturing.Ingredient.ConcreteIngredient.Salmon;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
@@ -50,7 +52,7 @@ public class SalmonLine implements FreshLine {
 
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);
-            Can can= IronCanFactory.getInstance().createBigFruitCan();
+            Can can= IronCanFactory.getInstance().createBigCan("Salmon");
             ironCanMachine.preTreat(can);
             ironCanMachine.fill(can,ingredient);
             ironCanMachine.can(can);
@@ -67,5 +69,16 @@ public class SalmonLine implements FreshLine {
     @Override
     public String getConcreteName() {
         return "salmonLine";
+    }
+
+
+    public static Can produceSample() {
+        IronCanMachine ironCanMachine = new IronCanMachine();
+        Can can = IronCanFactory.getInstance().createBigCan("Salmon");
+        ironCanMachine.preTreat(can);
+        Ingredient salmon =new Salmon();
+        ironCanMachine.fill(can, salmon);
+        ironCanMachine.can(can);
+        return can;
     }
 }
