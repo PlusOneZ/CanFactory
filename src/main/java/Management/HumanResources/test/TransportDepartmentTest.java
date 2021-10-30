@@ -45,7 +45,6 @@ public class TransportDepartmentTest {
         ArrayList<Order> orderList = DepartmentMediator.getInstance().getPendingOrders();
         for(Order order : orderList){
             TransportationCan transportationCan = new TransportationCan(new Date(), customerAddress, order.getOrderId());
-            //transportationCan.setOrderId(order.getOrderId());
             ArrayList<StockCan> stockCans = new ArrayList<StockCan>();
             transportationCan.setStockCans(stockCans);
             //运输罐头
