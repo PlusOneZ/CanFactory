@@ -8,8 +8,8 @@ import Manufacturing.Ingredient.BaseIngredient;
  * @author 孟繁霖
  * @date 2021/10/25 14:06
  */
-public class Clove extends BaseIngredient {
-    public Clove() {
+public class Herring extends BaseIngredient {
+    public Herring() {
         this.setName(
                 "丁香鱼",
                 "丁香魚",

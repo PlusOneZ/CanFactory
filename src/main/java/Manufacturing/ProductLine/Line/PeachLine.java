@@ -1,12 +1,10 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.ConcreteIngredient.Clove;
 import Manufacturing.Ingredient.ConcreteIngredient.Peach;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
-import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.PeachProducer;
 import Presentation.Protocol.OutputManager;

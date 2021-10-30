@@ -17,7 +17,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
 
     private Integer count;
 
-    private String[] ingredientType = new String[]{"apple", "clove", "peach", "pear", "salmon"};
+    private String[] ingredientType = new String[]{"apple", "herring", "peach", "pear", "salmon"};
 
     /**
      * TODO:随机生成上游工厂的种类和数量

@@ -1,11 +1,8 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.ConcreteIngredient.Apple;
-import Manufacturing.Ingredient.ConcreteIngredient.Clove;
-import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
+import Manufacturing.Ingredient.ConcreteIngredient.Herring;
 import Manufacturing.Ingredient.Ingredient;
-import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FreshLine;
@@ -68,15 +65,15 @@ public class HerringLine implements FreshLine {
 
     @Override
     public String getConcreteName() {
-        return "cloveLine";
+        return "HerringLine";
     }
 
     public static Can produceSample() {
         IronCanMachine ironCanMachine = new IronCanMachine();
         Can can = IronCanFactory.getInstance().createBigCan("Herring");
         ironCanMachine.preTreat(can);
-        Ingredient clove =new Clove();
-        ironCanMachine.fill(can, clove);
+        Ingredient herring =new Herring();
+        ironCanMachine.fill(can, herring);
         ironCanMachine.can(can);
         return can;
     }

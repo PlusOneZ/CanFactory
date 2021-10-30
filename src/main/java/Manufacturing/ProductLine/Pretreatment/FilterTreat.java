@@ -36,7 +36,7 @@ public class FilterTreat implements Pretreatment {
                 return peachFilter.select(baseIngredientList);
             } else if (baseIngredientList.get(0) instanceof Salmon) {
                 return salmonFilter.select(baseIngredientList);
-            } else if (baseIngredientList.get(0) instanceof Clove) {
+            } else if (baseIngredientList.get(0) instanceof Herring) {
                 return cloveFilter.select(baseIngredientList);
             } else {
                 return null;
