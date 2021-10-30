@@ -67,7 +67,7 @@ public class OrderImplementDepartment {
                     Scanner inputScanner = new Scanner(System.in);
                     String canType = inputScanner.next();
                     if (Objects.equals(canType, "1")) {
-                        canName = "糖渍水果罐头";
+                        canName = "candiedApple";
                         OutputManager.getInstance().print(
                                 "您输入的该子订单的罐头类型为糖渍苹果罐头。",
                                 "您輸入的該子訂單的罐頭類型為糖漬苹果罐頭。",
@@ -76,7 +76,7 @@ public class OrderImplementDepartment {
                         canPrice = CanInfoController.getInstance().getCanPriceByName("糖渍苹果罐头");
                         break;
                     } else if (Objects.equals(canType,"2")) {
-                        canName = "鲱鱼罐头";
+                        canName = "herring";
                         OutputManager.getInstance().print(
                                 "您输入的该子订单的罐头类型为鲱鱼罐头。",
                                 "您輸入的該子訂單的罐頭類型為鯡魚罐頭。",
@@ -86,7 +86,7 @@ public class OrderImplementDepartment {
                         break;
                     }
                     else if(Objects.equals(canType,"3")){
-                        canName = "黄桃罐头";
+                        canName = "peach";
                         OutputManager.getInstance().print(
                                 "您输入的该子订单的罐头类型为黄桃罐头。",
                                 "您輸入的該子訂單的罐頭類型為黃桃罐頭。",
@@ -96,7 +96,7 @@ public class OrderImplementDepartment {
                         break;
                     }
                     else if(Objects.equals(canType,"4")){
-                        canName = "三文鱼罐头";
+                        canName = "salmon";
                         OutputManager.getInstance().print(
                                 "您输入的该子订单的罐头类型为三文鱼罐头。",
                                 "您輸入的該子訂單的罐頭類型為三文魚罐頭。",

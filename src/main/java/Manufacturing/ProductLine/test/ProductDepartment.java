@@ -2,6 +2,7 @@ package Manufacturing.ProductLine.test;
 
 
 import Manufacturing.CanEntity.Can;
+import Manufacturing.CanEntity.CanInfoController;
 import Manufacturing.ProductLine.*;
 import Manufacturing.ProductLine.Line.HerringLine;
 import Marketing.OrderEnity.OrderCanInformation;
@@ -93,8 +94,22 @@ public class ProductDepartment {
     */
     public void produceCans(OrderCanInformation orderCanInformation){
         int count = orderCanInformation.getCount();
-        String name = orderCanInformation.getCanName();
+        String canName = orderCanInformation.getCanName();
+        String canKind= CanInfoController.getInstance().getCanType(canName);
+        wrapAndStock(canKind+"Line",canKind,canName,count,"fine");
+    }
 
+    /**
+     * 根据订单列表生产罐头
+     *
+     * @param orderCanInformationList :  订单列表
+    * @author 孟繁霖
+    * @date 2021-10-30 22:36
+    */
+    public void produceCansByOrderList(List<OrderCanInformation>orderCanInformationList){
+        for(OrderCanInformation orderCanInformation:orderCanInformationList){
+            produceCans(orderCanInformation);
+        }
     }
 
     public static void main(String[] args) {
