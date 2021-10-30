@@ -1,6 +1,5 @@
 package Management.HumanResources.test;
 
-import Management.HumanResources.TransportDepartment;
 import Marketing.OrderCenterEntity.OrderCenter;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
@@ -24,7 +23,7 @@ import java.util.Date;
 public class TransportDepartmentTest {
     public static void main(String[] args) {
         // init some values
-        TransportDepartment transportDepartment = TransportDepartment.getInstance();
+        DepartmentMediator departmentMediator = DepartmentMediator.getInstance();
         String CanName = "黄桃罐头";
         String customerAddress = "同济大学嘉定校区";
         int count = 10;
@@ -42,7 +41,7 @@ public class TransportDepartmentTest {
                 orderCanInformationArrayList, coupon, new Date(), customerAddress);
 
         // 生成运输罐头
-        ArrayList<Order> orderList = DepartmentMediator.getInstance().getPendingOrders();
+        ArrayList<Order> orderList = departmentMediator.getPendingOrders();
         for(Order order : orderList){
             TransportationCan transportationCan = new TransportationCan(new Date(), customerAddress, order.getOrderId());
             ArrayList<StockCan> stockCans = new ArrayList<StockCan>();
@@ -51,7 +50,7 @@ public class TransportDepartmentTest {
             order.getOrderState().handleProduction(order);
             order.getOrderState().handleTransportation(order);
             order.getOrderState().handleDelivery(order);
-            transportDepartment.transportCans(transportationCan);
+            departmentMediator.transportCans(transportationCan);
 
         }
     }
