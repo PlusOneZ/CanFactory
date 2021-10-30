@@ -51,6 +51,10 @@ public class DepartmentMediator {
      * 订单中心
      */
     OrderCenter orderCenter = OrderCenter.getInstance();
+    /**
+    * 生产管理部门
+    */
+    ProductDepartment productDepartment = ProductDepartment.getInstance();
 
     /**
      * 中介者的运输罐头的实现，通过调用运输管理部门的接口，实现相关操作
@@ -77,15 +81,7 @@ public class DepartmentMediator {
         OutputManager.getInstance().print("将待生产的订单罐头信息分配给生产部门,通知生产部门生产罐头",
                 "將待生產的訂單罐頭信息分配給生產部門,通知生產部門生產罐頭",
                 "Distribute the order canned food information to be produced to the production department, and notify the production department to produce cans");
-        List<Can> canList= ProductDepartment.getInstance().produce("freshLine","fresh","herring",7,"fine");
-        ArrayList<StockCan> stockCanArrayList = new ArrayList<>();
-        ArrayList<WrappedCan> wrappedCanArrayList = new ArrayList<>();
-        for (Can can : canList) {
-                wrappedCanArrayList.add(wrapCan(can));
-                System.out.println(can.toString());
-        }
-        stockCanArrayList.add(new StockCan(wrappedCanArrayList.get(0), wrappedCanArrayList.size()));
-        addCanInventory(stockCanArrayList);
+
     }
 
 

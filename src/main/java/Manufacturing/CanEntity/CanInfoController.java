@@ -1,8 +1,12 @@
 package Manufacturing.CanEntity;
 
 import Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine;
+import Manufacturing.ProductLine.Line.HerringLine;
+import Manufacturing.ProductLine.Line.PeachLine;
+import Manufacturing.ProductLine.Line.SalmonLine;
 import Presentation.Protocol.OutputManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,15 +29,33 @@ public class CanInfoController {
     }
 
     private CanInfoController() {
-        Can candiedAppleCan = CandiedAppleLine.produceSample();
-
+        this.canList=new ArrayList<>();
         this.registry = new HashMap<>();
+        /**
+        * 注册糖渍苹果罐头;
+        */
+        Can candiedAppleCan = CandiedAppleLine.produceSample();
         this.register(candiedAppleCan);
+        /**
+        * 注册黄桃罐头
+        */
+        Can peachCan = PeachLine.produceSample();
+        this.register(peachCan);
+        /**
+        * 注册鲱鱼罐头
+        */
+        Can herringCan = HerringLine.produceSample();
+        this.register(herringCan);
+        /**
+        * 注册三文鱼罐头
+        */
+        Can salmonCan = SalmonLine.produceSample();
+        this.register(salmonCan);
+
+
     }
 
     public void register(Can can) {
-        System.out.println(can.getCanName());
-        System.out.println(can);
         registry.put(can.getCanName(), can);
         canList.add(can.getCanName());
     }
