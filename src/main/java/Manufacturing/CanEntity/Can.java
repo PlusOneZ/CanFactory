@@ -317,14 +317,15 @@ public abstract class Can implements Testable,Cloneable {
         this.minTemperature = minTemperature;
     }
 
+
+    //获取罐头的售价,默认售价为成本价钱的1.5倍
     public double getCanCost() {
         double cost = 0.;
         for (Ingredient i :
                 ingredients) {
             cost += i.getCost();
         }
-
-        return cost;
+        return cost*1.5;
     }
 
     @Override

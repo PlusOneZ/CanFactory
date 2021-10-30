@@ -1,8 +1,6 @@
 package CanFactory;
 
 import ImplementDepartment.OrderImplementDepartment;
-import Marketing.OrderCenterEntity.OrderPartTest;
-import Marketing.OrderCenterEntity.OrderProcessingMediator;
 import Marketing.OrderEnity.Order;
 import Mediator.DepartmentMediator;
 import Presentation.Protocol.OutputManager;
