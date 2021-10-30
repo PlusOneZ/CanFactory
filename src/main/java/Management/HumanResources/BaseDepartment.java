@@ -29,7 +29,7 @@ public abstract class BaseDepartment {
      * 将员工注册到相应的部门
      * @param employee
      */
-    public void register(BaseEmployee employee){
+    public void register(BaseEmployee employee,Boolean needOutputMananger){
         if(employee instanceof Manager){
             if(manager == null){
                 this.manager = (Manager)employee;
@@ -48,11 +48,14 @@ public abstract class BaseDepartment {
         }
 
         employee.setDepartment(type);
-        OutputManager.getInstance().print(
-                type + "部门欢迎" + employee.getName() + "的加入!",
-                type + "部門歡迎" + employee.getName() + "的加入!",
-                "Welcome " + employee.getName() + " to the " + type +" department!"
-        );
+
+        if(needOutputMananger) {
+            OutputManager.getInstance().print(
+                    type + "部门欢迎" + employee.getName() + "的加入!",
+                    type + "部門歡迎" + employee.getName() + "的加入!",
+                    "Welcome " + employee.getName() + " to the " + type + " department!"
+            );
+        }
 
     }
 

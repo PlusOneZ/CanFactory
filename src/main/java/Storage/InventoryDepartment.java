@@ -224,7 +224,6 @@ public class InventoryDepartment {
         DepartmentMediator.getInstance().productCans(order.getOrderCanInformations());
     }
 
-
     /**
      * 此函数为审查订单队列，即从当前队列头部到下依次审核队列过程
      * 过程为:取出一个order,判断是否能发货,如果能发货就打包出队,如果不能发货就通知生产部门生产货物;
@@ -244,6 +243,11 @@ public class InventoryDepartment {
                  * 可以发货，此时需要先取订单,然后提取货物,然后发货;
                  */
                 transportCans(currentOrder);
+                /**
+                 * 修改订单状态变为运输状态;
+                 */
+                DepartmentMediator.getInstance().startToTransportOneOrder(currentOrder.getOrderId());
+
                 /**
                  * 发货后需要移除这个订单;
                  */

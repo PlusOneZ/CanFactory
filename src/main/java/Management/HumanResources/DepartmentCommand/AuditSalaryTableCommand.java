@@ -66,15 +66,16 @@ public class AuditSalaryTableCommand extends Command {
      */
     @Override
     public void executeCommand() {
-        receiver.auditSalaryReport();
+        if(receiver.auditSalaryReport()){
+            ReportOriginator.getInstance().setState(receiver,new Date());
+            ReportAuditHistoryList.getInstance().add(ReportOriginator.getInstance().saveStateToMemento());
 
-        ReportOriginator.getInstance().setState(receiver,new Date());
-        ReportAuditHistoryList.getInstance().add(ReportOriginator.getInstance().saveStateToMemento());
+            OutputManager.getInstance().print(
+                    "【备忘录模式】该报告审核历史版本加入公司备忘录",
+                    "【備忘錄模式】該報告審核歷史版本加入公司備忘錄",
+                    "[Memento Pattern] This report audit history version is added to company memento. "
+            );
+        }
 
-        OutputManager.getInstance().print(
-                "该报告审核历史版本加入公司备忘录",
-                "該報告審核歷史版本加入公司備忘錄",
-                "This report audit history version is added to company memento. "
-        );
     }
 }

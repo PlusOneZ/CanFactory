@@ -2,14 +2,14 @@ package
         Marketing.Wrapping;
 
 import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.Ingredient;
-import Marketing.Wrapping.Builder.FruitWrappingBuilder;
-import Marketing.Wrapping.Builder.VegetableWrappingBuilder;
+import Manufacturing.CanEntity.CanInfoController;
 import Marketing.Wrapping.Builder.WrappingBuilder;
 import Marketing.Wrapping.Builder.WrappingDirector;
 import Marketing.Wrapping.Converter.WrappingConverter;
 import Marketing.Wrapping.Cover.WrappingCover;
 import Presentation.Protocol.OutputManager;
+
+import java.lang.reflect.Constructor;
 
 
 /**
@@ -78,16 +78,8 @@ public class WrappingDepartment {
      */
     private double computeCanPrice(WrappingCanInfo wrappingCanInfo) {
         //首先设定的是罐头的底价;
-        double price = 4.0D;
-        //遍历原料处理价格;
-        if (wrappingCanInfo.getIngredients() == null){
-            return price;
-        }
-        for (Ingredient ingredient : wrappingCanInfo.getIngredients()){
-            double cost = ingredient.getCost();
-            price += cost/10;
-        }
-        return price;
+        String canName = wrappingCanInfo.getCanName();
+        return CanInfoController.getInstance().getCanPriceByName(canName);
     }
 
 
@@ -125,6 +117,7 @@ public class WrappingDepartment {
 
     /**
      * 根据罐头名字获得对应的builder.
+     * TODO:待修改为从hashMap中获得罐头信息与Builder类.
      *
      * @param canName :
      * @return : Marketing.Wrapping.Builder.WrappingBuilder
@@ -132,12 +125,19 @@ public class WrappingDepartment {
      * @date 2021-10-24 16:13
      */
     private WrappingBuilder getBuilder(String canName) {
-        if (canName.equals(OutputManager.getInstance().selectStringForCurrentLanguage("水果罐头","水果罐頭","fruitCan"))) {
-            return new FruitWrappingBuilder();
-        } else if (canName.equals(OutputManager.getInstance().selectStringForCurrentLanguage("蔬菜罐头","蔬菜罐頭","vegetableCan"))) {
-            return new VegetableWrappingBuilder();
+        String canType = CanInfoController.getInstance().getClassByName(canName).getTypeName();
+        String basePath = "Marketing.Wrapping.Builder.";
+        String builderType = basePath + canType + "Builder";
+        try {
+            Class<?> builder = Class.forName(builderType);
+            Constructor<?> constructor = builder.getConstructor();
+            return (WrappingBuilder) constructor.newInstance();
+        } catch (Exception e) {
+            OutputManager.getInstance().print("没有相应罐头名称的包装建造器",
+                    "沒有相應罐頭名稱的包裝建造器",
+                    "There is no packaging builder with the corresponding can name");
+            return null;
         }
-        return null;
     }
 
     /**
@@ -206,6 +206,6 @@ public class WrappingDepartment {
         OutputManager.getInstance().print("*************************", "*************************", "*************************");
         OutputManager.getInstance().print("输出罐头价格信息\n",
                 "輸出罐頭價格信息\n", "Output canned price information\n");
-        OutputManager.getInstance().print("罐头价格:"+wrappingCover.getCanPrice(),"罐頭價格:"+wrappingCover.getCanPrice(),"canPrice:"+wrappingCover.getCanPrice());
+        OutputManager.getInstance().print("罐头价格:" + wrappingCover.getCanPrice(), "罐頭價格:" + wrappingCover.getCanPrice(), "canPrice:" + wrappingCover.getCanPrice());
     }
 }
