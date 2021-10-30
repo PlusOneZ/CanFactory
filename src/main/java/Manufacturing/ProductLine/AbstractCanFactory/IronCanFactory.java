@@ -68,17 +68,13 @@ public class IronCanFactory extends AbstractCanFactory {
             if (IronCanFactory.smallSalmonCan == null){
                 IronCanFactory.smallSalmonCan= new SalmonCan(SmallSize.getInstance(), IronMaterial.getInstance());
             }
-            else{
                 return IronCanFactory.smallSalmonCan.Clone();
-            }
         }
         else if (type.equalsIgnoreCase("Herring")){
             if (IronCanFactory.smallHerringCan == null){
                 IronCanFactory.smallHerringCan= new HerringCan(SmallSize.getInstance(), IronMaterial.getInstance());
             }
-            else{
                 return IronCanFactory.smallHerringCan.Clone();
-            }
         }
 
         OutputManager.getInstance().errorMassage(
@@ -106,17 +102,13 @@ public class IronCanFactory extends AbstractCanFactory {
             if (IronCanFactory.bigSalmonCan == null){
                 IronCanFactory.bigSalmonCan= new SalmonCan(BigSize.getInstance(), IronMaterial.getInstance());
             }
-            else{
-                return IronCanFactory.bigSalmonCan.Clone();
-            }
+            return IronCanFactory.bigSalmonCan.Clone();
         }
         else if (type.equalsIgnoreCase("Herring")){
             if (IronCanFactory.bigHerringCan == null){
                 IronCanFactory.bigHerringCan= new HerringCan(BigSize.getInstance(), IronMaterial.getInstance());
             }
-            else{
-                return IronCanFactory.bigHerringCan.Clone();
-            }
+            return IronCanFactory.bigHerringCan.Clone();
         }
 
         OutputManager.getInstance().errorMassage(

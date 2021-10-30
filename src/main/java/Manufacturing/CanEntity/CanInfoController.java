@@ -1,8 +1,12 @@
 package Manufacturing.CanEntity;
 
 import Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine;
+import Manufacturing.ProductLine.Line.HerringLine;
+import Manufacturing.ProductLine.Line.PeachLine;
+import Manufacturing.ProductLine.Line.SalmonLine;
 import Presentation.Protocol.OutputManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,17 +29,46 @@ public class CanInfoController {
     }
 
     private CanInfoController() {
-        Can candiedAppleCan = CandiedAppleLine.produceSample();
-
+        this.canList=new ArrayList<>();
         this.registry = new HashMap<>();
+        this.canKind = new HashMap<>();
+        /*
+        * 注册糖渍苹果罐头;
+        */
+        Can candiedAppleCan = CandiedAppleLine.produceSample();
         this.register(candiedAppleCan);
+        this.registerType(candiedAppleCan, "fruit");
+
+        /*
+        * 注册黄桃罐头
+        */
+        Can peachCan = PeachLine.produceSample();
+        this.register(peachCan);
+        this.registerType(peachCan, "fruit");
+
+        /*
+        * 注册鲱鱼罐头
+        */
+        Can herringCan = HerringLine.produceSample();
+        this.register(herringCan);
+        this.registerType(herringCan, "fresh");
+
+        /*
+        * 注册三文鱼罐头
+        */
+        Can salmonCan = SalmonLine.produceSample();
+        this.register(salmonCan);
+        this.registerType(salmonCan, "fresh");
+
     }
 
     public void register(Can can) {
-        System.out.println(can.getCanName());
-        System.out.println(can);
         registry.put(can.getCanName(), can);
         canList.add(can.getCanName());
+    }
+
+    public void registerType(Can can, String type) {
+        canKind.put(can.getCanName(), type);
     }
 
     public double getCanPriceByName(String name) {
@@ -48,6 +81,19 @@ public class CanInfoController {
                     "No can named "  + name
                     );
             return 0.;
+        }
+    }
+
+    public String getCanType(String name) {
+        try {
+            return canKind.get(name);
+        } catch (NullPointerException e) {
+            OutputManager.getInstance().errorMassage(
+                    "不存在" + name + "这种罐头",
+                    "不存在" + name + "這種罐頭",
+                    "No can named "  + name
+            );
+            return "";
         }
     }
 
@@ -69,6 +115,8 @@ public class CanInfoController {
     }
 
     private HashMap<String, Can> registry;
+
+    private HashMap<String, String> canKind;
 
     private List<String> canList;
 

@@ -3,6 +3,7 @@ package
 
 import Management.HumanResources.TransportDepartment;
 import Manufacturing.CanEntity.Can;
+import Manufacturing.ProductLine.test.ProductDepartment;
 import Marketing.OrderCenterEntity.OrderCenter;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
@@ -14,6 +15,7 @@ import Storage.StockCan;
 import Storage.TransportationCan;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 该类为库存管理部门与运输部门沟通的中介者
@@ -49,6 +51,10 @@ public class DepartmentMediator {
      * 订单中心
      */
     OrderCenter orderCenter = OrderCenter.getInstance();
+    /**
+    * 生产管理部门
+    */
+    ProductDepartment productDepartment = ProductDepartment.getInstance();
 
     /**
      * 中介者的运输罐头的实现，通过调用运输管理部门的接口，实现相关操作
@@ -75,7 +81,9 @@ public class DepartmentMediator {
         OutputManager.getInstance().print("将待生产的订单罐头信息分配给生产部门,通知生产部门生产罐头",
                 "將待生產的訂單罐頭信息分配給生產部門,通知生產部門生產罐頭",
                 "Distribute the order canned food information to be produced to the production department, and notify the production department to produce cans");
+        productDepartment.produceCansByOrderList(orderCanInformations);
     }
+
 
     /****************** InventoryDepartment Interface **********************/
 
