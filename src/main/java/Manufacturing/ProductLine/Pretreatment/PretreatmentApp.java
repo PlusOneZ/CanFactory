@@ -20,25 +20,18 @@ import java.util.List;
  * @date 2021-10-12 8:24
  */
 public class PretreatmentApp {
-//    private final Pretreatment disinfectProcessor;
-//    private final Pretreatment peelProcessor;
-//    private final Pretreatment filterTreatProcessor;
-//    private final Pretreatment cleanProcessor;
 
     private final IngredientMachine disinfectMachine;
     private final IngredientMachine peelMachine;
     private final IngredientMachine filterTreatMachine;
     private final IngredientMachine cleanMachine;
 
-    public PretreatmentApp() {
-//        disinfectProcessor = new Disinfect();
-//        peelProcessor = new Peel();
-//        filterTreatProcessor = new FilterTreat();
-//        cleanProcessor = new Clean();
+    public PretreatmentApp(IngredientMachine filterMachine) {
+
 
         disinfectMachine = new DisinfectMachine();
         peelMachine = new PeelMachine();
-        filterTreatMachine = new FilterMachine(150);
+        this.filterTreatMachine =filterMachine;
         cleanMachine = new CleanMachine();
     }
 
@@ -99,7 +92,6 @@ public class PretreatmentApp {
                 "--开始筛选符合要求的原料--",
                 "--開始篩選符合要求的原料--",
                 "--Start to screen raw materials that meet the requirements--");
-//        baseIngredientList = filterTreatProcessor.treat(baseIngredientList);
         List<Ingredient> temp = new ArrayList<Ingredient>();
         for (Ingredient ingredient: ingredientList) {
             if (filterTreatMachine.treat(ingredient) != null)

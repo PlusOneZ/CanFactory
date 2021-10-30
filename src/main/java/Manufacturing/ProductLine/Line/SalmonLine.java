@@ -4,9 +4,11 @@ import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Peach;
 import Manufacturing.Ingredient.ConcreteIngredient.Salmon;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.GeneralMachine.SalmonFilterMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FreshLine;
+import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import java.util.List;
  */
 public class SalmonLine implements FreshLine {
 
+    private PretreatmentApp pretreatmentApp = new PretreatmentApp(new SalmonFilterMachine());
     private  List<Ingredient> ingredients=new ArrayList<>();
     private final IronCanMachine ironCanMachine = new IronCanMachine();
 

@@ -70,7 +70,7 @@ public class PurchaseDepartment extends BaseDepartment {
         apple.put("ingredientType", "apple");
         apple.put("count", 30);
         JSONObject clove = new JSONObject();
-        clove.put("ingredientType", "clove");
+        clove.put("ingredientType", "herring");
         clove.put("count", 0);
         JSONObject peach = new JSONObject();
         peach.put("ingredientType", "peach");
@@ -248,7 +248,7 @@ public class PurchaseDepartment extends BaseDepartment {
                 apple.put("ingredientType", "apple");
                 apple.put("count", 10);
                 JSONObject clove = new JSONObject();
-                clove.put("ingredientType", "clove");
+                clove.put("ingredientType", "herring");
                 clove.put("count", 20);
                 JSONObject peach = new JSONObject();
                 peach.put("ingredientType", "peach");

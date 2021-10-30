@@ -66,17 +66,13 @@ public class GlassCanFactory extends AbstractCanFactory {
             if (GlassCanFactory.smallPeachCan == null){
                 GlassCanFactory.smallPeachCan = new PeachCan(SmallSize.getInstance(), GlassMaterial.getInstance());
             }
-            else{
                 return GlassCanFactory.smallPeachCan.Clone();
-            }
         }
         else if (type.equalsIgnoreCase("CandiedApple")){
             if (GlassCanFactory.smallCandiedAppleCan == null){
                 GlassCanFactory.smallCandiedAppleCan = new CandiedAppleCan(SmallSize.getInstance(), GlassMaterial.getInstance());
             }
-            else{
                 return GlassCanFactory.smallCandiedAppleCan.Clone();
-            }
         }
 
         OutputManager.getInstance().errorMassage(
@@ -104,17 +100,13 @@ public class GlassCanFactory extends AbstractCanFactory {
             if (GlassCanFactory.bigPeachCan == null){
                 GlassCanFactory.bigPeachCan = new PeachCan(BigSize.getInstance(), GlassMaterial.getInstance());
             }
-            else{
                 return GlassCanFactory.bigPeachCan.Clone();
-            }
         }
         else if (type.equalsIgnoreCase("CandiedApple")){
             if (GlassCanFactory.bigCandiedAppleCan == null){
                 GlassCanFactory.bigCandiedAppleCan = new CandiedAppleCan(BigSize.getInstance(), GlassMaterial.getInstance());
             }
-            else{
                 return GlassCanFactory.bigCandiedAppleCan.Clone();
-            }
         }
 
         OutputManager.getInstance().errorMassage(

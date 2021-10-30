@@ -13,7 +13,6 @@ import java.util.List;
  * @date 2021-10-11 23:47
  */
 public interface FruitLine extends ProductLine{
-    PretreatmentApp pretreatmentApp = new PretreatmentApp();
 
     /**
      * TODO:预处理

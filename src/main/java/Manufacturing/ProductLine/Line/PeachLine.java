@@ -1,13 +1,13 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.ConcreteIngredient.Clove;
 import Manufacturing.Ingredient.ConcreteIngredient.Peach;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.GeneralMachine.PeachFilterMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
-import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FruitLine;
+import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 import Manufacturing.ProductLine.Producer.PeachProducer;
 import Presentation.Protocol.OutputManager;
 
@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class PeachLine implements FruitLine {
 
+    private PretreatmentApp pretreatmentApp = new PretreatmentApp(new PeachFilterMachine());
     private List<Ingredient> ingredients=new ArrayList<>();
     private final IronCanMachine ironCanMachine = new IronCanMachine();
 

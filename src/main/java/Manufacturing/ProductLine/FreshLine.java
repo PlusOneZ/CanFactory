@@ -15,8 +15,6 @@ import java.util.List;
 public interface FreshLine extends ProductLine{
 
 
-    PretreatmentApp pretreatmentApp = new PretreatmentApp();
-
     /**
      * TODO:预处理
      *
