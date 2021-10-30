@@ -94,7 +94,7 @@ public class CandiedAppleLine extends AutomatedLine {
         List<Ingredient> sugarList = Arrays.asList(new Sugar(), new Sugar(), new Sugar(), new Sugar(), new Sugar());
 
         CandiedAppleLine candiedAppleLine = new CandiedAppleLine(apples, sugarList);
-        List<Can> cans = candiedAppleLine.produce(4);
+        List<Can> cans = candiedAppleLine.produce(1);
         for (Can can :
                 cans) {
             System.out.println(can);

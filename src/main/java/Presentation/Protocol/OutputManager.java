@@ -101,6 +101,10 @@ public class OutputManager {
             outputToStream(System.out, zh_cn, zh_tw, en);
     }
 
+    public void printPattern(String zh_cn, String zh_tw ,String en) {
+        outputToStream(System.out, zh_cn, zh_tw, en);
+    }
+
     /**
      * 向错误输出打印多语言信息
      * <i>功能委托给 outputToStream 函数</i>
