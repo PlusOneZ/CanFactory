@@ -23,10 +23,26 @@ public class Test {
 
         List<List<Can>> productList=new ArrayList<>();
         //生产罐头测试
-        Factory factory = FactoryProducer.getAbstractFactory("fruitLine");
+//        Factory factory = FactoryProducer.getAbstractFactory("fruitLine");
+//        if (factory != null) {
+//            productList.add(factory.produceCan("fruit","peach",7,"fine"));
+//            productList.add(factory.produceCan("automated","apple",10,"rough"));
+//        } else {
+//            OutputManager.getInstance().print(
+//                    "莫得工厂",
+//                    "莫得工廠",
+//                    "No Factory");
+//        }
+//        for(List<Can> canList:productList){
+//            for(Can can:canList){
+//                System.out.println(can.toString());
+//            }
+//        }
+
+        Factory factory = FactoryProducer.getAbstractFactory("freshLine");
         if (factory != null) {
-            productList.add(factory.produceCan("fruit","peach",7,"fine"));
-            productList.add(factory.produceCan("automated","apple",10,"rough"));
+            productList.add(factory.produceCan("fresh","salmon",7,"fine"));
+            productList.add(factory.produceCan("fresh","clove",10,"rough"));
         } else {
             OutputManager.getInstance().print(
                     "莫得工厂",
@@ -38,6 +54,8 @@ public class Test {
                 System.out.println(can.toString());
             }
         }
+
+
 
 
         //迭代器测试

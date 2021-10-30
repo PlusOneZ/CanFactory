@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class PeachLine implements FruitLine {
 
+    private List<Ingredient> ingredients=new ArrayList<>();
     private final IronCanMachine ironCanMachine = new IronCanMachine();
 
     @Override
@@ -35,6 +36,8 @@ public class PeachLine implements FruitLine {
                 "********桃子预处理完成*********",
                 "********桃子預處理完成*********",
                 "***Peach pretreatment completed***");
+
+        ingredients=ingredientList;
         return ingredientList;
     }
 
@@ -49,9 +52,10 @@ public class PeachLine implements FruitLine {
 
         List<Can> product=new ArrayList<>();
         for(int i=0;i<count;i++){
+            Ingredient ingredient = ingredients.get(i);
             Can can= IronCanFactory.getInstance().createBigFruitCan();
             ironCanMachine.preTreat(can);
-            ironCanMachine.fill(can);
+            ironCanMachine.fill(can,ingredient);
             ironCanMachine.can(can);
             product.add(can);
         }

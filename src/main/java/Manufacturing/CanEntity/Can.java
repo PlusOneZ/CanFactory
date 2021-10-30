@@ -37,7 +37,7 @@ import java.util.List;
  *
  * @author 卓正一
  */
-public abstract class Can implements Testable {
+public abstract class Can implements Testable,Cloneable {
 
     /**
      * 罐头状态，实现了状态模式
