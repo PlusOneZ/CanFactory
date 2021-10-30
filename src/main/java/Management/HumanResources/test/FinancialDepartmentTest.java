@@ -44,7 +44,7 @@ public class FinancialDepartmentTest {
         Auditor auditor1=new Auditor("怀特菲尔德", 201.0);
         Auditor auditor2=new Auditor("哈梅特",100.0);
         if(auditor1 instanceof Permission){
-            financialDepartment.register(auditor1);
+            financialDepartment.register(auditor1,true);
 
         } else{
             OutputManager.getInstance().errorMassage(
@@ -55,7 +55,7 @@ public class FinancialDepartmentTest {
         }
 
         if(auditor2 instanceof Permission){
-            financialDepartment.register(auditor2);
+            financialDepartment.register(auditor2,true);
         } else{
             OutputManager.getInstance().errorMassage(
                     "没有权限访问财务系统，访问已被拒绝",
@@ -75,7 +75,7 @@ public class FinancialDepartmentTest {
         testingWorker.setLeader(testingTeamLeader1);
 
         if(testingWorker instanceof Permission){
-            financialDepartment.register(testingWorker);
+            financialDepartment.register(testingWorker,true);
         } else{
             OutputManager.getInstance().errorMassage(
                     testingWorker.getName()+ "没有权限访问财务系统，访问已被拒绝",
@@ -84,9 +84,9 @@ public class FinancialDepartmentTest {
             );
         }
         // 分别将其注册到该部门
-        qualityTestingDepartment.register(testingManager);
-        qualityTestingDepartment.register(testingTeamLeader1);
-        qualityTestingDepartment.register(testingWorker);
+        qualityTestingDepartment.register(testingManager,true);
+        qualityTestingDepartment.register(testingTeamLeader1,true);
+        qualityTestingDepartment.register(testingWorker,true);
 
 
         //审计命令，指定经济部门下的一个审计员
