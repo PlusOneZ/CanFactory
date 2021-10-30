@@ -1,4 +1,4 @@
-package Manufacturing.ProductLine.Line;
+package Manufacturing.ProductLine.Line.AutomatedLine;
 
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
@@ -7,7 +7,6 @@ import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
-import Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;

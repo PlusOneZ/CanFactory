@@ -1,7 +1,6 @@
 package Manufacturing.CanEntity;
 
-import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
-import Manufacturing.ProductLine.Line.CandiedAppleLine;
+import Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine;
 import Presentation.Protocol.OutputManager;
 
 import java.util.HashMap;
