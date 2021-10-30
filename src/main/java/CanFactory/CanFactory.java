@@ -16,6 +16,10 @@ public class CanFactory {
         canFactory = new CanFactory();
     }
 
+    public static CanFactory getInstance() {
+        return canFactory;
+    }
+
     /**
      * 单例构造器
      * @author 卓正一
