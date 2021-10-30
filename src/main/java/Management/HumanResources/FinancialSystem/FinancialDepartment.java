@@ -62,9 +62,9 @@ public class FinancialDepartment extends BaseDepartment {
         for(int i = 0; i<ReportAuditHistoryList.getInstance().getSize(); i++){
             ReportOriginator.getInstance().getStateFromMemento(ReportAuditHistoryList.getInstance().get(i));
             OutputManager.getInstance().print(
-                    "No."+i +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_CN),
-                    "No."+i +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_TW),
-                    "No."+i+":" +ReportOriginator.getInstance().toString(OutputManager.Lang.en)
+                    "No."+(i+1) +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_CN),
+                    "No."+(i+1) +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_TW),
+                    "No."+(i+1)+":" +ReportOriginator.getInstance().toString(OutputManager.Lang.en)
             );
         }
 
