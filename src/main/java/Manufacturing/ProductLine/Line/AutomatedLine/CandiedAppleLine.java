@@ -4,8 +4,8 @@ import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.CanTreatmentMachine.IronCanProducingMachine;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
-import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
 import Presentation.Protocol.OutputManager;
 
@@ -33,7 +33,7 @@ public class CandiedAppleLine extends AutomatedLine {
     private List<Ingredient> sugarList;
 
     private final CandiedAppleMachine candiedAppleMachine = new CandiedAppleMachine();
-    private final IronCanMachine ironCanMachine = new IronCanMachine();
+    private final IronCanProducingMachine ironCanProducingMachine = new IronCanProducingMachine();
 
 
     public CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
@@ -65,9 +65,9 @@ public class CandiedAppleLine extends AutomatedLine {
             try {
                 Ingredient candiedApple = candiedAppleMachine.combine(apples.get(i), sugarList.get(i));
                 Can can = GlassCanFactory.getInstance().createSmallCan("CandiedApple");
-                ironCanMachine.preTreat(can);
-                ironCanMachine.fill(can, candiedApple);
-                ironCanMachine.can(can);
+                ironCanProducingMachine.preTreat(can);
+                ironCanProducingMachine.fill(can, candiedApple);
+                ironCanProducingMachine.can(can);
                 product.add(can);
             } catch (IndexOutOfBoundsException e) {
                 OutputManager.getInstance().errorMassage(
@@ -86,13 +86,13 @@ public class CandiedAppleLine extends AutomatedLine {
 
     public static Can produceSample() {
         CandiedAppleMachine candiedAppleMachine = new CandiedAppleMachine();
-        IronCanMachine ironCanMachine = new IronCanMachine();
+        IronCanProducingMachine ironCanProducingMachine = new IronCanProducingMachine();
         Can can = GlassCanFactory.getInstance().createSmallCan("CandiedApple");
 
-        ironCanMachine.preTreat(can);
+        ironCanProducingMachine.preTreat(can);
         Ingredient candiedApple = candiedAppleMachine.combine(new Apple(), new Sugar());
-        ironCanMachine.fill(can, candiedApple);
-        ironCanMachine.can(can);
+        ironCanProducingMachine.fill(can, candiedApple);
+        ironCanProducingMachine.can(can);
         return can;
     }
 }

@@ -3,8 +3,8 @@ package Manufacturing.ProductLine.Line;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Herring;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.CanTreatmentMachine.IronCanProducingMachine;
 import Manufacturing.Machine.GeneralMachine.HerringFilterMachine;
-import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FreshLine;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
@@ -24,7 +24,7 @@ public class HerringLine implements FreshLine {
     private PretreatmentApp pretreatmentApp = new PretreatmentApp(new HerringFilterMachine());
 
     private List<Ingredient> ingredients=new ArrayList<>();
-    private final IronCanMachine ironCanMachine = new IronCanMachine();
+    private final IronCanProducingMachine ironCanProducingMachine = new IronCanProducingMachine();
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
@@ -55,9 +55,9 @@ public class HerringLine implements FreshLine {
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);
             Can can= IronCanFactory.getInstance().createBigCan("Herring");
-            ironCanMachine.preTreat(can);
-            ironCanMachine.fill(can,ingredient);
-            ironCanMachine.can(can);
+            ironCanProducingMachine.preTreat(can);
+            ironCanProducingMachine.fill(can,ingredient);
+            ironCanProducingMachine.can(can);
             product.add(can);
         }
         OutputManager.getInstance().print(
@@ -73,12 +73,12 @@ public class HerringLine implements FreshLine {
     }
 
     public static Can produceSample() {
-        IronCanMachine ironCanMachine = new IronCanMachine();
+        IronCanProducingMachine ironCanProducingMachine = new IronCanProducingMachine();
         Can can = IronCanFactory.getInstance().createBigCan("Herring");
-        ironCanMachine.preTreat(can);
+        ironCanProducingMachine.preTreat(can);
         Ingredient herring =new Herring();
-        ironCanMachine.fill(can, herring);
-        ironCanMachine.can(can);
+        ironCanProducingMachine.fill(can, herring);
+        ironCanProducingMachine.can(can);
         return can;
     }
 }
