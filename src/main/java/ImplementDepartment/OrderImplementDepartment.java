@@ -60,7 +60,7 @@ public class OrderImplementDepartment {
                                 CanInfoController.getInstance().getCanList().get(1)+
                                 ",3表示"+ CanInfoController.getInstance().getCanList().get(2)+",4表示"+CanInfoController.getInstance().getCanList().get(3),
                         "輸入需要的訂單罐頭類型，1表示"+CanInfoController.getInstance().getCanList().get(0)+",2表示"+
-                                CanInfoController.getInstance().getCanList().get(1)+",鯡魚罐頭"+",3表示"+
+                                CanInfoController.getInstance().getCanList().get(1)+",3表示"+
                                 CanInfoController.getInstance().getCanList().get(2)+"，4表示"+CanInfoController.getInstance().getCanList().get(3),
                         "Enter the type of canned food you need, 1 means"+CanInfoController.getInstance().getCanList().get(0)+
                                 ", 2 means"+CanInfoController.getInstance().getCanList().get(1)+", 3 means"
@@ -73,18 +73,18 @@ public class OrderImplementDepartment {
                     if (Objects.equals(canType, "1")) {
                         canName = CanInfoController.getInstance().getCanList().get(0);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为糖渍苹果罐头。",
-                                "您輸入的該子訂單的罐頭類型為糖漬苹果罐頭。",
-                                "The canned food type of the sub-order you entered is CandiedAppleCan."
+                                "您输入的该子订单的罐头类型为"+canName,
+                                "您輸入的該子訂單的罐頭類型為"+canName,
+                                "The canned food type of the sub-order you entered is"+canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(0));
                         break;
                     } else if (Objects.equals(canType,"2")) {
                         canName = CanInfoController.getInstance().getCanList().get(1);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为鲱鱼罐头。",
-                                "您輸入的該子訂單的罐頭類型為鯡魚罐頭。",
-                                "The canned food type of this sub-order you entered is Herring can."
+                                "您输入的该子订单的罐头类型为"+canName,
+                                "您輸入的該子訂單的罐頭類型為"+canName,
+                                "The canned food type of this sub-order you entered is"+canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(1));
                         break;
@@ -92,9 +92,9 @@ public class OrderImplementDepartment {
                     else if(Objects.equals(canType,"3")){
                         canName = CanInfoController.getInstance().getCanList().get(2);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为黄桃罐头。",
-                                "您輸入的該子訂單的罐頭類型為黃桃罐頭。",
-                                "The canned food type of this sub-order you entered is Peach can."
+                                "您输入的该子订单的罐头类型为"+canName,
+                                "您輸入的該子訂單的罐頭類型為"+canName,
+                                "The canned food type of this sub-order you entered is"+canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(2));
                         break;
@@ -102,9 +102,9 @@ public class OrderImplementDepartment {
                     else if(Objects.equals(canType,"4")){
                         canName = CanInfoController.getInstance().getCanList().get(3);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为三文鱼罐头。",
-                                "您輸入的該子訂單的罐頭類型為三文魚罐頭。",
-                                "The canned food type of this sub-order you entered is Salmon can."
+                                "您输入的该子订单的罐头类型为"+canName,
+                                "您輸入的該子訂單的罐頭類型為"+canName,
+                                "The canned food type of this sub-order you entered is"+canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(3));
                         break;
