@@ -59,7 +59,7 @@ public class CandiedAppleLine extends AutomatedLine {
     }
 
     @Override
-    public List<Can> produce(int count) {
+    public List<Can> produce(int count,String produceManner) {
         List<Can> product = new ArrayList<>();
         apples = preTreat(apples);
         for (int i = 0; i < count; i++) {
@@ -96,7 +96,7 @@ public class CandiedAppleLine extends AutomatedLine {
         CandiedAppleLine candiedAppleLine = new CandiedAppleLine(apples, sugarList);
 
 
-        List<Can> cans = candiedAppleLine.produce(4);
+        List<Can> cans = candiedAppleLine.produce(4,"fine");
 
         for (Can can :
                 cans) {

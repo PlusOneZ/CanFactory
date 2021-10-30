@@ -37,7 +37,7 @@ public class CloveLine implements FreshLine {
     }
 
     @Override
-    public List<Can> produce(int count) {
+    public List<Can> produce(int count,String produceManner) {
         OutputManager.getInstance().print(
                 "*******正在对丁香鱼进行加工*******",
                 "*******正在對丁香魚進行加工*******",

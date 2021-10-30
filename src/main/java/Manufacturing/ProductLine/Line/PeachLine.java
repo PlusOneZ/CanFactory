@@ -39,11 +39,6 @@ public class PeachLine implements FruitLine {
     }
 
     @Override
-    public List<Can> produce(int count) {
-        return null;
-    }
-
-    @Override
     public List<Can> produce(int count,String produceManner) {
         OutputManager.getInstance().print(
                 "*******正在对黄桃进行加工*******",

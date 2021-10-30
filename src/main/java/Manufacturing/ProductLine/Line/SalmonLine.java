@@ -37,10 +37,6 @@ public class SalmonLine implements FreshLine {
         return ingredientList;
     }
 
-    @Override
-    public List<Can> produce(int count) {
-        return null;
-    }
 
     public List<Can> produce(int count,String produceManner) {
         OutputManager.getInstance().print(

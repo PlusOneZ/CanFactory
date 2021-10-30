@@ -94,7 +94,7 @@ public abstract class Factory {
         } else if ("fresh".equals(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
-            return freshLine.produce(count);
+            return freshLine.produce(count,produceManner);
         }
         else if("automated".equals(canKind)){
             List<Ingredient>sugarList=new ArrayList<>();
@@ -103,7 +103,7 @@ public abstract class Factory {
             }
             CandiedAppleLine candiedAppleLine =new CandiedAppleLine(ingredientList,sugarList);
             int count=(candiedAppleLine.preTreat(ingredientList)).size();
-            return candiedAppleLine.produce(count);
+            return candiedAppleLine.produce(count,produceManner);
         }else{
             return null;
         }
