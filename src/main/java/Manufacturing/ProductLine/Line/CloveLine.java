@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class CloveLine implements FreshLine {
 
+    private List<Ingredient> ingredients=new ArrayList<>();
     private final IronCanMachine ironCanMachine = new IronCanMachine();
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
@@ -33,6 +34,7 @@ public class CloveLine implements FreshLine {
                 "*********丁香鱼预处理完成*********",
                 "*********丁香魚預處理完成*********",
                 "*********Clove fish pretreatment completed*********");
+        ingredients=ingredientList;
         return ingredientList;
     }
 
@@ -46,9 +48,10 @@ public class CloveLine implements FreshLine {
         List<Can> product=new ArrayList<>();
 
         for(int i=0;i<count;i++){
-            Can can= IronCanFactory.getInstance().createSmallFruitCan();
+            Ingredient ingredient = ingredients.get(i);
+            Can can= IronCanFactory.getInstance().createBigFruitCan();
             ironCanMachine.preTreat(can);
-            ironCanMachine.fill(can);
+            ironCanMachine.fill(can,ingredient);
             ironCanMachine.can(can);
             product.add(can);
         }
@@ -56,7 +59,7 @@ public class CloveLine implements FreshLine {
                 "共生产" + count + "个丁香鱼罐头",
                 "共生產" + count + "個丁香魚罐頭",
                 "Totally produced" + count + "clove can!");
-        return null;
+        return product;
     }
 
     @Override
