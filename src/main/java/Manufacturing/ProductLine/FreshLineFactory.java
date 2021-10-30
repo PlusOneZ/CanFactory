@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine;
 
 
-import Manufacturing.ProductLine.Line.CloveLine;
+import Manufacturing.ProductLine.Line.HerringLine;
 import Manufacturing.ProductLine.Line.SalmonLine;
 
 import java.util.HashMap;
@@ -61,9 +61,9 @@ public class FreshLineFactory extends Factory {
             }
         } else if ("clove".equals(freshLineType)) {
             if (!freshLineMap.containsKey("cloveLine")) {
-                CloveLine cloveLine = new CloveLine();
-                freshLineMap.put("cloveLine", cloveLine);
-                return cloveLine;
+                HerringLine herringLine = new HerringLine();
+                freshLineMap.put("cloveLine", herringLine);
+                return herringLine;
             } else {
                 return freshLineMap.get("cloveLine");
             }
