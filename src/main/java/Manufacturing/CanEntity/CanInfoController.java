@@ -65,6 +65,10 @@ public class CanInfoController {
     public void register(Can can) {
         registry.put(can.getCanName(), can);
         canList.add(can.getCanName());
+
+        enNameMap.put(can.zhCnDescription(), can.enDescription());
+        enNameMap.put(can.zhTwDescription(), can.enDescription());
+        enNameMap.put(can.enDescription(), can.enDescription());
     }
 
     public void registerType(Can can, String type) {
@@ -110,6 +114,19 @@ public class CanInfoController {
         }
     }
 
+    public String getEnNameOfCan(String arbitraryName) {
+        try {
+            return enNameMap.get(arbitraryName);
+        } catch (NullPointerException e) {
+            OutputManager.getInstance().errorMassage(
+                    "不存在" + arbitraryName + "这种罐头",
+                    "不存在" + arbitraryName + "這種罐頭",
+                    "No can named "  + arbitraryName
+            );
+            return null;
+        }
+    }
+
     public List<String> getCanList() {
         return canList;
     }
@@ -119,6 +136,8 @@ public class CanInfoController {
     private HashMap<String, String> canKind;
 
     private List<String> canList;
+
+    private HashMap<String, String> enNameMap;
 
     public static void main(String[] args) {
         OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);

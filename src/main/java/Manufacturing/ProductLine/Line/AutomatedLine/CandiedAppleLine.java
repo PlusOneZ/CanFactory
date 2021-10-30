@@ -7,11 +7,9 @@ import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
-import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
