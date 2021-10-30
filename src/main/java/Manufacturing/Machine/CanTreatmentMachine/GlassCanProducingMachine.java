@@ -1,15 +1,16 @@
-package Manufacturing.Machine;
+package Manufacturing.Machine.CanTreatmentMachine;
 
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.CanMachine;
 
 /**
- * TODO:此处写IronCanMachine类的描述
+ * 处理玻璃罐头
  *
  * @author 卓正一
- * @since 2021/10/28 1:08 AM
+ * @since  2021/10/30 10:21 PM
  */
-public class IronCanMachine implements CanMachine{
+public class GlassCanProducingMachine implements CanMachine {
 
     @Override
     public void preTreat(Can can) {
@@ -17,8 +18,9 @@ public class IronCanMachine implements CanMachine{
     }
 
     @Override
-    public void fill(Can can, Ingredient ... ingredients) {
-        for (Ingredient i: ingredients) {
+    public void fill(Can can, Ingredient... ingredients) {
+        for (Ingredient i :
+                ingredients) {
             can.addIngredient(i);
         }
     }
@@ -27,5 +29,4 @@ public class IronCanMachine implements CanMachine{
     public void can(Can can) {
         can.getCanned();
     }
-
 }

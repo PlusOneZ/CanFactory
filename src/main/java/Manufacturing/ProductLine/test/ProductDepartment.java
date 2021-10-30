@@ -4,7 +4,6 @@ package Manufacturing.ProductLine.test;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.CanEntity.CanInfoController;
 import Manufacturing.ProductLine.*;
-import Manufacturing.ProductLine.Line.HerringLine;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Wrapping.WrappedCan;
 import Mediator.DepartmentMediator;
@@ -39,7 +38,6 @@ public class ProductDepartment {
     /**
      * 生产罐头
      *
-     * @param lineKind : 生产线种类
      * @param canKind : 罐头种类
      * @param canName : 罐头名
      * @param materialCount : 原料数量
@@ -48,10 +46,10 @@ public class ProductDepartment {
     * @author 孟繁霖
     * @date 2021-10-30 22:02
     */
-    public List<Can> produce(String lineKind,String canKind,String canName,int materialCount,String produceManner){
+    public List<Can> produce(String canKind,String canName,int materialCount,String produceManner){
         List<Can> productList = new ArrayList<>();
 
-        Factory factory = FactoryProducer.getAbstractFactory(lineKind);
+        Factory factory = FactoryProducer.getAbstractFactory(canKind);
         if (factory != null) {
             productList=factory.produceCan(canKind, canName, materialCount, produceManner);
         } else {
@@ -66,7 +64,6 @@ public class ProductDepartment {
     /**
      * 生产、包装、存储罐头
      *
-     * @param lineKind : 生产线种类
      * @param canKind : 罐头种类
      * @param canName : 罐头名
      * @param materialCount : 原料数量
@@ -74,8 +71,8 @@ public class ProductDepartment {
     * @author 孟繁霖
     * @date 2021-10-30 22:03
     */
-    public void wrapAndStock(String lineKind,String canKind,String canName,int materialCount,String produceManner){
-        List<Can> canList=produce(lineKind,canKind,canName,materialCount,produceManner);
+    public void wrapAndStock(String canKind,String canName,int materialCount,String produceManner){
+        List<Can> canList=produce(canKind,canName,materialCount,produceManner);
         ArrayList<StockCan> stockCanArrayList = new ArrayList<>();
         ArrayList<WrappedCan> wrappedCanArrayList = new ArrayList<>();
         for (Can can : canList) {
@@ -94,9 +91,10 @@ public class ProductDepartment {
     */
     public void produceCans(OrderCanInformation orderCanInformation){
         int count = orderCanInformation.getCount();
-        String canName = orderCanInformation.getCanName();
-        String canKind= CanInfoController.getInstance().getCanType(canName);
-        wrapAndStock(canKind+"Line",canKind,canName,count,"fine");
+        String name = orderCanInformation.getCanName();
+        String canKind= CanInfoController.getInstance().getCanType(name);
+        String canName=CanInfoController.getInstance().getEnNameOfCan(name);
+        wrapAndStock(canKind,canName,count,"fine");
     }
 
     /**

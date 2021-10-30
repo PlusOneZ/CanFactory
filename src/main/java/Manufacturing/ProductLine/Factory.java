@@ -87,16 +87,16 @@ public abstract class Factory {
 
 
         //获得相应种类的生产线并进行预处理和生产加工
-        if ("fruit".equals(canKind)) {
+        if ("fruit".equalsIgnoreCase(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
             int count = (fruitLine.preTreat(ingredientList)).size();
            return fruitLine.produce(count, produceManner);
-        } else if ("fresh".equals(canKind)) {
+        } else if ("fresh".equalsIgnoreCase(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
             return freshLine.produce(count,produceManner);
         }
-        else if("fruit".equals(canKind)&&"candiedApple".equalsIgnoreCase(canName)){
+        else if("fruit".equalsIgnoreCase(canKind)&&"candiedApple".equalsIgnoreCase(canName)){
             List<Ingredient>sugarList=new ArrayList<>();
             for(int i=0;i<materialCount;i++){
             sugarList.add(new Sugar());
