@@ -81,7 +81,7 @@ public class DepartmentMediator {
         OutputManager.getInstance().print("将待生产的订单罐头信息分配给生产部门,通知生产部门生产罐头",
                 "將待生產的訂單罐頭信息分配給生產部門,通知生產部門生產罐頭",
                 "Distribute the order canned food information to be produced to the production department, and notify the production department to produce cans");
-
+        productDepartment.produceCansByOrderList(orderCanInformations);
     }
 
 
