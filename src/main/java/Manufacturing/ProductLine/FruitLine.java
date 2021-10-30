@@ -33,10 +33,7 @@ public interface FruitLine extends ProductLine{
      * @author 孟繁霖
      * @date 2021-10-11 23:48
      */
-    void produce(int count, String produceManner);
+    List<Can> produce(int count, String produceManner);
 
-    // TODO: 改写继承类并且移除这一句话
-    default List<Can> produce(int count) {
-        return null;
-    }
+
 }
