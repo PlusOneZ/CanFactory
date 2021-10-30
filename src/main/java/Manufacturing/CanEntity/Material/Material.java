@@ -9,7 +9,7 @@ package Manufacturing.CanEntity.Material;
 public interface Material {
 
     public enum MATERIAL{
-        IRON, ALUMINIM, ALLOY
+        IRON, GLASS, ALLOY
     }
 
     public MATERIAL getType();

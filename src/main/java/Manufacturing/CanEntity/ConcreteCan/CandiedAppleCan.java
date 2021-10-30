@@ -14,5 +14,10 @@ public class CandiedAppleCan extends FruitCan {
 
     public CandiedAppleCan(Size s, Material c) {
         super(s, c);
+        this.setName(
+                "糖渍苹果罐头",
+                "糖漬蘋果罐頭",
+                "Candied Apple Can"
+        );
     }
 }

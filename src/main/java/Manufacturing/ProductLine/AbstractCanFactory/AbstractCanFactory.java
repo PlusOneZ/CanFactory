@@ -12,28 +12,16 @@ import Manufacturing.CanEntity.Can;
 public abstract class AbstractCanFactory {
 
     /**
-     * 创建大水果罐头
-     * @return
+     * 创建大罐头
+     * @return Can 罐头
      */
-    public abstract Can createBigFruitCan();
+    public abstract Can createBigCan(String type);
 
     /**
-     * 创建小水果罐头
-     * @return
+     * 创建小罐头
+     * @return Can 罐头
      */
-    public abstract Can createSmallFruitCan();
-
-    /**
-     * 创建大蔬菜罐头
-     * @return
-     */
-    public abstract Can createBigVegetableCan();
-
-    /**
-     * 创建小蔬菜罐头
-     * @return
-     */
-    public abstract Can createSmallVegetableCan();
+    public abstract Can createSmallCan(String type);
 
 
 }

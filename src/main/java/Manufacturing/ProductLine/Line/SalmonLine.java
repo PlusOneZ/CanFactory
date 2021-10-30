@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class SalmonLine implements FreshLine {
 
+    private  List<Ingredient> ingredients=new ArrayList<>();
     private final IronCanMachine ironCanMachine = new IronCanMachine();
 
     @Override
@@ -34,6 +35,7 @@ public class SalmonLine implements FreshLine {
                 "*************三文鱼预处理完成***********",
                 "*************三文魚預處理完成***********",
                 "*************Salmon pretreatment completed***********");
+        ingredients=ingredientList;
         return ingredientList;
     }
 
@@ -47,9 +49,10 @@ public class SalmonLine implements FreshLine {
         List<Can> product=new ArrayList<>();
 
         for(int i=0;i<count;i++){
-            Can can= IronCanFactory.getInstance().createSmallFruitCan();
+            Ingredient ingredient = ingredients.get(i);
+            Can can= IronCanFactory.getInstance().createBigFruitCan();
             ironCanMachine.preTreat(can);
-            ironCanMachine.fill(can);
+            ironCanMachine.fill(can,ingredient);
             ironCanMachine.can(can);
             product.add(can);
         }
