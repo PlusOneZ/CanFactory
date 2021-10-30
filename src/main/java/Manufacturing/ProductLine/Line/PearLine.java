@@ -15,19 +15,19 @@ import java.util.List;
  */
 public class PearLine implements FruitLine {
     @Override
-    public List<Ingredient> preTreat(List<Ingredient> baseIngredientList) {
+    public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
         OutputManager.getInstance().print(
                 "******正在对梨进行预处理********",
                 "******正在對梨進行預處理********",
                 "******Pears are being preprocessed********");
-        baseIngredientList = pretreatmentApp.filterTreat(baseIngredientList);
-        pretreatmentApp.peel(baseIngredientList);
-        pretreatmentApp.disinfect(baseIngredientList);
+        ingredientList = pretreatmentApp.filterTreat(ingredientList);
+        pretreatmentApp.peel(ingredientList);
+        pretreatmentApp.disinfect(ingredientList);
         OutputManager.getInstance().print(
                 "*********梨预处理完成*********",
                 "*********梨預處理完成*********",
                 "*********Pear preprocessing completed*********");
-        return baseIngredientList;
+        return ingredientList;
     }
 
     @Override

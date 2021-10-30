@@ -1,8 +1,16 @@
 package Manufacturing.ProductLine.test;
 
 
+import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.ConcreteIngredient.Apple;
+import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
+import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.*;
+import Manufacturing.ProductLine.Line.CandiedAppleLine;
 import Presentation.Protocol.OutputManager;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
 * TODO:生产线相关设计模式测试类
@@ -22,6 +30,8 @@ public class Test {
             factory.produceCan("fruit","peach",7,"fine");
             factory.produceCan("fruit","pear",10,"rough");
             factory.produceCan("fruit","pear",10,"rough");
+            factory.produceCan("automated","apple",10,"rough");
+
         } else {
             OutputManager.getInstance().print(
                     "莫得工厂",

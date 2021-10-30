@@ -194,11 +194,6 @@ public class PurchaseDepartment extends BaseDepartment {
         }
         else{
             ingredient = null;
-            OutputManager.getInstance().errorMassage(
-                    "采购部门库存不足，未获取到原材料！",
-                    "采購部門庫存不足，未獲取到原材料！",
-                    "The purchasing department has insufficient inventory and has not obtained raw materials!"
-            );
         }
         return ingredient;
     }

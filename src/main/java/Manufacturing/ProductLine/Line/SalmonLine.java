@@ -16,20 +16,20 @@ import java.util.List;
 public class SalmonLine implements FreshLine {
 
     @Override
-    public List<Ingredient> preTreat(List<Ingredient> baseIngredientList) {
+    public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
         OutputManager.getInstance().print(
                 "*********正在对三文鱼进行预处理*********",
                 "*********正在對三文魚進行預處理*********",
                 "*********Salmon is being pretreated*********");
-        baseIngredientList = pretreatmentApp.filterTreat(baseIngredientList);
-        pretreatmentApp.disinfect(baseIngredientList);
-        pretreatmentApp.clean(baseIngredientList);
+        ingredientList = pretreatmentApp.filterTreat(ingredientList);
+        pretreatmentApp.disinfect(ingredientList);
+        pretreatmentApp.clean(ingredientList);
         OutputManager.getInstance().print(
                 "*************三文鱼预处理完成***********",
                 "*************三文魚預處理完成***********",
                 "*************Salmon pretreatment completed***********");
-        return baseIngredientList;
+        return ingredientList;
     }
 
     @Override

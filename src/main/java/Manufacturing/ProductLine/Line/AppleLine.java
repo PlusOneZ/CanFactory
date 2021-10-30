@@ -21,20 +21,20 @@ public class AppleLine implements FruitLine {
 
 
     @Override
-    public List<Ingredient> preTreat(List<Ingredient> baseIngredientList) {
+    public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
         OutputManager.getInstance().print(
                 "**********正在对苹果进行预处理*********",
                 "**********正在對蘋果進行預處理*********",
                 "**********Apple is being preprocessed*********");
-        baseIngredientList = pretreatmentApp.filterTreat(baseIngredientList);
-        pretreatmentApp.peel(baseIngredientList);
-        pretreatmentApp.disinfect(baseIngredientList);
+        ingredientList = pretreatmentApp.filterTreat(ingredientList);
+        pretreatmentApp.peel(ingredientList);
+        pretreatmentApp.disinfect(ingredientList);
         OutputManager.getInstance().print(
                 "*************苹果预处理完成***********",
                 "*************蘋果預處理完成***********",
                 "********Apple preprocessing is completed*****");
-        return baseIngredientList;
+        return ingredientList;
     }
 
     @Override

@@ -20,7 +20,7 @@ public class FilterMachine implements IngredientMachine {
     @Override
     public Ingredient treat(Ingredient ingredient) {
 
-        if (ingredient.getWeight() < criteria)
+        if (ingredient.getWeight() >= criteria)
             return ingredient;
         return null;
 
