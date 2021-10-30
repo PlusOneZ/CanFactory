@@ -67,9 +67,9 @@ public class CompanyManagementTest {
         Auditor auditor1=new Auditor("法克", 201.0);
         Auditor auditor2=new Auditor("尤尔",100.0);
         Auditor auditor3=new Auditor("马泽尔",100.0);
-        financialDepartment.register(auditor1);
-        financialDepartment.register(auditor2);
-        financialDepartment.register(auditor3);
+        financialDepartment.register(auditor1,false);
+        financialDepartment.register(auditor2,false);
+        financialDepartment.register(auditor3,false);
 
 
         SalaryDaoImpl salaryDaoImpl = SalaryDaoImpl.getInstance();
@@ -87,9 +87,9 @@ public class CompanyManagementTest {
         testingWorker.setLeader(testingTeamLeader1);
 
         // 分别将其注册到该部门
-        qualityTestingDepartment.register(testingManager);
-        qualityTestingDepartment.register(testingTeamLeader1);
-        qualityTestingDepartment.register(testingWorker);
+        qualityTestingDepartment.register(testingManager,false);
+        qualityTestingDepartment.register(testingTeamLeader1,false);
+        qualityTestingDepartment.register(testingWorker,false);
 
         OutputManager.getInstance().print(
                 "公司管理系统已经激活且加载基础数据",

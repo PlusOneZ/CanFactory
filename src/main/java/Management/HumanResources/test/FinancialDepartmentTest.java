@@ -42,8 +42,8 @@ public class FinancialDepartmentTest {
         //创建经济部门的审计员等
         Auditor auditor1=new Auditor("怀特菲尔德", 201.0);
         Auditor auditor2=new Auditor("哈梅特",100.0);
-        financialDepartment.register(auditor1);
-        financialDepartment.register(auditor2);
+        financialDepartment.register(auditor1,true);
+        financialDepartment.register(auditor2,true);
 
         testingManager.setName("Bear");
 
@@ -54,9 +54,9 @@ public class FinancialDepartmentTest {
         testingWorker.setLeader(testingTeamLeader1);
 
         // 分别将其注册到该部门
-        qualityTestingDepartment.register(testingManager);
-        qualityTestingDepartment.register(testingTeamLeader1);
-        qualityTestingDepartment.register(testingWorker);
+        qualityTestingDepartment.register(testingManager,true);
+        qualityTestingDepartment.register(testingTeamLeader1,true);
+        qualityTestingDepartment.register(testingWorker,true);
 
         //审计命令，指定经济部门下的一个审计员
         AuditSalaryTableCommand auditReportCommand = new AuditSalaryTableCommand(auditor1);
