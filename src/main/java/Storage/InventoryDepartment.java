@@ -245,6 +245,11 @@ public class InventoryDepartment {
                  */
                 transportCans(currentOrder);
                 /**
+                 * 修改订单状态变为运输状态;
+                 */
+                DepartmentMediator.getInstance().startToTransportOneOrder(currentOrder.getOrderId());
+
+                /**
                  * 发货后需要移除这个订单;
                  */
                 iterator.remove();

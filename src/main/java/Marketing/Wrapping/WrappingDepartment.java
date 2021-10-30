@@ -2,6 +2,7 @@ package
         Marketing.Wrapping;
 
 import Manufacturing.CanEntity.Can;
+import Manufacturing.CanEntity.CanInfoController;
 import Manufacturing.Ingredient.Ingredient;
 import Marketing.Wrapping.Builder.FruitWrappingBuilder;
 import Marketing.Wrapping.Builder.VegetableWrappingBuilder;
@@ -78,15 +79,8 @@ public class WrappingDepartment {
      */
     private double computeCanPrice(WrappingCanInfo wrappingCanInfo) {
         //首先设定的是罐头的底价;
-        double price = 4.0D;
-        //遍历原料处理价格;
-        if (wrappingCanInfo.getIngredients() == null){
-            return price;
-        }
-        for (Ingredient ingredient : wrappingCanInfo.getIngredients()){
-            double cost = ingredient.getCost();
-            price += cost/10;
-        }
+        String canName = wrappingCanInfo.getCanName();
+        Double price = CanInfoController.getInstance().getCanPriceByName(canName);
         return price;
     }
 
@@ -125,7 +119,7 @@ public class WrappingDepartment {
 
     /**
      * 根据罐头名字获得对应的builder.
-     *
+     * TODO:待修改为从hashMap中获得罐头信息与Builder类.
      * @param canName :
      * @return : Marketing.Wrapping.Builder.WrappingBuilder
      * @author "王立友"
