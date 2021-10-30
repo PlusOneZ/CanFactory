@@ -28,10 +28,16 @@ public class CanInfoController {
         infoController = new CanInfoController();
     }
 
+    /**
+     * 初始化，在这个函数内登记罐头
+     * @author 卓正一
+     * @since 2021-10-30 11:09 PM
+     */
     private CanInfoController() {
         this.canList=new ArrayList<>();
         this.registry = new HashMap<>();
         this.canKind = new HashMap<>();
+        this.enNameMap = new HashMap<>();
         /*
         * 注册糖渍苹果罐头;
         */
@@ -62,6 +68,11 @@ public class CanInfoController {
 
     }
 
+    /**
+     * 登记罐头的操作委托给这个函数
+     * @author 卓正一
+     * @since 2021-10-30 11:10 PM
+     */
     public void register(Can can) {
         registry.put(can.getCanName(), can);
         canList.add(can.getCanName());
@@ -71,10 +82,21 @@ public class CanInfoController {
         enNameMap.put(can.enDescription(), can.enDescription());
     }
 
+    /**
+     * 登记罐头种类，通过生产线工厂调用
+     * @author 卓正一
+     * @since 2021-10-30 11:10 PM
+     */
     public void registerType(Can can, String type) {
         canKind.put(can.getCanName(), type);
     }
 
+    /**
+     * 通过罐头的名字获取这个罐头的价格
+     * @return : double 罐头价格
+     * @author 卓正一
+     * @since 2021-10-30 11:10 PM
+     */
     public double getCanPriceByName(String name) {
         try {
             return registry.get(name).getCanCost() * 1.2;
@@ -88,6 +110,12 @@ public class CanInfoController {
         }
     }
 
+    /**
+     * 通过罐头的名字获取罐头的种类，种类主要确定了产生哪种流水线
+     * @return : java.lang.String 流水线的种类，现在有 fresh 和 fruit
+     * @author 卓正一
+     * @since 2021-10-30 11:11 PM
+     */
     public String getCanType(String name) {
         try {
             return canKind.get(name);
@@ -101,6 +129,12 @@ public class CanInfoController {
         }
     }
 
+    /**
+     * 通过罐头的名字获取罐头对应的 Java 类
+     * @return : 罐头的类，主要通过反射机制实现
+     * @author 卓正一
+     * @since 2021-10-30 11:12 PM
+     */
     public Class<? extends Can> getClassByName(String name) {
         try {
             return registry.get(name).getClass();
@@ -114,6 +148,12 @@ public class CanInfoController {
         }
     }
 
+    /**
+     * 通过任意一种名字获取罐头的英文名，主要是让机器能够读懂
+     * @return : java.lang.String
+     * @author 卓正一
+     * @since 2021-10-30 11:12 PM
+     */
     public String getEnNameOfCan(String arbitraryName) {
         try {
             return enNameMap.get(arbitraryName);
@@ -127,6 +167,12 @@ public class CanInfoController {
         }
     }
 
+    /**
+     * 获取所有罐头名字的列表
+     * @return : 罐头名字列表
+     * @author 卓正一
+     * @since 2021-10-30 11:13 PM
+     */
     public List<String> getCanList() {
         return canList;
     }
