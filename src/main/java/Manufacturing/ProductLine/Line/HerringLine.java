@@ -1,7 +1,11 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.ConcreteIngredient.Apple;
+import Manufacturing.Ingredient.ConcreteIngredient.Clove;
+import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FreshLine;
@@ -16,7 +20,7 @@ import java.util.List;
  * @author 孟繁霖
  * @date 2021-10-12 8:32
  */
-public class CloveLine implements FreshLine {
+public class HerringLine implements FreshLine {
 
     private List<Ingredient> ingredients=new ArrayList<>();
     private final IronCanMachine ironCanMachine = new IronCanMachine();
@@ -49,7 +53,7 @@ public class CloveLine implements FreshLine {
 
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);
-            Can can= IronCanFactory.getInstance().createBigFruitCan();
+            Can can= IronCanFactory.getInstance().createBigCan("Herring");
             ironCanMachine.preTreat(can);
             ironCanMachine.fill(can,ingredient);
             ironCanMachine.can(can);
@@ -65,5 +69,15 @@ public class CloveLine implements FreshLine {
     @Override
     public String getConcreteName() {
         return "cloveLine";
+    }
+
+    public static Can produceSample() {
+        IronCanMachine ironCanMachine = new IronCanMachine();
+        Can can = IronCanFactory.getInstance().createBigCan("Herring");
+        ironCanMachine.preTreat(can);
+        Ingredient clove =new Clove();
+        ironCanMachine.fill(can, clove);
+        ironCanMachine.can(can);
+        return can;
     }
 }

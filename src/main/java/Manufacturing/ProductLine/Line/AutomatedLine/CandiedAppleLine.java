@@ -6,6 +6,7 @@ import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
+import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Presentation.Protocol.OutputManager;
 
@@ -65,7 +66,7 @@ public class CandiedAppleLine extends AutomatedLine {
         for (int i = 0; i < count; i++) {
             try {
                 Ingredient candiedApple = candiedAppleMachine.combine(apples.get(i), sugarList.get(i));
-                Can can = IronCanFactory.getInstance().createSmallCan("CandiedApple");
+                Can can = GlassCanFactory.getInstance().createSmallCan("CandiedApple");
                 ironCanMachine.preTreat(can);
                 ironCanMachine.fill(can, candiedApple);
                 ironCanMachine.can(can);
@@ -84,25 +85,11 @@ public class CandiedAppleLine extends AutomatedLine {
     }
 
 
-    public static void main(String[] args) {
-        List<Ingredient> apples = Arrays.asList(new Apple(), new Apple(), new Apple(), new Apple(), new Apple());
-        List<Ingredient> sugarList = Arrays.asList(new Sugar(), new Sugar(), new Sugar(), new Sugar(), new Sugar());
-
-        CandiedAppleLine candiedAppleLine = new CandiedAppleLine(apples, sugarList);
-
-
-        List<Can> cans = candiedAppleLine.produce(4,"fine");
-
-        for (Can can :
-                cans) {
-            System.out.println(can);
-        }
-    }
 
     public static Can produceSample() {
         CandiedAppleMachine candiedAppleMachine = new CandiedAppleMachine();
         IronCanMachine ironCanMachine = new IronCanMachine();
-        Can can = IronCanFactory.getInstance().createSmallCan("CandiedApple");
+        Can can = GlassCanFactory.getInstance().createSmallCan("CandiedApple");
 
         ironCanMachine.preTreat(can);
         Ingredient candiedApple = candiedAppleMachine.combine(new Apple(), new Sugar());

@@ -1,8 +1,11 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
+import Manufacturing.Ingredient.ConcreteIngredient.Clove;
+import Manufacturing.Ingredient.ConcreteIngredient.Peach;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.IronCanMachine;
+import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.PeachProducer;
@@ -53,7 +56,7 @@ public class PeachLine implements FruitLine {
         List<Can> product=new ArrayList<>();
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);
-            Can can= IronCanFactory.getInstance().createBigFruitCan();
+            Can can=GlassCanFactory.getInstance().createBigCan("Peach");
             ironCanMachine.preTreat(can);
             ironCanMachine.fill(can,ingredient);
             ironCanMachine.can(can);
@@ -69,5 +72,15 @@ public class PeachLine implements FruitLine {
     @Override
     public String getConcreteName() {
         return "peachLine";
+    }
+
+    public static Can produceSample() {
+        IronCanMachine ironCanMachine = new IronCanMachine();
+        Can can = GlassCanFactory.getInstance().createBigCan("Peach");
+        ironCanMachine.preTreat(can);
+        Ingredient peach =new Peach();
+        ironCanMachine.fill(can, peach);
+        ironCanMachine.can(can);
+        return can;
     }
 }
