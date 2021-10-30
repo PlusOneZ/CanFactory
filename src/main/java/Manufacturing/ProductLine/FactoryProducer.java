@@ -9,9 +9,9 @@ package Manufacturing.ProductLine;
  */
 public class FactoryProducer {
     public static Factory getAbstractFactory(String lineName) {
-        if ("fruitLine".equals(lineName)) {
+        if ("fruit".equalsIgnoreCase(lineName)) {
             return new FruitLineFactory();
-        } else if ("freshLine".equals(lineName)) {
+        } else if ("fresh".equalsIgnoreCase(lineName)) {
             return new FreshLineFactory();
         } else return null;
     }

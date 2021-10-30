@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-       List<Can> canList = ProductDepartment.getInstance().produce("fruitLine","fruit","peach",7,"fine");
+       List<Can> canList = ProductDepartment.getInstance().produce("fruit","peach",7,"fine");
         System.out.println(canList);
     }
 }
