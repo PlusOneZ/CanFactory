@@ -57,7 +57,7 @@ public class QualityAssuranceDepartment extends BaseDepartment {
      * @author 卓正一
      * @since 2021-10-11 10:04 PM
      */
-    public void testQuality(Testable testable) {
+    public boolean testQuality(Testable testable) {
 
         if (testable.getQualityTest()) {
             OutputManager.getInstance().print(
@@ -65,12 +65,14 @@ public class QualityAssuranceDepartment extends BaseDepartment {
                     testable.zhTwDescription() + " 通過質量測試。",
                     testable.enDescription() + " has passed quality test."
             );
+            return true;
         } else {
             OutputManager.getInstance().errorMassage(
                     testable.zhCnDescription() + " 未通过质量测试。",
                     testable.zhTwDescription() + " 未通過質量測試。",
                     testable.enDescription() + " didn't pass safety test."
             );
+            return false;
         }
 
     }
@@ -81,7 +83,7 @@ public class QualityAssuranceDepartment extends BaseDepartment {
      * @author 卓正一
      * @since 2021-10-11 10:04 PM
      */
-    public void testSafety(Testable testable) {
+    public boolean testSafety(Testable testable) {
 
         if (testable.getSafetyTest()) {
             OutputManager.getInstance().print(
@@ -89,12 +91,14 @@ public class QualityAssuranceDepartment extends BaseDepartment {
                     testable.zhTwDescription() + " 通過質量測試。",
                     testable.enDescription() + " has passed quality test."
             );
+            return true;
         } else {
             OutputManager.getInstance().errorMassage(
                     testable.zhCnDescription() + " 未通过安全测试。",
                     testable.zhTwDescription() + " 未通過質量測試。",
                     testable.enDescription() + " didn't pass safety test."
             );
+            return false;
         }
 
     }
