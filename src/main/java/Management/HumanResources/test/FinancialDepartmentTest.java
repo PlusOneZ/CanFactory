@@ -3,6 +3,7 @@ package Management.HumanResources.test;
 import Management.HumanResources.DepartmentCommand.AuditSalaryTableCommand;
 import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
 import Management.HumanResources.FinancialSystem.FinancialDepartment;
+import Management.HumanResources.FinancialSystem.Permission;
 import Management.HumanResources.Manager.TestingManager;
 import Management.HumanResources.Staff.Auditor;
 import Management.HumanResources.Staff.Worker;
@@ -42,8 +43,28 @@ public class FinancialDepartmentTest {
         //创建经济部门的审计员等
         Auditor auditor1=new Auditor("怀特菲尔德", 201.0);
         Auditor auditor2=new Auditor("哈梅特",100.0);
-        financialDepartment.register(auditor1);
-        financialDepartment.register(auditor2);
+        if(auditor1 instanceof Permission){
+            financialDepartment.register(auditor1);
+
+        } else{
+            OutputManager.getInstance().errorMassage(
+                    "没有权限访问财务系统，访问已被拒绝",
+                    "沒有權限訪問財務系統，訪問已被拒絕",
+                    "The access to financial system is rejected"
+            );
+        }
+
+        if(auditor2 instanceof Permission){
+            financialDepartment.register(auditor2);
+        } else{
+            OutputManager.getInstance().errorMassage(
+                    "没有权限访问财务系统，访问已被拒绝",
+                    "沒有權限訪問財務系統，訪問已被拒絕",
+                    "The access to financial system is rejected"
+            );
+        }
+
+
 
         testingManager.setName("Bear");
 
@@ -53,18 +74,30 @@ public class FinancialDepartmentTest {
         testingWorker.setName("桥梁");
         testingWorker.setLeader(testingTeamLeader1);
 
+        if(testingWorker instanceof Permission){
+            financialDepartment.register(testingWorker);
+        } else{
+            OutputManager.getInstance().errorMassage(
+                    testingWorker.getName()+ "没有权限访问财务系统，访问已被拒绝",
+                    testingWorker.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
+                    testingWorker.getName()+"The access to financial system is rejected"
+            );
+        }
         // 分别将其注册到该部门
         qualityTestingDepartment.register(testingManager);
         qualityTestingDepartment.register(testingTeamLeader1);
         qualityTestingDepartment.register(testingWorker);
 
+
         //审计命令，指定经济部门下的一个审计员
         AuditSalaryTableCommand auditReportCommand = new AuditSalaryTableCommand(auditor1);
-        //获取SalaryDaoImpl单例
-        SalaryDaoImpl salaryDaoImpl= SalaryDaoImpl.getInstance();
 
         //命令模式，执行命令
         financialDepartment.setCurrentCommand(auditReportCommand);
+
+
+        //获取SalaryDaoImpl单例
+        SalaryDaoImpl salaryDaoImpl= SalaryDaoImpl.getInstance();
 
         financialDepartment.giveCommand();
         // 理论输出： 无需审计

@@ -72,9 +72,8 @@ public class InventoryDriver {
         //测试查库存这个整个过程;
         inventoryDepartment.viewInventory(order);
 
-        //测试准备好运输罐头的工作过程;
-        TransportationCan transportationCan = inventoryDepartment.prepareCans(order);
-        System.out.println(transportationCan);
+        inventoryDepartment.addOrder(order);
+        inventoryDepartment.reviewOrder();
     }
 
     public static Can getStubCan(){
