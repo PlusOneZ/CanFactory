@@ -14,16 +14,18 @@ public class Clean extends Procedure {
     public Clean(Ingredient ingredient) {
         super(ingredient);
 
-        OutputManager.getInstance().print(
-                "清洗了" + showContents(),
-                "清洗了" + showContents(),
-                "Cleaned " + showContents()
-        );
-
         setName(
                 "",
                 "",
                 ""
+        );
+
+        OutputManager.getInstance();
+
+        OutputManager.getInstance().print(
+                "清洗了" + showContents(),
+                "清洗了" + showContents(),
+                "Cleaned " + showContents()
         );
     }
 }

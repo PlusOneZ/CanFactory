@@ -14,16 +14,16 @@ public class Peel extends Procedure {
     public Peel(Ingredient ingredient) {
         super(ingredient);
 
-        OutputManager.getInstance().print(
-                "削皮了" + showContents(),
-                "削皮了" + showContents(),
-                "Peeled " + showContents()
-        );
-
         setName(
                 "",
                 "",
                 ""
+        );
+
+        OutputManager.getInstance().print(
+                "削皮了" + showContents(),
+                "削皮了" + showContents(),
+                "Peeled " + showContents()
         );
     }
 }
