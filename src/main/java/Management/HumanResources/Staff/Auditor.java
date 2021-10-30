@@ -2,6 +2,7 @@ package Management.HumanResources.Staff;
 
 import Management.HumanResources.DepartmentType;
 import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
+import Management.HumanResources.FinancialSystem.Permission;
 import Presentation.Protocol.OutputManager;
 
 /**
@@ -11,7 +12,7 @@ import Presentation.Protocol.OutputManager;
  * @since 2021/10/21 9:52 下午
  */
 
-public class Auditor extends Staff {
+public class Auditor extends Staff implements Permission {
 
     SalaryDaoImpl salaryTable = SalaryDaoImpl.getInstance();
 
@@ -46,7 +47,7 @@ public class Auditor extends Staff {
      * @author 陈垲昕
      * @since 2021-10-21 10:14 下午
      */
-    public void auditSalaryReport(){
+    public boolean auditSalaryReport(){
 
         //report的脏标记已访问过的话，则无需继续
         if(salaryTable.getVisited()){
@@ -55,7 +56,7 @@ public class Auditor extends Staff {
                     "員工薪水表已經被審閱過，無需重復審閱",
                     "The employee salary report has been reviewed, extra audition is unnecessary."
             );
-            return;
+            return false;
         }
 
         OutputManager.getInstance().print(
@@ -68,6 +69,6 @@ public class Auditor extends Staff {
         // 重设脏标记
         salaryTable.setVisited();
 
-
+        return true;
     }
 }
