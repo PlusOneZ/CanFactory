@@ -1,6 +1,13 @@
 package CanFactory;
 
+import ImplementDepartment.OrderImplementDepartment;
 import Marketing.OrderCenterEntity.OrderPartTest;
+import Marketing.OrderCenterEntity.OrderProcessingMediator;
+import Marketing.OrderEnity.Order;
+import Mediator.DepartmentMediator;
+
+import java.text.ParseException;
+import java.util.ArrayList;
 
 /**
  * 所有类的驱动类
@@ -25,7 +32,13 @@ public class CanFactory {
 
     }
 
-    public void run() {
-
+    public void run() throws ParseException {
+        //首先提示客户创建订单
+        ArrayList<Order> pendingOrders = OrderImplementDepartment.getInstance().CreateOrder();
+        //然后通知库存部门作后续处理
+        for(Order order : pendingOrders){
+            //对于每一个订单，进行相应的处理
+            DepartmentMediator.getInstance().handleOrder(order);
+        }
     }
 }
