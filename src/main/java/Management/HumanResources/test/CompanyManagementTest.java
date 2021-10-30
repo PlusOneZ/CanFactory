@@ -8,7 +8,9 @@ import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
 import Management.QualityTesting.QualityAssuranceDepartment;
 import Presentation.Protocol.OutputManager;
+import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -20,6 +22,11 @@ import java.util.Scanner;
 
 public class CompanyManagementTest {
 
+    /**
+     * 起始输入
+     * @author 陈垲昕
+     * @since 2021-10-30 8:40 下午
+     */
     public static void loadingInput() throws InterruptedException {
         for (int i = 0; i <= 100; i++) {
             if(OutputManager.getInstance().getLanguage()== OutputManager.Lang.zh_CN) {
@@ -36,7 +43,7 @@ public class CompanyManagementTest {
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
 
         //OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_TW);
 
@@ -63,6 +70,13 @@ public class CompanyManagementTest {
         financialDepartment.register(auditor1);
         financialDepartment.register(auditor2);
         financialDepartment.register(auditor3);
+
+
+        SalaryDaoImpl salaryDaoImpl = SalaryDaoImpl.getInstance();
+
+        salaryDaoImpl.saveSalary(financialDepartment);
+
+        salaryDaoImpl.closeFile();
 
         testingManager.setName("Bear");
 
@@ -100,7 +114,7 @@ public class CompanyManagementTest {
 
             while(!scanner.hasNextInt()) {
                 scanner.next();
-                OutputManager.getInstance().print(
+                OutputManager.getInstance().errorMassage(
                         "无效输入，请重新输入：",
                         "無效輸入，请重新輸入：",
                         "Invalid input, please input again:"
@@ -120,7 +134,7 @@ public class CompanyManagementTest {
 
                 while((!scanner2.hasNextInt())){
                     scanner2.next();
-                    OutputManager.getInstance().print(
+                    OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
                             "Invalid input, please input again:"
@@ -138,6 +152,14 @@ public class CompanyManagementTest {
                 else if(auditorNum==3){
                     auditSalaryTableCommand.setAuditor(auditor3);
                 }
+                else{
+                    OutputManager.getInstance().errorMassage(
+                            "找不到该审计员",
+                            "找不到該審計員",
+                            "Auditor not found."
+                    );
+                    continue;
+                }
 
                 financialDepartment.setCurrentCommand(auditSalaryTableCommand);
 
@@ -154,13 +176,13 @@ public class CompanyManagementTest {
                 break;
             }
             else{
-                OutputManager.getInstance().print(
+                OutputManager.getInstance().errorMassage(
                         "无效的整数序号输入，请重新输入：",
                         "無效的整數序號輸入，请重新輸入：",
                         "Invalid integer input, please input again:"
                 );
             }
-
+            System.out.print("\n");
 
         }
 

@@ -64,26 +64,35 @@ public class FinancialDepartment extends BaseDepartment {
         );
 
         OutputManager.getInstance().print(
-                "当前版本："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_CN),
-                "當前版本："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_TW),
-                "Latest version: "+ReportOriginator.getInstance().toString(OutputManager.Lang.en)
+                "*----当前版本："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_CN),
+                "*----當前版本："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_TW),
+                "*----Latest version: "+ReportOriginator.getInstance().toString(OutputManager.Lang.en)
         );
 
         OutputManager.getInstance().print(
-                "所有历史版本：",
-                "所有歷史版本",
-                "All previous version: "
+                "*----所有历史版本：",
+                "*----所有歷史版本",
+                "*----All previous version: "
         );
 
         for(int i = 0; i<ReportAuditHistoryList.getInstance().getSize(); i++){
             ReportOriginator.getInstance().getStateFromMemento(ReportAuditHistoryList.getInstance().get(i));
             OutputManager.getInstance().print(
-                    "No."+(i+1) +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_CN),
-                    "No."+(i+1) +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_TW),
-                    "No."+(i+1)+":" +ReportOriginator.getInstance().toString(OutputManager.Lang.en)
+                    "*----No."+(i+1) +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_CN),
+                    "*----No."+(i+1) +"："+ReportOriginator.getInstance().toString(OutputManager.Lang.zh_TW),
+                    "*----No."+(i+1)+":" +ReportOriginator.getInstance().toString(OutputManager.Lang.en)
             );
         }
 
     }
 
+    @Override
+    public void giveCommand() {
+        OutputManager.getInstance().print(
+                "【命令模式】经济管理部门下达命令",
+                "【命令模式】經濟管理部門下達命令",
+                "[Command Pattern] Financial department commands an task to be done. "
+        );
+        super.giveCommand();
+    }
 }

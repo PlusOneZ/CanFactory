@@ -71,9 +71,9 @@ public class AuditSalaryTableCommand extends Command {
             ReportAuditHistoryList.getInstance().add(ReportOriginator.getInstance().saveStateToMemento());
 
             OutputManager.getInstance().print(
-                    "该报告审核历史版本加入公司备忘录",
-                    "該報告審核歷史版本加入公司備忘錄",
-                    "This report audit history version is added to company memento. "
+                    "【备忘录模式】该报告审核历史版本加入公司备忘录",
+                    "【備忘錄模式】該報告審核歷史版本加入公司備忘錄",
+                    "[Memento Pattern] This report audit history version is added to company memento. "
             );
         }
 
