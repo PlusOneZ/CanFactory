@@ -11,8 +11,16 @@ import java.util.Date;
  * @since 2021/10/28 11:02 下午
  */
 
-public record ReportMemento(Auditor auditorState, Date dateState) {
+public class ReportMemento {
 
+    private Auditor auditorState;
+
+    private  Date dateState;
+
+    public ReportMemento(Auditor auditorState, Date dateState){
+        this.auditorState=auditorState;
+        this.dateState=dateState;
+    }
     /**
      * 获取审阅者状态
      */
