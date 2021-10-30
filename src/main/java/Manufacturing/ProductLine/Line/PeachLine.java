@@ -1,10 +1,14 @@
 package Manufacturing.ProductLine.Line;
 
+import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.IronCanMachine;
+import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Producer.PeachProducer;
 import Presentation.Protocol.OutputManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +18,9 @@ import java.util.List;
  * @date 2021-10-12 8:32
  */
 public class PeachLine implements FruitLine {
+
+    private final IronCanMachine ironCanMachine = new IronCanMachine();
+
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
@@ -32,17 +39,27 @@ public class PeachLine implements FruitLine {
     }
 
     @Override
-    public void produce(int count, String produceManner) {
+    public List<Can> produce(int count, String produceManner) {
         OutputManager.getInstance().print(
                 "*******正在对黄桃进行加工*******",
                 "*******正在對黃桃進行加工*******",
                 "*******Peaches are being processed*******");
         PeachProducer peachProducer = new PeachProducer(produceManner);
         peachProducer.produce();
+
+        List<Can> product=new ArrayList<>();
+        for(int i=0;i<count;i++){
+            Can can= IronCanFactory.getInstance().createBigFruitCan();
+            ironCanMachine.preTreat(can);
+            ironCanMachine.fill(can);
+            ironCanMachine.can(can);
+            product.add(can);
+        }
         OutputManager.getInstance().print(
                 "共生产" + count + "个黄桃罐头",
                 "共生產" + count + "個黃桃罐頭",
                 "Totally produced" + count + "peach can!");
+        return product;
     }
 
     @Override

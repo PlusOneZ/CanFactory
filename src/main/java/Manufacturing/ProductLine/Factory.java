@@ -1,5 +1,6 @@
 package Manufacturing.ProductLine;
 
+import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
@@ -56,7 +57,7 @@ public abstract class Factory {
      * @author 孟繁霖
      * @date 2021-10-11 23:35
      */
-    public final void produceCan(String canKind, String canName, int materialCount, String produceManner) {
+    public final List<Can> produceCan(String canKind, String canName, int materialCount, String produceManner) {
 
 
         OutputManager.getInstance().print(
@@ -81,18 +82,20 @@ public abstract class Factory {
                     "*************购买失败************",
                     "*************購買失敗************",
                     "*******Failed purchase*******");
-            return;
+            return null;
         }
+
+
 
         //获得相应种类的生产线并进行预处理和生产加工
         if ("fruit".equals(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
             int count = (fruitLine.preTreat(ingredientList)).size();
-            fruitLine.produce(count, produceManner);
+           return fruitLine.produce(count, produceManner);
         } else if ("fresh".equals(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
-            freshLine.produce(count);
+            return freshLine.produce(count,produceManner);
         }
         else if("automated".equals(canKind)){
             List<Ingredient>sugarList=new ArrayList<>();
@@ -101,7 +104,9 @@ public abstract class Factory {
             }
             CandiedAppleLine candiedAppleLine =new CandiedAppleLine(ingredientList,sugarList);
             int count=(candiedAppleLine.preTreat(ingredientList)).size();
-            candiedAppleLine.produce(count);
+            return candiedAppleLine.produce(count,produceManner);
+        }else{
+            return null;
         }
     }
 

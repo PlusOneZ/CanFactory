@@ -1,8 +1,8 @@
 package Manufacturing.ProductLine;
 
-import Manufacturing.ProductLine.Line.AppleLine;
+
 import Manufacturing.ProductLine.Line.PeachLine;
-import Manufacturing.ProductLine.Line.PearLine;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,16 +46,8 @@ public class FruitLineFactory extends Factory {
     @Override
     public FruitLine getFruitLine(String fruitLineType) {
 
-        if ("apple".equals(fruitLineType)) {
-            //享元模式应用，没有再创建、有则不创建
-            if (!fruitLineMap.containsKey("appleLine")) {
-                AppleLine appleLine = new AppleLine();
-                fruitLineMap.put("appleLine", appleLine);
-                return appleLine;
-            } else {
-                return fruitLineMap.get("appleLine");
-            }
-        } else if ("peach".equals(fruitLineType)) {
+
+         if ("peach".equals(fruitLineType)) {
             if (!fruitLineMap.containsKey("peachLine")) {
                 PeachLine peachLine = new PeachLine();
                 fruitLineMap.put("peachLine", peachLine);
@@ -63,15 +55,9 @@ public class FruitLineFactory extends Factory {
             } else {
                 return fruitLineMap.get("peachLine");
             }
-        } else if ("pear".equals(fruitLineType)) {
-            if (!fruitLineMap.containsKey("pear")) {
-                PearLine pearLine = new PearLine();
-                fruitLineMap.put("pearLine", pearLine);
-                return pearLine;
-            } else {
-                return fruitLineMap.get("pearLine");
-            }
-        } else return null;
+        } else{
+             return null;
+         }
     }
 
     @Override

@@ -27,8 +27,9 @@ public interface ProductLine {
      * 加工罐头
      *
      * @param count :  加工的罐头数量
+     * @Param produceManner:  加工方式
      * @author 孟繁霖
      * @since  2021-10-11 23:42
      */
-    List<Can> produce(int count);
+    List<Can> produce(int count,String produceManner);
 }
