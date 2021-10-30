@@ -1,4 +1,4 @@
-package Manufacturing.ProductLine.Line;
+package Manufacturing.ProductLine.Line.AutomatedLine;
 
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
@@ -6,8 +6,8 @@ import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.Machine.IronCanMachine;
+import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
-import Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine;
 import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class CandiedAppleLine extends AutomatedLine {
     private final IronCanMachine ironCanMachine = new IronCanMachine();
 
 
-    CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
+    public CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
         if (apples.isEmpty() || sugarList.isEmpty()) {
             OutputManager.getInstance().errorMassage(
                     "原料为空，不能生产！",
@@ -60,18 +60,13 @@ public class CandiedAppleLine extends AutomatedLine {
     }
 
     @Override
-    public List<Can> produce(int count) {
+    public List<Can> produce(int count,String produceManner) {
         List<Can> product = new ArrayList<>();
         apples = preTreat(apples);
         for (int i = 0; i < count; i++) {
             try {
                 Ingredient candiedApple = candiedAppleMachine.combine(apples.get(i), sugarList.get(i));
-                Can can = IronCanFactory.getInstance().createSmallFruitCan();
-                can.setName(
-                        "糖渍苹果罐头",
-                        "糖漬蘋果罐頭",
-                        "Candied Apple Can"
-                );
+                Can can = GlassCanFactory.getInstance().createSmallCan("CandiedApple");
                 ironCanMachine.preTreat(can);
                 ironCanMachine.fill(can, candiedApple);
                 ironCanMachine.can(can);
@@ -90,28 +85,12 @@ public class CandiedAppleLine extends AutomatedLine {
     }
 
 
-    public static void main(String[] args) {
-        List<Ingredient> apples = Arrays.asList(new Apple(), new Apple(), new Apple(), new Apple(), new Apple());
-        List<Ingredient> sugarList = Arrays.asList(new Sugar(), new Sugar(), new Sugar(), new Sugar(), new Sugar());
-
-        CandiedAppleLine candiedAppleLine = new CandiedAppleLine(apples, sugarList);
-        List<Can> cans = candiedAppleLine.produce(4);
-        for (Can can :
-                cans) {
-            System.out.println(can);
-        }
-    }
 
     public static Can produceSample() {
         CandiedAppleMachine candiedAppleMachine = new CandiedAppleMachine();
         IronCanMachine ironCanMachine = new IronCanMachine();
-        Can can = IronCanFactory.getInstance().createSmallFruitCan();
-        // TODO: 修改这种命名方式
-        can.setName(
-                "糖渍苹果罐头",
-                "糖漬蘋果罐頭",
-                "Candied Apple Can"
-        );
+        Can can = GlassCanFactory.getInstance().createSmallCan("CandiedApple");
+
         ironCanMachine.preTreat(can);
         Ingredient candiedApple = candiedAppleMachine.combine(new Apple(), new Sugar());
         ironCanMachine.fill(can, candiedApple);

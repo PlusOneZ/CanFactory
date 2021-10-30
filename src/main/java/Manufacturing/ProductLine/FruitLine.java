@@ -25,18 +25,6 @@ public interface FruitLine extends ProductLine{
      */
     List<Ingredient> preTreat(List<Ingredient> baseIngredientList);
 
-    /**
-     * TODO:此处写produce方法的描述
-     *
-     * @param count         : 能够生产的罐头数量
-     * @param produceManner : 加工方式（粗加工、细加工）
-     * @author 孟繁霖
-     * @date 2021-10-11 23:48
-     */
-    void produce(int count, String produceManner);
 
-    // TODO: 改写继承类并且移除这一句话
-    default List<Can> produce(int count) {
-        return null;
-    }
+
 }

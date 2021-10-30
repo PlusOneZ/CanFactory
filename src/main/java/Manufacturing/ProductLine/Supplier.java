@@ -36,7 +36,13 @@ public class Supplier {
         object.put("count",count);
         JSONArray ingredients=PurchaseDepartment.getInstance().getIngredient(object);
         if(ingredients==null){
-            return null;
+            JSONArray array=new JSONArray();
+            array.put(object);
+            if(PurchaseDepartment.getInstance().purchaseIngredient(array)){
+                ingredients=PurchaseDepartment.getInstance().getIngredient(object);
+            }else{
+                return null;
+            }
         }
 
         if("apple".equals(kind)){

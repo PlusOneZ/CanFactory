@@ -18,6 +18,8 @@ public class Apple extends BaseIngredient {
         );
 
         this.setCost(3.5);
+
+        this.setWeight(250 + (Math.random()*50 - 25));
     }
 
 }

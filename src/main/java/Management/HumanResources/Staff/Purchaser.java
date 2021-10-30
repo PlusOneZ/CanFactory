@@ -2,7 +2,6 @@ package Management.HumanResources.Staff;
 
 import Manufacturing.ProductLine.PurchaseDepartment;
 import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
-import Presentation.Protocol.OutputManager;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.Objects;
  * @author 吴英豪
  * @since 2021-10-20 08:43
  */
-public class Purchaser extends Staff {
+public class Purchaser extends Staff implements BasePurchaser {
 
     public Purchaser() {
         upstreamFactories = new ArrayList<ConcreteUpstreamFactory>();
@@ -26,6 +25,7 @@ public class Purchaser extends Staff {
      *  添加上游工厂
      * @param factory 需要去购买的上游工厂
      */
+    @Override
     public void addFactory(ConcreteUpstreamFactory factory){
         this.upstreamFactories.add(factory);
     }
@@ -33,6 +33,7 @@ public class Purchaser extends Staff {
     /**
      * 清除上游工厂
      */
+    @Override
     public void clearFactory(){
         this.upstreamFactories.clear();
     }
@@ -43,6 +44,7 @@ public class Purchaser extends Staff {
      * @param plan 具体的采购计划
      * @return 是否采购成功
      */
+    @Override
     public boolean purchaseMaterial(JSONObject plan) {
         //试图从上游工厂进行购买
         for (ConcreteUpstreamFactory factory : upstreamFactories) {

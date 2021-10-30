@@ -1,6 +1,14 @@
 package CanFactory;
 
+import ImplementDepartment.OrderImplementDepartment;
 import Marketing.OrderCenterEntity.OrderPartTest;
+import Marketing.OrderCenterEntity.OrderProcessingMediator;
+import Marketing.OrderEnity.Order;
+import Mediator.DepartmentMediator;
+import Presentation.Protocol.OutputManager;
+
+import java.text.ParseException;
+import java.util.ArrayList;
 
 /**
  * 所有类的驱动类
@@ -16,6 +24,10 @@ public class CanFactory {
         canFactory = new CanFactory();
     }
 
+    public static CanFactory getInstance() {
+        return canFactory;
+    }
+
     /**
      * 单例构造器
      * @author 卓正一
@@ -25,7 +37,23 @@ public class CanFactory {
 
     }
 
-    public void run() {
-
+    public void run()  {
+        //首先提示客户创建订单
+        ArrayList<Order> pendingOrders = null;
+        try {
+            pendingOrders = OrderImplementDepartment.getInstance().CreateOrder();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            OutputManager.getInstance().errorMassage(
+                    "出现异常！",
+                    "出現異常",
+                    "Abnormal!"
+            );
+        }
+        //然后通知库存部门作后续处理
+        for(Order order : pendingOrders){
+            //对于每一个订单，进行相应的处理
+            DepartmentMediator.getInstance().handleOrder(order);
+        }
     }
 }

@@ -9,6 +9,7 @@ import Presentation.Protocol.OutputManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 订单中心，负责订单的CURD
@@ -108,7 +109,7 @@ public class OrderCenter implements Container {
                     "訂單下單時間"+placingTime,
                     "The placing time of the order:"+placingTime
             );
-            if(od.getOrderState().getCNStateName() == "运输中"){
+            if(Objects.equals(od.getOrderState().getCNStateName(), "运输中")){
                 String sendingTime = sft.format(od.getSendingTime());
                 OutputManager.getInstance().print(
                         "订单发货时间:"+sendingTime,
@@ -116,7 +117,7 @@ public class OrderCenter implements Container {
                         "The delivery time of the order:"+sendingTime
                 );
             }
-            else if(od.getOrderState().getCNStateName() == "已交付"){
+            else if(Objects.equals(od.getOrderState().getCNStateName(), "已交付")){
                 String deliverTime = sft.format(od.getCompletionTime());
                 String sendingTime = sft.format(od.getSendingTime());
                 OutputManager.getInstance().print(
@@ -178,7 +179,7 @@ public class OrderCenter implements Container {
         for(Iterator it = OrderCenter.getInstance().getIterator(); it.hasNext();){
             Order itOrder = (Order)it.next();
             //如果当前迭代的订单的订单状态为已下单待生产的状态，则加入到列表中
-            if(itOrder.getOrderState().getCNStateName() == "已下单"){
+            if(Objects.equals(itOrder.getOrderState().getCNStateName(), "已下单")){
                 pendingOrder.add(itOrder);
             }
         }
@@ -195,7 +196,7 @@ public class OrderCenter implements Container {
     public  Order orderExists(Long orderId){
         for (Iterator it = getIterator(); it.hasNext();) {
             Order itOrder = (Order) it.next();
-            if (itOrder.getOrderId() == orderId) {
+            if (Objects.equals(itOrder.getOrderId(), orderId)) {
                 return itOrder;
             }
         }
@@ -207,7 +208,7 @@ public class OrderCenter implements Container {
         Order order = orderExists(orderId);
         //如果当前订单ID的订单存在
         if(order != null) {
-            if (order.getOrderState().getCNStateName() == "已下单") {
+            if (Objects.equals(order.getOrderState().getCNStateName(), "已下单")) {
                 //修改订单的状态为已生产状态
                 order.changeOrderState(new ProducedOrderState());
                 OutputManager.getInstance().print(
@@ -244,7 +245,7 @@ public class OrderCenter implements Container {
 
         //如果当前订单ID的订单存在
         if(order != null) {
-            if (order.getOrderState().getCNStateName() == "已生产") {
+            if (Objects.equals(order.getOrderState().getCNStateName(), "已生产")) {
                 //设置运输时间
                 order.setSendingTime(new Date());
                 //修改订单的状态为运输中状态
@@ -278,7 +279,7 @@ public class OrderCenter implements Container {
         Order order = orderExists(orderId);
         //如果当前订单ID的订单存在
         if(order != null) {
-            if (order.getOrderState().getCNStateName() == "已交付") {
+            if (Objects.equals(order.getOrderState().getCNStateName(), "已交付")) {
                 //设置交付的时间
                 order.setCompletionTime(new Date());
                 //修改订单的状态为交付状态

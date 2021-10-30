@@ -11,6 +11,7 @@ import Presentation.Protocol.OutputManager;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ import java.util.List;
  *
  * @author 卓正一
  */
-public abstract class Can implements Testable {
+public abstract class Can implements Testable,Cloneable {
 
     /**
      * 罐头状态，实现了状态模式
@@ -83,14 +84,14 @@ public abstract class Can implements Testable {
      * 实现：汪明杰
      * @since 2021-10-12 4:54 PM
      */
-    private LocalDate shelfTime;
+    private Date shelfTime;
 
     /**
      * 生产时间
      * 实现：汪明杰
      * @since 2021-10-12 4:55 PM
      */
-    private LocalDate manufactureTime;
+    private Date manufactureTime;
 
     /**
      * 最高储存温度
@@ -284,19 +285,19 @@ public abstract class Can implements Testable {
         return "";
     }
 
-    public LocalDate getShelfTime() {
+    public Date getShelfTime() {
         return shelfTime;
     }
 
-    public void setShelfTime(LocalDate shelfTime) {
+    public void setShelfTime(Date shelfTime) {
         this.shelfTime = shelfTime;
     }
 
-    public LocalDate getManufactureTime() {
+    public Date getManufactureTime() {
         return manufactureTime;
     }
 
-    public void setManufactureTime(LocalDate manufactureTime) {
+    public void setManufactureTime(Date manufactureTime) {
         this.manufactureTime = manufactureTime;
     }
 
@@ -349,10 +350,21 @@ public abstract class Can implements Testable {
      */
     public Can Clone(){
         try {
-            return (Can)this.clone();
+            Can newCan = (Can)this.clone();
+
+            // 深拷贝原料
+            newCan.ingredients = new ArrayList<>();
+            newCan.shelfTime = new Date();
+            newCan.manufactureTime = new Date();
+
+            return newCan;
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return this;
+            OutputManager.getInstance().errorMassage(
+                    "罐头克隆失败！",
+                    "罐頭尅隆失敗！",
+                    "Fail to clone the can!"
+            );
+            return null;
         }
     }
 }
