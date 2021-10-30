@@ -12,7 +12,7 @@ import java.util.List;
 
 
 /**
- * TODO:抽象工厂类，获取流水线并生产罐头.<br>
+ * 抽象工厂类，获取流水线并生产罐头
  * <b>应用了抽象工厂模式、工厂模式、模板方法模式</b>
  *
  * @author 孟繁霖
@@ -21,7 +21,7 @@ import java.util.List;
 public abstract class Factory {
 
     /**
-     * TODO:获取水果罐头加工流水线方法.
+     * 获取水果罐头加工流水线方法
      *
      * @param fruitLineType : 需要使用的水果罐头生产线类型（apple,peach,pear）
      * @return : Manufacturing.ProductLine.FruitLine
@@ -45,12 +45,12 @@ public abstract class Factory {
 
 
     /**
-     * TODO:生产罐头方法.
+     * 生产罐头方法.
      * <b>实现了模板方法模式</b>
      * <i>无论哪种生产线生产罐头都要分采购、预处理、加工生产三个过程</i>
      *
-     * @param canKind       : 罐头种类，仅限三种（fruit、fresh、automated）
-     * @param canName       : 罐头名，仅限（apple、peach、pear、salmon、clove），需要与canKind对应，没做检验
+     * @param canKind       : 罐头种类，仅限两种（fruit、fresh）
+     * @param canName       : 罐头名，仅限（candiedApple、peach、salmon、herring），需要与canKind对应
      * @param materialCount : 采购原材料数量
      * @param produceManner :  加工方式，细加工（fine），粗加工(rough)
      * @author 孟繁霖
@@ -96,7 +96,7 @@ public abstract class Factory {
             int count = (freshLine.preTreat(ingredientList)).size();
             return freshLine.produce(count,produceManner);
         }
-        else if("automated".equals(canKind)){
+        else if("fruit".equals(canKind)&&"candiedApple".equalsIgnoreCase(canName)){
             List<Ingredient>sugarList=new ArrayList<>();
             for(int i=0;i<materialCount;i++){
             sugarList.add(new Sugar());
