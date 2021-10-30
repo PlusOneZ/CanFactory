@@ -45,11 +45,11 @@ public class OrderImplementDepartment {
                 "請輸入創建訂單相關信息。",
                 "Please enter the relevant information to create the order."
         );
-        for(;;) {
+        while(true){
             ArrayList<OrderCanInformation> orderCanInformationArrayList = new ArrayList<OrderCanInformation>();
-            for (; ; ) {
-                String canName = new String();
-                for (; ; ) {
+            while(true) {
+                String canName;
+                while(true) {
                     OutputManager.getInstance().print(
                             "输入需要的订单罐头类型，1表示水果罐头，2表示蔬菜罐头。",
                             "輸入需要的訂單罐頭類型，1表示水果罐頭，2表示蔬菜罐頭。",
@@ -79,7 +79,6 @@ public class OrderImplementDepartment {
                                 "輸入了錯誤的罐頭類型！請重新輸入！",
                                 "The wrong type of can was entered! please enter again!"
                         );
-                        continue;
                     }
                 }
                 OutputManager.getInstance().print(
@@ -94,7 +93,7 @@ public class OrderImplementDepartment {
                 orderCanInformationArrayList.add(orderCanInformation);
                 //加入一个新的订单罐头信息
                 boolean loopFlag = false;
-                for(;;) {
+                while (true){
                     OutputManager.getInstance().print(
                             "是否继续加入子订单？y表示是，n表示否：",
                             "是否繼續加入子訂單？ y表示是，n表示否：",
@@ -122,13 +121,9 @@ public class OrderImplementDepartment {
                                 "輸入錯誤.請重新輸入！",
                                 "Input errors, please re-enter!"
                         );
-                        continue;
                     }
                 }
-                if(loopFlag == true){
-                    continue;
-                }
-                else {
+                if(!loopFlag){
                     break;
                 }
             }
@@ -181,16 +176,12 @@ public class OrderImplementDepartment {
                             "輸入錯誤！請重新輸入！",
                             "input error! please enter again!"
                     );
-                    continue;
                 }
             }
-            if(loopFlag == false)
+            if(!loopFlag)
                 break;
-            else
-                continue;
         }
         OrderCenter.getInstance().displayOrderData();//显示当前所有订单的数据
-
 
         //订单创建完毕，调用中介者处理订单
         //获取待处理的订单列表
