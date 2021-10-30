@@ -17,10 +17,7 @@ import javax.naming.InsufficientResourcesException;
 import java.io.ObjectStreamException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -168,6 +165,7 @@ public class OrderImplementDepartment {
                             "Do you want to continue to add sub-orders? y means yes, n means no:"
                     );
                     String inputChr = scanner.next();
+                    inputChr = inputChr.toLowerCase();//先转化为小写
                     if (inputChr.equals("y")) {
                         loopFlag = true;
                         OutputManager.getInstance().print(
@@ -212,6 +210,15 @@ public class OrderImplementDepartment {
                     );
                     continue;
                 }
+                //需要判断输入的日期是否晚于当前的日期
+                if(!laterThanNowDate(latestDeliveryTime)){
+                    OutputManager.getInstance().errorMassage(
+                            "您输入的日期不能早于当前日期！请重新输入！",
+                            "您輸入的日期不能早於當前日期！請重新輸入！",
+                            "The date you entered cannot be earlier than the current date! please enter again!"
+                    );
+                    continue;
+                }
                 break;
             }
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -234,6 +241,7 @@ public class OrderImplementDepartment {
                         "Do you want to continue to create new orders? y means yes, n means no."
                 );
                 String inputChoice = new Scanner(System.in).next();
+                inputChoice = inputChoice.toLowerCase();
                 if (inputChoice.equals("y")) {
                     loopFlag = true;
                     OutputManager.getInstance().print(
@@ -269,8 +277,30 @@ public class OrderImplementDepartment {
         return pendingOrder;
     }
 
+
+    //判断数日的字符串是否符合日期的格式
     public boolean isDate(String dateStr){
         String regularExpression = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";
         return(dateStr.matches(regularExpression));
+    }
+
+    //判断输入的日期是否晚于当前日期
+    public boolean laterThanNowDate(String dateStr) {
+        boolean flag = false;
+        Date nowDate = new Date();
+        Date newDate = null;
+        //格式化日期
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        //在日期字符串非空时
+        if (dateStr != null && !"".equals(dateStr)) {
+            //将字符串转化为日期对象，若为非法日期就会抛出异常
+            try {
+                newDate = sdf.parse(dateStr);
+                flag = newDate.after(nowDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return flag;
     }
 }
