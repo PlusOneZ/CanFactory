@@ -16,5 +16,7 @@ public class Salmon extends BaseIngredient {
                 "三文魚",
                 "Salmon"
         );
+
+        setCost(25.0);
     }
 }
