@@ -40,7 +40,7 @@ public abstract class AutomatedLine implements ProductLine {
                 "---篩選完成，結果如下：---",
                 "---The screening is complete, and the results are as follows: ---");
         for (Ingredient ingredient : filtered) {
-            System.out.println(ingredient.showContentsWithWeight());
+            OutputManager.getInstance().printLanguageIrrelevantContent(ingredient.showContentsWithWeight());
         }
 
         CleanMachine cleanMachine = new CleanMachine();

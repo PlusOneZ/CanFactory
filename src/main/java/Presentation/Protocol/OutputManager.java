@@ -147,7 +147,6 @@ public class OutputManager {
     }
 
     public void printLanguageIrrelevantContent(String content) {
-        // TODO 这个要单独修改
         addToQueue(content, content, content);
     }
 
