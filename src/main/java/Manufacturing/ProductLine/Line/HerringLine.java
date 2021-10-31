@@ -3,6 +3,7 @@ package Manufacturing.ProductLine.Line;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Herring;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.CanMachine;
 import Manufacturing.Machine.CanTreatmentMachine.IronCanProducingMachine;
 import Manufacturing.Machine.GeneralMachine.HerringFilterMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
@@ -24,21 +25,21 @@ public class HerringLine implements FreshLine {
     private PretreatmentApp pretreatmentApp = new PretreatmentApp(new HerringFilterMachine());
 
     private List<Ingredient> ingredients=new ArrayList<>();
-    private final IronCanProducingMachine ironCanProducingMachine = new IronCanProducingMachine();
+    private final CanMachine ironCanProducingMachine = IronCanProducingMachine.getInstance();
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
         OutputManager.getInstance().print(
                 "******正在对鲱鱼进行预处理********",
                 "******正在對鯡魚進行預處理********",
-                "******Pretreating clove fish********");
+                "******Pretreating herring fish********");
         ingredientList = pretreatmentApp.filterTreat(ingredientList);
         pretreatmentApp.disinfect(ingredientList);
         pretreatmentApp.clean(ingredientList);
         OutputManager.getInstance().print(
                 "*********鲱鱼预处理完成*********",
                 "*********鯡魚預處理完成*********",
-                "*********Clove fish pretreatment completed*********");
+                "*********Herring fish pretreatment completed*********");
         ingredients=ingredientList;
         return ingredientList;
     }
@@ -48,7 +49,7 @@ public class HerringLine implements FreshLine {
         OutputManager.getInstance().print(
                 "*******正在对鲱鱼进行加工*******",
                 "*******正在對鯡魚進行加工*******",
-                "*******Clove fish is being processed*******");
+                "*******Herring fish is being processed*******");
 
         List<Can> product=new ArrayList<>();
 
@@ -63,7 +64,7 @@ public class HerringLine implements FreshLine {
         OutputManager.getInstance().print(
                 "共生产" + count + "个鲱鱼罐头",
                 "共生產" + count + "個鯡魚罐頭",
-                "Totally produced" + count + "clove can!");
+                "Totally produced" + count + "herring can!");
         return product;
     }
 
@@ -73,7 +74,7 @@ public class HerringLine implements FreshLine {
     }
 
     public static Can produceSample() {
-        IronCanProducingMachine ironCanProducingMachine = new IronCanProducingMachine();
+        CanMachine ironCanProducingMachine = IronCanProducingMachine.getInstance();
         Can can = IronCanFactory.getInstance().createBigCan("Herring");
         ironCanProducingMachine.preTreat(can);
         Ingredient herring =new Herring();

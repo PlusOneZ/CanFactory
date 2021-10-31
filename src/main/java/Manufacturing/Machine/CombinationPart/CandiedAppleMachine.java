@@ -1,12 +1,10 @@
 package Manufacturing.Machine.CombinationPart;
 
-import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.IngredientMachine;
-import Presentation.Protocol.OutputManager;
 
 /**
  * TODO:此处写CandiedAppleMachine类的描述

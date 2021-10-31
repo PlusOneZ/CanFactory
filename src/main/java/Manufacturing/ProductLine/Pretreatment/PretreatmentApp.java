@@ -44,16 +44,16 @@ public class PretreatmentApp {
      */
     public void disinfect(List<Ingredient> baseIngredientList) {
         OutputManager.getInstance().print(
-                "--------正在杀菌---------",
-                "--------正在殺菌---------",
+                "--------正在消毒---------",
+                "--------正在消毒---------",
                 "-------Sterilizing-------");
 //        disinfectProcessor.treat(baseIngredientList);
         for (int i = 0; i < baseIngredientList.size(); i++) {
             baseIngredientList.set(i, disinfectMachine.treat(baseIngredientList.get(i)));
         }
         OutputManager.getInstance().print(
-                "--------杀菌完成---------",
-                "--------殺菌完成---------",
+                "--------消毒完成---------",
+                "--------消毒完成---------",
                 "---Sterilization completed---");
     }
 
@@ -66,16 +66,16 @@ public class PretreatmentApp {
      */
     public void peel(List<Ingredient> ingredientList) {
         OutputManager.getInstance().print(
-                "--------开始剥皮---------",
-                "--------開始剝皮---------",
+                "--------开始削皮---------",
+                "--------開始削皮---------",
                 "------Start peeling------");
 //        peelProcessor.treat(baseIngredientList);
         for (int i = 0; i < ingredientList.size(); i++) {
             ingredientList.set(i, peelMachine.treat(ingredientList.get(i)));
         }
         OutputManager.getInstance().print(
-                "--------完成剥皮---------",
-                "--------完成剝皮---------",
+                "--------完成削皮---------",
+                "--------完成削皮---------",
                 "----Complete the peeling-----");
     }
 

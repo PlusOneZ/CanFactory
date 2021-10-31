@@ -15,5 +15,7 @@ public class Herring extends BaseIngredient {
                 "鯡魚",
                 "Herring"
         );
+
+        setCost(18.3);
     }
 }
