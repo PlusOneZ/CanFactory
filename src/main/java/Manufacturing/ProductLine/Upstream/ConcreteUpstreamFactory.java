@@ -17,7 +17,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
 
     private Integer count;
 
-    private String[] ingredientType = new String[]{"candiedApple", "herring", "peach", "pear", "salmon"};
+    private String[] ingredientType = new String[]{"candiedapple", "herring", "peach", "pear", "salmon"};
 
     /**
      * TODO:随机生成上游工厂的种类和数量
@@ -28,7 +28,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         Random r = new Random();
         Integer i = r.nextInt(ingredientType.length);
         this.ingredient = ingredientType[i];
-        this.count = r.nextInt(25) + 25;
+        this.count = r.nextInt(500) + 1000;
     }
 
     /**

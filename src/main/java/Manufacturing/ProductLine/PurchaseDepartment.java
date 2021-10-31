@@ -50,7 +50,7 @@ public class PurchaseDepartment extends BaseDepartment {
      */
     private Integer indexOfRawMaterial(String type) {
         for (Integer i = 0; i < rawMaterial.length(); i++) {
-            if (type == rawMaterial.getJSONObject(i).getString("ingredientType")) {
+            if (type.equals(rawMaterial.getJSONObject(i).getString("ingredientType"))) {
                 return i;
             }
         }
@@ -67,7 +67,7 @@ public class PurchaseDepartment extends BaseDepartment {
     public JSONArray generateMaterialList() {
         JSONArray material = new JSONArray();
         JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "candiedApple");
+        apple.put("ingredientType", "candiedapple");
         apple.put("count", 30);
         JSONObject clove = new JSONObject();
         clove.put("ingredientType", "herring");
