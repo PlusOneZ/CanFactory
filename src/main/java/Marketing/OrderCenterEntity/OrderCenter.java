@@ -282,12 +282,32 @@ public class OrderCenter implements Container {
         return false;
     }
 
+    public void outputReceipt(){
+        OutputManager.getInstance().print(
+                "您的订单小票",
+                "您的訂單小票",
+                "Your order receipt"
+        );
+        System.out.println("----------------------------------------------------------");
+        OutputManager.getInstance().print(
+                "*\t\t\t罐头加工厂\t\t\t",
+                "*\t\t\t罐頭加工廠             ",
+                "*\t\t\tCan factory           "
+        );
+        OutputManager.getInstance().print(
+                "            消费清单               ",
+                "            消費清單               ",
+                "         Consumption list           "
+        );
+        System.out.println("----------------------------------------------------------");
+    }
+
     public boolean deliverOneOrder(Long orderId){
         //获取当前订单Id的订单对象
         Order order = orderExists(orderId);
         //如果当前订单ID的订单存在
         if(order != null) {
-            if (Objects.equals(order.getOrderState().getCNStateName(), "已交付")) {
+            if (Objects.equals(order.getOrderState().getCNStateName(), "运输中")) {
                 //设置交付的时间
                 order.setCompletionTime(new Date());
                 //修改订单的状态为交付状态
