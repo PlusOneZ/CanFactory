@@ -68,6 +68,11 @@ public class PurchaseManager extends Manager {
      */
     public boolean purchase(JSONArray demand) {
         OutputManager.getInstance().print(
+                "# 使用委派模式，采购部经理安排采购",
+                "# 使用委派模式，採購部經理安排採購",
+                "# using delegate pattern, purchase manager begins to dispatch purchasing"
+        );
+        OutputManager.getInstance().print(
                 "采购部经理收到采购需求。",
                 "採購部經理收到採購需求。",
                 "Purchasing Manager receives the purchase demand."
