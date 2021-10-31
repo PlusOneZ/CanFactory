@@ -120,7 +120,6 @@ public class PretreatmentApp {
                 "--------开始清理---------",
                 "-----------開始清理---------",
                 "---------Start to clean up-------");
-//        cleanProcessor.treat(baseIngredientList);
         for (int i = 0; i < ingredientList.size(); i++) {
             ingredientList.set(i, cleanMachine.treat(ingredientList.get(i)));
         }

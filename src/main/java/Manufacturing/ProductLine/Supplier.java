@@ -1,6 +1,7 @@
 package Manufacturing.ProductLine;
 
 
+import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Ingredient.ConcreteIngredient.*;
 
@@ -62,6 +63,13 @@ public class Supplier {
                 herring.setWeight(ingredients.getDouble(i));
                 baseIngredientList.add(herring);
             }
+        }
+        else if("candiedApple".equalsIgnoreCase(canName)){
+                for (int i = 0; i < count; i++) {
+                    Apple apple=new Apple();
+                    apple.setWeight(ingredients.getDouble(i));
+                    baseIngredientList.add(apple);
+                }
         } else return null;
         return baseIngredientList;
     }

@@ -51,13 +51,18 @@ public class Purchaser extends Staff implements BasePurchaser {
             JSONObject result = factory.getInfo();
             if (Objects.equals(result.getString("ingredientType"), plan.getString("ingredientType"))) {
                 factory.purchase();
+                needToBuy -= result.getInt("count");
                 //更新库存
                 PurchaseDepartment.getInstance().update(
                         result.getString("ingredientType"),
                         result.getInt("count"),
                         PurchaseDepartment.Status.IN);
-
-                return true;
+                if(needToBuy<=0){
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
         }
 
@@ -65,6 +70,24 @@ public class Purchaser extends Staff implements BasePurchaser {
 
     }
 
+    /**
+     * 设置需要购买的量
+     * @param account 需要购买的量
+     */
+    public void setNeedToBuy(int account) {
+        needToBuy = account;
+    }
+
+    /**
+     * 返回需要购买的量
+     * @return 目前需要购买的量
+     */
+    public int getNeedToBuy(){
+        return needToBuy;
+    }
+
     // 采购员需要从这些工厂里购买信息
     private List<ConcreteUpstreamFactory> upstreamFactories;
+
+    private int needToBuy;
 }
