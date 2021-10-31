@@ -81,31 +81,34 @@ public abstract class Factory {
                     "*************购买失败************",
                     "*************購買失敗************",
                     "*******Failed purchase*******");
-            return null;
+            return new ArrayList<Can>();
         }
-
 
 
         //获得相应种类的生产线并进行预处理和生产加工
-        if ("fruit".equalsIgnoreCase(canKind)) {
+        if ("fruit".equalsIgnoreCase(canKind) && "candiedApple".equalsIgnoreCase(canName)) {
+            List<Ingredient> sugarList = new ArrayList<>();
+            for (int i = 0; i < materialCount; i++) {
+                sugarList.add(new Sugar());
+            }
+            CandiedAppleLine candiedAppleLine = new CandiedAppleLine(ingredientList, sugarList);
+            int count = (candiedAppleLine.preTreat(ingredientList)).size();
+            return candiedAppleLine.produce(count, produceManner);
+        } else if ("fruit".equalsIgnoreCase(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
             int count = (fruitLine.preTreat(ingredientList)).size();
-           return fruitLine.produce(count, produceManner);
+            return fruitLine.produce(count, produceManner);
         } else if ("fresh".equalsIgnoreCase(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
-            return freshLine.produce(count,produceManner);
-        }
-        else if("fruit".equalsIgnoreCase(canKind)&&"candiedApple".equalsIgnoreCase(canName)){
-            List<Ingredient>sugarList=new ArrayList<>();
-            for(int i=0;i<materialCount;i++){
-            sugarList.add(new Sugar());
-            }
-            CandiedAppleLine candiedAppleLine =new CandiedAppleLine(ingredientList,sugarList);
-            int count=(candiedAppleLine.preTreat(ingredientList)).size();
-            return candiedAppleLine.produce(count,produceManner);
-        }else{
-            return null;
+            return freshLine.produce(count, produceManner);
+        } else {
+            OutputManager.getInstance().print(
+                    "********没有对应生产线********",
+                    "********沒有對應生産線********",
+                    "There is no corresponding production line!"
+            );
+            return new ArrayList<Can>();
         }
     }
 
