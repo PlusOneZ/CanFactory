@@ -1,6 +1,5 @@
 package Presentation.Protocol;
 
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -71,12 +70,14 @@ public class OutputManager {
 
     private int delay;
 
+    private Timer timer;
+
     public void setDelay(int delay) {
         this.delay = delay;
     }
 
     private void run() {
-        Timer timer = new Timer();
+        timer = new Timer();
 
         timer.schedule(new TimerTask() {
             @Override
@@ -87,6 +88,10 @@ public class OutputManager {
                 ps.println(outputQueue.poll());
             }
         }, 0, delay);
+    }
+
+    public void stop() {
+        timer.cancel();
     }
 
     /**
