@@ -336,7 +336,8 @@ public class CompanyManagementTest {
                         "請輸入員工請假的天數:",
                         "Please enter the number of days of the employee requesting to leave:"
                 );
-                while(!scanner2.hasNext()){
+
+                while(!scanner2.hasNextInt()){
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -344,7 +345,16 @@ public class CompanyManagementTest {
                     );
                     scanner2.next();
                 }
-                Integer days = Integer.parseInt(scanner2.next());
+
+                Integer days = scanner2.nextInt();
+                if(days < 1){
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
+                    continue;
+                }
 //                request.setReason(reason);
                 request.setDays(days);
 
@@ -454,11 +464,11 @@ public class CompanyManagementTest {
 
         }
 
+        salaryDaoImpl.closeFile();
         OutputManager.getInstance().print(
                 "已退出公司管理系统",
                 "已退出公司管理系統",
                 "Exit company management system."
         );
-        salaryDaoImpl.closeFile();
     }
 }
