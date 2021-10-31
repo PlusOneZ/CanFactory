@@ -2,14 +2,14 @@ package Manufacturing.ProductLine.Producer;
 
 
 /**
- * TODO:苹果罐头生产类.
+ * 苹果罐头生产类.
  *
  * @author 孟繁霖
  * @date 2021-10-12 8:55
  */
 public class  AppleProducer implements FruitProducer {
     /**
-     * TODO:水果罐头生产适配器
+     * 水果罐头生产适配器
      */
     private final FruitAdapter fruitAdapter;
 

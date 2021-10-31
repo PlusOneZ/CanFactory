@@ -3,7 +3,7 @@ package Manufacturing.ProductLine.Producer;
 import Presentation.Protocol.OutputManager;
 
 /**
- * TODO:细加工生产方式类.
+ * 细加工生产方式类.
  *
  * @author 孟繁霖
  * @date 2021-10-12 8:55
