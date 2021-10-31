@@ -21,10 +21,11 @@ public abstract class BaseIngredient implements Ingredient {
 
     @Override
     public String showContentsWithWeight() {
+        String weightString = String.format("%.2f", weight);
         return OutputManager.getInstance().selectStringForCurrentLanguage(
-                zhCnDescription() + "{质量 = " + weight + '}',
-                zhTwDescription() + "{質量 = " + weight + '}',
-                enDescription() + "{weight = " + weight + '}'
+                zhCnDescription() + "{质量 = " + weightString + '}',
+                zhTwDescription() + "{質量 = " + weightString + '}',
+                enDescription() + "{weight = " + weightString + '}'
         );
     }
 

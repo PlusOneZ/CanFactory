@@ -28,6 +28,11 @@ public class TransportManager extends Manager {
      */
     public void transport(TransportationCan transportationCan) {
         OutputManager.getInstance().print(
+                "# 使用委派模式，运输部经理安排运输罐头",
+                "# 使用委派模式，運輸部經理安排運輸罐頭",
+                "# using delegate pattern, transport manager begins to dispatch transporting"
+        );
+        OutputManager.getInstance().print(
                 "运输经理已接收运输罐头信息",
                 "運輸經理已接收運輸罐頭信息",
                 "The PurchaseManager has received the transportationCan information"

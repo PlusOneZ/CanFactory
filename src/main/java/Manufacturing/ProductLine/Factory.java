@@ -113,12 +113,20 @@ public abstract class Factory {
 
         List<Can> passedTestCan = new ArrayList<>();
         // 质检部门介入
-        for (Can c :
-                canList) {
+        int i = 1;
+        for (Can c :canList) {
+            // 随机质检
+            if (Math.random() > 0.2) continue;
             if (QualityAssuranceDepartment.getInstance().testQuality(c)
                 && QualityAssuranceDepartment.getInstance().testSafety(c)) {
+                OutputManager.getInstance().print(
+                        "质检部门抽样检测了这批罐头的第" + i + "个罐头。",
+                        "質檢部門抽樣檢測了這批罐頭的第" + i + "個罐頭。",
+                        "The quality assurance department sampled No." + i + " can."
+                );
                 passedTestCan.add(c);
             }
+            i++;
         }
         return passedTestCan;
     }
