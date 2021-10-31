@@ -20,12 +20,5 @@ public class Clean extends Procedure {
                 ""
         );
 
-        OutputManager.getInstance();
-
-        OutputManager.getInstance().print(
-                "清洗了" + showContents(),
-                "清洗了" + showContents(),
-                "Cleaned " + showContents()
-        );
     }
 }

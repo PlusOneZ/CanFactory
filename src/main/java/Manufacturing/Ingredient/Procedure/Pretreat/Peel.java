@@ -19,11 +19,5 @@ public class Peel extends Procedure {
                 "",
                 ""
         );
-
-        OutputManager.getInstance().print(
-                "削皮了" + showContents(),
-                "削皮了" + showContents(),
-                "Peeled " + showContents()
-        );
     }
 }

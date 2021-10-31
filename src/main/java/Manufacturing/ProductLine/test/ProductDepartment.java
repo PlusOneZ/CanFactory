@@ -17,7 +17,7 @@ import java.util.Locale;
 
 
 /**
- * TODO:生产线相关设计模式测试类
+ * 生产线相关设计模式测试类
  *
  * <p>抽象工厂模式，工厂模式、迭代器模式、享元模式测试</p>
  *
@@ -78,9 +78,19 @@ public class ProductDepartment {
         if (canList.isEmpty()){
             return null;
         }
+        OutputManager.getInstance().print(
+                "实现中介者模式: 调用包装部门对" + canName + "进行封面包装",
+                "實現中介者模式: 調用包裝部門對" + canName + "進行封麵包裝",
+                "Implement the intermediary pattern: Call the packaging department to cover " + canName
+        );
         for (Can can : canList) {
             wrappedCan = DepartmentMediator.getInstance().wrapCan(can);
         }
+        OutputManager.getInstance().print(
+                "包装完成",
+                "包裝完成",
+                "Packaging is complete"
+        );
         return new StockCan(wrappedCan, canList.size());
     }
 

@@ -56,11 +56,6 @@ public class GlassCanFactory extends AbstractCanFactory {
      */
     @Override
     public Can createSmallCan(String type){
-        OutputManager.getInstance().print(
-                "# 使用享元模式",
-                "# 使用享元模式",
-                "# Using Fly weight Mode"
-        );
 
         if(type.equalsIgnoreCase("Peach")){
             if (GlassCanFactory.smallPeachCan == null){
@@ -90,11 +85,6 @@ public class GlassCanFactory extends AbstractCanFactory {
      */
     @Override
     public Can createBigCan(String type){
-        OutputManager.getInstance().print(
-                "# 使用享元模式",
-                "# 使用享元模式",
-                "# Using Fly weight Mode"
-        );
 
         if(type.equalsIgnoreCase("Peach")){
             if (GlassCanFactory.bigPeachCan == null){

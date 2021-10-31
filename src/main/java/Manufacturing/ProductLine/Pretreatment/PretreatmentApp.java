@@ -3,7 +3,6 @@ package Manufacturing.ProductLine.Pretreatment;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.GeneralMachine.CleanMachine;
 import Manufacturing.Machine.GeneralMachine.DisinfectMachine;
-import Manufacturing.Machine.GeneralMachine.FilterMachine;
 import Manufacturing.Machine.GeneralMachine.PeelMachine;
 import Manufacturing.Machine.IngredientMachine;
 import Presentation.Protocol.OutputManager;
@@ -44,17 +43,22 @@ public class PretreatmentApp {
      */
     public void disinfect(List<Ingredient> baseIngredientList) {
         OutputManager.getInstance().print(
-                "--------正在消毒---------",
-                "--------正在消毒---------",
-                "-------Sterilizing-------");
+                "--------开始消毒---------",
+                "--------開始消毒---------",
+                "-------Disinfect-------");
 //        disinfectProcessor.treat(baseIngredientList);
+        OutputManager.getInstance().print(
+                "正在消毒",
+                "正在消毒",
+                "Disinfecting..."
+        );
         for (int i = 0; i < baseIngredientList.size(); i++) {
             baseIngredientList.set(i, disinfectMachine.treat(baseIngredientList.get(i)));
         }
         OutputManager.getInstance().print(
                 "--------消毒完成---------",
                 "--------消毒完成---------",
-                "---Sterilization completed---");
+                "---Disinfection completed---");
     }
 
     /**
@@ -70,6 +74,11 @@ public class PretreatmentApp {
                 "--------開始削皮---------",
                 "------Start peeling------");
 //        peelProcessor.treat(baseIngredientList);
+        OutputManager.getInstance().print(
+                "正在削皮",
+                "正在削皮",
+                "Peeling..."
+        );
         for (int i = 0; i < ingredientList.size(); i++) {
             ingredientList.set(i, peelMachine.treat(ingredientList.get(i)));
         }
@@ -88,6 +97,10 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:26
      */
     public List<Ingredient> filterTreat(List<Ingredient> ingredientList) {
+        OutputManager.getInstance().print(
+                "#使用过滤器模式",
+                "#使用過濾器模式",
+                "#Use Filter Pattern");
         OutputManager.getInstance().print(
                 "--开始筛选符合要求的原料--",
                 "--開始篩選符合要求的原料--",
@@ -120,6 +133,11 @@ public class PretreatmentApp {
                 "--------开始清理---------",
                 "-----------開始清理---------",
                 "---------Start to clean up-------");
+        OutputManager.getInstance().print(
+                "正在清洗",
+                "正在清洗",
+                "Cleaning..."
+        );
         for (int i = 0; i < ingredientList.size(); i++) {
             ingredientList.set(i, cleanMachine.treat(ingredientList.get(i)));
         }
