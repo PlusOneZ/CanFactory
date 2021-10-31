@@ -238,12 +238,14 @@ public class InventoryDepartment {
 
         while (iterator.hasNext()) {
             Order currentOrder = iterator.next();
+
             if (viewInventory(currentOrder)) {
 
                 /**
-                 * 修改订单状态变为运输状态;
+                 * 修改订单状态变为生产中
                  */
-                DepartmentMediator.getInstance().startToTransportOneOrder(currentOrder.getOrderId());
+                DepartmentMediator.getInstance().completeProductionOfOneOrder(currentOrder.getOrderId());
+
                 /**
                  * 可以发货，此时需要先取订单,然后提取货物,然后发货;
                  */
@@ -254,6 +256,7 @@ public class InventoryDepartment {
                  */
                 iterator.remove();
             } else {
+
                 /**
                  * 不能发货,需要通知生产部门生产货物;
                  */
