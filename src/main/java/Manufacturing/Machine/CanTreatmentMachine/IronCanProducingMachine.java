@@ -3,6 +3,7 @@ package Manufacturing.Machine.CanTreatmentMachine;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CanMachine;
+import Presentation.Protocol.OutputManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * 处理罐头
  *
  * @author 卓正一
- * @since  2021/10/28 10:38 PM
+ * @since 2021/10/28 10:38 PM
  */
 public class IronCanProducingMachine extends CanMachine {
 
@@ -52,6 +53,11 @@ public class IronCanProducingMachine extends CanMachine {
     }
 
     static public IronCanProducingMachine getInstance() {
+        OutputManager.getInstance().printPattern(
+                "# 使用多例模式，返回第" + (current+1) + "个铁罐头处理机器。",
+                "# 使用多例模式，返回第" + (current+1) + "個鐵罐頭處理機器。",
+                "# Using Multiton Pattern, return No." + (current+1) + " Iron Can Producing Machine."
+                );
         return canMachines.get(getNextPosition());
     }
 
@@ -64,6 +70,7 @@ public class IronCanProducingMachine extends CanMachine {
 
     /**
      * 多例测试
+     *
      * @author 卓正一
      * @since 2021-10-31 1:49 AM
      */
