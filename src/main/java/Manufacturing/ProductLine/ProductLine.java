@@ -32,4 +32,8 @@ public interface ProductLine {
      * @since  2021-10-11 23:42
      */
     List<Can> produce(int count,String produceManner);
+
+    static Can produceSample() {
+        return null;
+    }
 }

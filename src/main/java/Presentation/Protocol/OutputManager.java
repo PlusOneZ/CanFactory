@@ -1,6 +1,11 @@
 package Presentation.Protocol;
 
+import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 实现多语言打印的输出控制器。
@@ -13,20 +18,19 @@ public class OutputManager {
     /**
      * <b>私有构造函数</b>
      */
-    private OutputManager() { }
+    private OutputManager() {
+        delay = 300;
+    }
 
     /**
      * <b>单例获取函数</b>
      * @return 全局唯一的 OutputManager
      */
     public static OutputManager getInstance() {
-        if (instance == null) {
-            instance = new OutputManager();
-        }
         return instance;
     }
 
-    static private OutputManager instance;
+    static private final OutputManager instance;
 
     /**
      * 语言类型枚举器，支持 简体中文，台湾繁体中文，英文。
@@ -61,6 +65,30 @@ public class OutputManager {
 
     private Mode mode = Mode.detailed;
 
+    private final PrintStream ps = System.out;
+
+    private Queue<String> outputQueue = new ArrayDeque<>();
+
+    private int delay;
+
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
+
+    private void run() {
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (outputQueue.isEmpty()) {
+                    return;
+                }
+                ps.println(outputQueue.poll());
+            }
+        }, 0, delay);
+    }
+
     /**
      * 向标准输出打印多语言信息
      * <i>功能委托给 outputToStream 函数</i>
@@ -69,7 +97,11 @@ public class OutputManager {
      * @param en 英文文本
      */
     public void print(String zh_cn, String zh_tw ,String en) {
-        outputToStream(System.out, zh_cn, zh_tw, en);
+        // TODO: 增加条件
+        if (mode != Mode.brief && mode != Mode.patternOnly) {
+//            outputToStream(System.out, zh_cn, zh_tw, en);
+            addToQueue(zh_cn, zh_tw, en);
+        }
     }
 
     /**
@@ -81,12 +113,13 @@ public class OutputManager {
      * @param appendix 附加的文本
      */
     public void print(String zh_cn, String zh_tw ,String en, String appendix) {
-        outputToStream(
-                System.out,
-                zh_cn + appendix,
-                zh_tw + appendix,
-                en + appendix
-        );
+//        outputToStream(
+//                System.out,
+//                zh_cn + appendix,
+//                zh_tw + appendix,
+//                en + appendix
+//        );
+        addToQueue(zh_cn + appendix, zh_tw + appendix, en + appendix);
     }
 
     /**
@@ -97,17 +130,30 @@ public class OutputManager {
      * @param en 英文文本
      */
     public void printBrief(String zh_cn, String zh_tw ,String en) {
-        if (mode != Mode.patternOnly)
-            outputToStream(System.out, zh_cn, zh_tw, en);
+        if (mode != Mode.patternOnly) {
+//            outputToStream(System.out, zh_cn, zh_tw, en);
+            addToQueue(zh_cn, zh_tw, en);
+        }
     }
 
     public void printPattern(String zh_cn, String zh_tw ,String en) {
-        outputToStream(System.out, zh_cn, zh_tw, en);
+//        outputToStream(System.out, zh_cn, zh_tw, en);
+        addToQueue(zh_cn, zh_tw, en);
     }
 
     public void printLanguageIrrelevantContent(String content) {
         // TODO 这个要单独修改
         System.out.println(content);
+    }
+
+    private void addToQueue(String zh_cn, String zh_tw, String en) {
+        outputQueue.add(
+                selectStringForCurrentLanguage(
+                        zh_cn,
+                        zh_tw,
+                        en
+                )
+        );
     }
 
     /**
@@ -151,4 +197,9 @@ public class OutputManager {
         return "";
     }
 
+    static {
+        instance = new OutputManager();
+        instance.run();
+
+    }
 }
