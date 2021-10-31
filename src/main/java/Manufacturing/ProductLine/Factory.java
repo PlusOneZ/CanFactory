@@ -75,7 +75,7 @@ public abstract class Factory {
                     "Purchase successfully, the raw materials are as follows"
             );
             for (Ingredient ingredient : ingredientList) {
-                System.out.println(ingredient.showContentsWithWeight());
+               OutputManager.getInstance().printLanguageIrrelevantContent(ingredient.showContentsWithWeight());
             }
         } else {
             OutputManager.getInstance().print(
