@@ -143,7 +143,7 @@ public class OutputManager {
 
     public void printLanguageIrrelevantContent(String content) {
         // TODO 这个要单独修改
-        System.out.println(content);
+        addToQueue(content, content, content);
     }
 
     private void addToQueue(String zh_cn, String zh_tw, String en) {

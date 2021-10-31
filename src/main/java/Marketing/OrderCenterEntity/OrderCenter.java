@@ -66,7 +66,7 @@ public class OrderCenter implements Container {
     * @date 15:30 2021-10-15
     */
     public void displayOrderData(){
-        System.out.println("-----------------------------------------");
+        OutputManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
         OutputManager.getInstance().print(
                 "订单中心的订单数据：" ,
                 "訂單中心的訂單數據:",
@@ -82,7 +82,7 @@ public class OrderCenter implements Container {
                 "訂單數目："+factoryOrderList.size(),
                 "Number of orders:"+factoryOrderList.size()
         );
-        System.out.println("-----------------------------------------");
+        OutputManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
         //逐个订单迭代
         for(Iterator iter = this.getIterator(); iter.hasNext();){
             Order od = (Order)iter.next();//获取当前的订单
@@ -176,7 +176,7 @@ public class OrderCenter implements Container {
                     "訂單的運輸費用"+od.getOrderAmount().getTransportationAmount(),
                     "The Transportation price of the order:"+od.getOrderAmount().getTransportationAmount()
             );
-            System.out.println("--------------------------------------");
+            OutputManager.getInstance().printLanguageIrrelevantContent("--------------------------------------");
         }
     }
 
@@ -288,7 +288,7 @@ public class OrderCenter implements Container {
                 "您的訂單小票",
                 "Your order receipt"
         );
-        System.out.println("----------------------------------------------------------");
+        OutputManager.getInstance().printLanguageIrrelevantContent("----------------------------------------------------------");
         OutputManager.getInstance().print(
                 "*\t\t\t罐头加工厂\t\t\t",
                 "*\t\t\t罐頭加工廠             ",
@@ -299,7 +299,7 @@ public class OrderCenter implements Container {
                 "            消費清單               ",
                 "         Consumption list           "
         );
-        System.out.println("----------------------------------------------------------");
+        OutputManager.getInstance().printLanguageIrrelevantContent("----------------------------------------------------------");
     }
 
     public boolean deliverOneOrder(Long orderId){
