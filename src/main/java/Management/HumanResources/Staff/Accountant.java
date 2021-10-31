@@ -13,9 +13,9 @@ import Presentation.Protocol.OutputManager;
 public class Accountant extends Staff implements Permission {
 
     /**
-     * 会计类的私有构造函数，在创建时设置其所属的部门。
+     * 会计类的构造函数，在创建时设置其所属的部门。
      */
-    private Accountant(){
+    public Accountant(){
         setDepartment(DepartmentType.Finance);
     }
 

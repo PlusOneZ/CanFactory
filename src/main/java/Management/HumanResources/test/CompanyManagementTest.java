@@ -11,6 +11,8 @@ import Presentation.Protocol.OutputManager;
 import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -61,8 +63,18 @@ public class CompanyManagementTest {
         TestingManager testingManager = new TestingManager();
         // 创建该部门的一个组长
         TestingTeamLeader testingTeamLeader1 = new TestingTeamLeader();
+
+        // 该部门的第二个组长
+        TestingTeamLeader testingTeamLeader2 = new TestingTeamLeader();
         // 创建该部门的一个员工
         Worker testingWorker = new Worker();
+
+        // 该部门的第二个员工
+        Worker testingWorker1 = new Worker();
+
+        // 该部门的第三个员工
+        Worker testingWorker2 = new Worker();
+
         //创建经济部门的审计员等
         Auditor auditor1=new Auditor("法克", 201.0);
         Auditor auditor2=new Auditor("尤尔",100.0);
@@ -83,13 +95,25 @@ public class CompanyManagementTest {
         testingTeamLeader1.setName("梁乔");
         testingTeamLeader1.setLeader(testingManager);
 
+        testingTeamLeader2.setName("Trios");
+        testingTeamLeader2.setLeader(testingManager);
+
+        testingWorker1.setName("Hamilton");
+        testingWorker1.setLeader(testingTeamLeader1);
+
         testingWorker.setName("桥梁");
         testingWorker.setLeader(testingTeamLeader1);
+
+        testingWorker2.setName("Zimmerman");
+        testingWorker2.setLeader(testingTeamLeader2);
 
         // 分别将其注册到该部门
         qualityTestingDepartment.register(testingManager,false);
         qualityTestingDepartment.register(testingTeamLeader1,false);
         qualityTestingDepartment.register(testingWorker,false);
+        qualityTestingDepartment.register(testingTeamLeader2, false);
+        qualityTestingDepartment.register(testingWorker1, false);
+        qualityTestingDepartment.register(testingWorker2, false);
 
         OutputManager.getInstance().print(
                 "公司管理系统已经激活且加载基础数据",
@@ -124,6 +148,74 @@ public class CompanyManagementTest {
             //进入员工注册
             if(num==1) {
                 //TODO: 员工注册流程——注意要同时添加DAO
+                OutputManager.getInstance().print(
+                        "请输入需要注册的员工数量:",
+                        "請輸入需要註冊的員工數量:",
+                        "Please enter the number of employees to register:"
+                );
+
+                while((!scanner2.hasNextInt())){
+                    scanner2.next();
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
+                }
+
+                Integer numOfEmployees = scanner2.nextInt();
+
+                if(numOfEmployees.equals(0)){
+                    continue;
+                }
+                for(int i = 0; i < numOfEmployees; i++){
+                    List<Worker> employees = new ArrayList<Worker>();
+
+                    Worker newWorker = new Worker();
+
+                    OutputManager.getInstance().print(
+                            "请输入要注册的员工" + (i+1) +
+                                    "的姓名",
+                            "請輸入要註冊的員工" + (i+1) +
+                                    "的姓名",
+                            "Please enter the name of the " + (i+1)+
+                                    " employee to register:"
+                    );
+                    OutputManager.getInstance().print(
+                            "请依次输入要注册的员工" + (i+1) +
+                                    "的名称(以空格分隔):",
+                            "請依次輸入要註冊的員工" + (i+1) +
+                                    "的名稱(以空格分隔):",
+                            "Please enter the name and salary of the " + (i+1) +
+                                    " employee to register(delineated by spaces):"
+                    );
+
+                    while(!scanner2.hasNext()){
+                        OutputManager.getInstance().errorMassage(
+                                "无效输入，请重新输入：",
+                                "無效輸入，请重新輸入：",
+                                "Invalid input, please input again:"
+                        );
+                        scanner2.next();
+                    }
+                    String name = scanner2.next();
+
+                    while(!scanner2.hasNextDouble()){
+                        OutputManager.getInstance().errorMassage(
+                                "无效输入，请重新输入：",
+                                "無效輸入，请重新輸入：",
+                                "Invalid input, please input again:"
+                        );
+                        scanner2.next();
+                    }
+
+                    Double salary = scanner.nextDouble();
+                    newWorker.setName(name);
+                    newWorker.setSalary(salary);
+                    qualityTestingDepartment.register(newWorker, true);
+                }
+
+
             }
             else if(num==2){
                 OutputManager.getInstance().print(

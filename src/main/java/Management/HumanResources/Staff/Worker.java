@@ -6,4 +6,6 @@ package Management.HumanResources.Staff;
  * @author 吴英豪
  */
 public class Worker extends Staff {
+    public void stealMoney() {
+    }
 }

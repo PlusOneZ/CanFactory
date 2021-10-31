@@ -49,10 +49,11 @@ public class SalaryDaoImpl implements SalaryDao{
 
 
         if (!file.exists()){
-            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+
             file.createNewFile();
-            csvWriter.writeRecord(headers);
         }
+        String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+        csvWriter.writeRecord(headers);
     }
 
     /**
@@ -131,12 +132,11 @@ public class SalaryDaoImpl implements SalaryDao{
     @Override
     public void saveSalary(BaseDepartment department) throws IOException {
 //        File file = new File(filePath);
-//        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
-//        if (!file.exists()){
-//            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
-//            file.createNewFile();
-//            csvWriter.writeRecord(headers);
-//        }
+//
+//        String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+//
+//        csvWriter.writeRecord(headers);
+
 
         List<BaseEmployee> employees = department.getAllEmployees();
 
