@@ -4,6 +4,7 @@ import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Peach;
 import Manufacturing.Ingredient.ConcreteIngredient.Salmon;
 import Manufacturing.Ingredient.Ingredient;
+import Manufacturing.Machine.CanMachine;
 import Manufacturing.Machine.CanTreatmentMachine.IronCanProducingMachine;
 import Manufacturing.Machine.GeneralMachine.SalmonFilterMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
@@ -24,7 +25,7 @@ public class SalmonLine implements FreshLine {
 
     private PretreatmentApp pretreatmentApp = new PretreatmentApp(new SalmonFilterMachine());
     private  List<Ingredient> ingredients=new ArrayList<>();
-    private final IronCanProducingMachine ironCanMachine = new IronCanProducingMachine();
+    private final CanMachine ironCanMachine = IronCanProducingMachine.getInstance();
 
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
@@ -76,7 +77,7 @@ public class SalmonLine implements FreshLine {
 
 
     public static Can produceSample() {
-        IronCanProducingMachine ironCanProducingMachine = new IronCanProducingMachine();
+        CanMachine ironCanProducingMachine = IronCanProducingMachine.getInstance();
         Can can = IronCanFactory.getInstance().createBigCan("Salmon");
         ironCanProducingMachine.preTreat(can);
         Ingredient salmon =new Salmon();
