@@ -1,13 +1,13 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.ConcreteIngredient.Clove;
 import Manufacturing.Ingredient.ConcreteIngredient.Peach;
 import Manufacturing.Ingredient.Ingredient;
-import Manufacturing.Machine.IronCanMachine;
+import Manufacturing.Machine.CanTreatmentMachine.GlassCanProducingMachine;
+import Manufacturing.Machine.GeneralMachine.PeachFilterMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
-import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FruitLine;
+import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 import Manufacturing.ProductLine.Producer.PeachProducer;
 import Presentation.Protocol.OutputManager;
 
@@ -22,8 +22,9 @@ import java.util.List;
  */
 public class PeachLine implements FruitLine {
 
+    private PretreatmentApp pretreatmentApp = new PretreatmentApp(new PeachFilterMachine());
     private List<Ingredient> ingredients=new ArrayList<>();
-    private final IronCanMachine ironCanMachine = new IronCanMachine();
+    private final GlassCanProducingMachine glassCanProducingMachine = new GlassCanProducingMachine();
 
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
@@ -57,9 +58,9 @@ public class PeachLine implements FruitLine {
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);
             Can can=GlassCanFactory.getInstance().createBigCan("Peach");
-            ironCanMachine.preTreat(can);
-            ironCanMachine.fill(can,ingredient);
-            ironCanMachine.can(can);
+            glassCanProducingMachine.preTreat(can);
+            glassCanProducingMachine.fill(can,ingredient);
+            glassCanProducingMachine.can(can);
             product.add(can);
         }
         OutputManager.getInstance().print(
@@ -75,12 +76,12 @@ public class PeachLine implements FruitLine {
     }
 
     public static Can produceSample() {
-        IronCanMachine ironCanMachine = new IronCanMachine();
+        GlassCanProducingMachine glassCanProducingMachine=new GlassCanProducingMachine();
         Can can = GlassCanFactory.getInstance().createBigCan("Peach");
-        ironCanMachine.preTreat(can);
+        glassCanProducingMachine.preTreat(can);
         Ingredient peach =new Peach();
-        ironCanMachine.fill(can, peach);
-        ironCanMachine.can(can);
+        glassCanProducingMachine.fill(can, peach);
+        glassCanProducingMachine.can(can);
         return can;
     }
 }

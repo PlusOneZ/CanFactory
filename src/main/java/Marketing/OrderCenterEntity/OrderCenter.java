@@ -109,6 +109,14 @@ public class OrderCenter implements Container {
                     "訂單下單時間"+placingTime,
                     "The placing time of the order:"+placingTime
             );
+            String latestDeliveryTimeFormat = new String("yyyy-MM-dd");
+            SimpleDateFormat ldtf = new SimpleDateFormat(latestDeliveryTimeFormat);
+            String latestDeliveryTime = ldtf.format(od.getLatestDeliveryTime());
+            OutputManager.getInstance().print(
+                    "订单的最晚交付时间为："+latestDeliveryTime,
+                    "訂單的最晚交付時間為："+latestDeliveryTime,
+                    "The latest delivery time of the order is:"+latestDeliveryTime
+            );
             if(Objects.equals(od.getOrderState().getCNStateName(), "运输中")){
                 String sendingTime = sft.format(od.getSendingTime());
                 OutputManager.getInstance().print(

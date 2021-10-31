@@ -10,6 +10,7 @@ import Marketing.Wrapping.Cover.WrappingCover;
 import Presentation.Protocol.OutputManager;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 
 
 /**
@@ -126,11 +127,14 @@ public class WrappingDepartment {
      */
     private WrappingBuilder getBuilder(String canName) {
         String canType = CanInfoController.getInstance().getClassByName(canName).getTypeName();
+        String[] canTypes = canType.split("\\.");
+        canType = canTypes[canTypes.length - 1];
         String basePath = "Marketing.Wrapping.Builder.";
-        String builderType = basePath + canType + "Builder";
+        String builderType = basePath + canType + "WrappingBuilder";
         try {
             Class<?> builder = Class.forName(builderType);
             Constructor<?> constructor = builder.getConstructor();
+            System.out.println(builder.getName());
             return (WrappingBuilder) constructor.newInstance();
         } catch (Exception e) {
             OutputManager.getInstance().print("没有相应罐头名称的包装建造器",

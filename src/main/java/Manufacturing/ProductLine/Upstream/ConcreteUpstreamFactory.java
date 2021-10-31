@@ -17,7 +17,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
 
     private Integer count;
 
-    private String[] ingredientType = new String[]{"apple", "clove", "peach", "pear", "salmon"};
+    private String[] ingredientType = new String[]{"apple", "herring", "peach", "pear", "salmon"};
 
     /**
      * TODO:随机生成上游工厂的种类和数量
@@ -29,11 +29,6 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         Integer i = r.nextInt(ingredientType.length);
         this.ingredient = ingredientType[i];
         this.count = r.nextInt(25) + 25;
-        OutputManager.getInstance().print(
-                "正在分配上游工厂...",
-                "正在分配上遊工廠...",
-                "Assigning upstream factory..."
-        );
     }
 
     /**

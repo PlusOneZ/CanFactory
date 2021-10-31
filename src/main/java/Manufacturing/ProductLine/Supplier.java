@@ -22,17 +22,17 @@ public class Supplier {
     /**
      * TODO:提供原料
      *
-     * @param kind  : 原料所属种类（fruit,fresh）
+     * @param canName  : 原料
      * @param count :  原料数量
      * @return : java.util.List<Manufacturing.ProductLine.Fruit.RawMaterial>
      * @author 孟繁霖
      * @date 2021-10-11 23:51
      */
-    public List<Ingredient> provide(String kind, int count) {
+    public List<Ingredient> provide(String canName, int count) {
 
         List<Ingredient> baseIngredientList=new ArrayList<>();
         JSONObject object = new JSONObject();
-        object.put("ingredientType",kind);
+        object.put("ingredientType",canName);
         object.put("count",count);
         JSONArray ingredients=PurchaseDepartment.getInstance().getIngredient(object);
         if(ingredients==null){
@@ -44,37 +44,23 @@ public class Supplier {
                 return null;
             }
         }
-
-        if("apple".equals(kind)){
-            for (int i = 0; i < count; i++) {
-                Apple apple =new Apple();
-                apple.setWeight(ingredients.getDouble(i));
-                baseIngredientList.add(apple);
-            }
-        }
-        else if ("pear".equals(kind)) {
-            for (int i = 0; i < count; i++) {
-                Pear pear=new Pear();
-                pear.setWeight(ingredients.getDouble(i));
-                baseIngredientList.add(pear);
-            }
-        } else if ("peach".equals(kind)) {
+        if ("peach".equals(canName)) {
             for (int i = 0; i < count; i++) {
                 Peach peach=new Peach();
                 peach.setWeight(ingredients.getDouble(i));
                 baseIngredientList.add(peach);
             }
-        } else if ("salmon".equals(kind)) {
+        } else if ("salmon".equals(canName)) {
             for (int i = 0; i < count; i++) {
                 Salmon salmon=new Salmon();
                 salmon.setWeight(ingredients.getDouble(i));
                 baseIngredientList.add(salmon);
             }
-        } else if ("clove".equals(kind)) {
+        } else if ("herring".equals(canName)) {
             for (int i = 0; i < count; i++) {
-                Clove clove=new Clove();
-                clove.setWeight(ingredients.getDouble(i));
-                baseIngredientList.add(clove);
+                Herring herring =new Herring();
+                herring.setWeight(ingredients.getDouble(i));
+                baseIngredientList.add(herring);
             }
         } else return null;
         return baseIngredientList;
