@@ -97,6 +97,11 @@ public class PurchaseDepartment extends BaseDepartment {
     public static PurchaseDepartment getInstance() {
         if (instance == null) {
             instance = new PurchaseDepartment();
+            OutputManager.getInstance().printPattern(
+                    "# 使用单例模式，创建采购部门",
+                    "# 使用單例模式，創建采購部門",
+                    "# Using singleton mode, create a purchasing department"
+            );
         }
         return instance;
     }
