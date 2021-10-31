@@ -148,6 +148,25 @@ public class CanInfoController {
         }
     }
 
+    public String getCanEnIngredientType(String arbitraryName) {
+        try {
+            StringBuilder modifiedCanName = new StringBuilder(enNameMap.get(arbitraryName));
+            String[] canNames = modifiedCanName.toString().split(" ");
+            modifiedCanName = new StringBuilder();
+            for (int i = 0; i < canNames.length - 1; i++) {
+                modifiedCanName.append(canNames[i]);
+            }
+            return modifiedCanName.toString();
+        } catch (NullPointerException e) {
+            OutputManager.getInstance().errorMassage(
+                    "不存在" + arbitraryName + "这种罐头",
+                    "不存在" + arbitraryName + "這種罐頭",
+                    "No can named "  + arbitraryName
+            );
+            return null;
+        }
+    }
+
     /**
      * 通过任意一种名字获取罐头的英文名，主要是让机器能够读懂
      * @return : java.lang.String

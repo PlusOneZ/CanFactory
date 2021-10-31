@@ -15,5 +15,7 @@ public class Pear extends BaseIngredient {
                 "梨",
                 "Pear"
         );
+
+        setCost(4.2);
     }
 }

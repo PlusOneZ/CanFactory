@@ -15,5 +15,7 @@ public class Beef extends BaseIngredient {
                 "牛肉",
                 "Beef"
         );
+
+        setCost(32.0);
     }
 }
