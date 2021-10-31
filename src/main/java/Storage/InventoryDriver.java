@@ -9,6 +9,7 @@ import Manufacturing.CanEntity.VegetableCan;
 import Manufacturing.Ingredient.ConcreteIngredient.LotusRoot;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Ingredient.Procedure.Cook;
+import Manufacturing.ProductLine.Line.PeachLine;
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Promotion.Coupon;
@@ -38,7 +39,7 @@ public class InventoryDriver {
         //首先准备stub.
         WrappedCan wrappedCan = WrappingDepartment.getInstance().wrapCan(getStubCan());
         ArrayList<StockCan> stockCans = new ArrayList<>();
-        StockCan stockCan = new StockCan(wrappedCan, 100);
+        StockCan stockCan = new StockCan(wrappedCan, 1);
         stockCans.add(stockCan);
 
         //测试添加到库存中;还未曾存在的情况;
@@ -48,10 +49,10 @@ public class InventoryDriver {
         inventoryDepartment.addCanInventory(stockCans);
 
         //测试增加某一罐头的库存
-        inventoryDepartment.increaseCan(stockCan, 200);
+        inventoryDepartment.increaseCan(stockCan, 2);
 
         //测试取出某一个罐头
-        inventoryDepartment.decreaseCan(stockCan, 200);
+        inventoryDepartment.decreaseCan(stockCan, 2);
 
         //测试转换器的成功与否
 //        ArrayList<OrderCanInformation> inventoryInformation = inventoryDepartment.getInventoryInformation();
@@ -60,7 +61,7 @@ public class InventoryDriver {
         //准备第二个stub
         //首先准备一个canInformation,coupon,latestDeliveryTime,customerAddress
         OrderCanInformation orderCanInformation =
-                new OrderCanInformation(OutputManager.getInstance().selectStringForCurrentLanguage("蔬菜罐头", "蔬菜罐頭", "vegetableCan"),100,5.0);
+                new OrderCanInformation(OutputManager.getInstance().selectStringForCurrentLanguage("黄桃罐头", "黃桃罐頭", "Peach Can"),4,5.0);
         ArrayList<OrderCanInformation> orderCanInformations = new ArrayList<>();
         orderCanInformations.add(orderCanInformation);
         Coupon coupon = new Coupon(new TwentyPercentOff());
@@ -69,24 +70,12 @@ public class InventoryDriver {
 
         Order order = new Order(orderCanInformations, coupon, lastestDeliveryTime, customerAddress);
 
-        //测试查库存这个整个过程;
-        inventoryDepartment.viewInventory(order);
 
         inventoryDepartment.addOrder(order);
         inventoryDepartment.reviewOrder();
     }
 
     public static Can getStubCan(){
-        Can vegetableCan = new VegetableCan(BigSize.getInstance(), IronMaterial.getInstance());
-        vegetableCan.setName(
-                "蔬菜罐头",
-                "蔬菜罐頭",
-                "vegetableCan"
-        );
-
-        Ingredient lotusRoot = new LotusRoot();
-        vegetableCan.getDisinfection();
-        vegetableCan.addIngredient(new Cook(lotusRoot));
-        return vegetableCan;
+        return PeachLine.produceSample();
     }
 }
