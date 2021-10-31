@@ -67,7 +67,7 @@ public class PurchaseDepartment extends BaseDepartment {
     public JSONArray generateMaterialList() {
         JSONArray material = new JSONArray();
         JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "apple");
+        apple.put("ingredientType", "candiedApple");
         apple.put("count", 30);
         JSONObject clove = new JSONObject();
         clove.put("ingredientType", "herring");
@@ -75,9 +75,6 @@ public class PurchaseDepartment extends BaseDepartment {
         JSONObject peach = new JSONObject();
         peach.put("ingredientType", "peach");
         peach.put("count", 0);
-        JSONObject pear = new JSONObject();
-        pear.put("ingredientType", "pear");
-        pear.put("count", 0);
         JSONObject salmon = new JSONObject();
         salmon.put("ingredientType", "salmon");
         salmon.put("count", 0);
@@ -85,7 +82,6 @@ public class PurchaseDepartment extends BaseDepartment {
         material.put(apple);
         material.put(clove);
         material.put(peach);
-        material.put(pear);
         material.put(salmon);
 
         return material;
@@ -229,14 +225,14 @@ public class PurchaseDepartment extends BaseDepartment {
             }
             else if(operationType.equals("b")){
                 JSONObject apple = new JSONObject();
-                apple.put("ingredientType", "apple");
+                apple.put("ingredientType", "candiedapple");
                 apple.put("count", 15);
                 JSONArray weights = PurchaseDepartment.getInstance().getIngredient(apple);
                 if(weights!=null){
                     OutputManager.getInstance().print(
                             "每个苹果的重量分别为:" + weights,
                             "每個蘋果的重量分別為:" + weights,
-                            "The weight of each apple is:" + weights
+                            "The weight of each candiedapple is:" + weights
                     );
                 }
             }
@@ -245,7 +241,7 @@ public class PurchaseDepartment extends BaseDepartment {
                 JSONArray demand = new JSONArray();
 
                 JSONObject apple = new JSONObject();
-                apple.put("ingredientType", "apple");
+                apple.put("ingredientType", "candiedapple");
                 apple.put("count", 10);
                 JSONObject clove = new JSONObject();
                 clove.put("ingredientType", "herring");
