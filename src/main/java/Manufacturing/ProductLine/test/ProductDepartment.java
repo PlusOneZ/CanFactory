@@ -117,7 +117,7 @@ public class ProductDepartment {
 
         DepartmentMediator departmentMediator = DepartmentMediator.getInstance();
 
-        Factory factory = FactoryProducer.getAbstractFactory("freshLine");
+        Factory factory = FactoryProducer.getAbstractFactory("fresh");
         if (factory != null) {
             productList.add(factory.produceCan("fresh", "salmon", 7, "fine"));
         } else {
