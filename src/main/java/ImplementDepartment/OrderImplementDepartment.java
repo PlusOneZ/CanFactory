@@ -131,6 +131,14 @@ public class OrderImplementDepartment {
                     //获取对应的价格
                     while(true) {
                         canCount = scanner.next();
+                        if(canCount.length()>=6){
+                            OutputManager.getInstance().errorMassage(
+                                    "您输入的数字过大！请重新输入！",
+                                    "您輸入的數字過大！請重新輸入！",
+                                    "The number you entered is too large! please enter again!"
+                            );
+                            continue;
+                        }
                         //使用正则表达式判断字符串内是否是数字
                         Pattern pattern = Pattern.compile("[0-9]*");
                         Matcher isNum = pattern.matcher(canCount);
