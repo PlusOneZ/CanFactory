@@ -79,13 +79,11 @@ public class ProductDepartment {
             return null;
         }
         OutputManager.getInstance().print(
-                "实现中介者模式: 调用包装部门对" + canName + "进行封面包装",
-                "實現中介者模式: 調用包裝部門對" + canName + "進行封麵包裝",
-                "Implement the intermediary pattern: Call the packaging department to cover " + canName
+                "实现中介者模式: 调用包装部门对" + canList.get(0).getCanName() + "进行封面包装",
+                "實現中介者模式: 調用包裝部門對" + canList.get(0).getCanName() + "進行封麵包裝",
+                "Implement the intermediary pattern: Call the packaging department to cover " + canList.get(0).getCanName()
         );
-        for (Can can : canList) {
-            wrappedCan = DepartmentMediator.getInstance().wrapCan(can);
-        }
+        wrappedCan = DepartmentMediator.getInstance().wrapCan(canList.get(0));
         OutputManager.getInstance().print(
                 "包装完成",
                 "包裝完成",

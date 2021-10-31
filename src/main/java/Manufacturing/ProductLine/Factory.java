@@ -1,6 +1,7 @@
 package Manufacturing.ProductLine;
 
 
+import Management.QualityTesting.QualityAssuranceDepartment;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
@@ -84,7 +85,7 @@ public abstract class Factory {
             return new ArrayList<Can>();
         }
 
-
+        List<Can> canList;
         //获得相应种类的生产线并进行预处理和生产加工
         if ("fruit".equalsIgnoreCase(canKind) && "candiedApple".equalsIgnoreCase(canName)) {
             List<Ingredient> sugarList = new ArrayList<>();
@@ -93,15 +94,15 @@ public abstract class Factory {
             }
             CandiedAppleLine candiedAppleLine = new CandiedAppleLine(ingredientList, sugarList);
             int count = (candiedAppleLine.preTreat(ingredientList)).size();
-            return candiedAppleLine.produce(count, produceManner);
+            canList = candiedAppleLine.produce(count, produceManner);
         } else if ("fruit".equalsIgnoreCase(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
             int count = (fruitLine.preTreat(ingredientList)).size();
-            return fruitLine.produce(count, produceManner);
+            canList = fruitLine.produce(count, produceManner);
         } else if ("fresh".equalsIgnoreCase(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
-            return freshLine.produce(count, produceManner);
+            canList = freshLine.produce(count, produceManner);
         } else {
             OutputManager.getInstance().print(
                     "********没有对应生产线********",
@@ -110,6 +111,17 @@ public abstract class Factory {
             );
             return new ArrayList<Can>();
         }
+
+        List<Can> passedTestCan = new ArrayList<>();
+        // 质检部门介入
+        for (Can c :
+                canList) {
+            if (QualityAssuranceDepartment.getInstance().testQuality(c)
+                && QualityAssuranceDepartment.getInstance().testSafety(c)) {
+                passedTestCan.add(c);
+            }
+        }
+        return passedTestCan;
     }
 
     /**
