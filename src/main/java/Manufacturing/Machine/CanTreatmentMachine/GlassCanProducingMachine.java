@@ -4,13 +4,16 @@ import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CanMachine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 处理玻璃罐头
  *
  * @author 卓正一
  * @since  2021/10/30 10:21 PM
  */
-public class GlassCanProducingMachine implements CanMachine {
+public class GlassCanProducingMachine extends CanMachine {
 
     @Override
     public void preTreat(Can can) {
@@ -28,5 +31,30 @@ public class GlassCanProducingMachine implements CanMachine {
     @Override
     public void can(Can can) {
         can.getCanned();
+    }
+
+    static protected List<GlassCanProducingMachine> canMachines = new ArrayList<>();
+
+    static protected int current = 0;
+
+    static protected int amount;
+
+    static private int getNextPosition() {
+        current++;
+        while (current >= canMachines.size()) {
+            current %= canMachines.size();
+        }
+        return current;
+    }
+
+    static public GlassCanProducingMachine getInstance() {
+        return canMachines.get(getNextPosition());
+    }
+
+    static {
+        amount = 5;
+        for (int i = 0; i < amount; i++) {
+            canMachines.add(new GlassCanProducingMachine());
+        }
     }
 }
