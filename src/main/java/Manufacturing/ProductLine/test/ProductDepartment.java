@@ -74,12 +74,14 @@ public class ProductDepartment {
      */
     public StockCan wrapAndStock(String canKind, String canName, int materialCount, String produceManner) {
         List<Can> canList = produce(canKind, canName, materialCount, produceManner);
-        ArrayList<StockCan> stockCanArrayList = new ArrayList<>();
-        ArrayList<WrappedCan> wrappedCanArrayList = new ArrayList<>();
-        for (Can can : canList) {
-            wrappedCanArrayList.add(DepartmentMediator.getInstance().wrapCan(can));
+        WrappedCan wrappedCan = null;
+        if (canList.isEmpty()){
+            return null;
         }
-        return (new StockCan(wrappedCanArrayList.get(0), wrappedCanArrayList.size()));
+        for (Can can : canList) {
+            wrappedCan = DepartmentMediator.getInstance().wrapCan(can);
+        }
+        return new StockCan(wrappedCan, canList.size());
     }
 
     /**
@@ -112,7 +114,10 @@ public class ProductDepartment {
     public void produceCansByOrderList(List<OrderCanInformation> orderCanInformationList) {
         ArrayList<StockCan> stockCans = new ArrayList<>();
         for (OrderCanInformation orderCanInformation : orderCanInformationList) {
-            stockCans.add(produceCans(orderCanInformation));
+            StockCan stockCan = produceCans(orderCanInformation);
+            if(stockCan != null){
+                stockCans.add(stockCan);
+            }
         }
         DepartmentMediator.getInstance().addCanInventory(stockCans);
     }

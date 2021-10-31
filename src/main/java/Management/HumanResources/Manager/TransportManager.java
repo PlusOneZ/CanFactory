@@ -2,6 +2,7 @@ package Management.HumanResources.Manager;
 
 import Management.HumanResources.TeamLeader.Carrier;
 import Marketing.Scheme.TransportScheme;
+import Mediator.DepartmentMediator;
 import Presentation.Protocol.OutputManager;
 import Storage.TransportationCan;
 
@@ -81,6 +82,7 @@ public class TransportManager extends Manager {
                 "運輸經理委派承運商進行運輸",
                 "The transport manager delegated the transport to the carrier"
         );
+
         carrier.dispatchTransport(transportScheme);
     }
 
