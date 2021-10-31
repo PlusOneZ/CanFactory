@@ -7,6 +7,7 @@ import Manufacturing.CanEntity.CanState.NotDisinfectedCanState;
 import Manufacturing.CanEntity.Material.Material;
 import Manufacturing.CanEntity.Size.Size;
 import Manufacturing.Ingredient.Ingredient;
+import Presentation.Protocol.MultiLanguageDescription;
 import Presentation.Protocol.OutputManager;
 
 import java.time.LocalDate;
@@ -37,7 +38,7 @@ import java.util.List;
  *
  * @author 卓正一
  */
-public abstract class Can implements Testable,Cloneable {
+public abstract class Can implements Testable, Cloneable, MultiLanguageDescription {
 
     /**
      * 罐头状态，实现了状态模式

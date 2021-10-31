@@ -15,5 +15,6 @@ public class Peach extends BaseIngredient {
                 "黃桃",
                 "Peach"
         );
+        setCost(6.3);
     }
 }
