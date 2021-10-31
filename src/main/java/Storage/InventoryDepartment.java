@@ -234,10 +234,12 @@ public class InventoryDepartment {
      */
     public void reviewOrder() {
 
-        Iterator<Order> iterator = unHandledOrders.iterator();
+//        Iterator<Order> iterator = unHandledOrders.iterator();
+        ArrayList<Order> toRemoveOrder = new ArrayList<>();
 
-        while (iterator.hasNext()) {
-            Order currentOrder = iterator.next();
+        for (int i = 0; i < unHandledOrders.size(); i++) {
+
+            Order currentOrder = unHandledOrders.get(i);
 
             if (viewInventory(currentOrder)) {
 
@@ -254,7 +256,7 @@ public class InventoryDepartment {
                 /**
                  * 发货后需要移除这个订单;
                  */
-                iterator.remove();
+                toRemoveOrder.add(currentOrder);
             } else {
 
                 /**
@@ -263,6 +265,8 @@ public class InventoryDepartment {
                 productCans(currentOrder);
             }
         }
+        unHandledOrders.removeAll(toRemoveOrder);
+
     }
 
     /**
