@@ -21,10 +21,5 @@ public class Disinfect extends Procedure {
                 ""
         );
 
-        OutputManager.getInstance().print(
-                "消毒了" + showContents(),
-                "消毒了" + showContents(),
-                "Disinfected " + showContents()
-        );
     }
 }

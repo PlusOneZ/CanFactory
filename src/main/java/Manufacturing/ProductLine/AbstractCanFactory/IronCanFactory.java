@@ -58,11 +58,6 @@ public class IronCanFactory extends AbstractCanFactory {
      */
     @Override
     public Can createSmallCan(String type){
-        OutputManager.getInstance().print(
-                "# 使用享元模式",
-                "# 使用享元模式",
-                "# Using Fly weight Mode"
-        );
 
         if(type.equalsIgnoreCase("Salmon")){
             if (IronCanFactory.smallSalmonCan == null){
@@ -92,11 +87,6 @@ public class IronCanFactory extends AbstractCanFactory {
      */
     @Override
     public Can createBigCan(String type){
-        OutputManager.getInstance().print(
-                "# 使用享元模式",
-                "# 使用享元模式",
-                "# Using Fly weight Mode"
-        );
 
         if(type.equalsIgnoreCase("Salmon")){
             if (IronCanFactory.bigSalmonCan == null){

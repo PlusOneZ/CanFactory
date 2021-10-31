@@ -60,7 +60,7 @@ public class WrappingDepartment {
         //开始构建;
         wrappingDirector.construct(wrappingCanInfo, wrappingFactoryInfo, wrappingBackGround, canPrice);
         //得到产品;
-        OutputManager.getInstance().print(
+        OutputManager.getInstance().printBrief(
                 "实现建造者设计模式：完成包装封面信息的填充与组装",
                 "實現建造者設計模式：完成包裝封面信息的填充與組裝",
                 "Realize the builder design mode: complete the filling and assembly of the package cover information"
@@ -95,7 +95,7 @@ public class WrappingDepartment {
     private WrappingCanInfo convertWrappingCanInfo(Can can) {
         WrappingConverter wrappingConverter = new WrappingConverter();
         //实现转换器过程的输出.
-        OutputManager.getInstance().print(
+        OutputManager.getInstance().printBrief(
                 "实现转换器设计模式：将罐头实体信息转化为包装信息",
                 "實現轉換器設計模式：將罐頭實體信息轉化為包裝信息",
                 "Realize the converter design pattern: convert canned entity information into packaging information"
@@ -134,7 +134,6 @@ public class WrappingDepartment {
         try {
             Class<?> builder = Class.forName(builderType);
             Constructor<?> constructor = builder.getConstructor();
-            System.out.println(builder.getName());
             return (WrappingBuilder) constructor.newInstance();
         } catch (Exception e) {
             OutputManager.getInstance().print("没有相应罐头名称的包装建造器",
