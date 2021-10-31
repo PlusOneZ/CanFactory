@@ -1,8 +1,12 @@
 package Management.HumanResources.test;
 
+import Management.HumanResources.BaseEmployee;
 import Management.HumanResources.DepartmentCommand.AuditSalaryTableCommand;
 import Management.HumanResources.FinancialSystem.FinancialDepartment;
+import Management.HumanResources.FinancialSystem.Permission;
+import Management.HumanResources.LeaveRequest;
 import Management.HumanResources.Manager.TestingManager;
+import Management.HumanResources.Staff.Accountant;
 import Management.HumanResources.Staff.Auditor;
 import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
@@ -88,7 +92,7 @@ public class CompanyManagementTest {
 
         salaryDaoImpl.saveSalary(financialDepartment);
 
-        salaryDaoImpl.closeFile();
+//        salaryDaoImpl.closeFile();
 
         testingManager.setName("Bear");
 
@@ -147,7 +151,6 @@ public class CompanyManagementTest {
             int num= scanner.nextInt();
             //进入员工注册
             if(num==1) {
-                //TODO: 员工注册流程——注意要同时添加DAO
                 OutputManager.getInstance().print(
                         "请输入需要注册的员工数量:",
                         "請輸入需要註冊的員工數量:",
@@ -169,23 +172,15 @@ public class CompanyManagementTest {
                     continue;
                 }
                 for(int i = 0; i < numOfEmployees; i++){
-                    List<Worker> employees = new ArrayList<Worker>();
 
                     Worker newWorker = new Worker();
 
-                    OutputManager.getInstance().print(
-                            "请输入要注册的员工" + (i+1) +
-                                    "的姓名",
-                            "請輸入要註冊的員工" + (i+1) +
-                                    "的姓名",
-                            "Please enter the name of the " + (i+1)+
-                                    " employee to register:"
-                    );
+
                     OutputManager.getInstance().print(
                             "请依次输入要注册的员工" + (i+1) +
-                                    "的名称(以空格分隔):",
+                                    "的名称和薪资(以空格分隔):",
                             "請依次輸入要註冊的員工" + (i+1) +
-                                    "的名稱(以空格分隔):",
+                                    "的名稱和薪资(以空格分隔):",
                             "Please enter the name and salary of the " + (i+1) +
                                     " employee to register(delineated by spaces):"
                     );
@@ -200,7 +195,7 @@ public class CompanyManagementTest {
                     }
                     String name = scanner2.next();
 
-                    while(!scanner2.hasNextDouble()){
+                    while(!scanner2.hasNext()){
                         OutputManager.getInstance().errorMassage(
                                 "无效输入，请重新输入：",
                                 "無效輸入，请重新輸入：",
@@ -209,12 +204,23 @@ public class CompanyManagementTest {
                         scanner2.next();
                     }
 
-                    Double salary = scanner.nextDouble();
+                    Double salary = Double.parseDouble(scanner2.next());
                     newWorker.setName(name);
                     newWorker.setSalary(salary);
+                    newWorker.setLeader(testingTeamLeader2);
                     qualityTestingDepartment.register(newWorker, true);
+
                 }
 
+
+                salaryDaoImpl.saveSalary(qualityTestingDepartment);
+
+
+                OutputManager.getInstance().print(
+                        "员工注册成功！",
+                        "員工註冊成功！",
+                        "Employees are successfully registered."
+                );
 
             }
             else if(num==2){
@@ -262,10 +268,172 @@ public class CompanyManagementTest {
                 financialDepartment.viewAuditHistoryList();
             }
             else if(num==4){
-                //TODO: 请假处理
+                OutputManager.getInstance().print(
+                        "当前部门的员工有:",
+                        "當前部門的員工有:",
+                        "The employees in the current department are:"
+                );
+
+                List<BaseEmployee> qualityTestingEmployees = qualityTestingDepartment.getAllEmployees();
+                for(BaseEmployee employee: qualityTestingEmployees){
+                    OutputManager.getInstance().print(
+                            employee.getName()+" ",
+                            employee.getName()+" ",
+                            employee.getName()+" "
+                    );
+                }
+
+                OutputManager.getInstance().print(
+                        "请输入要请假的员工姓名:",
+                        "請輸入要請假的員工姓名:",
+                        "Please enter the name of the employee requesting to leave:"
+                );
+
+                while(!scanner2.hasNext()){
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
+                    scanner2.next();
+                }
+                String name = scanner2.next();
+                if(qualityTestingDepartment.getEmployee(name) == null){
+                    OutputManager.getInstance().errorMassage(
+                            "输入有误，该员工不存在",
+                            "輸入有誤，該員工不存在",
+                            "Invalid input, the employee doesn't exists."
+                    );
+                    continue;
+                }
+                LeaveRequest request = new LeaveRequest();
+                BaseEmployee requestee = qualityTestingDepartment.getEmployee(name);
+                request.setRequestee(requestee);
+
+                OutputManager.getInstance().print(
+                        "请输入员工请假的原因:",
+                        "請輸入員工請假的原因:",
+                        "Please enter the reason of the employee requesting to leave:"
+                );
+                while(!scanner2.hasNext()){
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
+                    scanner2.next();
+                }
+                String reason = scanner2.next();
+                request.setReason(reason);
+
+                OutputManager.getInstance().print(
+                        "请输入员工请假的天数:",
+                        "請輸入員工請假的天數:",
+                        "Please enter the number of days of the employee requesting to leave:"
+                );
+                while(!scanner2.hasNext()){
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
+                    scanner2.next();
+                }
+                Integer days = Integer.parseInt(scanner2.next());
+//                request.setReason(reason);
+                request.setDays(days);
+
+                requestee.handleRequest(request);
+
             }
             else if(num==5){
-                //TODO: 测试标记模式
+                OutputManager.getInstance().print(
+                        "当前QualityTesting部门的员工有：",
+                        "當前QualityTesting部門的員工有：",
+                        "Current employees in QualityTesting department are:"
+                );
+
+                List<BaseEmployee> qualityTestingEmployees = qualityTestingDepartment.getAllEmployees();
+                for(BaseEmployee employee: qualityTestingEmployees){
+                    OutputManager.getInstance().print(
+                            employee.getName()+" ",
+                            employee.getName()+" ",
+                            employee.getName()+" "
+                    );
+                }
+
+                OutputManager.getInstance().print(
+                        "当前财务部门的员工有：",
+                        "當前財務部門的員工有：",
+                        "Current employees in Finance department are:"
+                );
+
+                List<BaseEmployee> financialEmployees = financialDepartment.getAllEmployees();
+                for(BaseEmployee employee: financialEmployees){
+                    OutputManager.getInstance().print(
+                            employee.getName()+" ",
+                            employee.getName()+" ",
+                            employee.getName()+" "
+                    );
+                }
+
+                OutputManager.getInstance().print(
+                        "请输入进入财务系统的员工姓名：",
+                        "請輸入進入財務系統的員工姓名：",
+                        "Please enter the name of employee accessing the financial system: "
+                );
+
+                while(!scanner2.hasNext()){
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
+                    scanner2.next();
+                }
+                String name = scanner2.next();
+                if(financialDepartment.getEmployee(name) != null){
+                    BaseEmployee employee = financialDepartment.getEmployee(name);
+//                    System.out.println("1");
+                    if(employee instanceof Permission){
+//                        employee.accessFinancialSystem();
+                        OutputManager.getInstance().print(
+                                "财务处员工" + employee.getName() + "访问了财务系统。",
+                                "財務處員工" + employee.getName() + "訪問了財務系統。",
+                                "Employee of the financial department " + employee.getName() + "accessed the financial system.");
+
+                    } else{
+                        OutputManager.getInstance().errorMassage(
+                                employee.getName()+ "没有权限访问财务系统，访问已被拒绝",
+                                employee.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
+                                employee.getName()+"The access to financial system is rejected"
+                        );
+                    }
+                }
+                else if(qualityTestingDepartment.getEmployee(name) != null){
+                    BaseEmployee employee = qualityTestingDepartment.getEmployee(name);
+                    if(employee instanceof Permission){
+                        OutputManager.getInstance().print(
+                                "质量测试部门员工" + employee.getName() + "访问了财务系统。",
+                                "質量測試部門員工" + employee.getName() + "訪問了財務系統。",
+                                "Employee of the quality testing department " + employee.getName() + "accessed the financial system.");
+//                        employee.stealMoney();
+                    } else{
+                        OutputManager.getInstance().errorMassage(
+                                employee.getName()+ "没有权限访问财务系统，访问已被拒绝",
+                                employee.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
+                                employee.getName()+"The access to financial system is rejected"
+                        );
+                    }
+                }
+                else{
+                    OutputManager.getInstance().errorMassage(
+                            "输入有误，该员工不存在",
+                            "輸入有誤，該員工不存在",
+                            "Invalid input, the employee doesn't exists."
+                    );
+                    continue;
+                }
             }
             else if(num==6){
                 break;
@@ -286,6 +454,6 @@ public class CompanyManagementTest {
                 "已退出公司管理系統",
                 "Exit company management system."
         );
-
+        salaryDaoImpl.closeFile();
     }
 }

@@ -35,9 +35,9 @@ public class Accountant extends Staff implements Permission {
      */
     public void accessFinancialSystem() {
         OutputManager.getInstance().print(
-                "会计" + name + "访问了财务系统。",
-                "會計" + name + "訪問了財務系統。",
-                "Accountant " + name + "accessed the financial system.");
+                "财务处员工" + name + "访问了财务系统。",
+                "財務處員工" + name + "訪問了財務系統。",
+                "Employee of the financial department " + name + "accessed the financial system.");
     }
 
 
