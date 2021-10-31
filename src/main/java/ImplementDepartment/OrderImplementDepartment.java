@@ -285,6 +285,7 @@ public class OrderImplementDepartment {
                 break;
         }
         OrderCenter.getInstance().displayOrderData();//显示当前所有订单的数据
+        OrderCenter.getInstance().outputReceipt();
 
         //订单创建完毕，调用中介者处理订单
         //获取待处理的订单列表
