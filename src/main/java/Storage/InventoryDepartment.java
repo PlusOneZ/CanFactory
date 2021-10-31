@@ -116,9 +116,9 @@ public class InventoryDepartment {
                 return false;
             }
         }
-        OutputManager.getInstance().print("罐头仓库的库存可以满足该订单.",
-                "罐頭倉庫的庫存可以滿足該訂單.",
-                "The inventory of the can warehouse can satisfy the order.");
+        OutputManager.getInstance().print("罐头仓库的库存可以满足该订单,订单编号为: " + order.getOrderId(),
+                "罐頭倉庫的庫存可以滿足該訂單, 訂單編號為: " + order.getOrderId(),
+                "The inventory of the can warehouse can satisfy the order, the order number is " + order.getOrderId());
         return true;
     }
 
@@ -188,15 +188,15 @@ public class InventoryDepartment {
         //准备好货物与订单信息;
         OrderToTransportationCanConverter orderToTransportationCanConverter = new OrderToTransportationCanConverter();
         TransportationCan transportationCan = orderToTransportationCanConverter.getFromOrderFunction().apply(order);
-        OutputManager.getInstance().print("实现转换器模式：实现订单信息抽取至运输包裹.",
-                "實現轉換器模式：實現訂單信息抽取至運輸包裹.",
-                "Realize the converter mode: Realize the extraction of order information to the shipping package.");
+        OutputManager.getInstance().print("实现转换器模式：实现订单信息抽取至运输包裹, 订单编号为: " + order.getOrderId(),
+                "實現轉換器模式：實現訂單信息抽取至運輸包裹, 訂單編號為: " + order.getOrderId(),
+                "Realize the converter mode: Realize the extraction of order information to the shipping package, the order number is " + order.getOrderId());
 
         transportationCan.setStockCans(takeCans(order.getOrderCanInformations()));
 
-        OutputManager.getInstance().print("已经准备好订单信息与货物至运输包裹!",
-                "已經準備好訂單信息與貨物至運輸包裹!",
-                "The order information and the goods to the shipping package have been prepared!");
+        OutputManager.getInstance().print("已经准备好订单信息与货物至运输包裹, 订单编号为: " + order.getOrderId(),
+                "已經準備好訂單信息與貨物至運輸包裹, 訂單編號為: " + order.getOrderId(),
+                "The order information and the goods to the shipping package have been prepared, the order number is " + order.getOrderId());
         return transportationCan;
     }
 
