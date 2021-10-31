@@ -59,8 +59,13 @@ public class CandiedAppleLine extends AutomatedLine {
     @Override
     public List<Can> produce(int count,String produceManner) {
         List<Can> product = new ArrayList<>();
+        //预处理（打印语句）
         apples = preTreat(apples);
-        for (int i = 0; i < count; i++) {
+        OutputManager.getInstance().print(
+                "*******正在对糖渍苹果进行加工*******",
+                "*******正在對糖渍苹果進行加工*******",
+                "*******Candied apple is being processed*******");
+        for (int i = 0; i < apples.size(); i++) {
             try {
                 Ingredient candiedApple = candiedAppleMachine.combine(apples.get(i), sugarList.get(i));
                 Can can = GlassCanFactory.getInstance().createSmallCan("CandiedApple");
@@ -77,7 +82,10 @@ public class CandiedAppleLine extends AutomatedLine {
                 break;
             }
         }
-
+        OutputManager.getInstance().print(
+                "共生产"+product.size()+"个糖渍苹果罐头",
+                 "共生產"+product.size() +"個糖漬蘋果罐頭",
+                "A total of "+product.size()+"canned candied Apple was produced");
         return product;
     }
 

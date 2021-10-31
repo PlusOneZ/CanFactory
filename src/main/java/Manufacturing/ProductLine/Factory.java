@@ -92,8 +92,9 @@ public abstract class Factory {
                 sugarList.add(new Sugar());
             }
             CandiedAppleLine candiedAppleLine = new CandiedAppleLine(ingredientList, sugarList);
-            int count = (candiedAppleLine.preTreat(ingredientList)).size();
-            return candiedAppleLine.produce(count, produceManner);
+            //TODO
+
+            return candiedAppleLine.produce(1, produceManner);
         } else if ("fruit".equalsIgnoreCase(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
             int count = (fruitLine.preTreat(ingredientList)).size();

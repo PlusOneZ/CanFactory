@@ -77,7 +77,11 @@ public class PeachLine implements FruitLine {
 
     @Override
     public String getConcreteName() {
-        return "peachLine";
+        return OutputManager.getInstance().selectStringForCurrentLanguage(
+                "黄桃罐头生产线",
+                "黃桃罐頭生產線",
+                "Peach Can Product Line"
+        );
     }
 
     public static Can produceSample() {

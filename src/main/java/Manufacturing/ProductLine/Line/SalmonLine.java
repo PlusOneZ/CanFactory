@@ -76,7 +76,11 @@ public class SalmonLine implements FreshLine {
 
     @Override
     public String getConcreteName() {
-        return "salmonLine";
+        return OutputManager.getInstance().selectStringForCurrentLanguage(
+                "三文鱼罐头生产线",
+                "三文魚罐頭生產線",
+                "Salmon Can Product Line"
+        );
     }
 
 
