@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.Console;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -50,7 +51,7 @@ public class PurchaseDepartment extends BaseDepartment {
      */
     private Integer indexOfRawMaterial(String type) {
         for (Integer i = 0; i < rawMaterial.length(); i++) {
-            if (type == rawMaterial.getJSONObject(i).getString("ingredientType")) {
+            if (Objects.equals(type, rawMaterial.getJSONObject(i).getString("ingredientType"))) {
                 return i;
             }
         }
@@ -67,7 +68,7 @@ public class PurchaseDepartment extends BaseDepartment {
     public JSONArray generateMaterialList() {
         JSONArray material = new JSONArray();
         JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "apple");
+        apple.put("ingredientType", "candiedapple");
         apple.put("count", 30);
         JSONObject clove = new JSONObject();
         clove.put("ingredientType", "herring");
@@ -129,6 +130,7 @@ public class PurchaseDepartment extends BaseDepartment {
                 "正在更新庫存...",
                 "Updating inventory..."
         );
+
         Integer index = indexOfRawMaterial(type);
         Integer curCount = rawMaterial.getJSONObject(index).getInt("count");
         if (state == Status.IN) {

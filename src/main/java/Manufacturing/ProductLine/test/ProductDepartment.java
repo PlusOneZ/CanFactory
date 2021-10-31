@@ -13,6 +13,7 @@ import Storage.StockCan;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -38,20 +39,20 @@ public class ProductDepartment {
     /**
      * 生产罐头
      *
-     * @param canKind : 罐头种类
-     * @param canName : 罐头名
+     * @param canKind       : 罐头种类
+     * @param canName       : 罐头名
      * @param materialCount : 原料数量
      * @param produceManner :  加工方式
      * @return : java.util.List<Manufacturing.CanEntity.Can>
-    * @author 孟繁霖
-    * @date 2021-10-30 22:02
-    */
-    public List<Can> produce(String canKind,String canName,int materialCount,String produceManner){
+     * @author 孟繁霖
+     * @date 2021-10-30 22:02
+     */
+    public List<Can> produce(String canKind, String canName, int materialCount, String produceManner) {
         List<Can> productList = new ArrayList<>();
 
         Factory factory = FactoryProducer.getAbstractFactory(canKind);
         if (factory != null) {
-            productList=factory.produceCan(canKind, canName, materialCount, produceManner);
+            productList = factory.produceCan(canKind, canName, materialCount, produceManner);
         } else {
             OutputManager.getInstance().print(
                     "莫得工厂",
@@ -64,15 +65,15 @@ public class ProductDepartment {
     /**
      * 生产、包装、存储罐头
      *
-     * @param canKind : 罐头种类
-     * @param canName : 罐头名
+     * @param canKind       : 罐头种类
+     * @param canName       : 罐头名
      * @param materialCount : 原料数量
      * @param produceManner :  生产方式
-    * @author 孟繁霖
-    * @date 2021-10-30 22:03
-    */
-    public void wrapAndStock(String canKind,String canName,int materialCount,String produceManner){
-        List<Can> canList=produce(canKind,canName,materialCount,produceManner);
+     * @author 孟繁霖
+     * @date 2021-10-30 22:03
+     */
+    public void wrapAndStock(String canKind, String canName, int materialCount, String produceManner) {
+        List<Can> canList = produce(canKind, canName, materialCount, produceManner);
         ArrayList<StockCan> stockCanArrayList = new ArrayList<>();
         ArrayList<WrappedCan> wrappedCanArrayList = new ArrayList<>();
         for (Can can : canList) {
@@ -86,26 +87,32 @@ public class ProductDepartment {
      * 根据订单生产罐头
      *
      * @param orderCanInformation :  订单
-    * @author 孟繁霖
-    * @date 2021-10-30 22:04
-    */
-    public void produceCans(OrderCanInformation orderCanInformation){
+     * @author 孟繁霖
+     * @date 2021-10-30 22:04
+     */
+    public void produceCans(OrderCanInformation orderCanInformation) {
         int count = orderCanInformation.getCount();
         String name = orderCanInformation.getCanName();
-        String canKind= CanInfoController.getInstance().getCanType(name);
-        String canName=CanInfoController.getInstance().getEnNameOfCan(name);
-        wrapAndStock(canKind,canName,count,"fine");
+        String canKind = CanInfoController.getInstance().getCanType(name);
+        StringBuilder canName = new StringBuilder(CanInfoController.getInstance().getEnNameOfCan(name));
+        String[] canNames = canName.toString().split(" ");
+        canName = new StringBuilder();
+        for (int i = 0; i < canNames.length - 1; i++) {
+            canName.append(canNames[i]);
+        }
+        System.out.println(canKind + "," + canName.toString().toLowerCase() + "," + count);
+        wrapAndStock(canKind, canName.toString().toLowerCase(), count, "fine");
     }
 
     /**
      * 根据订单列表生产罐头
      *
      * @param orderCanInformationList :  订单列表
-    * @author 孟繁霖
-    * @date 2021-10-30 22:36
-    */
-    public void produceCansByOrderList(List<OrderCanInformation>orderCanInformationList){
-        for(OrderCanInformation orderCanInformation:orderCanInformationList){
+     * @author 孟繁霖
+     * @date 2021-10-30 22:36
+     */
+    public void produceCansByOrderList(List<OrderCanInformation> orderCanInformationList) {
+        for (OrderCanInformation orderCanInformation : orderCanInformationList) {
             produceCans(orderCanInformation);
         }
     }
@@ -130,13 +137,12 @@ public class ProductDepartment {
         ArrayList<StockCan> stockCanArrayList = new ArrayList<>();
         ArrayList<WrappedCan> wrappedCanArrayList = new ArrayList<>();
         for (List<Can> canList : productList) {
-                wrappedCanArrayList.add(departmentMediator.wrapCan(canList.get(0)));
-                System.out.println(canList);
+            wrappedCanArrayList.add(departmentMediator.wrapCan(canList.get(0)));
+            System.out.println(canList);
 
         }
         stockCanArrayList.add(new StockCan(wrappedCanArrayList.get(0), wrappedCanArrayList.size()));
         departmentMediator.addCanInventory(stockCanArrayList);
-
 
 
         //迭代器测试
