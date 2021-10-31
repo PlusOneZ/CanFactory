@@ -170,7 +170,7 @@ public class OrderImplementDepartment {
                 while (true){
                     OutputManager.getInstance().print(
                             "是否继续加入子订单？y表示是，n表示否：",
-                            "是否繼續加入子訂單？ y表示是，n表示否：",
+                            "是否繼續加入子訂單？y表示是，n表示否：",
                             "Do you want to continue to add sub-orders? y means yes, n means no:"
                     );
                     String inputChr = scanner.next();
@@ -192,8 +192,8 @@ public class OrderImplementDepartment {
                         break;
                     } else {
                         OutputManager.getInstance().errorMassage(
-                                "输入错误.请重新输入！",
-                                "輸入錯誤.請重新輸入！",
+                                "输入错误，请重新输入！",
+                                "輸入錯誤，請重新輸入！",
                                 "Input errors, please re-enter!"
                         );
                     }
@@ -213,9 +213,9 @@ public class OrderImplementDepartment {
                 //判断输入的日期是否符合条件的正则表达式
                 if (!isDate(latestDeliveryTime)){
                     OutputManager.getInstance().errorMassage(
-                            "您输入的日期格式有误？请重新输入！",
-                            "您輸入的日期格式有誤？請重新輸入！",
-                            "The date format you entered is wrong? please enter again!"
+                            "您输入的日期格式有误，请重新输入！",
+                            "您輸入的日期格式有誤，請重新輸入！",
+                            "The date format you entered is wrong, please enter again!"
                     );
                     continue;
                 }
@@ -252,7 +252,7 @@ public class OrderImplementDepartment {
             for(;;) {
                 OutputManager.getInstance().print(
                         "是否继续创建新的订单？y表示是，n表示否",
-                        "是否繼續創建新的訂單？ y表示是，n表否",
+                        "是否繼續創建新的訂單？y表示是，n表否",
                         "Do you want to continue to create new orders? y means yes, n means no."
                 );
                 String inputChoice = new Scanner(System.in).next();
