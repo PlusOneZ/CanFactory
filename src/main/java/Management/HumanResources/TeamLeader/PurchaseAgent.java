@@ -44,6 +44,7 @@ public class PurchaseAgent extends TeamLeader {
             //安排上游工厂
             dispatchFactory(purchaser);
             purchaserList.add(purchaser);
+            purchaser.setNeedToBuy(scheme.getScheme().get(i).getInt("count"));
         }
 
         for (int i = 0;i<purchaserList.size();i++) {

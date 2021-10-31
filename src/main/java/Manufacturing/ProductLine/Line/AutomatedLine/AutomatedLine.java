@@ -20,7 +20,7 @@ public abstract class AutomatedLine implements ProductLine {
     @Override
     public List<Ingredient> preTreat(List<Ingredient> baseIngredientList) {
         List<Ingredient> filtered = new ArrayList<>();
-        FilterMachine filterMachine = new FilterMachine(200);
+        FilterMachine filterMachine = new FilterMachine(150);
         for (Ingredient i : baseIngredientList) {
             if (filterMachine.treat(i) != null) {
                 filtered.add(i);
