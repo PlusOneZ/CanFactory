@@ -9,6 +9,7 @@ import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Promotion.Coupon;
 import Marketing.Promotion.Sale.TwentyPercentOff;
+import Marketing.Promotion.Sale.TwoHundredMinusTwenty;
 import Mediator.DepartmentMediator;
 import Presentation.Protocol.OutputManager;
 
@@ -229,8 +230,14 @@ public class OrderImplementDepartment {
                     "Please enter the shipping address of this order:"
             );
             String customerAddress = new Scanner(System.in).next();
-
-            Coupon coupon = new Coupon(new TwentyPercentOff());
+            double randomChoice = Math.random();
+            Coupon coupon;
+            if(randomChoice <0.5) {
+                coupon = new Coupon(new TwentyPercentOff());
+            }
+            else {
+                coupon = new Coupon(new TwoHundredMinusTwenty());
+            }
             OrderCenter.getInstance().createOneOrder(orderCanInformationArrayList, coupon, date, customerAddress);
 
             boolean loopFlag = false;
