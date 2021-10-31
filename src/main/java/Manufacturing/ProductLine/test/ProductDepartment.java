@@ -72,15 +72,14 @@ public class ProductDepartment {
      * @author 孟繁霖
      * @date 2021-10-30 22:03
      */
-    public void wrapAndStock(String canKind, String canName, int materialCount, String produceManner) {
+    public StockCan wrapAndStock(String canKind, String canName, int materialCount, String produceManner) {
         List<Can> canList = produce(canKind, canName, materialCount, produceManner);
         ArrayList<StockCan> stockCanArrayList = new ArrayList<>();
         ArrayList<WrappedCan> wrappedCanArrayList = new ArrayList<>();
         for (Can can : canList) {
             wrappedCanArrayList.add(DepartmentMediator.getInstance().wrapCan(can));
         }
-        stockCanArrayList.add(new StockCan(wrappedCanArrayList.get(0), wrappedCanArrayList.size()));
-        DepartmentMediator.getInstance().addCanInventory(stockCanArrayList);
+        return (new StockCan(wrappedCanArrayList.get(0), wrappedCanArrayList.size()));
     }
 
     /**
@@ -90,7 +89,7 @@ public class ProductDepartment {
      * @author 孟繁霖
      * @date 2021-10-30 22:04
      */
-    public void produceCans(OrderCanInformation orderCanInformation) {
+    public StockCan produceCans(OrderCanInformation orderCanInformation) {
         int count = orderCanInformation.getCount();
         String name = orderCanInformation.getCanName();
         String canKind = CanInfoController.getInstance().getCanType(name);
@@ -100,8 +99,7 @@ public class ProductDepartment {
         for (int i = 0; i < canNames.length - 1; i++) {
             canName.append(canNames[i]);
         }
-        System.out.println(canKind + "," + canName.toString().toLowerCase() + "," + count);
-        wrapAndStock(canKind, canName.toString().toLowerCase(), count, "fine");
+        return wrapAndStock(canKind, canName.toString().toLowerCase(), count, "fine");
     }
 
     /**
@@ -112,9 +110,11 @@ public class ProductDepartment {
      * @date 2021-10-30 22:36
      */
     public void produceCansByOrderList(List<OrderCanInformation> orderCanInformationList) {
+        ArrayList<StockCan> stockCans = new ArrayList<>();
         for (OrderCanInformation orderCanInformation : orderCanInformationList) {
-            produceCans(orderCanInformation);
+            stockCans.add(produceCans(orderCanInformation));
         }
+        DepartmentMediator.getInstance().addCanInventory(stockCans);
     }
 
     public static void main(String[] args) {
