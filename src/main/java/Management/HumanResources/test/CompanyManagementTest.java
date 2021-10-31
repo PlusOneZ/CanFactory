@@ -168,7 +168,12 @@ public class CompanyManagementTest {
 
                 Integer numOfEmployees = scanner2.nextInt();
 
-                if(numOfEmployees.equals(0)){
+                if(numOfEmployees < 1){
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
                     continue;
                 }
                 for(int i = 0; i < numOfEmployees; i++){
