@@ -75,7 +75,11 @@ public class HerringLine implements FreshLine {
 
     @Override
     public String getConcreteName() {
-        return "HerringLine";
+        return OutputManager.getInstance().selectStringForCurrentLanguage(
+                "鲱鱼罐头生产线",
+                "鯡魚罐頭生產線",
+                "Herring Can Product Line"
+        );
     }
 
     public static Can produceSample() {
