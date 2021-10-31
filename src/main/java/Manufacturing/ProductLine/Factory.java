@@ -116,7 +116,10 @@ public abstract class Factory {
         int i = 1;
         for (Can c :canList) {
             // 随机质检
-            if (Math.random() > 0.2) continue;
+            if (Math.random() > 0.2) {
+                passedTestCan.add(c);
+                continue;
+            }
             if (QualityAssuranceDepartment.getInstance().testQuality(c)
                 && QualityAssuranceDepartment.getInstance().testSafety(c)) {
                 OutputManager.getInstance().print(
