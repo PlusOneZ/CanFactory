@@ -7,6 +7,7 @@ import Management.HumanResources.FinancialSystem.Permission;
 import Management.HumanResources.LeaveRequest;
 import Management.HumanResources.Manager.TestingManager;
 import Management.HumanResources.Staff.Accountant;
+import Management.HumanResources.Staff.Announcer;
 import Management.HumanResources.Staff.Auditor;
 import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
@@ -130,10 +131,12 @@ public class CompanyManagementTest {
         while(true) {
             OutputManager.getInstance().print(
                     "请输入序号进行所需要的操作：\n" +
-                            "[1 - 注册员工]\t[2 - 审计报告]\t[3 - 查看审计记录]\t[4 - 请假处理]\t[5 - 检查员工权限]\t[6 - 退出系统]\n" +
+                            "[1 - 注册员工]\t[2 - 审计报告]\t[3 - 查看审计记录]\t[4 - 请假处理]\t[5 - 检查员工权限]\t[6 - 进入公告系统]\t" +
+                            "[7 - 退出系统]\n" +
                             "您的输入：",
                     "請輸入序號進行所需要的操作：\n" +
-                            "[1 - 註冊員工]\t[2 - 審計報告]\t[3 - 查看備忘錄]\t[4 - 請假處理]\t[5 - 檢查員工權限]\t[6 - 退出系統]\n" +
+                            "[1 - 註冊員工]\t[2 - 審計報告]\t[3 - 查看備忘錄]\t[4 - 請假處理]\t[5 - 檢查員工權限]\t[6 - 進入公告系統]\t" +
+                            "[7 - 退出系統]\n" +
                             "您的輸入：",
                     "Please input the following number for corresponding mission:\n" +
                             "[1 - employee registration]\t[2 - salary report audit]\t[3 - view history memento]\t[4 - leave request procedure]\t[5 - check employee authority]\t[6 - exit system]\n" +
@@ -450,7 +453,102 @@ public class CompanyManagementTest {
                     continue;
                 }
             }
-            else if(num==6){
+            else if(num == 6) {
+                OutputManager.getInstance().print(
+                        "请输入序号进行所需要的操作：\n" +
+                                "[1 - 发布公告]\t[2 - 员工订阅公告]\t" +
+                                "[3 - 退出系统]\n" +
+                                "您的输入：",
+                        "請輸入序號進行所需要的操作：\n" +
+                                "[1 - 發佈公告]\t[2 - 員工訂閱公告]\t" +
+                                "[3 - 退出系統]\n" +
+                                "您的輸入：",
+                        "Please input the following number for corresponding mission:\n" +
+                                "[1 - Publish announcement]\t[2 - Subscribe announcement]\t" +
+                                "[3 - Exit]" + "Your input: "
+                );
+
+                while(!scanner.hasNextInt()) {
+                    scanner.next();
+                    OutputManager.getInstance().errorMassage(
+                            "无效输入，请重新输入：",
+                            "無效輸入，请重新輸入：",
+                            "Invalid input, please input again:"
+                    );
+                }
+                int option = scanner.nextInt();
+
+                if(option == 1) {
+                    OutputManager.getInstance().print(
+                            "请输入要发布的公告：",
+                            "請輸入要發布的公告：",
+                            "Please enter the announcement you are about to publish: "
+                    );
+
+                    if(!scanner2.hasNext()) {
+                        OutputManager.getInstance().errorMassage(
+                                "输入有误！",
+                                "輸入有誤！",
+                                "Invalid input!"
+                        );
+
+                        continue;
+                    }
+
+                    String message = scanner2.next();
+                    Announcer.getInstance().addMessage(message);
+
+                }
+                else if(option == 2) {
+
+
+                    OutputManager.getInstance().print(
+                            "当前部门的员工有：",
+                            "當前部門的員工有：",
+                            "Current employees are:"
+                    );
+
+                    List<BaseEmployee> qualityTestingEmployees = qualityTestingDepartment.getAllEmployees();
+                    for(BaseEmployee employee: qualityTestingEmployees){
+                        OutputManager.getInstance().print(
+                                employee.getName() + " ",
+                                employee.getName() + " ",
+                                employee.getName() + " "
+                        );
+                    }
+
+                    OutputManager.getInstance().print(
+                            "请输入要订阅公告的员工的姓名：",
+                            "請輸入要訂閱公告的員工的姓名：",
+                            "Please enter the name of the employee subscribing the announcement: "
+                    );
+
+                    String name = scanner2.next();
+                    if(qualityTestingDepartment.getEmployee(name) == null){
+                        OutputManager.getInstance().errorMassage(
+                                "输入有误，该员工不存在",
+                                "輸入有誤，該員工不存在",
+                                "Invalid input, the employee doesn't exists."
+                        );
+                        continue;
+                    }
+                    else {
+                        BaseEmployee employee = qualityTestingDepartment.getEmployee(name);
+                        employee.subscribe();
+                    }
+                }
+                else if(option == 3){
+                    break;
+                }
+                else {
+                    OutputManager.getInstance().errorMassage(
+                            "无效的选项输入，请重新输入：",
+                            "無效的選項輸入，请重新輸入：",
+                            "Invalid option input, please input again:"
+                    );
+                }
+            }
+            else if(num==7){
                 break;
             }
             else{
