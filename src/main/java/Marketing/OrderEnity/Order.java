@@ -5,6 +5,7 @@ import Marketing.Container;
 import Marketing.Iterator;
 import Marketing.OrderCenterEntity.OrderCenter;
 import Marketing.Promotion.Coupon;
+import Marketing.Promotion.Sale.TwentyPercentOff;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -55,6 +56,8 @@ public class Order implements Container {
     //订单最晚交付时间
     private Date latestDeliveryTime;
 
+    //订单的礼券类型
+    private int couponFlag;
 
     /**
      * 这边以一个地址暂且代替用户信息，订单中需要保存必要的订单信息;
@@ -82,6 +85,9 @@ public class Order implements Container {
         return this.completionTime;
     }
 
+    public int getCouponFlag(){
+        return couponFlag;
+    }
     /**
     * 订单构造函数，传入订单罐头信息和订单价格
      * @param orderCanInformations :订单罐头信息
@@ -99,6 +105,14 @@ public class Order implements Container {
         this.placingTime = new Date();//当前时间
         this.orderAmount = new OrderAmount(caculateOriginalPrice(), coupon);
         //生成与订单生成时间相关的随机且唯一ID标识
+        if(caculateOriginalPrice()<200)
+            this.couponFlag = -1;
+        else if(coupon.getSale() instanceof TwentyPercentOff){
+            couponFlag =1 ;//表示8折扣优惠
+        }
+        else{
+            couponFlag = 0;//表示满200减20
+        }
 
     }
 
