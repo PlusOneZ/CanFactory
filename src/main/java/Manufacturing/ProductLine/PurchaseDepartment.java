@@ -155,6 +155,11 @@ public class PurchaseDepartment extends BaseDepartment {
      * @since 13:43 2021-10-19
      */
     public boolean purchaseIngredient(JSONArray material) {
+        OutputManager.getInstance().printBrief(
+                "采购部门处理需求...",
+                "采購部門處理需求...",
+                "Purchasing department processing requirements..."
+        );
         OutputManager.getInstance().print(
                 "正在将采购需求交给采购部经理.....",
                 "正在將採購需求交給採購部經理....",
