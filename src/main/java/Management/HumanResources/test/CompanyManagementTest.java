@@ -414,6 +414,11 @@ public class CompanyManagementTest {
                     BaseEmployee employee = financialDepartment.getEmployee(name);
 //                    System.out.println("1");
                     if(employee instanceof Permission){
+                        OutputManager.getInstance().printPattern(
+                                "# 使用了标记接口模式",
+                                "# 使用了標記接口模式",
+                                "# Adopted Marker pattern"
+                        );
 //                        employee.accessFinancialSystem();
                         OutputManager.getInstance().print(
                                 "财务处员工" + employee.getName() + "访问了财务系统。",
@@ -431,6 +436,11 @@ public class CompanyManagementTest {
                 else if(qualityTestingDepartment.getEmployee(name) != null){
                     BaseEmployee employee = qualityTestingDepartment.getEmployee(name);
                     if(employee instanceof Permission){
+                        OutputManager.getInstance().printPattern(
+                                "# 使用了标记接口模式",
+                                "# 使用了標記接口模式",
+                                "# Adopted Marker pattern"
+                        );
                         OutputManager.getInstance().print(
                                 "质量测试部门员工" + employee.getName() + "访问了财务系统。",
                                 "質量測試部門員工" + employee.getName() + "訪問了財務系統。",

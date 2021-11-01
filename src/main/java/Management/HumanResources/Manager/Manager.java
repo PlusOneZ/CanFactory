@@ -29,7 +29,7 @@ public abstract class Manager extends BaseEmployee {
         OutputManager.getInstance().printPattern(
                 "# 使用了责任链模式",
                 "# 使用了責任鏈模式",
-                "Adopted Chain of Responsibility pattern"
+                "# Adopted Chain of Responsibility pattern"
         );
 
         if(isHappy.nextBoolean()){
