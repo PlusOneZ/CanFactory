@@ -35,7 +35,7 @@ public class FacadeTest {
                 "獲取的原料分別為:",
                 "The raw materials obtained are:");
         for (Ingredient baseIngredient : baseIngredientList) {
-            System.out.println(baseIngredient.showContentsWithWeight());
+            OutputManager.getInstance().printLanguageIrrelevantContent(baseIngredient.showContentsWithWeight());
         }
         OutputManager.getInstance().print(
                 "利用外观模式进行三项原料预处理工作:",

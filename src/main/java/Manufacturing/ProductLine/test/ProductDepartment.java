@@ -130,38 +130,41 @@ public class ProductDepartment {
         DepartmentMediator.getInstance().addCanInventory(stockCans);
     }
 
+    /**
+    * 抽象工厂、工厂、迭代器、享元模式测试方法
+    * @param args 1
+    * @author 孟繁霖
+    * @date 2021-11-01 22:50
+    */
     public static void main(String[] args) {
         OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
         List<List<Can>> productList = new ArrayList<>();
 
-        DepartmentMediator departmentMediator = DepartmentMediator.getInstance();
-
+        OutputManager.getInstance().print(
+                "#使用抽象工厂模式和工厂模式创建生产工厂、生产线来进行生产",
+                "#使用抽象工廠模式和工廠模式創建生產工廠、生產線來進行生產",
+                "#Use abstract factory pattern and factory pattern to create production factories and production lines for production");
         Factory factory = FactoryProducer.getAbstractFactory("fresh");
         if (factory != null) {
-            productList.add(factory.produceCan("fresh", "salmon", 7, "fine"));
+            productList.add(factory.produceCan("fresh", "salmon", 6, "fine"));
+            productList.add(factory.produceCan("fresh", "herring", 6, "fine"));
+            productList.add(factory.produceCan("fresh", "salmon", 6, "fine"));
         } else {
             OutputManager.getInstance().print(
                     "莫得工厂",
                     "莫得工廠",
                     "No Factory");
         }
-        //包装罐头、加入库存
-        ArrayList<StockCan> stockCanArrayList = new ArrayList<>();
-        ArrayList<WrappedCan> wrappedCanArrayList = new ArrayList<>();
-        for (List<Can> canList : productList) {
-            wrappedCanArrayList.add(departmentMediator.wrapCan(canList.get(0)));
-            System.out.println(canList);
 
-        }
-        stockCanArrayList.add(new StockCan(wrappedCanArrayList.get(0), wrappedCanArrayList.size()));
-        departmentMediator.addCanInventory(stockCanArrayList);
-
-
-        //迭代器测试
+        OutputManager.getInstance().print(
+                "#迭代器模式和享元模式测试",
+                "#叠代器模式和享元模式測試",
+                "#Iterator Pattern and Flyweight Pattern test");
+        //迭代器模式、享元模式测试，打印已有生产线，虽然生产两次salmon罐头，生产线只用一条
         Iterator i = factory.iterator();
         while (i.hasNext()) {
-            System.out.println(((ProductLine) i.next()).getConcreteName());
+         OutputManager.getInstance().printLanguageIrrelevantContent(((ProductLine) i.next()).getConcreteName());
         }
     }
 }
