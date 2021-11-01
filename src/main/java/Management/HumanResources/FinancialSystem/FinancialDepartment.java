@@ -49,7 +49,7 @@ public class FinancialDepartment extends BaseDepartment {
     public void viewAuditHistoryList(){
 
         if(ReportAuditHistoryList.getInstance().getSize()==0){
-            OutputManager.getInstance().print(
+            OutputManager.getInstance().printPattern(
                     "【备忘录模式】当前备忘录列表为空",
                     "【備忘錄模式】當前備忘錄列表為空",
                     "[Memento Pattern] Current memento list is empty."
@@ -57,7 +57,7 @@ public class FinancialDepartment extends BaseDepartment {
             return;
         }
 
-        OutputManager.getInstance().print(
+        OutputManager.getInstance().printPattern(
                 "【备忘录模式】公司的审核历史备忘录列表如下：",
                 "【備忘錄模式】公司的審核歷史備忘錄列表如下：",
                 "[Memento Pattern] Can Factory report audit history: "

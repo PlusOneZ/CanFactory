@@ -67,7 +67,7 @@ public abstract class BaseDepartment {
     public BaseEmployee getEmployee(String name){
 
         for(BaseEmployee employee:this.employees){
-            if(employee.getName() == name){
+            if(employee.getName().equals(name)){
                 return employee;
             }
         }

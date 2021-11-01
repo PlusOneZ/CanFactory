@@ -19,6 +19,11 @@ public abstract class Staff extends BaseEmployee {
      */
     @Override
     public void handleRequest(LeaveRequest request) {
+        OutputManager.getInstance().printPattern(
+                "# 使用了责任链模式",
+                "# 使用了責任鏈模式",
+                "# Adopted Chain of Responsibility pattern"
+                );
 
         OutputManager.getInstance().print(
                 "员工无权处理自己的请假请求，已传达至组长",

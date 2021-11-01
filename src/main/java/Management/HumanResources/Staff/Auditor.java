@@ -71,4 +71,16 @@ public class Auditor extends Staff implements Permission {
 
         return true;
     }
+
+    /**
+     * 访问财务系统
+     * @author 尚丙奇
+     * @since 2021-10-16 14:00
+     */
+    public void accessFinancialSystem() {
+        OutputManager.getInstance().print(
+                "会计" + name + "访问了财务系统。",
+                "會計" + name + "訪問了財務系統。",
+                "Accountant " + name + "accessed the financial system.");
+    }
 }
