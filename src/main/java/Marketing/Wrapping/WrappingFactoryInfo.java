@@ -17,11 +17,11 @@ public class WrappingFactoryInfo {
     private static final WrappingFactoryInfo instance = new WrappingFactoryInfo();
 
     private WrappingFactoryInfo(){
-        this.factoryName = "2021-罐头加工厂";
-        this.factoryPhone = "400-8884933";
+        this.factoryName = "罐头加工厂";
+        this.factoryPhone = "400-8888888";
         this.factoryAddress = "上海市嘉定区";
         this.factoryWebsite = "www.tongji.edu.cn";
-        this.factoryTip = "适合常温或冷藏食用。避免曝晒、高温或冰冻";
+        this.factoryTip = "适合常温或冷藏食用，避免曝晒、高温或冰冻。";
     }
 
     public static WrappingFactoryInfo getInstance(){
