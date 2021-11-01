@@ -53,6 +53,12 @@ public class Purchaser extends Staff implements BasePurchaser {
                 "# Use the observer pattern to purchase raw materials from upstream factories"
         );
 
+        OutputManager.getInstance().printBrief(
+                "从上游工厂购买原材料",
+                "從上遊工廠購買原材料",
+                "Purchase raw materials from upstream factories"
+        );
+
         //试图从上游工厂进行购买
         for (ConcreteUpstreamFactory factory : upstreamFactories) {
             JSONObject result = factory.getInfo();
