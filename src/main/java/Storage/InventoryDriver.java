@@ -3,6 +3,7 @@ package
 
 
 import Manufacturing.CanEntity.Can;
+import Manufacturing.CanEntity.CanInfoController;
 import Manufacturing.CanEntity.Material.IronMaterial;
 import Manufacturing.CanEntity.Size.BigSize;
 import Manufacturing.CanEntity.VegetableCan;
@@ -32,9 +33,8 @@ public class InventoryDriver {
     public static void main(String[] args){
 
         OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
-
+        OutputManager.getInstance().print("*************************************", "*************************************", "*************************************");
         InventoryDepartment inventoryDepartment = InventoryDepartment.getInstance();
-        CanWareHouse canWareHouse = CanWareHouse.getInstance();
 
         //首先准备stub.
         WrappedCan wrappedCan = WrappingDepartment.getInstance().wrapCan(getStubCan());
@@ -42,32 +42,19 @@ public class InventoryDriver {
         StockCan stockCan = new StockCan(wrappedCan, 1);
         stockCans.add(stockCan);
 
-        //测试添加到库存中;还未曾存在的情况;
-        inventoryDepartment.addCanInventory(stockCans);
-
-        //测试添加到库存中;已经存在的情况;
-        inventoryDepartment.addCanInventory(stockCans);
-
-        //测试增加某一罐头的库存
-        inventoryDepartment.increaseCan(stockCan, 2);
-
-        //测试取出某一个罐头
-        inventoryDepartment.decreaseCan(stockCan, 2);
-
-        //测试转换器的成功与否
-//        ArrayList<OrderCanInformation> inventoryInformation = inventoryDepartment.getInventoryInformation();
-//        System.out.println(inventoryInformation);
-
-        //准备第二个stub
+        //准备订单的stub
         //首先准备一个canInformation,coupon,latestDeliveryTime,customerAddress
-        OrderCanInformation orderCanInformation =
-                new OrderCanInformation(OutputManager.getInstance().selectStringForCurrentLanguage("黄桃罐头", "黃桃罐頭", "Peach Can"),4,5.0);
         ArrayList<OrderCanInformation> orderCanInformations = new ArrayList<>();
+        OrderCanInformation orderCanInformation =
+                new OrderCanInformation(OutputManager.getInstance().selectStringForCurrentLanguage("黄桃罐头", "黃桃罐頭", "Peach Can"),4,
+                        CanInfoController.getInstance().getCanPriceByName(OutputManager.getInstance().selectStringForCurrentLanguage("黄桃罐头", "黃桃罐頭", "Peach Can")));
+        orderCanInformations.add(orderCanInformation);
+        orderCanInformation = new OrderCanInformation(OutputManager.getInstance().selectStringForCurrentLanguage("糖渍苹果罐头", "糖漬蘋果罐頭", "Candied Apple Can"), 5,
+                CanInfoController.getInstance().getCanPriceByName(OutputManager.getInstance().selectStringForCurrentLanguage("糖渍苹果罐头", "糖漬蘋果罐頭", "Candied Apple Can")));
         orderCanInformations.add(orderCanInformation);
         Coupon coupon = new Coupon(new TwentyPercentOff());
         Date lastestDeliveryTime = new Date(2021,11,13);
-        String customerAddress = new String("上海市嘉定区同济大学20号楼鼠鼠公寓");
-
+        String customerAddress = new String("上海市嘉定区同济大学20号楼");
         Order order = new Order(orderCanInformations, coupon, lastestDeliveryTime, customerAddress);
 
 

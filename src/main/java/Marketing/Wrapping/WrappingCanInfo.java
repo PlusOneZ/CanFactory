@@ -79,4 +79,12 @@ public class WrappingCanInfo {
     public void setManufactureTime(Date manufactureTime) {
         this.manufactureTime = manufactureTime;
     }
+
+    public String getIngredientsContent(){
+        String content = "";
+        for (Ingredient i : ingredients){
+            content = content + i.showContents() + " ";
+        }
+        return content;
+    }
 }
