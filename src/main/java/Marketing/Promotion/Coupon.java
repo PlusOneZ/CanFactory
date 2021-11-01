@@ -35,5 +35,7 @@ public class Coupon {
         strategy = sale;
     }
 
+    public Sale getSale(){return strategy;}
+
     private Sale strategy;
 }

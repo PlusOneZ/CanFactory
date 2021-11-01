@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine.Producer;
 
 /**
- * TODO:水果适配器类.<br>
+ * 水果适配器类.<br>
  * <b>实现适配器模式</b>
  *
  * @author 孟繁霖
@@ -11,13 +11,13 @@ public class FruitAdapter implements FruitProducer {
 
 
     /**
-     * TODO:生产方式，被适配对象，水果生产可以通过适配器适配提供的生产方式
+     * 生产方式，被适配对象，水果生产可以通过适配器适配提供的生产方式
      */
     private final ProduceManner produceManner;
 
 
     /**
-     * TODO:构造器
+     * 构造器
      *
      * @param manner :  被适配的生产方式对象
      * @return : null

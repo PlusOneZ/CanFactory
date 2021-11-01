@@ -4,7 +4,6 @@ import Presentation.Protocol.MultiLanguageDescription;
 
 /**
  * 描述可以被测试的物件，需要实现被测试的方法。
- * TODO: 构想一种在测试函数中真正被测试的方法。
  * <b>实现了 Servant 模式</b>
  * @author 卓正一
  * @since 2021-10-11 9:41 PM

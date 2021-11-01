@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO:三文鱼罐头生产线类.
+ * 三文鱼罐头生产线类.
  *
  * @author 孟繁霖
  * @date 2021-10-12 8:30
@@ -53,7 +53,11 @@ public class SalmonLine implements FreshLine {
                 "**********Salmon is being processed**********");
 
         List<Can> product=new ArrayList<>();
-
+        OutputManager.getInstance().print(
+                "# 使用享元模式生产铁制罐头",
+                "# 使用享元模式生產鐵製罐頭",
+                "# Production of iron cans using Flyweight Pattern"
+        );
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);
             Can can= IronCanFactory.getInstance().createBigCan("Salmon");
@@ -72,7 +76,11 @@ public class SalmonLine implements FreshLine {
 
     @Override
     public String getConcreteName() {
-        return "salmonLine";
+        return OutputManager.getInstance().selectStringForCurrentLanguage(
+                "三文鱼罐头生产线",
+                "三文魚罐頭生產線",
+                "Salmon Can Product Line"
+        );
     }
 
 

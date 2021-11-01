@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO:鲱鱼罐头生产线类
+ * 鲱鱼罐头生产线类
  *
  * @author 孟繁霖
  * @date 2021-10-12 8:32
@@ -53,6 +53,11 @@ public class HerringLine implements FreshLine {
 
         List<Can> product=new ArrayList<>();
 
+        OutputManager.getInstance().print(
+                "# 使用享元模式生产铁制罐头",
+                "# 使用享元模式生產鐵製罐頭",
+                "# Production of iron cans using Flyweight Pattern"
+        );
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);
             Can can= IronCanFactory.getInstance().createBigCan("Herring");
@@ -70,7 +75,11 @@ public class HerringLine implements FreshLine {
 
     @Override
     public String getConcreteName() {
-        return "HerringLine";
+        return OutputManager.getInstance().selectStringForCurrentLanguage(
+                "鲱鱼罐头生产线",
+                "鯡魚罐頭生產線",
+                "Herring Can Product Line"
+        );
     }
 
     public static Can produceSample() {

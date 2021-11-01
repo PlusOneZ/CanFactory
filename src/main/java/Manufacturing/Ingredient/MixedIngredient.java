@@ -53,10 +53,11 @@ public abstract class MixedIngredient implements Ingredient {
             }
         }
         ret.append(") ");
+        String weightString = String.format("%.2f", weight);
         ret.append(OutputManager.getInstance().selectStringForCurrentLanguage(
-                "{质量 = " + weight + '}',
-                "{質量 = " + weight + '}',
-                "{weight = " + weight + '}'
+                "{质量 = " + weightString + '}',
+                "{質量 = " + weightString + '}',
+                "{weight = " + weightString + '}'
         ));
 
         return ret.toString();

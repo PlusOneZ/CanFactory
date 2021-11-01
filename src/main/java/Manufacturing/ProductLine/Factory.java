@@ -1,6 +1,7 @@
 package Manufacturing.ProductLine;
 
 
+import Management.QualityTesting.QualityAssuranceDepartment;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
@@ -74,7 +75,7 @@ public abstract class Factory {
                     "Purchase successfully, the raw materials are as follows"
             );
             for (Ingredient ingredient : ingredientList) {
-                System.out.println(ingredient.showContentsWithWeight());
+               OutputManager.getInstance().printLanguageIrrelevantContent(ingredient.showContentsWithWeight());
             }
         } else {
             OutputManager.getInstance().print(
@@ -84,7 +85,7 @@ public abstract class Factory {
             return new ArrayList<Can>();
         }
 
-
+        List<Can> canList;
         //获得相应种类的生产线并进行预处理和生产加工
         if ("fruit".equalsIgnoreCase(canKind) && "candiedApple".equalsIgnoreCase(canName)) {
             List<Ingredient> sugarList = new ArrayList<>();
@@ -92,16 +93,15 @@ public abstract class Factory {
                 sugarList.add(new Sugar());
             }
             CandiedAppleLine candiedAppleLine = new CandiedAppleLine(ingredientList, sugarList);
-            int count = (candiedAppleLine.preTreat(ingredientList)).size();
-            return candiedAppleLine.produce(count, produceManner);
+            return candiedAppleLine.produce(1, produceManner);
         } else if ("fruit".equalsIgnoreCase(canKind)) {
             FruitLine fruitLine = getFruitLine(canName);
             int count = (fruitLine.preTreat(ingredientList)).size();
-            return fruitLine.produce(count, produceManner);
+            canList = fruitLine.produce(count, produceManner);
         } else if ("fresh".equalsIgnoreCase(canKind)) {
             FreshLine freshLine = getFreshLine(canName);
             int count = (freshLine.preTreat(ingredientList)).size();
-            return freshLine.produce(count, produceManner);
+            canList = freshLine.produce(count, produceManner);
         } else {
             OutputManager.getInstance().print(
                     "********没有对应生产线********",
@@ -110,6 +110,28 @@ public abstract class Factory {
             );
             return new ArrayList<Can>();
         }
+
+        List<Can> passedTestCan = new ArrayList<>();
+        // 质检部门介入
+        int i = 1;
+        for (Can c :canList) {
+            // 随机质检
+            if (Math.random() > 0.2) {
+                passedTestCan.add(c);
+                continue;
+            }
+            if (QualityAssuranceDepartment.getInstance().testQuality(c)
+                && QualityAssuranceDepartment.getInstance().testSafety(c)) {
+                OutputManager.getInstance().print(
+                        "质检部门抽样检测了这批罐头的第" + i + "个罐头。",
+                        "質檢部門抽樣檢測了這批罐頭的第" + i + "個罐頭。",
+                        "The quality assurance department sampled No." + i + " can."
+                );
+                passedTestCan.add(c);
+            }
+            i++;
+        }
+        return passedTestCan;
     }
 
     /**

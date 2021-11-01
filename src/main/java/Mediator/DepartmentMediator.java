@@ -145,17 +145,8 @@ public class DepartmentMediator {
      * @date 2021-10-24 17:05
      */
     public WrappedCan wrapCan(Can can) {
-        OutputManager.getInstance().print(
-                "实现中介者模式: 调用包装部门对" + can.getCanName() + "进行封面包装",
-                "實現中介者模式: 調用包裝部門對" + can.getCanName() + "進行封麵包裝",
-                "Implement the intermediary pattern: Call the packaging department to cover " + can.getCanName()
-        );
+
         WrappedCan wrappedCan = wrappingDepartment.wrapCan(can);
-        OutputManager.getInstance().print(
-                "包装完成",
-                "包裝完成",
-                "Packaging is complete"
-        );
         return wrappedCan;
     }
 
@@ -193,6 +184,12 @@ public class DepartmentMediator {
      * @date 20:27 2021-10-16
      */
     public boolean completeProductionOfOneOrder(Long orderId) {
+        OutputManager.getInstance().print(
+                "实现中介者模式: 通知订单中心对订单编号为" + orderId + "的订单修改为取货完成状态",
+                "實現中介者模式: 通知訂單中心對訂單編號為" + orderId + "的訂單修改為取貨完成狀態",
+                "Implement the intermediary pattern: " +
+                        "notify the order center to modify the order with the order number "+ orderId +" to pick up status"
+        );
         return orderCenter.completeProductionOfOneOrder(orderId);
     }
 

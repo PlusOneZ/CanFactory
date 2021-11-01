@@ -4,6 +4,7 @@ import Management.HumanResources.Staff.Driver.Driver;
 import Management.HumanResources.Staff.Driver.EngineMan;
 import Management.HumanResources.Staff.Driver.Shipmaster;
 import Marketing.Scheme.TransportScheme;
+import Mediator.DepartmentMediator;
 import Presentation.Protocol.OutputManager;
 
 
@@ -28,6 +29,10 @@ public class Carrier extends TeamLeader {
                 "承運商收到運輸計劃，並開始安排司機運輸",
                 "The carrier receives the transport plan and begins to arrange for a driver to transport it"
         );
+        /**
+         * 修改订单状态变为运输状态;
+         */
+        DepartmentMediator.getInstance().startToTransportOneOrder(scheme.getTransportationCan().getOrderId());
         Driver driver;
         if (scheme.getTransportType() == TransportScheme.TransportType.Land) {
             driver = new EngineMan();

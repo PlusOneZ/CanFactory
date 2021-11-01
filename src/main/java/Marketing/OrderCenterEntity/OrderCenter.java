@@ -1,11 +1,14 @@
 package Marketing.OrderCenterEntity;
 
+import Manufacturing.CanEntity.CanInfoController;
 import Marketing.Container;
 import Marketing.Iterator;
 import Marketing.OrderEnity.*;
 import Marketing.Promotion.Coupon;
 import Presentation.Protocol.OutputManager;
 
+import javax.print.attribute.standard.MediaSize;
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,7 +69,7 @@ public class OrderCenter implements Container {
     * @date 15:30 2021-10-15
     */
     public void displayOrderData(){
-        System.out.println("-----------------------------------------");
+        OutputManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
         OutputManager.getInstance().print(
                 "订单中心的订单数据：" ,
                 "訂單中心的訂單數據:",
@@ -82,7 +85,7 @@ public class OrderCenter implements Container {
                 "訂單數目："+factoryOrderList.size(),
                 "Number of orders:"+factoryOrderList.size()
         );
-        System.out.println("-----------------------------------------");
+        OutputManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
         //逐个订单迭代
         for(Iterator iter = this.getIterator(); iter.hasNext();){
             Order od = (Order)iter.next();//获取当前的订单
@@ -176,7 +179,7 @@ public class OrderCenter implements Container {
                     "訂單的運輸費用"+od.getOrderAmount().getTransportationAmount(),
                     "The Transportation price of the order:"+od.getOrderAmount().getTransportationAmount()
             );
-            System.out.println("--------------------------------------");
+            OutputManager.getInstance().printLanguageIrrelevantContent("--------------------------------------");
         }
     }
 
@@ -282,15 +285,196 @@ public class OrderCenter implements Container {
         return false;
     }
 
+    public void outputReceipt(){
+        for(Iterator iter = this.getIterator(); iter.hasNext();) {
+            Order od = (Order)iter.next();
+            OutputManager.getInstance().print(
+                    "您的订单小票",
+                    "您的訂單小票",
+                    "Your order receipt"
+            );
+            String header = "**********************************************";
+            OutputManager.getInstance().printLanguageIrrelevantContent(header);
+            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            OutputManager.getInstance().print(
+                    "*                 订单消费小票                 *",
+                    "*                 訂單消費小票                 *",
+                    "*           Order consumption receipt        *"
+            );
+            /**
+             * **********************************************
+             * *                                            *
+             * *                 订单消费小票                 *
+             * *                 订单消费小票                 *
+             * *--------------------------------------------*
+             * *                  罐头加工厂                  *
+             * *                 Can factory                    *
+             * *                   结账单                    *
+             * *                 Check out                      *
+             * * 订单号：11010116969                          *
+             * * OrderId:11010116969                        *
+             * * 订单生成时间：Mon Nov 01 14:47:22 CST 2021    *
+             * * Generation Time:Mon Nov 01 14:47:22 CST 2021*
+             * *=============================================*
+             * * 罐头名称       数量       单价      小计       *
+             * *                                            *
+             * *=============================================*
+             * * 本订单使用八折优惠                             *
+             * * This order uses a 20% discount              *
+             * * 本订单使用满一百减二十优惠                      *
+             * * This order uses 100 minus 20 discounts      *
+             * * 本订单没有使用优惠                             *
+             * * No discount is used for this order          *
+             * * 合计                                        *
+             * * Total                                       *
+             * *                                             *
+             * * 最晚交付时间：2022-02-02                      *
+             * * Latest deliver time:2022-02-02              *
+             * *                欢迎下次光临                   *
+             * *                歡迎下次光臨                   *
+             * *             Welcome next time               *
+             **/
+            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+
+            OutputManager.getInstance().print(
+                    "*                  罐头加工厂                  *",
+                    "*                  罐頭加工廠                  *",
+                    "*                 Can factory                 *"
+            );
+            OutputManager.getInstance().print(
+                    "*                   结账单                    *",
+                    "*                   結賬單                    *",
+                    "*                 Check out                  *"
+            );
+            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+            OutputManager.getInstance().print(
+                    "* 订单号：" + od.getOrderId()+"                         *",
+                    "* 訂單號："+ od.getOrderId()+"                          *",
+                    "* OrderId"+od.getOrderId()+"                        *"
+            );
+            OutputManager.getInstance().print(
+                    "* 订单生成时间："+od.getPlacingTime()+"   *",
+                    "* 訂單生成時間："+od.getPlacingTime()+"   *",
+                    "*Generation time:"+od.getPlacingTime()+"*"
+            );
+            OutputManager.getInstance().printLanguageIrrelevantContent("*============================================*");
+            OutputManager.getInstance().print(
+                    "* 罐头名称       数量       单价      小计       *",
+                    "* 罐頭名稱       數量       單價      小計       *",
+                    "* CanName       Num       Price    Total      *"
+            );
+            for(Iterator it = od.getIterator(); it.hasNext();){
+                OrderCanInformation oci = (OrderCanInformation)it.next();
+                String canNameStr = oci.getCanName();
+                int lengOne = canNameStr.length();
+                String regex = "^[a-zA-Z]+$";
+                String numStr = String.valueOf(oci.getCount());
+                int lengTwo = numStr.length();
+                //获取罐头的单价
+                double numPrice = CanInfoController.getInstance().getCanPriceByName(oci.getCanName());
+                double totalPrice = numPrice * oci.getCount();//商品总价
+                String numTotalOfStr = String.valueOf(totalPrice);
+                numTotalOfStr = String.format("%.1f",totalPrice);
+                String numPriceOfStr = String.format("%.1f",numPrice);
+                int lengThree = numPriceOfStr.length();
+                int lengFour = numTotalOfStr.length();
+                if(oci.getCanName().matches(regex)){//如果当前名字为英文
+                    for(int i = 0; i<(14-lengOne); i++){
+                        canNameStr += " ";
+                    }
+                }
+                else {
+                    for(int i = 0; i<(int)(14-1.65*lengOne); i++){
+                        canNameStr += " ";
+                    }
+                }
+                for(int i = 0;i<(10-lengTwo);i++){
+                    numStr += " ";
+                }
+                for(int i=0;i<(9-lengThree);i++){
+                    numPriceOfStr += " ";
+                }
+                for(int i=0; i<(10-lengFour);i++){
+                    numTotalOfStr += " ";
+                }
+                OutputManager.getInstance().print(
+                        "* "+canNameStr+numStr+numPriceOfStr+numTotalOfStr+"*",
+                        "* "+canNameStr+numStr+numPriceOfStr+numTotalOfStr+"*",
+                        "* "+canNameStr+numStr+numPriceOfStr+numTotalOfStr+"*"
+                );
+            }
+
+            OutputManager.getInstance().printLanguageIrrelevantContent("*============================================*");
+            if(od.getCouponFlag() == 1) {
+                OutputManager.getInstance().print(
+                        "* 本订单使用八折优惠                            *",
+                        "* 本訂單使用八折優惠                            *",
+                        "* This order uses a 20% discount              *"
+                );
+            }
+            else if(od.getCouponFlag() == 0){
+                OutputManager.getInstance().print(
+                        "* 本订单使用满一百减二十优惠                      *",
+                        "* 本訂單使用滿一百減二十優惠                      *",
+                        "* This order uses 100 minus 20 discounts      *"
+                );
+            }
+            else
+            {
+                OutputManager.getInstance().print(
+                        "* 本订单没有使用优惠                             *",
+                        "* 本訂單沒有使用優惠                             *",
+                        "* No discount is used for this order          *"
+                );
+            }
+            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+            OutputManager.getInstance().print(
+                    "* 合计                                        *",
+                    "* 合計                                        *",
+                    "* Total                                       *"
+            );
+            double TotalCount = od.getOrderAmount().getPromotionAmount();
+            String totalCountOfStr = String.format("%.1f",TotalCount);
+            int totalNum = totalCountOfStr.length();
+            for(int i =0; i<(43-totalNum);i++){
+                totalCountOfStr += " ";
+            }
+            OutputManager.getInstance().print(
+                    "* "+totalCountOfStr+"*",
+                    "* "+totalCountOfStr+"*",
+                    "* "+totalCountOfStr+"*"
+                    );
+            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+            //订单的最晚交付时间：
+            String dateStr = "yyyy-MM-dd";
+            SimpleDateFormat sdf = new SimpleDateFormat(dateStr);
+            String latestDeliverTime = sdf.format(od.getLatestDeliveryTime());
+            OutputManager.getInstance().print(
+                    "* 订单最晚交付时间："+latestDeliverTime+"                  *",
+                    "* 訂單最晚交付時間："+latestDeliverTime+"                  *",
+                    "* latest deliver time:"+latestDeliverTime+"             *"
+            );
+            OutputManager.getInstance().print(
+                    "*                欢迎下次光临                  *",
+                    "*                歡迎下次光臨                  *",
+                    "*             Welcome next time              *"
+            );
+            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            OutputManager.getInstance().printLanguageIrrelevantContent(header);
+        }
+    }
+
     public boolean deliverOneOrder(Long orderId){
-        //获取当前订单Id的订单对象
+        //获取当前订单Id的订单对象                                  
         Order order = orderExists(orderId);
         //如果当前订单ID的订单存在
         if(order != null) {
-            if (Objects.equals(order.getOrderState().getCNStateName(), "已交付")) {
+            if (Objects.equals(order.getOrderState().getCNStateName(), "运输中")) {
                 //设置交付的时间
                 order.setCompletionTime(new Date());
-                //修改订单的状态为交付状态
+                //修改订单的状态为交付状态               
                 order.changeOrderState(new DeliveredOrderState());
                 OutputManager.getInstance().print(
                         "订单ID为" + orderId + "的订单已成功交付！",
