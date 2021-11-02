@@ -1,10 +1,7 @@
 package Presentation.Protocol;
 
 import java.io.PrintStream;
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * 实现多语言打印的输出控制器。
@@ -18,7 +15,7 @@ public class OutputManager {
         MAC,WIN
     }
 
-    public static IOSystem system;
+    public static IOSystem IOsystem;
 
     /**
      * <b>私有构造函数</b>
@@ -207,9 +204,23 @@ public class OutputManager {
         return "";
     }
 
+    /**
+     * 接受输入
+     * @return
+     */
+    public String input(){
+        if(IOsystem == IOSystem.MAC){
+            Scanner inputScanner = new Scanner(System.in);
+            return inputScanner.next();
+        }
+        else{
+            return null;
+        }
+    }
+
     static {
         instance = new OutputManager();
         instance.run();
-        system = IOSystem.MAC;
+        IOsystem = IOSystem.MAC;
     }
 }

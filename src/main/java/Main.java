@@ -4,7 +4,15 @@ import Presentation.Protocol.OutputManager;
 public class Main {
     public static void main(String[] args) {
 
-        CanFactory factory = CanFactory.getInstance();
-        factory.run();
+        // 操作系统选择
+        OutputManager.IOsystem = OutputManager.IOSystem.MAC;
+
+        if(OutputManager.IOsystem == OutputManager.IOSystem.MAC){
+            CanFactory factory = CanFactory.getInstance();
+            factory.run();
+        }
+        else{
+            //
+        }
     }
 }
