@@ -222,8 +222,7 @@ public class PurchaseDepartment extends BaseDepartment {
                             "c. Propose procurement requirements to the procurement department\n" +
                             "exit. end program"
             );
-            Scanner scanner = new Scanner(System.in);
-            String operationType =scanner.nextLine();
+            String operationType = OutputManager.getInstance().input();
             if(operationType.equals("a")){
                 OutputManager.getInstance().print(
                         "采购部门所拥有的原材料为:" + PurchaseDepartment.getInstance().rawMaterial,
