@@ -38,5 +38,10 @@ public class MultitonTest {
                 "Determine whether the two machines are the same: "
         );
         OutputManager.getInstance().printLanguageIrrelevantContent(Boolean.toString(machine == machine1));
+        OutputManager.getInstance().printBrief(
+                "---多例模式测试结束---",
+                "---多例模式測試結束---",
+                "---Multiton Pattern Test End---"
+        );
     }
 }

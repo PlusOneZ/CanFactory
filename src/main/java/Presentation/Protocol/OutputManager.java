@@ -163,6 +163,20 @@ public class OutputManager {
         }
     }
 
+    /**
+     * 向标准输出打印多语言信息
+     * <i>功能委托给 outputToStream 函数</i>
+     * @param zh_cn 简体中文文本
+     * @param zh_tw 台湾繁体中文文本
+     * @param en 英文文本
+     */
+    public void printBrief(String zh_cn, String zh_tw ,String en, String appendix) {
+        if (mode != Mode.patternOnly) {
+//            outputToStream(System.out, zh_cn, zh_tw, en);
+            addToQueue(zh_cn + appendix, zh_tw + appendix, en + appendix);
+        }
+    }
+
     public void printPattern(String zh_cn, String zh_tw ,String en) {
 //        outputToStream(System.out, zh_cn, zh_tw, en);
         addToQueue(zh_cn, zh_tw, en);
@@ -225,7 +239,6 @@ public class OutputManager {
 
     /**
      * 接受输入
-     * @return
      */
     public String input(){
         if(IOsystem == IOSystem.MAC){

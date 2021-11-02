@@ -34,9 +34,15 @@ public class DecoratorTest {
         Ingredient cookedApple = new Cook(apple);
 
         OutputManager.getInstance().printBrief(
-                "处理过的原料：" + cookedApple.showContents(),
+                "处理过的原料：",
                 "處理過的原料：",
-                "Processed ingredient: "
+                "Processed ingredient: ",
+                cookedApple.showContents()
+        );
+        OutputManager.getInstance().printBrief(
+                "---装饰器模式测试结束---",
+                "---裝飾器模式測試結束---",
+                "---Decorator Pattern Test End---"
         );
     }
 }
