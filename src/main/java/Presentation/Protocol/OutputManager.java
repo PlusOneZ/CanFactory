@@ -204,17 +204,33 @@ public class OutputManager {
      * @param en 英文文本
      */
     public void errorMassage(String zh_cn, String zh_tw ,String en) {
-        outputToStream(System.err, zh_cn, zh_tw, en);
+        if (language == Lang.zh_CN) {
+            System.err.println(
+                    zh_cn
+            );
+        } else if (language == Lang.zh_TW) {
+            System.err.println(
+                    zh_tw
+            );
+        } else if (language == Lang.en) {
+            System.err.println(
+                    en
+            );
+        }
+        else{
+            System.err.println(
+                    "未设置语言 / 未設定語言 / Output Language Not Designated"
+            );
+        }
     }
 
     /**
      * 向某输出流打印多语言信息
-     * @param ps 输出流
      * @param zh_cn 简体中文文本
      * @param zh_tw 台湾繁体中文文本
      * @param en 英文文本
      */
-    private void outputToStream(PrintStream ps, String zh_cn, String zh_tw , String en) {
+    private void outputToStream( String zh_cn, String zh_tw , String en) {
         if (language == Lang.zh_CN) {
             ps.println(zh_cn);
         } else if (language == Lang.zh_TW) {
