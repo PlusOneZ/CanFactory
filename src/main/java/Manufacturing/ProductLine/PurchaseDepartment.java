@@ -211,8 +211,6 @@ public class PurchaseDepartment extends BaseDepartment {
      * @param args main函数参数args
      */
     public static void main(String[] args) {
-        // 设置语言
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
         while(true){
             OutputManager.getInstance().print(

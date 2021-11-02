@@ -17,9 +17,6 @@ import Presentation.Protocol.OutputManager;
 public class ChainOfResponsibilityTest {
     public static void main(String[] args) {
 
-        // 设置语言
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
-
         // 获取QualityAssurance部门的实例
         QualityAssuranceDepartment qualityTestingDepartment = QualityAssuranceDepartment.getInstance();
 

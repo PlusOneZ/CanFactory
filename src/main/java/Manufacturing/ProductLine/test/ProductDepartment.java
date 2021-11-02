@@ -137,7 +137,6 @@ public class ProductDepartment {
     * @date 2021-11-01 22:50
     */
     public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
         List<List<Can>> productList = new ArrayList<>();
 

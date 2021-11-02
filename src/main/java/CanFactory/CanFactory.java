@@ -1,12 +1,15 @@
 package CanFactory;
 
 import ImplementDepartment.OrderImplementDepartment;
+import Management.HumanResources.test.CompanyManagementTest;
 import Marketing.OrderEnity.Order;
 import Mediator.DepartmentMediator;
 import Presentation.Protocol.OutputManager;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 所有类的驱动类
@@ -35,7 +38,43 @@ public class CanFactory {
 
     }
 
+    public int intputInteger(){
+        String inputStr = OutputManager.getInstance().input();
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(inputStr);
+        if(!isNum.matches()){
+            return -1;
+        }
+        else{
+            return Integer.parseInt(inputStr);
+        }
+    }
+
     public void run()  {
+
+        OutputManager.getInstance().printLanguageIrrelevantContent("请选择使用语言 /請選擇使用語言 /Please select the language");
+
+        OutputManager.getInstance().printLanguageIrrelevantContent("1. 中文（简体） 2. 中文（繁體） 3. English" );
+
+        int selectedLanguage=-1;
+        while((selectedLanguage = this.intputInteger())==-1 || selectedLanguage<1 ||selectedLanguage>3){
+            OutputManager.getInstance().printLanguageIrrelevantContent(
+                    "无效输入，请重新输入 /無效輸入，请重新輸入/ Invalid input, please input again"
+                    );
+        }
+
+        switch (selectedLanguage){
+            case 1:
+                OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
+                break;
+            case 2:
+                OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_TW);
+                break;
+            case 3:
+                OutputManager.getInstance().setLanguage(OutputManager.Lang.en);
+                break;
+        }
+
         //首先提示客户创建订单
         ArrayList<Order> pendingOrders = null;
         try {

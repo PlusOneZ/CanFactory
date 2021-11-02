@@ -32,7 +32,6 @@ import java.util.Date;
 public class InventoryDriver {
     public static void main(String[] args){
 
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         OutputManager.getInstance().print("*************************************", "*************************************", "*************************************");
         InventoryDepartment inventoryDepartment = InventoryDepartment.getInstance();
 

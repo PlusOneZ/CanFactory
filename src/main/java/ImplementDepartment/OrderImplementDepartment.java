@@ -41,7 +41,6 @@ public class OrderImplementDepartment {
 
 
     public ArrayList<Order> CreateOrder() throws ParseException {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         OutputManager.getInstance().print(
                 "进入订单创建系统。",
                 "進入訂單創建系統。",

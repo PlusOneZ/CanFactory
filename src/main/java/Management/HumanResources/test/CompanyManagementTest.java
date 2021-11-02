@@ -17,8 +17,11 @@ import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 故事线2的测试
@@ -36,17 +39,25 @@ public class CompanyManagementTest {
      */
     public static void loadingInput() throws InterruptedException {
         for (int i = 0; i <= 100; i++) {
-            if(OutputManager.getInstance().getLanguage()== OutputManager.Lang.zh_CN) {
-                System.out.print("公司管理系统加载中：" + i + "%");
-            }
-            else if(OutputManager.getInstance().getLanguage()== OutputManager.Lang.zh_TW){
-                System.out.print("公司管理系統加載中：" + i + "%");
-            }
-            else{
-                System.out.print("Loading company management system：" + i + "%");
-            }
+            OutputManager.getInstance().printLoading(
+                    "公司管理系统加载中：" + i + "%",
+                    "公司管理系統加載中：" + i + "%",
+                    "Loading company management system：" + i + "%"
+            );
             Thread.sleep(20);
-            System.out.print("\r");
+            OutputManager.getInstance().printLoading("\r","\r","\r");
+        }
+    }
+
+    public static int intputInteger(){
+        String inputStr = OutputManager.getInstance().input();
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(inputStr);
+        if(!isNum.matches()){
+            return -1;
+        }
+        else{
+            return Integer.parseInt(inputStr);
         }
     }
 
@@ -126,8 +137,8 @@ public class CompanyManagementTest {
                 "Company management system has been activated."
         );
 
-        Scanner scanner = new Scanner(System.in);
-        Scanner scanner2 = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner2 = new Scanner(System.in);
         while(true) {
             OutputManager.getInstance().print(
                     "请输入序号进行所需要的操作：\n" +
@@ -143,15 +154,15 @@ public class CompanyManagementTest {
                             "Your input: "
             );
 
-            while(!scanner.hasNextInt()) {
-                scanner.next();
+            int num;
+            while((num=CompanyManagementTest.intputInteger())==-1) {
                 OutputManager.getInstance().errorMassage(
                         "无效输入，请重新输入：",
                         "無效輸入，请重新輸入：",
                         "Invalid input, please input again:"
                 );
             }
-            int num= scanner.nextInt();
+
             //进入员工注册
             if(num==1) {
                 OutputManager.getInstance().print(
@@ -160,16 +171,14 @@ public class CompanyManagementTest {
                         "Please enter the number of employees to register:"
                 );
 
-                while((!scanner2.hasNextInt())){
-                    scanner2.next();
+                Integer numOfEmployees;
+                while((numOfEmployees=CompanyManagementTest.intputInteger())==-1) {
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
                             "Invalid input, please input again:"
                     );
                 }
-
-                Integer numOfEmployees = scanner2.nextInt();
 
                 if(numOfEmployees < 1){
                     OutputManager.getInstance().errorMassage(
@@ -193,42 +202,41 @@ public class CompanyManagementTest {
                                     " employee to register(delineated by spaces):"
                     );
 
-                    while(!scanner2.hasNext()){
+
+                    String[] information = OutputManager.getInstance().input().split("\\s+");
+
+                    if(information.length != 2){
                         OutputManager.getInstance().errorMassage(
                                 "无效输入，请重新输入：",
                                 "無效輸入，请重新輸入：",
                                 "Invalid input, please input again:"
                         );
-                        scanner2.next();
-                    }
-                    String name = scanner2.next();
-
-                    while(!scanner2.hasNext()){
-                        OutputManager.getInstance().errorMassage(
-                                "无效输入，请重新输入：",
-                                "無效輸入，请重新輸入：",
-                                "Invalid input, please input again:"
-                        );
-                        scanner2.next();
+                        continue;
                     }
 
-                    Double salary = Double.parseDouble(scanner2.next());
+                    String name = information[0];
+                    Double salary;
+                    try {
+                        salary = Double.parseDouble(information[1]);
+                    }
+                    catch (Exception err){
+                        continue;
+                    }
+
+
                     newWorker.setName(name);
                     newWorker.setSalary(salary);
                     newWorker.setLeader(testingTeamLeader2);
                     qualityTestingDepartment.register(newWorker, true);
 
+                    OutputManager.getInstance().print(
+                            "员工注册成功！",
+                            "員工註冊成功！",
+                            "Employees are successfully registered."
+                    );
                 }
 
-
                 salaryDaoImpl.saveSalary(qualityTestingDepartment);
-
-
-                OutputManager.getInstance().print(
-                        "员工注册成功！",
-                        "員工註冊成功！",
-                        "Employees are successfully registered."
-                );
 
             }
             else if(num==2){
@@ -238,15 +246,15 @@ public class CompanyManagementTest {
                         "Available auditors: [1 - "+auditor1.getName()+"]\t[2 - "+auditor2.getName()+"]\t[3 - "+auditor3.getName()+"]\nPlease input the auditor number: "
                 );
 
-                while((!scanner2.hasNextInt())){
-                    scanner2.next();
+                Integer auditorNum;
+                while((auditorNum=CompanyManagementTest.intputInteger())==-1){
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
                             "Invalid input, please input again:"
                     );
                 }
-                int auditorNum=scanner2.nextInt();
+
 
                 AuditSalaryTableCommand auditSalaryTableCommand=new AuditSalaryTableCommand();
                 if(auditorNum==1){
@@ -297,15 +305,8 @@ public class CompanyManagementTest {
                         "Please enter the name of the employee requesting to leave:"
                 );
 
-                while(!scanner2.hasNext()){
-                    OutputManager.getInstance().errorMassage(
-                            "无效输入，请重新输入：",
-                            "無效輸入，请重新輸入：",
-                            "Invalid input, please input again:"
-                    );
-                    scanner2.next();
-                }
-                String name = scanner2.next();
+
+                String name = OutputManager.getInstance().input();
                 if(qualityTestingDepartment.getEmployee(name) == null){
                     OutputManager.getInstance().errorMassage(
                             "输入有误，该员工不存在",
@@ -323,15 +324,8 @@ public class CompanyManagementTest {
                         "請輸入員工請假的原因:",
                         "Please enter the reason of the employee requesting to leave:"
                 );
-                while(!scanner2.hasNext()){
-                    OutputManager.getInstance().errorMassage(
-                            "无效输入，请重新输入：",
-                            "無效輸入，请重新輸入：",
-                            "Invalid input, please input again:"
-                    );
-                    scanner2.next();
-                }
-                String reason = scanner2.next();
+
+                String reason = OutputManager.getInstance().input();
                 request.setReason(reason);
 
                 OutputManager.getInstance().print(
@@ -340,16 +334,16 @@ public class CompanyManagementTest {
                         "Please enter the number of days of the employee requesting to leave:"
                 );
 
-                while(!scanner2.hasNextInt()){
+                Integer days;
+                while((days=CompanyManagementTest.intputInteger())==-1){
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
                             "Invalid input, please input again:"
                     );
-                    scanner2.next();
                 }
 
-                Integer days = scanner2.nextInt();
+
                 if(days < 1){
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
@@ -401,15 +395,8 @@ public class CompanyManagementTest {
                         "Please enter the name of employee accessing the financial system: "
                 );
 
-                while(!scanner2.hasNext()){
-                    OutputManager.getInstance().errorMassage(
-                            "无效输入，请重新输入：",
-                            "無效輸入，请重新輸入：",
-                            "Invalid input, please input again:"
-                    );
-                    scanner2.next();
-                }
-                String name = scanner2.next();
+
+                String name = OutputManager.getInstance().input();
                 if(financialDepartment.getEmployee(name) != null){
                     BaseEmployee employee = financialDepartment.getEmployee(name);
 //                    System.out.println("1");
@@ -478,15 +465,15 @@ public class CompanyManagementTest {
                                 "[3 - Exit]" + "Your input: "
                 );
 
-                while(!scanner.hasNextInt()) {
-                    scanner.next();
+                int option;
+
+                while((option=CompanyManagementTest.intputInteger())==-1){
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
                             "Invalid input, please input again:"
                     );
                 }
-                int option = scanner.nextInt();
 
                 if(option == 1) {
                     OutputManager.getInstance().print(
@@ -495,17 +482,7 @@ public class CompanyManagementTest {
                             "Please enter the announcement you are about to publish: "
                     );
 
-                    if(!scanner2.hasNext()) {
-                        OutputManager.getInstance().errorMassage(
-                                "输入有误！",
-                                "輸入有誤！",
-                                "Invalid input!"
-                        );
-
-                        continue;
-                    }
-
-                    String message = scanner2.next();
+                    String message = OutputManager.getInstance().input();
                     Announcer.getInstance().addMessage(message);
 
                 }
@@ -533,7 +510,7 @@ public class CompanyManagementTest {
                             "Please enter the name of the employee subscribing the announcement: "
                     );
 
-                    String name = scanner2.next();
+                    String name = OutputManager.getInstance().input();
                     if(qualityTestingDepartment.getEmployee(name) == null){
                         OutputManager.getInstance().errorMassage(
                                 "输入有误，该员工不存在",

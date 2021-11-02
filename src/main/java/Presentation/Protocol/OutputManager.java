@@ -112,6 +112,23 @@ public class OutputManager {
         }
     }
 
+
+    public void printLoading(String zh_cn, String zh_tw ,String en) {
+        if (mode != Mode.brief && mode != Mode.patternOnly) {
+            if (language == Lang.zh_CN) {
+                ps.print(zh_cn);
+            } else if (language == Lang.zh_TW) {
+                ps.print(zh_tw);
+            } else if (language == Lang.en) {
+                ps.print(en);
+            } else {
+                System.err.println(
+                        "未设置语言 / 未設定語言 / Output Language Not Designated"
+                );
+            }
+        }
+    }
+
     /**
      * 向标准输出打印多语言信息
      * <i>功能委托给 outputToStream 函数</i>
@@ -129,6 +146,8 @@ public class OutputManager {
 //        );
         addToQueue(zh_cn + appendix, zh_tw + appendix, en + appendix);
     }
+
+
 
     /**
      * 向标准输出打印多语言信息
@@ -211,7 +230,7 @@ public class OutputManager {
     public String input(){
         if(IOsystem == IOSystem.MAC){
             Scanner inputScanner = new Scanner(System.in);
-            return inputScanner.next();
+            return inputScanner.nextLine();
         }
         else{
             return null;

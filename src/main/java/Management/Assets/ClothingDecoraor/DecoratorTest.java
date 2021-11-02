@@ -7,7 +7,6 @@ import Presentation.Protocol.OutputManager;
 
 public class DecoratorTest {
     public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
         Staff staff1 = new Cleaner("李华");
         CleanerWithClothes cleaner = new CleanerWithClothes(staff1);
