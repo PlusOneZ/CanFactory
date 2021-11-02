@@ -1,24 +1,47 @@
 package CanFactory;
 
 import ImplementDepartment.OrderImplementDepartment;
+import Management.Assets.Announcement.BlackBoardTest;
+import Management.Assets.ClothingDecoraor.DecoratorTest;
 import Management.HumanResources.BaseEmployee;
 import Management.HumanResources.DepartmentCommand.AuditSalaryTableCommand;
 import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
 import Management.HumanResources.FinancialSystem.FinancialDepartment;
 import Management.HumanResources.FinancialSystem.Permission;
+import Management.HumanResources.FinancialSystem.ReportMemento;
 import Management.HumanResources.LeaveRequest;
 import Management.HumanResources.Manager.TestingManager;
 import Management.HumanResources.Staff.Announcer;
 import Management.HumanResources.Staff.Auditor;
 import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
+import Management.HumanResources.test.ChainOfResponsibilityTest;
 import Management.HumanResources.test.CompanyManagementTest;
+import Management.HumanResources.test.FinancialDepartmentTest;
+import Management.HumanResources.test.TransportDepartmentTest;
 import Management.QualityTesting.QualityAssuranceDepartment;
+import Management.QuantityTesting.VisitorTest;
+import Manufacturing.CanEntity.Can;
+import Manufacturing.CanEntity.CanTest;
+import Manufacturing.CanEntity.ConcreteCan.PrototypeTest;
+import Manufacturing.Ingredient.CompositeTest;
+import Manufacturing.Machine.CanTreatmentMachine.MultitonTest;
+import Manufacturing.ProductLine.Producer.Test.AdapterTest;
+import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
+import Manufacturing.ProductLine.test.ProductDepartment;
 import Marketing.OrderEnity.Order;
+import Marketing.OrderEnity.OrderState;
+import Marketing.Promotion.SaleTest;
+import Marketing.Wrapping.Builder.WrappingBuilder;
+import Marketing.Wrapping.WrappingDriver;
 import Mediator.DepartmentMediator;
 import Presentation.Protocol.OutputManager;
+import Storage.InventoryDepartment;
+import Storage.InventoryDriver;
+
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +52,7 @@ import java.util.regex.Pattern;
  * 所有类的驱动类
  *
  * @author 卓正一
- * @since  2021/10/29 5:16 PM
+ * @since 2021/10/29 5:16 PM
  */
 public class CanFactory {
 
@@ -45,6 +68,7 @@ public class CanFactory {
 
     /**
      * 单例构造器
+     *
      * @author 卓正一
      * @since 2021-10-29 5:17 PM
      */
@@ -52,35 +76,34 @@ public class CanFactory {
 
     }
 
-    public int intputInteger(){
+    public int intputInteger() {
         String inputStr = OutputManager.getInstance().input();
-        if(inputStr==""){
+        if (inputStr == "") {
             return -1;
         }
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(inputStr);
-        if(!isNum.matches()){
+        if (!isNum.matches()) {
             return -1;
-        }
-        else{
+        } else {
             return Integer.parseInt(inputStr);
         }
     }
 
-    public void run()  {
+    public void run() {
 
         OutputManager.getInstance().printLanguageIrrelevantContent("请选择使用语言 /請選擇使用語言 /Please select the language");
 
-        OutputManager.getInstance().printLanguageIrrelevantContent("[1 - 中文（简体）]\t[2 - 中文（繁體）]\t[3 - English]" );
+        OutputManager.getInstance().printLanguageIrrelevantContent("[1 - 中文（简体）]\t[2 - 中文（繁體）]\t[3 - English]");
 
-        int selectedLanguage=-1;
-        while((selectedLanguage = this.intputInteger())==-1 || selectedLanguage<1 ||selectedLanguage>3){
+        int selectedLanguage = -1;
+        while ((selectedLanguage = this.intputInteger()) == -1 || selectedLanguage < 1 || selectedLanguage > 3) {
             OutputManager.getInstance().printLanguageIrrelevantContent(
                     "无效输入，请重新输入 /無效輸入，请重新輸入/ Invalid input, please input again"
-                    );
+            );
         }
 
-        switch (selectedLanguage){
+        switch (selectedLanguage) {
             case 1:
                 OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
                 break;
@@ -92,7 +115,7 @@ public class CanFactory {
                 break;
         }
 
-        try{
+        try {
             loadingInput();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -110,8 +133,8 @@ public class CanFactory {
                 "[1 - Order System]\t[2 - Management System]\t[3 - 30 Design Patterns Test]"
         );
 
-        int selectedSystem=-1;
-        while((selectedSystem = this.intputInteger())==-1 || selectedSystem<1 ||selectedSystem>3){
+        int selectedSystem = -1;
+        while ((selectedSystem = this.intputInteger()) == -1 || selectedSystem < 1 || selectedSystem > 3) {
             OutputManager.getInstance().errorMassage(
                     "无效输入，请重新输入",
                     "無效輸入，请重新輸入",
@@ -119,20 +142,19 @@ public class CanFactory {
             );
         }
 
-        switch (selectedSystem){
+        switch (selectedSystem) {
             case 1:
                 this.orderManage();
                 break;
             case 2:
-                try{
+                try {
                     this.companyManage();
-                }
-                catch (IOException err){
+                } catch (IOException err) {
 
                 }
                 break;
             case 3:
-                OutputManager.getInstance().setLanguage(OutputManager.Lang.en);
+                this.designPatternTest();
                 break;
         }
 
@@ -141,6 +163,7 @@ public class CanFactory {
 
     /**
      * 起始输入
+     *
      * @author 陈垲昕
      * @since 2021-10-30 8:40 下午
      */
@@ -152,12 +175,12 @@ public class CanFactory {
                     "Loading Can Factory：" + i + "%"
             );
             Thread.sleep(20);
-            OutputManager.getInstance().printLoading("\r","\r","\r");
+            OutputManager.getInstance().printLoading("\r", "\r", "\r");
         }
     }
 
 
-    public void orderManage(){
+    public void orderManage() {
         //首先提示客户创建订单
         ArrayList<Order> pendingOrders = null;
         try {
@@ -171,12 +194,17 @@ public class CanFactory {
             );
         }
         //然后通知库存部门作后续处理
-        for(Order order : pendingOrders){
+        for (Order order : pendingOrders) {
             //对于每一个订单，进行相应的处理
             DepartmentMediator.getInstance().handleOrder(order);
         }
     }
 
+
+    /**
+     * 管理系统测试
+     * @throws IOException
+     */
     public void companyManage() throws IOException {
 
 
@@ -201,12 +229,12 @@ public class CanFactory {
         Worker testingWorker2 = new Worker();
 
         //创建经济部门的审计员等
-        Auditor auditor1=new Auditor("法克", 201.0);
-        Auditor auditor2=new Auditor("尤尔",100.0);
-        Auditor auditor3=new Auditor("马泽尔",100.0);
-        financialDepartment.register(auditor1,false);
-        financialDepartment.register(auditor2,false);
-        financialDepartment.register(auditor3,false);
+        Auditor auditor1 = new Auditor("法克", 201.0);
+        Auditor auditor2 = new Auditor("尤尔", 100.0);
+        Auditor auditor3 = new Auditor("马泽尔", 100.0);
+        financialDepartment.register(auditor1, false);
+        financialDepartment.register(auditor2, false);
+        financialDepartment.register(auditor3, false);
 
 
         SalaryDaoImpl salaryDaoImpl = SalaryDaoImpl.getInstance();
@@ -233,9 +261,9 @@ public class CanFactory {
         testingWorker2.setLeader(testingTeamLeader2);
 
         // 分别将其注册到该部门
-        qualityTestingDepartment.register(testingManager,false);
-        qualityTestingDepartment.register(testingTeamLeader1,false);
-        qualityTestingDepartment.register(testingWorker,false);
+        qualityTestingDepartment.register(testingManager, false);
+        qualityTestingDepartment.register(testingTeamLeader1, false);
+        qualityTestingDepartment.register(testingWorker, false);
         qualityTestingDepartment.register(testingTeamLeader2, false);
         qualityTestingDepartment.register(testingWorker1, false);
         qualityTestingDepartment.register(testingWorker2, false);
@@ -246,9 +274,7 @@ public class CanFactory {
                 "Company management system has been activated."
         );
 
-//        Scanner scanner = new Scanner(System.in);
-//        Scanner scanner2 = new Scanner(System.in);
-        while(true) {
+        while (true) {
             OutputManager.getInstance().print(
                     "请输入序号进行所需要的操作：\n" +
                             "[1 - 注册员工]\t[2 - 审计报告]\t[3 - 查看审计记录]\t[4 - 请假处理]\t[5 - 检查员工权限]\t[6 - 进入公告系统]\t" +
@@ -263,8 +289,8 @@ public class CanFactory {
                             "Your input: "
             );
 
-            int num;
-            while((num=CompanyManagementTest.intputInteger())==-1) {
+            int selectedOperation = -1;
+            while ((selectedOperation = this.intputInteger()) == -1) {
                 OutputManager.getInstance().errorMassage(
                         "无效输入，请重新输入：",
                         "無效輸入，请重新輸入：",
@@ -273,7 +299,7 @@ public class CanFactory {
             }
 
             //进入员工注册
-            if(num==1) {
+            if (selectedOperation == 1) {
                 OutputManager.getInstance().print(
                         "请输入需要注册的员工数量:",
                         "請輸入需要註冊的員工數量:",
@@ -281,7 +307,7 @@ public class CanFactory {
                 );
 
                 Integer numOfEmployees;
-                while((numOfEmployees=CompanyManagementTest.intputInteger())==-1) {
+                while ((numOfEmployees = CompanyManagementTest.intputInteger()) == -1) {
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -289,7 +315,7 @@ public class CanFactory {
                     );
                 }
 
-                if(numOfEmployees < 1){
+                if (numOfEmployees < 1) {
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -297,24 +323,24 @@ public class CanFactory {
                     );
                     continue;
                 }
-                for(int i = 0; i < numOfEmployees; i++){
+                for (int i = 0; i < numOfEmployees; i++) {
 
                     Worker newWorker = new Worker();
 
 
                     OutputManager.getInstance().print(
-                            "请依次输入要注册的员工" + (i+1) +
+                            "请依次输入要注册的员工" + (i + 1) +
                                     "的名称和薪资(以空格分隔):",
-                            "請依次輸入要註冊的員工" + (i+1) +
+                            "請依次輸入要註冊的員工" + (i + 1) +
                                     "的名稱和薪资(以空格分隔):",
-                            "Please enter the name and salary of the " + (i+1) +
+                            "Please enter the name and salary of the " + (i + 1) +
                                     " employee to register(delineated by spaces):"
                     );
 
 
                     String[] information = OutputManager.getInstance().input().split("\\s+");
 
-                    if(information.length != 2){
+                    if (information.length != 2) {
                         OutputManager.getInstance().errorMassage(
                                 "无效输入，请重新输入：",
                                 "無效輸入，请重新輸入：",
@@ -327,8 +353,7 @@ public class CanFactory {
                     Double salary;
                     try {
                         salary = Double.parseDouble(information[1]);
-                    }
-                    catch (Exception err){
+                    } catch (Exception err) {
                         continue;
                     }
 
@@ -347,16 +372,15 @@ public class CanFactory {
 
                 salaryDaoImpl.saveSalary(qualityTestingDepartment);
 
-            }
-            else if(num==2){
+            } else if (selectedOperation == 2) {
                 OutputManager.getInstance().print(
-                        "当前可选的审计员: [1 - "+auditor1.getName()+"]\t[2 - "+auditor2.getName()+"]\t[3 - "+auditor3.getName()+"]\n请输入审计员序号：",
-                        "當前可選的審計員: [1 - "+auditor1.getName()+"]\t[2 - "+auditor2.getName()+"]\t[3 - "+auditor3.getName()+"]\n請輸入審計員序號",
-                        "Available auditors: [1 - "+auditor1.getName()+"]\t[2 - "+auditor2.getName()+"]\t[3 - "+auditor3.getName()+"]\nPlease input the auditor number: "
+                        "当前可选的审计员: [1 - " + auditor1.getName() + "]\t[2 - " + auditor2.getName() + "]\t[3 - " + auditor3.getName() + "]\n请输入审计员序号：",
+                        "當前可選的審計員: [1 - " + auditor1.getName() + "]\t[2 - " + auditor2.getName() + "]\t[3 - " + auditor3.getName() + "]\n請輸入審計員序號",
+                        "Available auditors: [1 - " + auditor1.getName() + "]\t[2 - " + auditor2.getName() + "]\t[3 - " + auditor3.getName() + "]\nPlease input the auditor number: "
                 );
 
                 Integer auditorNum;
-                while((auditorNum=CompanyManagementTest.intputInteger())==-1){
+                while ((auditorNum = CompanyManagementTest.intputInteger()) == -1) {
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -365,17 +389,14 @@ public class CanFactory {
                 }
 
 
-                AuditSalaryTableCommand auditSalaryTableCommand=new AuditSalaryTableCommand();
-                if(auditorNum==1){
+                AuditSalaryTableCommand auditSalaryTableCommand = new AuditSalaryTableCommand();
+                if (auditorNum == 1) {
                     auditSalaryTableCommand.setAuditor(auditor1);
-                }
-                else if(auditorNum==2){
+                } else if (auditorNum == 2) {
                     auditSalaryTableCommand.setAuditor(auditor2);
-                }
-                else if(auditorNum==3){
+                } else if (auditorNum == 3) {
                     auditSalaryTableCommand.setAuditor(auditor3);
-                }
-                else{
+                } else {
                     OutputManager.getInstance().errorMassage(
                             "找不到该审计员",
                             "找不到該審計員",
@@ -388,11 +409,9 @@ public class CanFactory {
 
                 financialDepartment.giveCommand();
 
-            }
-            else if(num==3){
+            } else if (selectedOperation == 3) {
                 financialDepartment.viewAuditHistoryList();
-            }
-            else if(num==4){
+            } else if (selectedOperation == 4) {
                 OutputManager.getInstance().print(
                         "当前部门的员工有:",
                         "當前部門的員工有:",
@@ -400,11 +419,11 @@ public class CanFactory {
                 );
 
                 List<BaseEmployee> qualityTestingEmployees = qualityTestingDepartment.getAllEmployees();
-                for(BaseEmployee employee: qualityTestingEmployees){
+                for (BaseEmployee employee : qualityTestingEmployees) {
                     OutputManager.getInstance().print(
-                            employee.getName()+" ",
-                            employee.getName()+" ",
-                            employee.getName()+" "
+                            employee.getName() + " ",
+                            employee.getName() + " ",
+                            employee.getName() + " "
                     );
                 }
 
@@ -416,7 +435,7 @@ public class CanFactory {
 
 
                 String name = OutputManager.getInstance().input();
-                if(qualityTestingDepartment.getEmployee(name) == null){
+                if (qualityTestingDepartment.getEmployee(name) == null) {
                     OutputManager.getInstance().errorMassage(
                             "输入有误，该员工不存在",
                             "輸入有誤，該員工不存在",
@@ -444,7 +463,7 @@ public class CanFactory {
                 );
 
                 Integer days;
-                while((days=CompanyManagementTest.intputInteger())==-1){
+                while ((days = CompanyManagementTest.intputInteger()) == -1) {
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -453,7 +472,7 @@ public class CanFactory {
                 }
 
 
-                if(days < 1){
+                if (days < 1) {
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -466,8 +485,7 @@ public class CanFactory {
 
                 requestee.handleRequest(request);
 
-            }
-            else if(num==5){
+            } else if (selectedOperation == 5) {
                 OutputManager.getInstance().print(
                         "当前QualityTesting部门的员工有：",
                         "當前QualityTesting部門的員工有：",
@@ -475,11 +493,11 @@ public class CanFactory {
                 );
 
                 List<BaseEmployee> qualityTestingEmployees = qualityTestingDepartment.getAllEmployees();
-                for(BaseEmployee employee: qualityTestingEmployees){
+                for (BaseEmployee employee : qualityTestingEmployees) {
                     OutputManager.getInstance().print(
-                            employee.getName()+" ",
-                            employee.getName()+" ",
-                            employee.getName()+" "
+                            employee.getName() + " ",
+                            employee.getName() + " ",
+                            employee.getName() + " "
                     );
                 }
 
@@ -490,11 +508,11 @@ public class CanFactory {
                 );
 
                 List<BaseEmployee> financialEmployees = financialDepartment.getAllEmployees();
-                for(BaseEmployee employee: financialEmployees){
+                for (BaseEmployee employee : financialEmployees) {
                     OutputManager.getInstance().print(
-                            employee.getName()+" ",
-                            employee.getName()+" ",
-                            employee.getName()+" "
+                            employee.getName() + " ",
+                            employee.getName() + " ",
+                            employee.getName() + " "
                     );
                 }
 
@@ -506,10 +524,10 @@ public class CanFactory {
 
 
                 String name = OutputManager.getInstance().input();
-                if(financialDepartment.getEmployee(name) != null){
+                if (financialDepartment.getEmployee(name) != null) {
                     BaseEmployee employee = financialDepartment.getEmployee(name);
 //                    System.out.println("1");
-                    if(employee instanceof Permission){
+                    if (employee instanceof Permission) {
                         OutputManager.getInstance().printPattern(
                                 "# 使用了标记接口模式",
                                 "# 使用了標記接口模式",
@@ -521,17 +539,16 @@ public class CanFactory {
                                 "財務處員工" + employee.getName() + "訪問了財務系統。",
                                 "Employee of the financial department " + employee.getName() + "accessed the financial system.");
 
-                    } else{
+                    } else {
                         OutputManager.getInstance().errorMassage(
-                                employee.getName()+ "没有权限访问财务系统，访问已被拒绝",
-                                employee.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
-                                employee.getName()+"The access to financial system is rejected"
+                                employee.getName() + "没有权限访问财务系统，访问已被拒绝",
+                                employee.getName() + "沒有權限訪問財務系統，訪問已被拒絕",
+                                employee.getName() + "The access to financial system is rejected"
                         );
                     }
-                }
-                else if(qualityTestingDepartment.getEmployee(name) != null){
+                } else if (qualityTestingDepartment.getEmployee(name) != null) {
                     BaseEmployee employee = qualityTestingDepartment.getEmployee(name);
-                    if(employee instanceof Permission){
+                    if (employee instanceof Permission) {
                         OutputManager.getInstance().printPattern(
                                 "# 使用了标记接口模式",
                                 "# 使用了標記接口模式",
@@ -542,15 +559,14 @@ public class CanFactory {
                                 "質量測試部門員工" + employee.getName() + "訪問了財務系統。",
                                 "Employee of the quality testing department " + employee.getName() + "accessed the financial system.");
 //                        employee.stealMoney();
-                    } else{
+                    } else {
                         OutputManager.getInstance().errorMassage(
-                                employee.getName()+ "没有权限访问财务系统，访问已被拒绝",
-                                employee.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
-                                employee.getName()+"The access to financial system is rejected"
+                                employee.getName() + "没有权限访问财务系统，访问已被拒绝",
+                                employee.getName() + "沒有權限訪問財務系統，訪問已被拒絕",
+                                employee.getName() + "The access to financial system is rejected"
                         );
                     }
-                }
-                else{
+                } else {
                     OutputManager.getInstance().errorMassage(
                             "输入有误，该员工不存在",
                             "輸入有誤，該員工不存在",
@@ -558,8 +574,7 @@ public class CanFactory {
                     );
                     continue;
                 }
-            }
-            else if(num == 6) {
+            } else if (selectedOperation == 6) {
                 OutputManager.getInstance().print(
                         "请输入序号进行所需要的操作：\n" +
                                 "[1 - 发布公告]\t[2 - 员工订阅公告]\t" +
@@ -576,7 +591,7 @@ public class CanFactory {
 
                 int option;
 
-                while((option=CompanyManagementTest.intputInteger())==-1){
+                while ((option = CompanyManagementTest.intputInteger()) == -1) {
                     OutputManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -584,7 +599,7 @@ public class CanFactory {
                     );
                 }
 
-                if(option == 1) {
+                if (option == 1) {
                     OutputManager.getInstance().print(
                             "请输入要发布的公告：",
                             "請輸入要發布的公告：",
@@ -594,8 +609,7 @@ public class CanFactory {
                     String message = OutputManager.getInstance().input();
                     Announcer.getInstance().addMessage(message);
 
-                }
-                else if(option == 2) {
+                } else if (option == 2) {
 
 
                     OutputManager.getInstance().print(
@@ -605,7 +619,7 @@ public class CanFactory {
                     );
 
                     List<BaseEmployee> qualityTestingEmployees = qualityTestingDepartment.getAllEmployees();
-                    for(BaseEmployee employee: qualityTestingEmployees){
+                    for (BaseEmployee employee : qualityTestingEmployees) {
                         OutputManager.getInstance().print(
                                 employee.getName() + " ",
                                 employee.getName() + " ",
@@ -620,34 +634,29 @@ public class CanFactory {
                     );
 
                     String name = OutputManager.getInstance().input();
-                    if(qualityTestingDepartment.getEmployee(name) == null){
+                    if (qualityTestingDepartment.getEmployee(name) == null) {
                         OutputManager.getInstance().errorMassage(
                                 "输入有误，该员工不存在",
                                 "輸入有誤，該員工不存在",
                                 "Invalid input, the employee doesn't exists."
                         );
                         continue;
-                    }
-                    else {
+                    } else {
                         BaseEmployee employee = qualityTestingDepartment.getEmployee(name);
                         employee.subscribe();
                     }
-                }
-                else if(option == 3){
+                } else if (option == 3) {
                     break;
-                }
-                else {
+                } else {
                     OutputManager.getInstance().errorMassage(
                             "无效的选项输入，请重新输入：",
                             "無效的選項輸入，请重新輸入：",
                             "Invalid option input, please input again:"
                     );
                 }
-            }
-            else if(num==7){
+            } else if (selectedOperation == 7) {
                 break;
-            }
-            else{
+            } else {
                 OutputManager.getInstance().errorMassage(
                         "无效的整数序号输入，请重新输入：",
                         "無效的整數序號輸入，请重新輸入：",
@@ -664,5 +673,214 @@ public class CanFactory {
                 "已退出公司管理系統",
                 "Exit company management system."
         );
+    }
+
+    /**
+     * 30个设计模式测试
+     */
+    public void designPatternTest(){
+        while (true) {
+
+            OutputManager.getInstance().print(
+                    "请输入序号选择要测试的设计模式：",
+                    "請輸入序號選擇要測試的設計模式：",
+                    "Please enter the index to select the design mode to test:"
+            );
+
+            OutputManager.getInstance().print(
+                    "[1 - 抽象工厂模式]\t[2 - 建造者模式]\t[3 - 工厂方法模式]\t[4 - 原型模式]\t[5 - 单例模式]",
+                    "[1 - 抽象工廠模式]\t[2 - 建造者模式]\t[3 - 工廠方法模式]\t[4 - 原型模式]\t[5 - 單例模式]",
+                    "[1 - Abstract Factory]\t[2 - Builder]\t[3 - Factory Method]\t[4 - Prototype]\t[5 - Singleton]"
+            );
+
+            OutputManager.getInstance().print(
+                    "[6 - 转换器模式]\t[7 - 多例模式]\t[8 - 适配器模式]\t[9 - 桥接模式]\t[10 - 组合模式]",
+                    "[6 - 轉換器模式]\t[7 - 多例模式]\t[8 - 轉接器模式]\t[9 - 橋接模式]\t[10 - 組合模式]",
+                    "[6 - Converter]\t[7 - Multiton]\t[8 - Adapter]\t[9 - Bridge]\t[10 - Composite]"
+            );
+
+            OutputManager.getInstance().print(
+                    "[11 - 装饰器模式]\t[12 - 外观模式]\t[13 - 享元模式]\t[14 - 代理模式]\t[15 - 数据访问对象模式]",
+                    "[6 - 裝潢器模式]\t[7 - 外觀模式]\t[8 - 享元模式]\t[9 - 代理模式]\t[10 - 數據訪問對象模式]",
+                    "[11 - Decorator]\t[12 - Facade]\t[13 - Flyweight]\t[14 - Proxy]\t[15 - DAO]"
+            );
+
+            OutputManager.getInstance().print(
+                    "[16 - 脏标记模式]\t[17 - 责任链模式]\t[18 - 命令模式]\t[19 - 解释器模式]\t[20 - 迭代器模式]",
+                    "[16 - 髒標記模式]\t[17 - 責任鏈模式]\t[18 - 命令模式]\t[19 - 解譯器模式]\t[20 - 迭代器模式]",
+                    "[16 - DirtyFlag]\t[17 - Chain of Responsibility]\t[18 - Command]\t[19 - Interpreter]\t[20 - Iterator]"
+            );
+
+            OutputManager.getInstance().print(
+                    "[21 - 中介者模式]\t[22 - 备忘录模式]\t[23 - 观察者模式]\t[24 - 状态模式]\t[25 - 策略模式]",
+                    "[21 - 仲介者模式]\t[22 - 備忘錄模式]\t[23 - 觀察者模式]\t[24 - 狀態模式]\t[25 - 策略模式]",
+                    "[21 - Mediator]\t[22 - Memento]\t[23 - Observer]\t[24 - State]\t[25 - Strategy]"
+            );
+
+            OutputManager.getInstance().print(
+                    "[26 - 模板方法模式]\t[27 - 访问者模式]\t[28 - 黑板模式]\t[29 - 委派模式]\t[30 - 过滤器模式]",
+                    "[26 - 範本方法模式]\t[27 - 訪問者模式]\t[28 - 黑板模式]\t[29 - 委派模式]\t[30 - 篩檢程式模式]",
+                    "[26 - Template]\t[27 - Visitor]\t[28 - BlackBoard]\t[29 - Delegate]\t[30 - Filter]"
+            );
+
+            OutputManager.getInstance().print(
+                    "[31 - 退出]",
+                    "[31 - 退出",
+                    "[31 - Exit"
+            );
+
+
+            int selectedOperation = -1;
+            while ((selectedOperation = this.intputInteger()) == -1 || selectedOperation < 1
+            ||selectedOperation > 31) {
+                OutputManager.getInstance().errorMassage(
+                        "无效输入，请重新输入：",
+                        "無效輸入，请重新輸入：",
+                        "Invalid input, please input again:"
+                );
+            }
+
+            String[] args={"test"};
+
+            if(selectedOperation == 31){
+                break;
+            }
+
+            for(int i = 0 ; i<3;++i){
+                OutputManager.getInstance().printLanguageIrrelevantContent("");
+            }
+
+            OutputManager.getInstance().print(
+                    "------------------开始测试------------------",
+                    "------------------開始測試------------------",
+                    "------------------Start test------------------"
+            );
+
+            switch (selectedOperation){
+                case 1:
+                    ProductDepartment.main(args);
+                    break;
+                case 2:
+                    try {
+                        WrappingDriver.main(args);
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    } catch (InstantiationException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 3:
+                    ProductDepartment.main(args);
+                    break;
+                case 4:
+                    PrototypeTest.main(args);
+                    break;
+                case 5:
+                    OutputManager.main(args);
+                    break;
+                case 6:
+                    try {
+                        WrappingDriver.main(args);
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    } catch (InstantiationException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 7:
+                    MultitonTest.main(args);
+                    break;
+                case 8:
+                    AdapterTest.main(args);
+                    break;
+                case 9:
+                    CanTest.main(args);
+                    break;
+                case 10:
+                    CompositeTest.main(args);
+                case 11:
+                    DecoratorTest.main(args);
+                    break;
+                case 12:
+                    Manufacturing.ProductLine.Pretreatment.Test.FacadeTest.main(args);
+                    break;
+                case 13:
+                    ProductDepartment.main(args);
+                    break;
+                case 14:
+                    BlackBoardTest.main(args);
+                    break;
+                case 15:
+                    try {
+                        FinancialDepartmentTest.main(args);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 16:
+                    // TODO: 尚未添加Auditor
+                    break;
+                case 17:
+                    ChainOfResponsibilityTest.main(args);
+                    break;
+                case 18:
+                    // TODO: 命令模式
+                    break;
+                case 19:
+                    // TODO: 解释器模式
+                    break;
+                case 20:
+                    // TODO: 迭代器模式
+                    break;
+                case 21:
+                    InventoryDriver.main(args);
+                    break;
+                case 22:
+                    // TODO: 备忘录模式
+                    break;
+                case 23:
+                    // TODO: 观察者模式
+                    break;
+                case 24:
+                    // TODO: 状态模式
+                    break;
+                case 25:
+                    SaleTest.main(args);
+                    break;
+                case 26:
+                    //TODO: 模板方法模式
+                    break;
+                case 27:
+                    VisitorTest.main(args);
+                    break;
+                case 28:
+                    BlackBoardTest.main(args);
+                    break;
+                case 29:
+                    TransportDepartmentTest.main(args);
+                    break;
+                case 30:
+                    //TODO: 委派模式
+                    break;
+            }
+
+            OutputManager.getInstance().print(
+                    "------------------结束测试------------------",
+                    "------------------結束測試------------------",
+                    "------------------End test------------------"
+            );
+
+            for(int i = 0 ; i<3;++i){
+                OutputManager.getInstance().printLanguageIrrelevantContent("");
+            }
+        }
     }
 }

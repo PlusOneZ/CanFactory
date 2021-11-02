@@ -1,6 +1,7 @@
 package
         Marketing.Wrapping;
 
+import CanFactory.CanFactory;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.CanEntity.CanInfoController;
 import Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine;
@@ -34,14 +35,12 @@ public class WrappingDriver {
         printMenu();
         //对操作进行选择并且根据对应的操作生成相应的罐头实例,以标识测试;
         int choice;
-        while (true) {
-            Scanner input = new Scanner(System.in);
-            choice = input.nextInt();
-            if (choice < 1 || choice > 4) {
-                OutputManager.getInstance().errorMassage("输入序号非法,请重新输入!", "輸入序號非法,請重新輸入!", "The serial number entered is illegal, please re-enter!");
-            } else {
-                break;
-            }
+        while ((choice = CanFactory.getInstance().intputInteger()) ==-1 ||
+        choice <1 ||choice >4) {
+            OutputManager.getInstance().errorMassage(
+                    "输入序号非法,请重新输入!",
+                    "輸入序號非法,請重新輸入!",
+                    "The serial number entered is illegal, please re-enter!");
         }
 
         Can can = null;

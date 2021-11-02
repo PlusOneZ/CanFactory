@@ -68,9 +68,9 @@ public class InventoryDepartment {
         CanToOrderConverter canToOrderConverter = new CanToOrderConverter();
         CanWareHouse wareHouse = CanWareHouse.getInstance();
         ArrayList<OrderCanInformation> orderCanInformations = canToOrderConverter.getFromCanEntityFunction().apply(wareHouse.getStockCans());
-        OutputManager.getInstance().print("实现转换器模式：完成存储罐头到订单罐头信息的转换.",
-                "實現轉換器模式：完成存儲罐頭到訂單罐頭信息的轉換.",
-                "Realize the converter mode: complete the conversion of stored canned food to order canned food information.");
+        OutputManager.getInstance().print("# 使用转换器模式：完成存储罐头到订单罐头信息的转换.",
+                "# 使用轉換器模式：完成存儲罐頭到訂單罐頭信息的轉換.",
+                "# Using Converter Pattern: complete the conversion of stored canned food to order canned food information.");
         return orderCanInformations;
     }
 
