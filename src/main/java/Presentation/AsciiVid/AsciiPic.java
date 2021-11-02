@@ -70,18 +70,18 @@ public class AsciiPic
     public static void macHelloPic()
     {
         try {
-            AsciiPic.printAsciiPic(ImageIO.read(new File("D:\\TestPic\\testa.png")));
+            AsciiPic.printAsciiPic(ImageIO.read(new File("test.png")));
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
     public static void winHelloPic()
     {
         try {
-            AsciiPic.printColorfulAsciiPic(ImageIO.read(new File("D:\\TestPic\\test.jpg")));
+            AsciiPic.printColorfulAsciiPic(ImageIO.read(new File("test.png")));
         } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
