@@ -1,7 +1,7 @@
 package Manufacturing.Ingredient;
 
 import Presentation.Protocol.MultiLanguageDescription;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 原料的接口，
@@ -25,7 +25,7 @@ public interface Ingredient extends MultiLanguageDescription {
      */
     default void addIngredient(Ingredient i) {
         String className = this.getClass().getTypeName();
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 className + " 不能增加内含物。",
                 className + " 不能增加內含物。",
                 className + " cannot have inner ingredients."

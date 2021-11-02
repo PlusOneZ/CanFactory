@@ -3,7 +3,7 @@ package Management.QualityTesting;
 import Management.HumanResources.BaseDepartment;
 import Management.HumanResources.DepartmentType;
 import Management.QualityTesting.Protocol.Testable;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 管控罐头或原材料（Testable 接口）的质量与安全，有质量检测和安全检测两个方法。
@@ -60,14 +60,14 @@ public class QualityAssuranceDepartment extends BaseDepartment {
     public boolean testQuality(Testable testable) {
 
         if (testable.getQualityTest()) {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     testable.zhCnDescription() + " 通过质量测试。",
                     testable.zhTwDescription() + " 通過質量測試。",
                     testable.enDescription() + " has passed quality test."
             );
             return true;
         } else {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     testable.zhCnDescription() + " 未通过质量测试。",
                     testable.zhTwDescription() + " 未通過質量測試。",
                     testable.enDescription() + " didn't pass safety test."
@@ -86,14 +86,14 @@ public class QualityAssuranceDepartment extends BaseDepartment {
     public boolean testSafety(Testable testable) {
 
         if (testable.getSafetyTest()) {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     testable.zhCnDescription() + " 通过安全测试。",
                     testable.zhTwDescription() + " 通過質量測試。",
                     testable.enDescription() + " has passed quality test."
             );
             return true;
         } else {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     testable.zhCnDescription() + " 未通过安全测试。",
                     testable.zhTwDescription() + " 未通過質量測試。",
                     testable.enDescription() + " didn't pass safety test."

@@ -4,7 +4,7 @@ import Management.HumanResources.DepartmentType;
 import Management.HumanResources.FinancialSystem.ReportAuditHistoryList;
 import Management.HumanResources.FinancialSystem.ReportOriginator;
 import Management.HumanResources.Staff.Auditor;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.Date;
 
@@ -48,7 +48,7 @@ public class AuditSalaryTableCommand extends Command {
      */
     public void setAuditor(Auditor receiver){
         if(receiver==null){
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "审计员不能为空",
                     "審計員不能為空",
                     "The receiver (Auditor) cannot be empty."
@@ -71,7 +71,7 @@ public class AuditSalaryTableCommand extends Command {
             ReportAuditHistoryList.getInstance().add(ReportOriginator.getInstance().saveStateToMemento());
 
 
-            OutputManager.getInstance().printPattern(
+            IOManager.getInstance().printPattern(
                     "# 使用了备忘录模式  该报告审核历史版本加入公司备忘录",
                     "# 使用了備忘錄模式  該報告審核歷史版本加入公司備忘錄",
                     "# Adopted Memento pattern  This report audit history version is added to company memento. "

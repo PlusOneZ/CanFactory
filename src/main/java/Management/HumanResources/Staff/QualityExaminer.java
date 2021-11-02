@@ -1,7 +1,7 @@
 package Management.HumanResources.Staff;
 
 import Management.HumanResources.DepartmentType;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * TODO:此处写QualityExaminer类的描述
@@ -43,7 +43,7 @@ public class QualityExaminer extends Staff{
      * @since 2021-10-17 9:04 下午
      */
     public void doQualityTesting(){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "质检员"+this.getName()+"执行质量检查命令",
                 "質檢員"+this.getName()+"執行質量檢查命令",
                 "Quality examiner"+this.getName()+"executes quality testing command."

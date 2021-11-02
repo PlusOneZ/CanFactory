@@ -5,7 +5,7 @@ import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Promotion.Coupon;
 import Marketing.Promotion.Sale.TwentyPercentOff;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import Mediator.DepartmentMediator;
 import Storage.StockCan;
 import Storage.TransportationCan;
@@ -28,7 +28,7 @@ public class TransportDepartmentTest {
         String customerAddress = "同济大学嘉定校区";
         int count = 10;
         int price = 200;
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "需要运输" + CanName + "到:"+customerAddress + ",数量为:" + count + ",单价为:" + price,
                 "需要運輸" + CanName + "到:"+customerAddress + ",數量为:" + count + ",單價为:" + price,
                 "need to transport" + CanName + "to"+customerAddress + "the count is:" + count + ",the price is:" + price

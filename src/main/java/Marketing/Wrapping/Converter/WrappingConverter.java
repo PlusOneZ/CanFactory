@@ -3,7 +3,6 @@ package Marketing.Wrapping.Converter;
 
 import Manufacturing.CanEntity.Can;
 import Marketing.Wrapping.WrappingCanInfo;
-import Presentation.Protocol.OutputManager;
 
 import java.util.function.Function;
 

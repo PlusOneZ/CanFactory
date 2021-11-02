@@ -3,7 +3,7 @@ package
 
 import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import Storage.InventoryConverter.CanToOrderConverter;
 import Storage.InventoryConverter.OrderToTransportationCanConverter;
 import Mediator.DepartmentMediator;
@@ -68,7 +68,7 @@ public class InventoryDepartment {
         CanToOrderConverter canToOrderConverter = new CanToOrderConverter();
         CanWareHouse wareHouse = CanWareHouse.getInstance();
         ArrayList<OrderCanInformation> orderCanInformations = canToOrderConverter.getFromCanEntityFunction().apply(wareHouse.getStockCans());
-        OutputManager.getInstance().print("# 使用转换器模式：完成存储罐头到订单罐头信息的转换.",
+        IOManager.getInstance().print("# 使用转换器模式：完成存储罐头到订单罐头信息的转换.",
                 "# 使用轉換器模式：完成存儲罐頭到訂單罐頭信息的轉換.",
                 "# Using Converter Pattern: complete the conversion of stored canned food to order canned food information.");
         return orderCanInformations;
@@ -106,17 +106,17 @@ public class InventoryDepartment {
 
             //判断库存是否存在这个罐头或者是否库存达到所需数量;
             if (findInventoryCan.isEmpty()) {
-                OutputManager.getInstance().print("罐头仓库中不含有" + canName,
+                IOManager.getInstance().print("罐头仓库中不含有" + canName,
                         "罐頭倉庫中不含有" + canName,
                         canName + "are not contained in the canned warehouse");
                 return false;
             } else if (findInventoryCan.get(0).getCount() < orderCanInformation.getCount()) {
-                OutputManager.getInstance().print("罐头仓库中" + canName + "数量不足", "罐頭倉庫中" + canName + "數量不足",
+                IOManager.getInstance().print("罐头仓库中" + canName + "数量不足", "罐頭倉庫中" + canName + "數量不足",
                         "The number of " + canName + " in the canning warehouse is insufficient");
                 return false;
             }
         }
-        OutputManager.getInstance().print("罐头仓库的库存可以满足该订单,订单编号为: " + order.getOrderId(),
+        IOManager.getInstance().print("罐头仓库的库存可以满足该订单,订单编号为: " + order.getOrderId(),
                 "罐頭倉庫的庫存可以滿足該訂單, 訂單編號為: " + order.getOrderId(),
                 "The inventory of the can warehouse can satisfy the order, the order number is " + order.getOrderId());
         return true;
@@ -126,7 +126,7 @@ public class InventoryDepartment {
         int existingCount = stockCan.getCount();
         String canName = stockCan.getWrappedCan().getCan().getCanName();
         if (existingCount - count < 0) {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "无法取货" + canName + ",存货量不够!",
                     "無法取貨" + canName + ",存貨量不够",
                     "Unable to pick up " + canName + ", the inventory of products is not enough!"
@@ -135,7 +135,7 @@ public class InventoryDepartment {
         }
         stockCan.setCount(existingCount - count);
         int currentCount = stockCan.getCount();
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "已经在仓库中取出:" + canName + ",目前的数量为: " + currentCount,
                 "已經在倉庫中取出:" + canName + ",目前的數量為: " + currentCount,
                 canName + " have been taken out in the warehouse, the current number is " + currentCount
@@ -168,7 +168,7 @@ public class InventoryDepartment {
                 }
             }
         }
-        OutputManager.getInstance().print("已经取出订单中需要的存储罐头!",
+        IOManager.getInstance().print("已经取出订单中需要的存储罐头!",
                 "已經取出訂單中需要的存儲罐頭!",
                 "The storage cans needed in the order have been taken out!");
         return stockCans;
@@ -188,13 +188,13 @@ public class InventoryDepartment {
         //准备好货物与订单信息;
         OrderToTransportationCanConverter orderToTransportationCanConverter = new OrderToTransportationCanConverter();
         TransportationCan transportationCan = orderToTransportationCanConverter.getFromOrderFunction().apply(order);
-        OutputManager.getInstance().print("实现转换器模式：实现订单信息抽取至运输包裹, 订单编号为: " + order.getOrderId(),
+        IOManager.getInstance().print("实现转换器模式：实现订单信息抽取至运输包裹, 订单编号为: " + order.getOrderId(),
                 "實現轉換器模式：實現訂單信息抽取至運輸包裹, 訂單編號為: " + order.getOrderId(),
                 "Realize the converter mode: Realize the extraction of order information to the shipping package, the order number is " + order.getOrderId());
 
         transportationCan.setStockCans(takeCans(order.getOrderCanInformations()));
 
-        OutputManager.getInstance().print("已经准备好订单信息与货物至运输包裹, 订单编号为: " + order.getOrderId(),
+        IOManager.getInstance().print("已经准备好订单信息与货物至运输包裹, 订单编号为: " + order.getOrderId(),
                 "已經準備好訂單信息與貨物至運輸包裹, 訂單編號為: " + order.getOrderId(),
                 "The order information and the goods to the shipping package have been prepared, the order number is " + order.getOrderId());
         return transportationCan;
@@ -282,7 +282,7 @@ public class InventoryDepartment {
         int curCount = stockCan.getCount();
         stockCan.setCount(count + curCount);
         int countNow = stockCan.getCount();
-        OutputManager.getInstance().print(canName + "的库存数量已经增加,目前的数量为:" + countNow,
+        IOManager.getInstance().print(canName + "的库存数量已经增加,目前的数量为:" + countNow,
                 canName + "的庫存數量已經增加,目前的數量為:" + countNow,
                 "The inventory of " + canName + " has increased, the current number is " + countNow);
     }
@@ -313,7 +313,7 @@ public class InventoryDepartment {
                 }
             }
             if (!flag) {
-                OutputManager.getInstance().print("仓库中不存在" + canName + ",已新增该类罐头, 目前的数量为: " + stockCan.getCount(),
+                IOManager.getInstance().print("仓库中不存在" + canName + ",已新增该类罐头, 目前的数量为: " + stockCan.getCount(),
                         "倉庫中不存在" + canName + ",已新增該類罐頭, 目前的數量為: " + stockCan.getCount(),
                         canName + " do not exist in the warehouse, and this type of canned food has been newly added, the current number is " + stockCan.getCount());
                 wareHouseCans.add(stockCan);
@@ -330,7 +330,7 @@ public class InventoryDepartment {
      */
 
     public void addOrder(Order order) {
-        OutputManager.getInstance().print("将订单编号为:" + order.getOrderId() + "加入库存待办订单队列.",
+        IOManager.getInstance().print("将订单编号为:" + order.getOrderId() + "加入库存待办订单队列.",
                 "將訂單編號為:" + order.getOrderId() + "加入庫存待辦訂單隊列.",
                 "Add the order number: " + order.getOrderId() + " to the inventory pending order queue.");
         unHandledOrders.add(order);

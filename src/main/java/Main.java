@@ -1,13 +1,13 @@
 import CanFactory.CanFactory;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 public class Main {
     public static void main(String[] args) {
 
         // 操作系统选择
-        OutputManager.IOsystem = OutputManager.IOSystem.MAC;
+        IOManager.IOsystem = IOManager.IOSystem.MAC;
 
-        if(OutputManager.IOsystem == OutputManager.IOSystem.MAC){
+        if(IOManager.IOsystem == IOManager.IOSystem.MAC){
             CanFactory factory = CanFactory.getInstance();
             factory.run();
         }

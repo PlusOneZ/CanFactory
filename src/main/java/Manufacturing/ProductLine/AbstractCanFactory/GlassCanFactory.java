@@ -6,7 +6,7 @@ import Manufacturing.CanEntity.ConcreteCan.PeachCan;
 import Manufacturing.CanEntity.Material.GlassMaterial;
 import Manufacturing.CanEntity.Size.BigSize;
 import Manufacturing.CanEntity.Size.SmallSize;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 玻璃罐头工厂
@@ -24,7 +24,7 @@ public class GlassCanFactory extends AbstractCanFactory {
     private static GlassCanFactory glassCanFactory;
 
     private GlassCanFactory(){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用抽象工厂模式",
                 "# 使用抽象工廠模式",
                 "# Using Abstract Factory mode"
@@ -35,7 +35,7 @@ public class GlassCanFactory extends AbstractCanFactory {
         GlassCanFactory.smallPeachCan = null;
         GlassCanFactory.bigPeachCan = null;
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "成功创建玻璃罐头工厂",
                 "成功創建玻璃罐頭工廠",
                 "Successfully created glass can factory"
@@ -70,7 +70,7 @@ public class GlassCanFactory extends AbstractCanFactory {
                 return GlassCanFactory.smallCandiedAppleCan.clone();
         }
 
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "玻璃工厂不能生产该种类的罐头！",
                 "玻璃工廠不能生產該種類的罐頭！",
                 "Glass factory can't produce this kind of cans!"
@@ -99,7 +99,7 @@ public class GlassCanFactory extends AbstractCanFactory {
                 return GlassCanFactory.bigCandiedAppleCan.clone();
         }
 
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "玻璃工厂不能生产该种类的罐头！",
                 "玻璃工廠不能生產該種類的罐頭！",
                 "Glass factory can't produce this kind of cans!"

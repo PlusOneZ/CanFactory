@@ -2,7 +2,7 @@ package Management.HumanResources.DepartmentCommand;
 
 import Management.HumanResources.DepartmentType;
 import Management.HumanResources.Staff.QualityExaminer;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 质量检测部门调用的质量检测
@@ -45,7 +45,7 @@ public class QualityTestingCommand extends Command{
      */
     public void setQualityTester(QualityExaminer receiver){
         if(receiver==null){
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "质检员不能为空",
                     "質檢員不能為空",
                     "The receiver (QualityTester) cannot be empty."
@@ -64,7 +64,7 @@ public class QualityTestingCommand extends Command{
     @Override
     public void executeCommand() {
         if(receiver==null){
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "该质检命令尚未指定质检员，请指定一个",
                     "該質檢命令尚未指定質檢員，請指定一個",
                     "This quality assurance command has no receiver,please set a QualityTester as the receiver."

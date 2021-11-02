@@ -4,7 +4,6 @@ import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
-import Presentation.Protocol.OutputManager;
 
 /**
  * TODO:此处写Fry类的描述

@@ -9,7 +9,7 @@ import Manufacturing.Machine.GeneralMachine.HerringFilterMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FreshLine;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +29,14 @@ public class HerringLine implements FreshLine {
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "******正在对鲱鱼进行预处理********",
                 "******正在對鯡魚進行預處理********",
                 "******Pretreating herring fish********");
         ingredientList = pretreatmentApp.filterTreat(ingredientList);
         pretreatmentApp.disinfect(ingredientList);
         pretreatmentApp.clean(ingredientList);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "*********鲱鱼预处理完成*********",
                 "*********鯡魚預處理完成*********",
                 "*********Herring fish pretreatment completed*********");
@@ -46,14 +46,14 @@ public class HerringLine implements FreshLine {
 
     @Override
     public List<Can> produce(int count,String produceManner) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "*******正在对鲱鱼进行加工*******",
                 "*******正在對鯡魚進行加工*******",
                 "*******Herring fish is being processed*******");
 
         List<Can> product=new ArrayList<>();
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用享元模式生产铁制罐头",
                 "# 使用享元模式生產鐵製罐頭",
                 "# Production of iron cans using Flyweight Pattern"
@@ -66,7 +66,7 @@ public class HerringLine implements FreshLine {
             ironCanProducingMachine.can(can);
             product.add(can);
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "共生产" + count + "个鲱鱼罐头",
                 "共生產" + count + "個鯡魚罐頭",
                 "Totally produced" + count + "herring can!");
@@ -75,7 +75,7 @@ public class HerringLine implements FreshLine {
 
     @Override
     public String getConcreteName() {
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+        return IOManager.getInstance().selectStringForCurrentLanguage(
                 "鲱鱼罐头生产线",
                 "鯡魚罐頭生產線",
                 "Herring Can Product Line"

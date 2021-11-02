@@ -3,7 +3,6 @@ package Management.Assets.Announcement;
 import Management.HumanResources.Staff.Announcer;
 import Management.HumanResources.Staff.Cleaner;
 import Management.HumanResources.Staff.SecurityStaff;
-import Presentation.Protocol.OutputManager;
 
 /**
  * 黑板模式测试类

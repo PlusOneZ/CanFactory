@@ -1,7 +1,7 @@
 package Management.HumanResources.FinancialSystem;
 
 import Management.HumanResources.Staff.Auditor;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.Date;
 
@@ -89,12 +89,12 @@ public class ReportOriginator {
      * @author 陈垲昕
      * @since 2021-10-29 9:37 下午
      */
-    public String toString(OutputManager.Lang lang) {
-        if (lang == OutputManager.Lang.en) {
+    public String toString(IOManager.Lang lang) {
+        if (lang == IOManager.Lang.en) {
             return "[Audit History: auditor " + auditorState.getName() + "'s committed version at " + dateState + " ]";
-        } else if (lang == OutputManager.Lang.zh_CN) {
+        } else if (lang == IOManager.Lang.zh_CN) {
             return "【审计历史：审计员 " + auditorState.getName() + " 于 " + dateState.toString() + " 提交的审计版本】";
-        } else if (lang == OutputManager.Lang.zh_TW) {
+        } else if (lang == IOManager.Lang.zh_TW) {
             return "【審計歷史：審計員 " + auditorState.getName() + " 於 " + dateState.toString() + " 提交的審計版本】";
         } else {
             return "The specific language is not supported.";

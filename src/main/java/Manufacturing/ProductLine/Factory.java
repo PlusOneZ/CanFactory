@@ -6,7 +6,7 @@ import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +60,7 @@ public abstract class Factory {
     public final List<Can> produceCan(String canKind, String canName, int materialCount, String produceManner) {
 
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "**************采购**************",
                 "**************采購**************",
                 "************Purchase************"
@@ -69,16 +69,16 @@ public abstract class Factory {
         //购买原材料
         List<Ingredient> ingredientList = supplier.provide(canName, materialCount);
         if (ingredientList != null) {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "********购买成功,原料如下********",
                     "********購買成功,原料如下********",
                     "Purchase successfully, the raw materials are as follows"
             );
             for (Ingredient ingredient : ingredientList) {
-               OutputManager.getInstance().printLanguageIrrelevantContent(ingredient.showContentsWithWeight());
+               IOManager.getInstance().printLanguageIrrelevantContent(ingredient.showContentsWithWeight());
             }
         } else {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "*************购买失败************",
                     "*************購買失敗************",
                     "*******Failed purchase*******");
@@ -103,7 +103,7 @@ public abstract class Factory {
             int count = (freshLine.preTreat(ingredientList)).size();
             canList = freshLine.produce(count, produceManner);
         } else {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "********没有对应生产线********",
                     "********沒有對應生産線********",
                     "There is no corresponding production line!"
@@ -122,7 +122,7 @@ public abstract class Factory {
             }
             if (QualityAssuranceDepartment.getInstance().testQuality(c)
                 && QualityAssuranceDepartment.getInstance().testSafety(c)) {
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "质检部门抽样检测了这批罐头的第" + i + "个罐头。",
                         "質檢部門抽樣檢測了這批罐頭的第" + i + "個罐頭。",
                         "The quality assurance department sampled No." + i + " can."

@@ -5,7 +5,7 @@ import Marketing.OrderCenterEntity.OrderCenter;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Promotion.Coupon;
 import Marketing.Promotion.Sale.TwentyPercentOff;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.Random;
  */
 public class MediatorPatternTest {
     public static void main(String[] args){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "中介者模式开始。",
                 "中介者模式開始。",
                 "The intermediary model begins."
@@ -44,7 +44,7 @@ public class MediatorPatternTest {
         String customerAddress = "同济大学嘉定校区";
         Date date = new Date();
         OrderCenter.getInstance().createOneOrder(orderCanInformations,coupon,date,customerAddress);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "中介者通知库存部门处理订单。",
                 "中介者通知庫存部門處理訂單。",
                 "The Mediator informs the inventory department to process the order."

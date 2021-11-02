@@ -2,7 +2,7 @@ package Management.HumanResources.Staff;
 
 import Management.HumanResources.BaseEmployee;
 import Management.HumanResources.DepartmentType;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 
@@ -51,7 +51,7 @@ public class Announcer extends Staff{
 
     @Override
     public void addSubscriber(BaseEmployee baseEmployee){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
                 "# Using Proxy mode"
@@ -59,7 +59,7 @@ public class Announcer extends Staff{
 
 
         if(this.readers.contains(baseEmployee)){
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "该员工已订阅公告！",
                     "該員工已訂閱公告！",
                     "This employee has subscribed to the announcement!"
@@ -77,20 +77,20 @@ public class Announcer extends Staff{
      */
     @Override
     public void addMessage(String newMessage) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
                 "# Using Proxy mode"
         );
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用黑板模式",
                 "# 使用黑板模式",
                 "# Using Blackboard mode"
         );
 
         if (this.sendingState){
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "当前正在推送消息！",
                     "當前正在推送消息！",
                     "Currently pushing messages!"
@@ -100,7 +100,7 @@ public class Announcer extends Staff{
         this.sendingState = true;
         this.news.add("["+newMessage+"]");
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "[公告栏]开始推送消息："+newMessage,
                 "[公告欄]開始推送消息："+newMessage,
                 "[Blackboard] Start to push the message:"+newMessage

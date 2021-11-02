@@ -1,7 +1,7 @@
 package Management.HumanResources;
 
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 员工请假的请求
@@ -67,14 +67,14 @@ public class LeaveRequest {
         this.approveStatus = approveStatus;
     }
 
-    public String toString(OutputManager.Lang lang) {
-        if(lang == OutputManager.Lang.en){
+    public String toString(IOManager.Lang lang) {
+        if(lang == IOManager.Lang.en){
             return "[" + requestee.getName() + "]Asked for leave for" + days + "days, because of" + reason +". The approval result is" + approveStatus;
         }
-        else if(lang == OutputManager.Lang.zh_CN){
+        else if(lang == IOManager.Lang.zh_CN){
             return "【" + requestee.getName() + "】请假" + days + "天，原因：" + reason + "，审批结果：" + approveStatus;
         }
-        else if(lang == OutputManager.Lang.zh_TW){
+        else if(lang == IOManager.Lang.zh_TW){
             return "【" + requestee.getName() + "】請假" + days + "天，原因：" + reason + "，審批結果：" + approveStatus;
         }
         else {

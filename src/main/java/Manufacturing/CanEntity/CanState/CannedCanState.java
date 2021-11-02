@@ -1,6 +1,6 @@
 package Manufacturing.CanEntity.CanState;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 正常封罐的罐头
@@ -24,7 +24,7 @@ public class CannedCanState extends CanState{
 
     @Override
     public CanState handleDisinfection() {
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "消毒已封装罐头！",
                 "消毒已封裝罐頭！",
                 "Canned can get disinfected!"
@@ -35,7 +35,7 @@ public class CannedCanState extends CanState{
 
     @Override
     public CanState handleFilling() {
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "尝试装填已封罐罐头！",
                 "嘗試裝填已封罐罐頭！",
                 "Canned can get filled!"
@@ -45,7 +45,7 @@ public class CannedCanState extends CanState{
 
     @Override
     public CanState handleCanning() {
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "重复封罐！",
                 "重複封罐！",
                 "Canning step repeated!"

@@ -7,11 +7,10 @@ import Marketing.Wrapping.Builder.WrappingBuilder;
 import Marketing.Wrapping.Builder.WrappingDirector;
 import Marketing.Wrapping.Converter.WrappingConverter;
 import Marketing.Wrapping.Cover.WrappingCover;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.lang.reflect.Constructor;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 
 /**
@@ -61,7 +60,7 @@ public class WrappingDepartment {
         //开始构建;
         wrappingDirector.construct(wrappingCanInfo, wrappingFactoryInfo, wrappingBackGround, canPrice);
         //得到产品;
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "实现建造者设计模式：完成包装封面信息的填充与组装",
                 "實現建造者設計模式：完成包裝封面信息的填充與組裝",
                 "Realize the builder design mode: complete the filling and assembly of the package cover information"
@@ -96,7 +95,7 @@ public class WrappingDepartment {
     private WrappingCanInfo convertWrappingCanInfo(Can can) {
         WrappingConverter wrappingConverter = new WrappingConverter();
         //实现转换器过程的输出.
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "实现转换器设计模式：将罐头实体信息转化为包装信息",
                 "實現轉換器設計模式：將罐頭實體信息轉化為包裝信息",
                 "Realize the converter design pattern: convert canned entity information into packaging information"
@@ -137,7 +136,7 @@ public class WrappingDepartment {
             Constructor<?> constructor = builder.getConstructor();
             return (WrappingBuilder) constructor.newInstance();
         } catch (Exception e) {
-            OutputManager.getInstance().print("没有相应罐头名称的包装建造器",
+            IOManager.getInstance().print("没有相应罐头名称的包装建造器",
                     "沒有相應罐頭名稱的包裝建造器",
                     "There is no packaging builder with the corresponding can name");
             return null;
@@ -168,48 +167,48 @@ public class WrappingDepartment {
 
         WrappingCover wrappingCover = wrappedCan.getWrappingCover();
 
-        OutputManager.getInstance().print("*************************************", "*************************************", "*************************************");
-        OutputManager.getInstance().print("输出包装封面的罐头实体信息\n",
+        IOManager.getInstance().print("*************************************", "*************************************", "*************************************");
+        IOManager.getInstance().print("输出包装封面的罐头实体信息\n",
                 "輸出包裝封面的罐頭實體信息\n", "Output canned entity information on wrapping cover\n");
-        OutputManager.getInstance().print("罐头名称:" + wrappingCover.getWrappingCanInfo().getCanName(),
+        IOManager.getInstance().print("罐头名称:" + wrappingCover.getWrappingCanInfo().getCanName(),
                 "罐頭名稱:" + wrappingCover.getWrappingCanInfo().getCanName(),
                 "canName:" + wrappingCover.getWrappingCanInfo().getCanName());
-        OutputManager.getInstance().print("罐头尺寸:" + wrappingCover.getWrappingCanInfo().getSize(),
+        IOManager.getInstance().print("罐头尺寸:" + wrappingCover.getWrappingCanInfo().getSize(),
                 "罐頭尺寸:" + wrappingCover.getWrappingCanInfo().getSize(),
                 "canSize:" + wrappingCover.getWrappingCanInfo().getSize());
-        OutputManager.getInstance().print("罐头原料列表:" + wrappingCover.getWrappingCanInfo().getIngredientsContent(),
+        IOManager.getInstance().print("罐头原料列表:" + wrappingCover.getWrappingCanInfo().getIngredientsContent(),
                 "罐頭原料列表:" + wrappingCover.getWrappingCanInfo().getIngredientsContent(),
                 "canIngredients:" + wrappingCover.getWrappingCanInfo().getIngredientsContent());
-        OutputManager.getInstance().print("罐头生产日期:" + wrappingCover.getWrappingCanInfo().getManufactureTime(),
+        IOManager.getInstance().print("罐头生产日期:" + wrappingCover.getWrappingCanInfo().getManufactureTime(),
                 "罐頭生產日期:" + wrappingCover.getWrappingCanInfo().getManufactureTime(),
                 "canManufactureTime:" + wrappingCover.getWrappingCanInfo().getManufactureTime());
-        OutputManager.getInstance().print("罐头保质期:" + wrappingCover.getWrappingCanInfo().getShelfTime(),
+        IOManager.getInstance().print("罐头保质期:" + wrappingCover.getWrappingCanInfo().getShelfTime(),
                 "罐頭保質期:" + wrappingCover.getWrappingCanInfo().getShelfTime(),
                 "canShelfTime:" + wrappingCover.getWrappingCanInfo().getShelfTime());
-        OutputManager.getInstance().print("*************************************", "*************************************", "*************************************");
-        OutputManager.getInstance().print("输出包装封面的罐头工厂信息\n",
+        IOManager.getInstance().print("*************************************", "*************************************", "*************************************");
+        IOManager.getInstance().print("输出包装封面的罐头工厂信息\n",
                 "輸出包裝封面的罐頭工廠信息\n", "Output cannery information on wrapping cover\n");
-        OutputManager.getInstance().print("工厂名称:" + wrappingCover.getWrappingFactoryInfo().getFactoryName(),
+        IOManager.getInstance().print("工厂名称:" + wrappingCover.getWrappingFactoryInfo().getFactoryName(),
                 "工廠名稱:" + wrappingCover.getWrappingFactoryInfo().getFactoryName(),
                 "factoryName:" + wrappingCover.getWrappingFactoryInfo().getFactoryName());
-        OutputManager.getInstance().print("工厂地址:" + wrappingCover.getWrappingFactoryInfo().getFactoryAddress(),
+        IOManager.getInstance().print("工厂地址:" + wrappingCover.getWrappingFactoryInfo().getFactoryAddress(),
                 "工廠地址:" + wrappingCover.getWrappingFactoryInfo().getFactoryAddress(),
                 "factoryAddress:" + wrappingCover.getWrappingFactoryInfo().getFactoryAddress());
-        OutputManager.getInstance().print("工厂联系方式:" + wrappingCover.getWrappingFactoryInfo().getFactoryPhone(),
+        IOManager.getInstance().print("工厂联系方式:" + wrappingCover.getWrappingFactoryInfo().getFactoryPhone(),
                 "工廠聯繫方式:" + wrappingCover.getWrappingFactoryInfo().getFactoryPhone(),
                 "factoryPhone:" + wrappingCover.getWrappingFactoryInfo().getFactoryPhone());
-        OutputManager.getInstance().print("工厂网址:" + wrappingCover.getWrappingFactoryInfo().getFactoryWebsite(),
+        IOManager.getInstance().print("工厂网址:" + wrappingCover.getWrappingFactoryInfo().getFactoryWebsite(),
                 "工廠網址:" + wrappingCover.getWrappingFactoryInfo().getFactoryWebsite(),
                 "factoryWebsite:" + wrappingCover.getWrappingFactoryInfo().getFactoryWebsite());
-        OutputManager.getInstance().print("食用提示:" + wrappingCover.getWrappingFactoryInfo().getFactoryTip(),
+        IOManager.getInstance().print("食用提示:" + wrappingCover.getWrappingFactoryInfo().getFactoryTip(),
                 "食用提示:" + wrappingCover.getWrappingFactoryInfo().getFactoryTip(),
                 "factoryTips:" + wrappingCover.getWrappingFactoryInfo().getFactoryTip());
-        OutputManager.getInstance().print("*************************************", "*************************************", "*************************************");
-        OutputManager.getInstance().print("输出罐头价格信息\n",
+        IOManager.getInstance().print("*************************************", "*************************************", "*************************************");
+        IOManager.getInstance().print("输出罐头价格信息\n",
                 "輸出罐頭價格信息\n", "Output canned price information\n");
-        OutputManager.getInstance().print("罐头价格:" + new DecimalFormat("0.00").format(wrappingCover.getCanPrice()),
+        IOManager.getInstance().print("罐头价格:" + new DecimalFormat("0.00").format(wrappingCover.getCanPrice()),
                 "罐頭價格:" + new DecimalFormat("0.00").format(wrappingCover.getCanPrice()),
                 "canPrice:" + new DecimalFormat("0.00").format(wrappingCover.getCanPrice()));
-        OutputManager.getInstance().print("*************************************", "*************************************", "*************************************");
+        IOManager.getInstance().print("*************************************", "*************************************", "*************************************");
     }
 }

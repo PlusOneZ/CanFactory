@@ -1,6 +1,6 @@
 package Marketing.OrderEnity;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 订单状态：已下单，表示刚下单，未生产，未运输，未交付
@@ -26,7 +26,7 @@ public class OrderedOrderState extends OrderState{
 
     @Override
     public void handleProduction(Order order) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "订单号为"+order.getOrderId()+"的订单已经完成生产！",
                 "訂單號為"+order.getOrderId()+"的訂單已經完成生產！",
                 "The order with order ID"+order.getOrderId()+"has completed production!"
@@ -36,7 +36,7 @@ public class OrderedOrderState extends OrderState{
 
     @Override
     public void handleTransportation(Order order) {
-    OutputManager.getInstance().errorMassage(
+    IOManager.getInstance().errorMassage(
             "订单号为"+order.getOrderId()+"的订单还未完成生产，无法运输！",
             "訂單號為"+order.getOrderId()+"的訂單還未完成生產，無法運輸！",
             "The order with order ID"+order.getOrderId()+"has not completed production,can not be delivered!"
@@ -45,7 +45,7 @@ public class OrderedOrderState extends OrderState{
 
     @Override
     public void handleDelivery(Order order) {
-    OutputManager.getInstance().errorMassage(
+    IOManager.getInstance().errorMassage(
             "订单号为"+order.getOrderId()+"的订单还未生产，无法完成运输！",
             "訂單號為"+order.getOrderId()+"的訂單還未生產，無法完成運輸！",
             "The order with order ID"+order.getOrderId()+"has not completed production,can not complete delivery!"

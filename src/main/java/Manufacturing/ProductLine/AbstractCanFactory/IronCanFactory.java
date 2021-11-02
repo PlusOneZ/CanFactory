@@ -6,7 +6,7 @@ import Manufacturing.CanEntity.ConcreteCan.SalmonCan;
 import Manufacturing.CanEntity.Material.IronMaterial;
 import Manufacturing.CanEntity.Size.BigSize;
 import Manufacturing.CanEntity.Size.SmallSize;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 铁制罐头工厂
@@ -24,7 +24,7 @@ public class IronCanFactory extends AbstractCanFactory {
     private static IronCanFactory ironCanFactory;
 
     private IronCanFactory(){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用抽象工厂模式",
                 "# 使用抽象工廠模式",
                 "# Using Abstract Factory mode"
@@ -35,7 +35,7 @@ public class IronCanFactory extends AbstractCanFactory {
         IronCanFactory.smallSalmonCan = null;
         IronCanFactory.bigSalmonCan = null;
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "成功创建铁制罐头工厂",
                 "成功創建鐵制罐頭工廠",
                 "Successfully created iron can factory"
@@ -70,7 +70,7 @@ public class IronCanFactory extends AbstractCanFactory {
                 return IronCanFactory.smallHerringCan.clone();
         }
 
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "铁制工厂不能生产该种类的罐头！",
                 "鐵制工廠不能生產該種類的罐頭！",
                 "Iron factory can't produce this kind of cans!"
@@ -99,7 +99,7 @@ public class IronCanFactory extends AbstractCanFactory {
             return IronCanFactory.bigHerringCan.clone();
         }
 
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "铁制工厂不能生产该种类的罐头！",
                 "鐵制工廠不能生產該種類的罐頭！",
                 "Iron factory can't produce this kind of cans!"

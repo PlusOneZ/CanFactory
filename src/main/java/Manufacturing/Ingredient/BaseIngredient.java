@@ -1,6 +1,6 @@
 package Manufacturing.Ingredient;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 基础原料，指只有一种内含物的原料
@@ -12,7 +12,7 @@ public abstract class BaseIngredient implements Ingredient {
 
     @Override
     public String showContents() {
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+        return IOManager.getInstance().selectStringForCurrentLanguage(
                 zhCnDescription(),
                 zhTwDescription(),
                 enDescription()
@@ -22,7 +22,7 @@ public abstract class BaseIngredient implements Ingredient {
     @Override
     public String showContentsWithWeight() {
         String weightString = String.format("%.2f", weight);
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+        return IOManager.getInstance().selectStringForCurrentLanguage(
                 zhCnDescription() + "{质量 = " + weightString + '}',
                 zhTwDescription() + "{質量 = " + weightString + '}',
                 enDescription() + "{weight = " + weightString + '}'

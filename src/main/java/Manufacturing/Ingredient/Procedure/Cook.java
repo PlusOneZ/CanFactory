@@ -1,8 +1,7 @@
 package Manufacturing.Ingredient.Procedure;
 
-import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.Ingredient;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 煮（原材料），装饰器
@@ -20,7 +19,7 @@ public class Cook extends Procedure {
                 "煮",
                 "Cooked"
         );
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用了装饰器模式，煮了一个",
                 "# 使用了裝飾器模式，煮了一個",
                 "# Using Decorator Pattern, cook a ",

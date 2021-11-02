@@ -9,13 +9,12 @@ import Marketing.OrderEnity.Order;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Wrapping.WrappedCan;
 import Marketing.Wrapping.WrappingDepartment;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import Storage.InventoryDepartment;
 import Storage.StockCan;
 import Storage.TransportationCan;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 该类为库存管理部门与运输部门沟通的中介者
@@ -67,7 +66,7 @@ public class DepartmentMediator {
      * @date 2021-10-26 0:02
      */
     public void transportCans(TransportationCan transportationCan) {
-        OutputManager.getInstance().print("实现中介者模式: 将运输包裹分配运输部门,通知运输部门运输货物.",
+        IOManager.getInstance().print("实现中介者模式: 将运输包裹分配运输部门,通知运输部门运输货物.",
                 "實現中介者模式: 將運輸包裹分配運輸部門,通知運輸部門運輸貨物.",
                 "Implement the intermediary pattern: Assign the shipping package to the transportation department and notify the transportation department to transport the goods");
         transportDepartment.transportCans(transportationCan);
@@ -82,7 +81,7 @@ public class DepartmentMediator {
      * @date 2021-10-17 21:05
      */
     public void productCans(ArrayList<OrderCanInformation> orderCanInformations) {
-        OutputManager.getInstance().print("实现中介者模式: 将待生产的订单罐头信息分配给生产部门,通知生产部门生产罐头",
+        IOManager.getInstance().print("实现中介者模式: 将待生产的订单罐头信息分配给生产部门,通知生产部门生产罐头",
                 "實現中介者模式: 將待生產的訂單罐頭信息分配給生產部門,通知生產部門生產罐頭",
                 "Implement the intermediary pattern: Distribute the order canned food information to be produced to the production department, and notify the production department to produce cans");
         productDepartment.produceCansByOrderList(orderCanInformations);
@@ -102,7 +101,7 @@ public class DepartmentMediator {
         /**
          * 利用中介者来告诉库存管理部门补充货物的数量;
          */
-        OutputManager.getInstance().print("实现中介者模式: 已经通知库存管理部门对生产好的罐头进行存储",
+        IOManager.getInstance().print("实现中介者模式: 已经通知库存管理部门对生产好的罐头进行存储",
                 "實現中介者模式: 已經通知庫存管理部門對生產好的罐頭進行存儲",
                 "Implement the intermediary pattern: The inventory management department has been notified to store the produced cans.");
         inventoryDepartment.addCanInventory(stockCans);
@@ -123,7 +122,7 @@ public class DepartmentMediator {
         /**
          * 利用中介者来告诉库存管理部门这个未处理的订单;
          */
-        OutputManager.getInstance().print("# 使用中介者模式: 已经通知库存管理部门处理订单,订单编号为 "+order.getOrderId(),
+        IOManager.getInstance().print("# 使用中介者模式: 已经通知库存管理部门处理订单,订单编号为 "+order.getOrderId(),
                 "# 使用中介者模式: 已經通知庫存管理部門處理訂單,訂單編號為 "+order.getOrderId(),
                 "# Using the intermediary pattern: The inventory management department has been notified to process the order, the order number is "+order.getOrderId());
         inventoryDepartment.addOrder(order);
@@ -184,7 +183,7 @@ public class DepartmentMediator {
      * @date 20:27 2021-10-16
      */
     public boolean completeProductionOfOneOrder(Long orderId) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "实现中介者模式: 通知订单中心对订单编号为" + orderId + "的订单修改为取货完成状态",
                 "實現中介者模式: 通知訂單中心對訂單編號為" + orderId + "的訂單修改為取貨完成狀態",
                 "Implement the intermediary pattern: " +
@@ -203,7 +202,7 @@ public class DepartmentMediator {
      * @date 14:51 2021-10-24
      */
     public boolean startToTransportOneOrder(Long orderId) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "实现中介者模式: 通知订单中心对订单编号为" + orderId + "的订单修改为开始运输状态",
                 "實現中介者模式: 通知訂單中心對訂單編號為" + orderId + "的訂單修改為開始運輸狀態",
                 "Implement the intermediary pattern: " +
@@ -221,7 +220,7 @@ public class DepartmentMediator {
      * @date 15:02 2021-10-24
      */
     public boolean deliverOneOrder(Long orderId) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "实现中介者模式: 通知订单中心对订单编号为" + orderId + "的订单修改为交付状态",
                 "實現中介者模式: 通知訂單中心對訂單編號為" + orderId + "的訂單修改為交付狀態",
                 "Implement the intermediary pattern: " +

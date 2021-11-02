@@ -3,13 +3,11 @@ package Manufacturing.ProductLine;
 import Management.HumanResources.BaseDepartment;
 import Management.HumanResources.DepartmentType;
 import Management.HumanResources.Manager.PurchaseManager;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.Console;
 import java.util.Random;
-import java.util.Scanner;
 
 
 /**
@@ -38,7 +36,7 @@ public class PurchaseDepartment extends BaseDepartment {
 
         rawMaterial = generateMaterialList();
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "新建了一个采购部门",
                 "新建了一個采購部門",
                 "A new purchasing department has been created"
@@ -97,7 +95,7 @@ public class PurchaseDepartment extends BaseDepartment {
     public static PurchaseDepartment getInstance() {
         if (instance == null) {
             instance = new PurchaseDepartment();
-            OutputManager.getInstance().printPattern(
+            IOManager.getInstance().printPattern(
                     "# 使用单例模式，创建采购部门",
                     "# 使用單例模式，創建采購部門",
                     "# Using singleton mode, create a purchasing department"
@@ -125,7 +123,7 @@ public class PurchaseDepartment extends BaseDepartment {
      * @since 13:40 2021-10-19
      */
     public boolean update(String type, Integer count, Status state) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "正在更新库存...",
                 "正在更新庫存...",
                 "Updating inventory..."
@@ -155,12 +153,12 @@ public class PurchaseDepartment extends BaseDepartment {
      * @since 13:43 2021-10-19
      */
     public boolean purchaseIngredient(JSONArray material) {
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "采购部门处理需求...",
                 "采購部門處理需求...",
                 "Purchasing department processing requirements..."
         );
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "正在将采购需求交给采购部经理.....",
                 "正在將採購需求交給採購部經理....",
                 "Transferring purchasing requirements to purchasing manager......."
@@ -177,7 +175,7 @@ public class PurchaseDepartment extends BaseDepartment {
      * @since 15:19 2021-10-24
      */
     public JSONArray getIngredient(JSONObject material) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "正在从采购部门获取原料...",
                 "正在從采購部門獲取原料..." ,
                 "Obtaining raw materials from purchasing department..."
@@ -192,7 +190,7 @@ public class PurchaseDepartment extends BaseDepartment {
                 Double weight = r.nextDouble() * 200 + 100;
                 ingredient.put(weight);
             }
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "成功从采购部门获取原材料",
                     "成功從采購部門獲取原材料",
                     "Successfully obtain raw materials from purchasing department"
@@ -213,7 +211,7 @@ public class PurchaseDepartment extends BaseDepartment {
     public static void main(String[] args) {
 
         while(true){
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "请选择想要进行的操作：\na. 输出当前采购部门中所拥有的原材料;\nb. 从采购部门获取原材料;\nc. 向采购部门提出采购需求;\nexit. 退出",
                     "請選擇想要進行的操作：\na. 輸出當前采購部門中所擁有的原材料;\nb. 從采購部門獲取原材料;\nc. 向采購部門提出采購需求;\nexit. 退出",
                     "Please select the operation you want to perform:\n " +
@@ -222,9 +220,9 @@ public class PurchaseDepartment extends BaseDepartment {
                             "c. Propose procurement requirements to the procurement department\n" +
                             "exit. end program"
             );
-            String operationType = OutputManager.getInstance().input();
+            String operationType = IOManager.getInstance().input();
             if(operationType.equals("a")){
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "采购部门所拥有的原材料为:" + PurchaseDepartment.getInstance().rawMaterial,
                         "采購部門所擁有的原材料為:"+ PurchaseDepartment.getInstance().rawMaterial,
                         "The raw materials owned by the purchasing department are:"+ PurchaseDepartment.getInstance().rawMaterial
@@ -236,7 +234,7 @@ public class PurchaseDepartment extends BaseDepartment {
                 apple.put("count", 15);
                 JSONArray weights = PurchaseDepartment.getInstance().getIngredient(apple);
                 if(weights!=null){
-                    OutputManager.getInstance().print(
+                    IOManager.getInstance().print(
                             "每个苹果的重量分别为:" + weights,
                             "每個蘋果的重量分別為:" + weights,
                             "The weight of each candiedapple is:" + weights
@@ -267,13 +265,13 @@ public class PurchaseDepartment extends BaseDepartment {
 
                 //购买
                 if (PurchaseDepartment.getInstance().purchaseIngredient(demand)) {
-                    OutputManager.getInstance().print(
+                    IOManager.getInstance().print(
                             "采购成功!",
                             "採購成功!",
                             "Purchasing Success! "
                     );
                 } else {
-                    OutputManager.getInstance().print(
+                    IOManager.getInstance().print(
                             "采购失败!",
                             "採購失敗!",
                             "Purchasing Failed!"

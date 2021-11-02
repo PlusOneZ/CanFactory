@@ -5,7 +5,7 @@ import Manufacturing.CanEntity.Can;
 import Manufacturing.CanEntity.CanState.CanState;
 import Manufacturing.CanEntity.CanState.CannedCanState;
 import Manufacturing.CanEntity.CanState.FilledCanState;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 实现一个封罐工人类，继承自BaseWorker,该工种的职责是将罐头进行封罐
@@ -31,14 +31,14 @@ public class CannedWorker extends BaseWorker {
             CannedCanState ccs = new CannedCanState();
             CanState gcs = can.getCanState();
             gcs = ccs;
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "工人"+this.WorkerId+"已经成功将罐头封罐！",
                     "工人"+this.WorkerId+"已經成功將罐頭封罐！",
                     "Worker"+this.WorkerId+"has sucessfully canned the can!"
             );
         }
         else{
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "工人"+this.WorkerId+"封罐失败！封罐前的状态错误！",
                     "工人"+this.WorkerId+"封罐失敗！封罐前的狀態錯誤！",
                     "Worker"+this.WorkerId+"Can sealing failed! Status error before sealing!"

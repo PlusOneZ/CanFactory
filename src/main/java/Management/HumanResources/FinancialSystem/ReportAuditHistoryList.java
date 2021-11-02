@@ -1,8 +1,5 @@
 package Management.HumanResources.FinancialSystem;
 
-import Presentation.Protocol.OutputManager;
-
-import java.sql.Array;
 import java.util.ArrayList;
 
 /**

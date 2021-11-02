@@ -2,7 +2,6 @@ package Manufacturing.Ingredient.Procedure.Pretreat;
 
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Ingredient.Procedure.Procedure;
-import Presentation.Protocol.OutputManager;
 
 /**
  * 削皮

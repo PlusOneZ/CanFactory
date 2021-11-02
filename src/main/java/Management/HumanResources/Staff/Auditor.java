@@ -3,7 +3,7 @@ package Management.HumanResources.Staff;
 import Management.HumanResources.DepartmentType;
 import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
 import Management.HumanResources.FinancialSystem.Permission;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 审计部门，归于FinancialDept下
@@ -52,7 +52,7 @@ public class Auditor extends Staff implements Permission {
         //report的脏标记已访问过的话，则无需继续
         if(salaryTable.getVisited()){
 
-            OutputManager.getInstance().printPattern(
+            IOManager.getInstance().printPattern(
                     "# 使用了脏标记模式  员工薪水表已经被审阅过，无需重复审阅",
                     "# 使用了臟標記模式  員工薪水表已經被審閱過，無需重復審閱",
                     "# Adopted Dirty Flag pattern  The employee salary report has been reviewed, extra audition is unnecessary."
@@ -60,7 +60,7 @@ public class Auditor extends Staff implements Permission {
             return false;
         }
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "审计员"+this.getName()+"对报告进行审阅",
                 "審計員"+this.getName()+"對報告進行審閱",
                 "The Auditor"+this.getName()+" has reviewed the finance report. "
@@ -79,7 +79,7 @@ public class Auditor extends Staff implements Permission {
      * @since 2021-10-16 14:00
      */
     public void accessFinancialSystem() {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "会计" + name + "访问了财务系统。",
                 "會計" + name + "訪問了財務系統。",
                 "Accountant " + name + "accessed the financial system.");

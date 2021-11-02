@@ -1,7 +1,6 @@
 package Manufacturing.ProductLine.Line;
 
 import Manufacturing.CanEntity.Can;
-import Manufacturing.Ingredient.ConcreteIngredient.Peach;
 import Manufacturing.Ingredient.ConcreteIngredient.Salmon;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CanMachine;
@@ -10,7 +9,7 @@ import Manufacturing.Machine.GeneralMachine.SalmonFilterMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory;
 import Manufacturing.ProductLine.FreshLine;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +29,14 @@ public class SalmonLine implements FreshLine {
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "*********正在对三文鱼进行预处理*********",
                 "*********正在對三文魚進行預處理*********",
                 "*********Salmon is being pretreated*********");
         ingredientList = pretreatmentApp.filterTreat(ingredientList);
         pretreatmentApp.disinfect(ingredientList);
         pretreatmentApp.clean(ingredientList);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "*************三文鱼预处理完成***********",
                 "*************三文魚預處理完成***********",
                 "*************Salmon pretreatment completed***********");
@@ -47,13 +46,13 @@ public class SalmonLine implements FreshLine {
 
 
     public List<Can> produce(int count,String produceManner) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "**********正在对三文鱼进行加工**********",
                 "**********正在對三文魚進行加工**********",
                 "**********Salmon is being processed**********");
 
         List<Can> product=new ArrayList<>();
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用享元模式生产铁制罐头",
                 "# 使用享元模式生產鐵製罐頭",
                 "# Production of iron cans using Flyweight Pattern"
@@ -67,7 +66,7 @@ public class SalmonLine implements FreshLine {
             product.add(can);
         }
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "共生产" + count + "个三文鱼罐头",
                 "共生產" + count + "個三文魚罐頭",
                 "Totally produced" + count + "salmon can!");
@@ -76,7 +75,7 @@ public class SalmonLine implements FreshLine {
 
     @Override
     public String getConcreteName() {
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+        return IOManager.getInstance().selectStringForCurrentLanguage(
                 "三文鱼罐头生产线",
                 "三文魚罐頭生產線",
                 "Salmon Can Product Line"

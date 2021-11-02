@@ -1,7 +1,7 @@
 package Manufacturing.Machine;
 
 import Manufacturing.Ingredient.Ingredient;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 机器
@@ -12,7 +12,7 @@ public interface IngredientMachine {
     Ingredient treat(Ingredient ingredient);
 
     default Ingredient combine(Ingredient... ingredients) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "CleanMachine 不能结合原材料",
                 "CleanMachine 不能結合原材料",
                 "CleanMachine cannot combine ingredients."

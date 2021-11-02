@@ -3,7 +3,7 @@ package Manufacturing.Machine.CanTreatmentMachine;
 import Manufacturing.CanEntity.Can;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CanMachine;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class GlassCanProducingMachine extends CanMachine {
     }
 
     static public GlassCanProducingMachine getInstance() {
-        OutputManager.getInstance().printPattern(
+        IOManager.getInstance().printPattern(
                 "# 使用多例模式，返回第" + (current+1) + "个玻璃罐头处理机器。",
                 "# 使用多例模式，返回第" + (current+1) + "個玻璃罐頭處理機器。",
                 "# Using Multiton Pattern, return No." + (current+1) + " Iron Can Producing Machine."

@@ -7,7 +7,7 @@ import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.CanTreatmentMachine.GlassCanProducingMachine;
 import Manufacturing.Machine.CombinationPart.CandiedAppleMachine;
 import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class CandiedAppleLine extends AutomatedLine {
 
     @Override
     public String getConcreteName() {
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+        return IOManager.getInstance().selectStringForCurrentLanguage(
                 "糖渍苹果生产线",
                 "糖漬蘋果生產線",
                 "Candied Apple Product Line"
@@ -37,7 +37,7 @@ public class CandiedAppleLine extends AutomatedLine {
 
     public CandiedAppleLine(List<Ingredient> apples, List<Ingredient> sugarList) {
         if (apples.isEmpty() || sugarList.isEmpty()) {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "原料为空，不能生产！",
                     "原料為空，不能生產！",
                     "Empty ingredient list, cannot produce anything!"
@@ -48,7 +48,7 @@ public class CandiedAppleLine extends AutomatedLine {
             this.apples = apples;
             this.sugarList = sugarList;
         } else {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "投料错误，不能生产！",
                     "投料錯誤，不能生產！",
                     "Wrong ingredients, cannot produce anything!"
@@ -61,7 +61,7 @@ public class CandiedAppleLine extends AutomatedLine {
         List<Can> product = new ArrayList<>();
         //预处理（打印语句）
         apples = preTreat(apples);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "*******正在对糖渍苹果进行加工*******",
                 "*******正在對糖渍苹果進行加工*******",
                 "*******Candied apple is being processed*******");
@@ -74,7 +74,7 @@ public class CandiedAppleLine extends AutomatedLine {
                 ironCanProducingMachine.can(can);
                 product.add(can);
             } catch (IndexOutOfBoundsException e) {
-                OutputManager.getInstance().errorMassage(
+                IOManager.getInstance().errorMassage(
                         "原材料不够了！",
                         "原材料不夠了！",
                         "No enough ingredients!"
@@ -82,7 +82,7 @@ public class CandiedAppleLine extends AutomatedLine {
                 break;
             }
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "共生产"+product.size()+"个糖渍苹果罐头",
                  "共生產"+product.size() +"個糖漬蘋果罐頭",
                 "A total of "+product.size()+"canned candied Apple was produced");

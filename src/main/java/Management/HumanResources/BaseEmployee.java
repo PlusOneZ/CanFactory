@@ -2,9 +2,7 @@ package Management.HumanResources;
 
 import Management.Assets.Announcement.AnnouncementManager;
 import Management.HumanResources.Staff.Announcer;
-import Presentation.Protocol.OutputManager;
-
-import java.util.List;
+import Presentation.Protocol.IOManager;
 
 /**
  * 雇员的基类
@@ -87,7 +85,7 @@ public abstract class BaseEmployee implements AnnouncementManager {
      */
     @Override
     public void getMessage(String message){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "员工["+this.name+"]接受消息："+message,
                 "員工["+this.name+"]接受消息："+message,
                 "Staff["+this.name+"] receives the message:"+message

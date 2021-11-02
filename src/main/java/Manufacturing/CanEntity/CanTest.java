@@ -5,7 +5,7 @@ import Manufacturing.CanEntity.Size.BigSize;
 import Manufacturing.Ingredient.ConcreteIngredient.LotusRoot;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Ingredient.Procedure.Cook;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 测试初始化罐头并打印
@@ -15,7 +15,7 @@ import Presentation.Protocol.OutputManager;
  */
 public class CanTest {
     public static void main(String[] args) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用桥接模式",
                 "# 使用橋接模式",
                 "# Using Bridge mode"

@@ -9,7 +9,7 @@ import Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory;
 import Manufacturing.ProductLine.FruitLine;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 import Manufacturing.ProductLine.Producer.PeachProducer;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +29,14 @@ public class PeachLine implements FruitLine {
     @Override
     public List<Ingredient> preTreat(List<Ingredient> ingredientList) {
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "******正在对桃子进行预处理********",
                 "******正在對桃子進行預處理********",
                 "***Treating peaches*****");
         ingredientList = pretreatmentApp.filterTreat(ingredientList);
         pretreatmentApp.peel(ingredientList);
         pretreatmentApp.disinfect(ingredientList);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "********桃子预处理完成*********",
                 "********桃子預處理完成*********",
                 "***Peach pretreatment completed***");
@@ -47,7 +47,7 @@ public class PeachLine implements FruitLine {
 
     @Override
     public List<Can> produce(int count,String produceManner) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "*******正在对黄桃进行加工*******",
                 "*******正在對黃桃進行加工*******",
                 "*******Peaches are being processed*******");
@@ -55,7 +55,7 @@ public class PeachLine implements FruitLine {
         peachProducer.produce();
 
         List<Can> product=new ArrayList<>();
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用享元模式生产玻璃罐头",
                 "# 使用享元模式生產玻璃罐頭",
                 "# Production of glass cans using Flyweight Pattern"
@@ -68,7 +68,7 @@ public class PeachLine implements FruitLine {
             glassCanProducingMachine.can(can);
             product.add(can);
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "共生产" + count + "个黄桃罐头",
                 "共生產" + count + "個黃桃罐頭",
                 "Totally produced" + count + "peach can!");
@@ -77,7 +77,7 @@ public class PeachLine implements FruitLine {
 
     @Override
     public String getConcreteName() {
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+        return IOManager.getInstance().selectStringForCurrentLanguage(
                 "黄桃罐头生产线",
                 "黃桃罐頭生產線",
                 "Peach Can Product Line"

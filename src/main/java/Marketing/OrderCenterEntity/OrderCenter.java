@@ -5,10 +5,8 @@ import Marketing.Container;
 import Marketing.Iterator;
 import Marketing.OrderEnity.*;
 import Marketing.Promotion.Coupon;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
-import javax.print.attribute.standard.MediaSize;
-import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -69,37 +67,37 @@ public class OrderCenter implements Container {
     * @date 15:30 2021-10-15
     */
     public void displayOrderData(){
-        OutputManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
-        OutputManager.getInstance().print(
+        IOManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
+        IOManager.getInstance().print(
                 "订单中心的订单数据：" ,
                 "訂單中心的訂單數據:",
                 "Order data in the order center:"
         );
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "订单中心使用到了单例模式，订单迭代使用了迭代器模式." ,
                 "訂單中心使用到了單例模式，訂單迭代使用了迭代器模式.",
                 "The order center uses the singleton mode, and the order iteration uses the iterator mode."
         );
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "订单数目："+factoryOrderList.size() ,
                 "訂單數目："+factoryOrderList.size(),
                 "Number of orders:"+factoryOrderList.size()
         );
-        OutputManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
+        IOManager.getInstance().printLanguageIrrelevantContent("-----------------------------------------");
         //逐个订单迭代
         for(Iterator iter = this.getIterator(); iter.hasNext();){
             Order od = (Order)iter.next();//获取当前的订单
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单ID："+od.getOrderId(),
                     "訂單ID:"+od.getOrderId(),
                     "Order ID:"+od.getOrderId()
             );
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单状态："+od.getOrderState().getCNStateName(),
                     "訂單狀態:"+od.getOrderState().getTWStateName(),
                     "Order State:"+od.getOrderState().getENStateName()
             );
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单地址："+od.getCustomerAddress(),
                     "訂單地址"+od.getCustomerAddress(),
                     "Order Address:"+od.getCustomerAddress()
@@ -107,7 +105,7 @@ public class OrderCenter implements Container {
             String placingTimeFormat = new String("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat sft = new SimpleDateFormat(placingTimeFormat);
             String placingTime = sft.format(od.getPlacingTime());
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单下单时间"+placingTime,
                     "訂單下單時間"+placingTime,
                     "The placing time of the order:"+placingTime
@@ -115,14 +113,14 @@ public class OrderCenter implements Container {
             String latestDeliveryTimeFormat = new String("yyyy-MM-dd");
             SimpleDateFormat ldtf = new SimpleDateFormat(latestDeliveryTimeFormat);
             String latestDeliveryTime = ldtf.format(od.getLatestDeliveryTime());
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单的最晚交付时间为："+latestDeliveryTime,
                     "訂單的最晚交付時間為："+latestDeliveryTime,
                     "The latest delivery time of the order is:"+latestDeliveryTime
             );
             if(Objects.equals(od.getOrderState().getCNStateName(), "运输中")){
                 String sendingTime = sft.format(od.getSendingTime());
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "订单发货时间:"+sendingTime,
                         "訂單發貨時間:。"+sendingTime,
                         "The delivery time of the order:"+sendingTime
@@ -131,18 +129,18 @@ public class OrderCenter implements Container {
             else if(Objects.equals(od.getOrderState().getCNStateName(), "已交付")){
                 String deliverTime = sft.format(od.getCompletionTime());
                 String sendingTime = sft.format(od.getSendingTime());
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "订单发货时间:"+sendingTime,
                         "訂單發貨時間:。"+sendingTime,
                         "The delivery time of the order:"+sendingTime
                 );
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "订单交付时间:"+deliverTime,
                         "訂單交付時間:。"+deliverTime,
                         "The Completion time of the order:"+deliverTime
                 );
             }
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单明细:",
                     "訂單明細:",
                     "Order Details:"
@@ -151,35 +149,35 @@ public class OrderCenter implements Container {
             for(Iterator it = od.getIterator(); it.hasNext();){
                 //获取当前迭代订单的当前迭代的订单罐头信息
                 OrderCanInformation oci = (OrderCanInformation)it.next();
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "罐头类型:"+oci.getCanName(),
                         "罐頭類型:"+oci.getCanName(),
                         "Type of Can:"+oci.getCanName()
                 );
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "罐头数量："+oci.getCount(),
                         "罐頭數量:"+oci.getCount(),
                         "Can Amount:"+oci.getCount()
                 );
             }
 
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单原始金额："+od.getOrderAmount().getOriginalAmount(),
                     "訂單原始金額："+od.getOrderAmount().getOriginalAmount(),
                     "The Original price of the order:"+od.getOrderAmount().getOriginalAmount()
             );
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单的促销金额："+od.getOrderAmount().getPromotionAmount(),
                     "訂單的促銷金額："+od.getOrderAmount().getPromotionAmount(),
                     "The promotion price of the order:"+od.getOrderAmount().getPromotionAmount()
             );
 
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "订单的运输费用："+od.getOrderAmount().getTransportationAmount(),
                     "訂單的運輸費用"+od.getOrderAmount().getTransportationAmount(),
                     "The Transportation price of the order:"+od.getOrderAmount().getTransportationAmount()
             );
-            OutputManager.getInstance().printLanguageIrrelevantContent("--------------------------------------");
+            IOManager.getInstance().printLanguageIrrelevantContent("--------------------------------------");
         }
     }
 
@@ -222,14 +220,14 @@ public class OrderCenter implements Container {
             if (Objects.equals(order.getOrderState().getCNStateName(), "已下单")) {
                 //修改订单的状态为已生产状态
                 order.changeOrderState(new ProducedOrderState());
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "订单ID为" + orderId + "的订单已成功生产！",
                         "訂單ID為" + orderId + "的訂單已成功生產！",
                         "The order with order ID" + orderId + "has been produced!"
                 );
                 return true;
             } else {
-                OutputManager.getInstance().errorMassage(
+                IOManager.getInstance().errorMassage(
                         "该状态下无法进行生产！",
                         "該狀態下無法進行生产！",
                         "Production is not possible in this state!"
@@ -237,7 +235,7 @@ public class OrderCenter implements Container {
             }
         }
         else {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "订单中心无此订单!",
                     "訂單中心無此訂單!",
                     "There is no such order in the order center!"
@@ -261,14 +259,14 @@ public class OrderCenter implements Container {
                 order.setSendingTime(new Date());
                 //修改订单的状态为运输中状态
                 order.changeOrderState(new TransportingOrderState());
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "订单ID为" + orderId + "的订单已成功开始运输！",
                         "訂單ID為" + orderId + "的訂單已成功開始運輸！",
                         "The order with order ID" + orderId + "has been starting to transport!"
                 );
                 return true;
             } else {
-                OutputManager.getInstance().errorMassage(
+                IOManager.getInstance().errorMassage(
                         "该状态下无法进行运输！",
                         "該狀態下無法進行运输  ！",
                         "Transportation is not possible in this state!"
@@ -276,7 +274,7 @@ public class OrderCenter implements Container {
             }
         }
         else {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "订单中心无此订单!",
                     "訂單中心無此訂單!",
                     "There is no such order in the order center!"
@@ -288,16 +286,16 @@ public class OrderCenter implements Container {
     public void outputReceipt(){
         for(Iterator iter = this.getIterator(); iter.hasNext();) {
             Order od = (Order)iter.next();
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "您的订单小票",
                     "您的訂單小票",
                     "Your order receipt"
             );
             String header = "**********************************************";
-            OutputManager.getInstance().printLanguageIrrelevantContent(header);
-            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
-            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
-            OutputManager.getInstance().print(
+            IOManager.getInstance().printLanguageIrrelevantContent(header);
+            IOManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            IOManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            IOManager.getInstance().print(
                     "*                 订单消费小票                 *",
                     "*                 訂單消費小票                 *",
                     "*           Order consumption receipt        *"
@@ -335,31 +333,31 @@ public class OrderCenter implements Container {
              * *                歡迎下次光臨                   *
              * *             Welcome next time               *
              **/
-            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+            IOManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
 
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "*                  罐头加工厂                  *",
                     "*                  罐頭加工廠                  *",
                     "*                 Can factory                 *"
             );
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "*                   结账单                    *",
                     "*                   結賬單                    *",
                     "*                 Check out                  *"
             );
-            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
-            OutputManager.getInstance().print(
+            IOManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+            IOManager.getInstance().print(
                     "* 订单号：" + od.getOrderId()+"                         *",
                     "* 訂單號："+ od.getOrderId()+"                          *",
                     "* OrderId"+od.getOrderId()+"                        *"
             );
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "* 订单生成时间："+od.getPlacingTime()+"   *",
                     "* 訂單生成時間："+od.getPlacingTime()+"   *",
                     "*Generation time:"+od.getPlacingTime()+"*"
             );
-            OutputManager.getInstance().printLanguageIrrelevantContent("*============================================*");
-            OutputManager.getInstance().print(
+            IOManager.getInstance().printLanguageIrrelevantContent("*============================================*");
+            IOManager.getInstance().print(
                     "* 罐头名称       数量       单价      小计       *",
                     "* 罐頭名稱       數量       單價      小計       *",
                     "* CanName       Num       Price    Total      *"
@@ -398,23 +396,23 @@ public class OrderCenter implements Container {
                 for(int i=0; i<(10-lengFour);i++){
                     numTotalOfStr += " ";
                 }
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "* "+canNameStr+numStr+numPriceOfStr+numTotalOfStr+"*",
                         "* "+canNameStr+numStr+numPriceOfStr+numTotalOfStr+"*",
                         "* "+canNameStr+numStr+numPriceOfStr+numTotalOfStr+"*"
                 );
             }
 
-            OutputManager.getInstance().printLanguageIrrelevantContent("*============================================*");
+            IOManager.getInstance().printLanguageIrrelevantContent("*============================================*");
             if(od.getCouponFlag() == 1) {
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "* 本订单使用八折优惠                            *",
                         "* 本訂單使用八折優惠                            *",
                         "* This order uses a 20% discount              *"
                 );
             }
             else if(od.getCouponFlag() == 0){
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "* 本订单使用满一百减二十优惠                      *",
                         "* 本訂單使用滿一百減二十優惠                      *",
                         "* This order uses 100 minus 20 discounts      *"
@@ -422,14 +420,14 @@ public class OrderCenter implements Container {
             }
             else
             {
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "* 本订单没有使用优惠                             *",
                         "* 本訂單沒有使用優惠                             *",
                         "* No discount is used for this order          *"
                 );
             }
-            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
-            OutputManager.getInstance().print(
+            IOManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+            IOManager.getInstance().print(
                     "* 合计                                        *",
                     "* 合計                                        *",
                     "* Total                                       *"
@@ -440,29 +438,29 @@ public class OrderCenter implements Container {
             for(int i =0; i<(43-totalNum);i++){
                 totalCountOfStr += " ";
             }
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "* "+totalCountOfStr+"*",
                     "* "+totalCountOfStr+"*",
                     "* "+totalCountOfStr+"*"
                     );
-            OutputManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
+            IOManager.getInstance().printLanguageIrrelevantContent("*--------------------------------------------*");
             //订单的最晚交付时间：
             String dateStr = "yyyy-MM-dd";
             SimpleDateFormat sdf = new SimpleDateFormat(dateStr);
             String latestDeliverTime = sdf.format(od.getLatestDeliveryTime());
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "* 订单最晚交付时间："+latestDeliverTime+"                  *",
                     "* 訂單最晚交付時間："+latestDeliverTime+"                  *",
                     "* latest deliver time:"+latestDeliverTime+"             *"
             );
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "*                欢迎下次光临                  *",
                     "*                歡迎下次光臨                  *",
                     "*             Welcome next time              *"
             );
-            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
-            OutputManager.getInstance().printLanguageIrrelevantContent("*                                            *");
-            OutputManager.getInstance().printLanguageIrrelevantContent(header);
+            IOManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            IOManager.getInstance().printLanguageIrrelevantContent("*                                            *");
+            IOManager.getInstance().printLanguageIrrelevantContent(header);
         }
     }
 
@@ -476,14 +474,14 @@ public class OrderCenter implements Container {
                 order.setCompletionTime(new Date());
                 //修改订单的状态为交付状态               
                 order.changeOrderState(new DeliveredOrderState());
-                OutputManager.getInstance().print(
+                IOManager.getInstance().print(
                         "订单ID为" + orderId + "的订单已成功交付！",
                         "訂單ID為" + orderId + "的訂單已成功開始交付！",
                         "The order with order ID" + orderId + "has been delivered!"
                 );
                 return true;
             } else {
-                OutputManager.getInstance().errorMassage(
+                IOManager.getInstance().errorMassage(
                         "该状态下无法进行交付！",
                         "該狀態下無法進行交付  ！",
                         "Delivery is not possible in this state!"
@@ -491,7 +489,7 @@ public class OrderCenter implements Container {
             }
         }
         else {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "订单中心无此订单!",
                     "訂單中心無此訂單!",
                     "There is no such order in the order center!"

@@ -2,8 +2,7 @@ package Management.HumanResources.Manager;
 
 import Management.HumanResources.TeamLeader.Carrier;
 import Marketing.Scheme.TransportScheme;
-import Mediator.DepartmentMediator;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import Storage.TransportationCan;
 
 
@@ -27,12 +26,12 @@ public class TransportManager extends Manager {
      * 运输经理负责运输
      */
     public void transport(TransportationCan transportationCan) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用委派模式，运输部经理安排运输罐头",
                 "# 使用委派模式，運輸部經理安排運輸罐頭",
                 "# using delegate pattern, transport manager begins to dispatch transporting"
         );
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "运输经理已接收运输罐头信息",
                 "運輸經理已接收運輸罐頭信息",
                 "The PurchaseManager has received the transportationCan information"
@@ -54,7 +53,7 @@ public class TransportManager extends Manager {
      * 运输部经历根据需求制定运输计划
      */
     public void designTransportScheme(TransportationCan transportationCan) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "运输经理正在制定运输计划",
                 "運輸經理正在制定運輸計劃",
                 "The TransportManager is making the transport plan"
@@ -70,7 +69,7 @@ public class TransportManager extends Manager {
             transportScheme.setTransportType(TransportScheme.TransportType.Ship);
         }
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "运输经理制定运输计划完毕",
                 "運輸經理制定運輸計劃完畢",
                 "The TransportManager has made the transport plan"
@@ -82,7 +81,7 @@ public class TransportManager extends Manager {
      * 发货时，经理委托承运商运货
      */
     public void delegateTransport(Carrier carrier) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "运输经理委派承运商进行运输",
                 "運輸經理委派承運商進行運輸",
                 "The transport manager delegated the transport to the carrier"
