@@ -21,9 +21,9 @@ public class Cook extends Procedure {
                 "Cooked"
         );
         OutputManager.getInstance().print(
-                "使用了装饰器模式，煮了一个",
-                "使用了裝飾器模式，煮了一個",
-                "Using the decorator mode, cook a ",
+                "# 使用了装饰器模式，煮了一个",
+                "# 使用了裝飾器模式，煮了一個",
+                "# Using Decorator Pattern, cook a ",
                 ingredient.showContents()
         );
     }
