@@ -10,6 +10,7 @@ public interface WindowsLibrary extends Library
     void cls();
     void fullScreen();
     void changeBackground();
+    void recoveryScreen();
     void recoveryBackground();
     void printColorfulChar(int r, int g, int b, char ch);
 }

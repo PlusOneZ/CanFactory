@@ -24,7 +24,7 @@ public class Main {
             factory.run();
         }
         else{
-            //AsciiPic.winHelloPic();
+            AsciiPic.winHelloPic();
             Runnable main = () ->{
                 IOSystem.getInstance().init();
                 CanFactory factory = CanFactory.getInstance();

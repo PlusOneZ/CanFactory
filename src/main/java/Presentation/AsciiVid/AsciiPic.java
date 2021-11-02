@@ -47,6 +47,7 @@ public class AsciiPic
             WindowsLibrary.Console.printColorfulChar(pixelInfo.r, pixelInfo.g, pixelInfo.b, pixelInfo.ch);
         sleep(3000);
         WindowsLibrary.Console.recoveryBackground();
+        WindowsLibrary.Console.recoveryScreen();
     }
 
     private static void printAsciiPic(BufferedImage image) {
