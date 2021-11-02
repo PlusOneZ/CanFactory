@@ -1,14 +1,10 @@
 package Manufacturing.ProductLine.Pretreatment.Test;
 
-import Manufacturing.Ingredient.BaseIngredient;
-import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.ConcreteIngredient.Peach;
-import Manufacturing.Ingredient.ConcreteIngredient.Salmon;
 import Manufacturing.Ingredient.Ingredient;
 import Manufacturing.Machine.GeneralMachine.PeachFilterMachine;
-import Manufacturing.Machine.GeneralMachine.SalmonFilterMachine;
 import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +26,14 @@ public class FacadeTest {
             peach.setWeight(d);
             baseIngredientList.add(peach);
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "获取的原料分别为:",
                 "獲取的原料分別為:",
                 "The raw materials obtained are:");
         for (Ingredient baseIngredient : baseIngredientList) {
-            OutputManager.getInstance().printLanguageIrrelevantContent(baseIngredient.showContentsWithWeight());
+            IOManager.getInstance().printLanguageIrrelevantContent(baseIngredient.showContentsWithWeight());
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "利用外观模式进行三项原料预处理工作:",
                 "利用外觀模式進行三項原料預處理工作：",
                 "Three raw material pretreatment works are carried out by using appearance pattern:");

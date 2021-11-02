@@ -2,7 +2,7 @@ package Management.Assets.ClothingDecoraor;
 
 
 import Management.HumanResources.Staff.Staff;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 员工工作服
@@ -14,7 +14,7 @@ public abstract class StaffWithClothes extends Staff {
 
     public StaffWithClothes(Staff staff) {
         this.obj = staff;
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用装饰器模式",
                 "# 使用裝潢器模式",
                 "# Using Decorator mode"

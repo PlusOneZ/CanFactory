@@ -1,6 +1,6 @@
 package Manufacturing.Ingredient;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public abstract class MixedIngredient implements Ingredient {
     @Override
     public final String showContents() {
         StringBuilder ret = new StringBuilder(
-                OutputManager.getInstance().selectStringForCurrentLanguage(
+                IOManager.getInstance().selectStringForCurrentLanguage(
                         zhCnDescription(),
                         zhTwDescription(),
                         enDescription()
@@ -38,7 +38,7 @@ public abstract class MixedIngredient implements Ingredient {
     @Override
     public final String showContentsWithWeight() {
         StringBuilder ret = new StringBuilder(
-                OutputManager.getInstance().selectStringForCurrentLanguage(
+                IOManager.getInstance().selectStringForCurrentLanguage(
                         zhCnDescription(),
                         zhTwDescription(),
                         enDescription()
@@ -54,7 +54,7 @@ public abstract class MixedIngredient implements Ingredient {
         }
         ret.append(") ");
         String weightString = String.format("%.2f", weight);
-        ret.append(OutputManager.getInstance().selectStringForCurrentLanguage(
+        ret.append(IOManager.getInstance().selectStringForCurrentLanguage(
                 "{质量 = " + weightString + '}',
                 "{質量 = " + weightString + '}',
                 "{weight = " + weightString + '}'

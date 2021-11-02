@@ -2,7 +2,6 @@ package Manufacturing.Ingredient.Procedure;
 
 import Manufacturing.Ingredient.ConcreteIngredient.Beef;
 import Manufacturing.Ingredient.Ingredient;
-import Presentation.Protocol.OutputManager;
 
 /**
  * TODO:此处写Decoct类的描述

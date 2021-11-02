@@ -5,7 +5,7 @@ import Management.HumanResources.Staff.Driver.EngineMan;
 import Management.HumanResources.Staff.Driver.Shipmaster;
 import Marketing.Scheme.TransportScheme;
 import Mediator.DepartmentMediator;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 
 
@@ -24,7 +24,7 @@ public class Carrier extends TeamLeader {
      * @param scheme 运输方案
      */
     public void dispatchTransport(TransportScheme scheme) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "承运商收到运输计划，并开始安排司机运输",
                 "承運商收到運輸計劃，並開始安排司機運輸",
                 "The carrier receives the transport plan and begins to arrange for a driver to transport it"

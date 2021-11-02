@@ -5,7 +5,7 @@ import Manufacturing.Machine.GeneralMachine.CleanMachine;
 import Manufacturing.Machine.GeneralMachine.DisinfectMachine;
 import Manufacturing.Machine.GeneralMachine.PeelMachine;
 import Manufacturing.Machine.IngredientMachine;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +42,12 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:25
      */
     public void disinfect(List<Ingredient> baseIngredientList) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "--------开始消毒---------",
                 "--------開始消毒---------",
                 "-------Disinfect-------");
 //        disinfectProcessor.treat(baseIngredientList);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "正在消毒",
                 "正在消毒",
                 "Disinfecting..."
@@ -55,7 +55,7 @@ public class PretreatmentApp {
         for (int i = 0; i < baseIngredientList.size(); i++) {
             baseIngredientList.set(i, disinfectMachine.treat(baseIngredientList.get(i)));
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "--------消毒完成---------",
                 "--------消毒完成---------",
                 "---Disinfection completed---");
@@ -69,12 +69,12 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:25
      */
     public void peel(List<Ingredient> ingredientList) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "--------开始削皮---------",
                 "--------開始削皮---------",
                 "------Start peeling------");
 //        peelProcessor.treat(baseIngredientList);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "正在削皮",
                 "正在削皮",
                 "Peeling..."
@@ -82,7 +82,7 @@ public class PretreatmentApp {
         for (int i = 0; i < ingredientList.size(); i++) {
             ingredientList.set(i, peelMachine.treat(ingredientList.get(i)));
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "--------完成削皮---------",
                 "--------完成削皮---------",
                 "----Complete the peeling-----");
@@ -97,11 +97,11 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:26
      */
     public List<Ingredient> filterTreat(List<Ingredient> ingredientList) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "#使用过滤器模式",
                 "#使用過濾器模式",
                 "#Use Filter Pattern");
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "--开始筛选符合要求的原料--",
                 "--開始篩選符合要求的原料--",
                 "--Start to screen raw materials that meet the requirements--");
@@ -110,12 +110,12 @@ public class PretreatmentApp {
             if (filterTreatMachine.treat(ingredient) != null)
                 temp.add(ingredient);
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "---筛选完成，结果如下：---",
                 "---篩選完成，結果如下：---",
                 "---The screening is complete, and the results are as follows: ---");
         for (Ingredient ingredient : temp) {
-            OutputManager.getInstance().printLanguageIrrelevantContent(ingredient.showContentsWithWeight());
+            IOManager.getInstance().printLanguageIrrelevantContent(ingredient.showContentsWithWeight());
         }
         return temp;
 
@@ -129,11 +129,11 @@ public class PretreatmentApp {
      * @date 2021-10-12 8:27
      */
     public void clean(List<Ingredient> ingredientList) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "--------开始清理---------",
                 "-----------開始清理---------",
                 "---------Start to clean up-------");
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "正在清洗",
                 "正在清洗",
                 "Cleaning..."
@@ -141,7 +141,7 @@ public class PretreatmentApp {
         for (int i = 0; i < ingredientList.size(); i++) {
             ingredientList.set(i, cleanMachine.treat(ingredientList.get(i)));
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "--------清理完成---------",
                 "--------清理完成---------",
                 "--------Cleaning up---------");

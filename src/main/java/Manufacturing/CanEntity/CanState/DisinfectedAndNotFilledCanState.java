@@ -1,6 +1,6 @@
 package Manufacturing.CanEntity.CanState;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 消毒后，但是没有填充内容的状态。
@@ -25,7 +25,7 @@ public class DisinfectedAndNotFilledCanState extends CanState{
 
     @Override
     public CanState handleDisinfection() {
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "重复消毒！",
                 "重複消毒！",
                 "Disinfection step repeated!"

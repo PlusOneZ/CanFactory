@@ -2,13 +2,12 @@ package Management.HumanResources.FinancialSystem.DataAccessObject;
 
 import Management.HumanResources.BaseDepartment;
 import Management.HumanResources.BaseEmployee;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -97,7 +96,7 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public Double getSumActualSalary(BaseDepartment department){
-        OutputManager.getInstance().printPattern(
+        IOManager.getInstance().printPattern(
                 "# 使用了数据访问对象模式",
                 "# 使用了數據訪問對像模式",
                 "Adopted Data Access Object pattern"
@@ -125,7 +124,7 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void setSalary(BaseDepartment department, String name, Double salary){
-        OutputManager.getInstance().printPattern(
+        IOManager.getInstance().printPattern(
                 "# 使用了数据访问对象模式",
                 "# 使用了數據訪問對像模式",
                 "Adopted Data Access Object pattern"
@@ -142,7 +141,7 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void saveSalary(BaseDepartment department) throws IOException {
-        OutputManager.getInstance().printPattern(
+        IOManager.getInstance().printPattern(
                 "# 使用了数据访问对象模式",
                 "# 使用了數據訪問對像模式",
                 "Adopted Data Access Object pattern"
@@ -178,7 +177,7 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void updateSalary(BaseEmployee employee) throws IOException {
-        OutputManager.getInstance().printPattern(
+        IOManager.getInstance().printPattern(
                 "# 使用了数据访问对象模式",
                 "# 使用了數據訪問對像模式",
                 "Adopted Data Access Object pattern"

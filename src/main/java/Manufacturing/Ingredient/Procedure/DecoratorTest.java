@@ -2,7 +2,7 @@ package Manufacturing.Ingredient.Procedure;
 
 import Manufacturing.Ingredient.ConcreteIngredient.Apple;
 import Manufacturing.Ingredient.Ingredient;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 测试装饰器模式
@@ -18,14 +18,14 @@ public class DecoratorTest {
      * @since 2021-10-24 3:42 PM
      */
     public static void main(String[] args) {
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "---装饰器模式测试---",
                 "---裝飾器模式測試---",
                 "---Decorator Pattern Test---"
         );
         Ingredient apple = new Apple();
 
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "基础原料：",
                 "基礎原料：",
                 "Base ingredient: ",
@@ -34,13 +34,13 @@ public class DecoratorTest {
 
         Ingredient cookedApple = new Cook(apple);
 
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "处理过的原料：",
                 "處理過的原料：",
                 "Processed ingredient: ",
                 cookedApple.showContents()
         );
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "---装饰器模式测试结束---",
                 "---裝飾器模式測試結束---",
                 "---Decorator Pattern Test End---"

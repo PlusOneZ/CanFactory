@@ -5,7 +5,7 @@ import Management.HumanResources.Manager.TestingManager;
 import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
 import Management.QualityTesting.QualityAssuranceDepartment;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * ChainOfResponsibility的测试类
@@ -46,10 +46,10 @@ public class ChainOfResponsibilityTest {
         request.setDays(15);
         request.setReason("要去当山本");
 
-        OutputManager.getInstance().print(
-                request.toString(OutputManager.Lang.zh_CN),
-                request.toString(OutputManager.Lang.zh_TW),
-                request.toString(OutputManager.Lang.en)
+        IOManager.getInstance().print(
+                request.toString(IOManager.Lang.zh_CN),
+                request.toString(IOManager.Lang.zh_TW),
+                request.toString(IOManager.Lang.en)
         );
 
         testingWorker.handleRequest(request);

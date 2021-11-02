@@ -2,7 +2,7 @@ package Management.HumanResources.Staff;
 
 import Manufacturing.ProductLine.PurchaseDepartment;
 import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -47,13 +47,13 @@ public class Purchaser extends Staff implements BasePurchaser {
      */
     @Override
     public boolean purchaseMaterial(JSONObject plan) {
-        OutputManager.getInstance().printPattern(
+        IOManager.getInstance().printPattern(
                 "# 使用观察者模式，对上游工厂原材料进行购买",
                 "# 使用觀察者模式，對上遊工廠原材料進行購買",
                 "# Use the observer pattern to purchase raw materials from upstream factories"
         );
 
-        OutputManager.getInstance().printBrief(
+        IOManager.getInstance().printBrief(
                 "从上游工厂购买原材料",
                 "從上遊工廠購買原材料",
                 "Purchase raw materials from upstream factories"

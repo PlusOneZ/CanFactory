@@ -1,8 +1,7 @@
 package Management.Assets.Announcement;
 
 import Management.HumanResources.BaseEmployee;
-import Management.HumanResources.Staff.Staff;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 公告栏管理
@@ -10,13 +9,13 @@ import Presentation.Protocol.OutputManager;
  */
 public interface AnnouncementManager {
     default void addMessage(String newMessage){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
                 "# Using Proxy mode"
         );
 
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "该员工没有权限发送公告！",
                 "該員工沒有許可權發送公告！",
                 "This employee does not have permission to send announcement!"
@@ -35,13 +34,13 @@ public interface AnnouncementManager {
     void subscribe();
 
     default void addSubscriber(BaseEmployee baseEmployee){
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
                 "# Using Proxy mode"
         );
 
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "该员工没有权限添加订阅者！",
                 "該員工沒有許可權添加訂閱者！",
                 "This employee does not have permission to add subscribers!"

@@ -3,7 +3,7 @@ package Mutex;
 
 import Management.BaseWorker;
 import Manufacturing.Machine.IngredientMachine;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 互斥量模式
@@ -28,13 +28,13 @@ public class MachineMutex implements Mutex {
         if ((machineOwner == null) || (lockedMachine == null)) {
             machineOwner = applicant;
             lockedMachine = machine;
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "申请成功!",
                     "申請成功!",
                     "application approved!");
             return true;
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "此机器正在使用中，无法申请。",
                 "此機器正在使用中，無法申請。",
                 "This machine is in use and cannot be applied for.");

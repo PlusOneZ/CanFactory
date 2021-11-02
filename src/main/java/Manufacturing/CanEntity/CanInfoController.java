@@ -4,7 +4,7 @@ import Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine;
 import Manufacturing.ProductLine.Line.HerringLine;
 import Manufacturing.ProductLine.Line.PeachLine;
 import Manufacturing.ProductLine.Line.SalmonLine;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class CanInfoController {
         this.canKind = new HashMap<>();
         this.enNameMap = new HashMap<>();
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "* 初始化所有罐头信息，所有生产线正在生产样品。",
                 "* 初始化所有罐頭資訊，所有生產線正在生產樣品。",
                 "* Initialize all can information, all production lines are producing samples."
@@ -108,7 +108,7 @@ public class CanInfoController {
         try {
             return registry.get(name).getCanCost() * 1.2;
         } catch (NullPointerException e) {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "不存在" + name + "这种罐头",
                     "不存在" + name + "這種罐頭",
                     "No can named "  + name
@@ -127,7 +127,7 @@ public class CanInfoController {
         try {
             return canKind.get(name);
         } catch (NullPointerException e) {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "不存在" + name + "这种罐头",
                     "不存在" + name + "這種罐頭",
                     "No can named "  + name
@@ -146,7 +146,7 @@ public class CanInfoController {
         try {
             return registry.get(name).getClass();
         } catch (NullPointerException e) {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "不存在" + name + "这种罐头",
                     "不存在" + name + "這種罐頭",
                     "No can named "  + name
@@ -165,7 +165,7 @@ public class CanInfoController {
             }
             return modifiedCanName.toString();
         } catch (NullPointerException e) {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "不存在" + arbitraryName + "这种罐头",
                     "不存在" + arbitraryName + "這種罐頭",
                     "No can named "  + arbitraryName
@@ -184,7 +184,7 @@ public class CanInfoController {
         try {
             return enNameMap.get(arbitraryName);
         } catch (NullPointerException e) {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "不存在" + arbitraryName + "这种罐头",
                     "不存在" + arbitraryName + "這種罐頭",
                     "No can named "  + arbitraryName

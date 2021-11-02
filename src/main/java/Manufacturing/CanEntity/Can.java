@@ -8,9 +8,8 @@ import Manufacturing.CanEntity.Material.Material;
 import Manufacturing.CanEntity.Size.Size;
 import Manufacturing.Ingredient.Ingredient;
 import Presentation.Protocol.MultiLanguageDescription;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -276,7 +275,7 @@ public abstract class Can implements Testable, Cloneable, MultiLanguageDescripti
      * @since 2021-10-12 3:44 PM
      */
     public String getCanName() {
-        switch (OutputManager.getInstance().getLanguage()) {
+        switch (IOManager.getInstance().getLanguage()) {
             case zh_CN:
                 return zhCnName;
             case zh_TW:
@@ -333,7 +332,7 @@ public abstract class Can implements Testable, Cloneable, MultiLanguageDescripti
     @Override
     public String toString() {
         StringBuilder ret = new StringBuilder(getCanName() +
-                OutputManager.getInstance().selectStringForCurrentLanguage(
+                IOManager.getInstance().selectStringForCurrentLanguage(
                         "；配料：",
                         "；配料：",
                         "; Ingredients: "
@@ -361,14 +360,14 @@ public abstract class Can implements Testable, Cloneable, MultiLanguageDescripti
             newCan.shelfTime = new Date();
             newCan.manufactureTime = new Date();
 
-            OutputManager.getInstance().printPattern(
+            IOManager.getInstance().printPattern(
                         "# 使用原型模式： 克隆了一个罐头",
                     "# 使用原型模式：尅隆了一個罐頭",
                     "# Using Prototype Pattern: Clone a can");
 
             return newCan;
         } catch (CloneNotSupportedException e) {
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "罐头克隆失败！",
                     "罐頭尅隆失敗！",
                     "Fail to clone the can!"

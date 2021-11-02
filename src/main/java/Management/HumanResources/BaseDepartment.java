@@ -2,7 +2,7 @@ package Management.HumanResources;
 
 import Management.HumanResources.DepartmentCommand.Command;
 import Management.HumanResources.Manager.Manager;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public abstract class BaseDepartment {
                 this.employees.add(employee);
             }
             else{
-                OutputManager.getInstance().errorMassage(
+                IOManager.getInstance().errorMassage(
                         "错误：" + type + "部门已经有经理，请勿重复添加",
                         "錯誤：" + type + "部門已經有經理，請勿重複添加",
                         "Fatal: The manager of " + type +" department already exists."
@@ -50,7 +50,7 @@ public abstract class BaseDepartment {
         employee.setDepartment(type);
 
         if(needOutputMananger) {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     type + "部门欢迎" + employee.getName() + "的加入!",
                     type + "部門歡迎" + employee.getName() + "的加入!",
                     "Welcome " + employee.getName() + " to the " + type + " department!"
@@ -102,7 +102,7 @@ public abstract class BaseDepartment {
         DepartmentType type=currentCommand.getAccessedDepartment();
 
         if(type!=DepartmentType.All && type!=this.type){
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "该部门无权调用该命令",
                     "該部門無權調用該命令",
                     "This department is not authorized to invoke this command."
@@ -123,7 +123,7 @@ public abstract class BaseDepartment {
             this.departmentCommand.executeCommand();
         }
         else{
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "该部门尚未指定要执行的命令",
                     "該部門尚未指定要執行的命令",
                     "This department hasn't set a concrete command to be executed."

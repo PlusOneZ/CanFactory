@@ -1,6 +1,6 @@
 package Manufacturing.CanEntity.CanState;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 装填了内容，但是没有被封罐的状态
@@ -25,7 +25,7 @@ public class FilledCanState extends CanState{
 
     @Override
     public CanState handleDisinfection() {
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "消毒已填充罐头，请检查流水线！",
                 "消毒已填充罐頭，請檢查流水線！",
                 "Filled (but not canned) can get disinfected, check the product line!"

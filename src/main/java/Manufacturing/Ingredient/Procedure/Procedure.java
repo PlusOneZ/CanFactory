@@ -2,7 +2,7 @@ package Manufacturing.Ingredient.Procedure;
 
 import Manufacturing.Ingredient.BaseIngredient;
 import Manufacturing.Ingredient.Ingredient;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * TODO:此处写Procedure类的描述
@@ -41,7 +41,7 @@ public class Procedure extends BaseIngredient {
 
     @Override
     public String showContents() {
-        return OutputManager.getInstance().selectStringForCurrentLanguage(
+        return IOManager.getInstance().selectStringForCurrentLanguage(
                 super.zhCnDescription(),
                 super.zhTwDescription(),
                 super.enDescription() + " "

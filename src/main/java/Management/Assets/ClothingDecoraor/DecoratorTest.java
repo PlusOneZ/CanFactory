@@ -3,7 +3,6 @@ package Management.Assets.ClothingDecoraor;
 import Management.HumanResources.Staff.Cleaner;
 import Management.HumanResources.Staff.SecurityStaff;
 import Management.HumanResources.Staff.Staff;
-import Presentation.Protocol.OutputManager;
 
 public class DecoratorTest {
     public static void main(String[] args) {

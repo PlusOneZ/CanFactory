@@ -2,7 +2,7 @@ package Management.QuantityTesting;
 
 import Management.HumanResources.Staff.Cleaner;
 import Management.HumanResources.Staff.SecurityStaff;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 
 /**
@@ -16,7 +16,7 @@ public class VisitorTest {
         Cleaner cleaner = new Cleaner("张三", 4000.0);
         SecurityStaff securityStaff = new SecurityStaff("李四", 4500.0);
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "CEO开始观察",
                 "CEO開始觀察",
                 "CEO starts to visit"
@@ -25,7 +25,7 @@ public class VisitorTest {
         cleaner.accept(visitor1);
         securityStaff.accept(visitor1);
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "业务经理开始观察",
                 "業務經理開始觀察",
                 "Service manager starts to visit"

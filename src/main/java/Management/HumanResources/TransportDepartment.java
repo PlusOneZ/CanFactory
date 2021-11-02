@@ -1,7 +1,7 @@
 package Management.HumanResources;
 
 import Management.HumanResources.Manager.TransportManager;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import Storage.TransportationCan;
 
 
@@ -19,7 +19,7 @@ public class TransportDepartment extends BaseDepartment {
 
         this.transportManager = new TransportManager();
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "新建了一个运输部门",
                 "新建了一個運輸部門",
                 "A new transport department has been created"
@@ -41,7 +41,7 @@ public class TransportDepartment extends BaseDepartment {
      *
      */
     public void transportCans(TransportationCan transportationCan) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "运输部正在准备运输罐头......",
                 "運輸部正在準備運輸罐頭......",
                 "The transportDepartment is preparing to transport the cans......"

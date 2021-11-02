@@ -1,26 +1,9 @@
 package Management.HumanResources.test;
 
 import CanFactory.CanFactory;
-import Management.HumanResources.BaseEmployee;
-import Management.HumanResources.DepartmentCommand.AuditSalaryTableCommand;
-import Management.HumanResources.FinancialSystem.FinancialDepartment;
-import Management.HumanResources.FinancialSystem.Permission;
-import Management.HumanResources.LeaveRequest;
-import Management.HumanResources.Manager.TestingManager;
-import Management.HumanResources.Staff.Accountant;
-import Management.HumanResources.Staff.Announcer;
-import Management.HumanResources.Staff.Auditor;
-import Management.HumanResources.Staff.Worker;
-import Management.HumanResources.TeamLeader.TestingTeamLeader;
-import Management.QualityTesting.QualityAssuranceDepartment;
-import Presentation.Protocol.OutputManager;
-import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
+import Presentation.Protocol.IOManager;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,7 +17,7 @@ import java.util.regex.Pattern;
 public class CompanyManagementTest {
 
     public static int intputInteger(){
-        String inputStr = OutputManager.getInstance().input();
+        String inputStr = IOManager.getInstance().input();
         if(inputStr==""){
             return -1;
         }

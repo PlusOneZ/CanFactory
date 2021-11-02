@@ -1,6 +1,6 @@
 package Manufacturing.ProductLine.Upstream;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import org.json.JSONObject;
 
 import java.util.Random;
@@ -38,7 +38,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
      */
     public void purchase() {
         count = 0;
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "成功从上游工厂进行购买",
                 "成功從上遊工廠進行購買",
                 "Successful purchase from upstream factory"
@@ -56,7 +56,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
         JSONObject ingredient = new JSONObject();
         ingredient.put("ingredientType", this.ingredient);
         ingredient.put("count", this.count);
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "当前上游工厂所拥有原材料及其个数为" + ingredient,
                 "當前上遊工廠所擁有原材料及其個數為" + ingredient,
                 "The current raw material and the count owned by the upstream factory is" + ingredient

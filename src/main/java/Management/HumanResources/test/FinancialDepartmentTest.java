@@ -10,7 +10,7 @@ import Management.HumanResources.Staff.Auditor;
 import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
 import Management.QualityTesting.QualityAssuranceDepartment;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 import java.io.IOException;
 
@@ -44,7 +44,7 @@ public class FinancialDepartmentTest {
         if(auditor1 instanceof Permission){
             financialDepartment.register(auditor1,true);
         } else{
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "没有权限访问财务系统，访问已被拒绝",
                     "沒有權限訪問財務系統，訪問已被拒絕",
                     "The access to financial system is rejected"
@@ -57,7 +57,7 @@ public class FinancialDepartmentTest {
         if(accountant instanceof Permission) {
                 accountant.accessFinancialSystem();
         } else {
-                OutputManager.getInstance().errorMassage(
+                IOManager.getInstance().errorMassage(
                         accountant.getName()+ "没有权限访问财务系统，访问已被拒绝",
                         accountant.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
                         accountant.getName()+"The access to financial system is rejected"
@@ -66,7 +66,7 @@ public class FinancialDepartmentTest {
         if(auditor2 instanceof Permission){
             financialDepartment.register(auditor2,true);
         } else{
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     "没有权限访问财务系统，访问已被拒绝",
                     "沒有權限訪問財務系統，訪問已被拒絕",
                     "The access to financial system is rejected"
@@ -89,7 +89,7 @@ public class FinancialDepartmentTest {
         if(testingWorker instanceof Permission){
             testingWorker.stealMoney();
         } else{
-            OutputManager.getInstance().errorMassage(
+            IOManager.getInstance().errorMassage(
                     testingWorker.getName()+ "没有权限访问财务系统，访问已被拒绝",
                     testingWorker.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
                     testingWorker.getName()+"The access to financial system is rejected"

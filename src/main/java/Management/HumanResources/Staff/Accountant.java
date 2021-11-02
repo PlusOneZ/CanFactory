@@ -3,7 +3,7 @@ package Management.HumanResources.Staff;
 import Management.HumanResources.DepartmentType;
 import Management.HumanResources.FinancialSystem.Permission;
 import Management.HumanResources.LeaveRequest;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 会计类
@@ -34,7 +34,7 @@ public class Accountant extends Staff implements Permission {
      * @since 2021-10-16 14:00
      */
     public void accessFinancialSystem() {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "财务处员工" + name + "访问了财务系统。",
                 "財務處員工" + name + "訪問了財務系統。",
                 "Employee of the financial department " + name + "accessed the financial system.");

@@ -9,7 +9,7 @@ import java.util.*;
  *
  * <b>实现了单例模式</b>
  */
-public class OutputManager {
+public class IOManager {
 
     public enum IOSystem{
         MAC,WIN
@@ -20,7 +20,7 @@ public class OutputManager {
     /**
      * <b>私有构造函数</b>
      */
-    private OutputManager() {
+    private IOManager() {
         delay = 300;
     }
 
@@ -28,11 +28,11 @@ public class OutputManager {
      * <b>单例获取函数</b>
      * @return 全局唯一的 OutputManager
      */
-    public static OutputManager getInstance() {
+    public static IOManager getInstance() {
         return instance;
     }
 
-    static private final OutputManager instance;
+    static private final IOManager instance;
 
     /**
      * 语言类型枚举器，支持 简体中文，台湾繁体中文，英文。
@@ -267,13 +267,13 @@ public class OutputManager {
     }
 
     static {
-        instance = new OutputManager();
+        instance = new IOManager();
         instance.run();
         IOsystem = IOSystem.MAC;
     }
 
     public static void main(String[] args) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用单例模式: 直接使用了单例输入/输出管理者",
                 "# 使用單例模式: 直接使用了單例輸入/輸出管理者",
                 "# Using Singleton Pattern: directly use the singleton input/output manager"

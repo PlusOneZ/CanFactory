@@ -1,6 +1,6 @@
 package Manufacturing.CanEntity.CanState;
 
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 未消毒状态
@@ -32,7 +32,7 @@ public class NotDisinfectedCanState extends CanState {
 
     @Override
     public CanState handleFilling() {
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "尝试给未消毒罐头填充内容！",
                 "嘗試給未消毒罐頭填充原料！",
                 "Trying to fill a not-disinfected can!"
@@ -42,7 +42,7 @@ public class NotDisinfectedCanState extends CanState {
 
     @Override
     public CanState handleCanning() {
-        OutputManager.getInstance().errorMassage(
+        IOManager.getInstance().errorMassage(
                 "尝试封罐未消毒罐头！",
                 "嘗試封罐未消毒罐頭！",
                 "Trying to can a not-disinfected can!"

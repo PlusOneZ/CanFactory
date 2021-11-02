@@ -7,13 +7,12 @@ import Manufacturing.ProductLine.*;
 import Marketing.OrderEnity.OrderCanInformation;
 import Marketing.Wrapping.WrappedCan;
 import Mediator.DepartmentMediator;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import Storage.StockCan;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 
 /**
@@ -54,7 +53,7 @@ public class ProductDepartment {
         if (factory != null) {
             productList = factory.produceCan(canKind, canName, materialCount, produceManner);
         } else {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "莫得工厂",
                     "莫得工廠",
                     "No Factory");
@@ -78,13 +77,13 @@ public class ProductDepartment {
         if (canList.isEmpty()){
             return null;
         }
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "实现中介者模式: 调用包装部门对" + canList.get(0).getCanName() + "进行封面包装",
                 "實現中介者模式: 調用包裝部門對" + canList.get(0).getCanName() + "進行封麵包裝",
                 "Implement the intermediary pattern: Call the packaging department to cover " + canList.get(0).getCanName()
         );
         wrappedCan = DepartmentMediator.getInstance().wrapCan(canList.get(0));
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "包装完成",
                 "包裝完成",
                 "Packaging is complete"
@@ -140,7 +139,7 @@ public class ProductDepartment {
 
         List<List<Can>> productList = new ArrayList<>();
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "#使用抽象工厂模式和工厂模式创建生产工厂、生产线来进行生产",
                 "#使用抽象工廠模式和工廠模式創建生產工廠、生產線來進行生產",
                 "#Use abstract factory pattern and factory pattern to create production factories and production lines for production");
@@ -150,20 +149,20 @@ public class ProductDepartment {
             productList.add(factory.produceCan("fresh", "herring", 6, "fine"));
             productList.add(factory.produceCan("fresh", "salmon", 6, "fine"));
         } else {
-            OutputManager.getInstance().print(
+            IOManager.getInstance().print(
                     "莫得工厂",
                     "莫得工廠",
                     "No Factory");
         }
 
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "#迭代器模式和享元模式测试",
                 "#叠代器模式和享元模式測試",
                 "#Iterator Pattern and Flyweight Pattern test");
         //迭代器模式、享元模式测试，打印已有生产线，虽然生产两次salmon罐头，生产线只用一条
         Iterator i = factory.iterator();
         while (i.hasNext()) {
-         OutputManager.getInstance().printLanguageIrrelevantContent(((ProductLine) i.next()).getConcreteName());
+         IOManager.getInstance().printLanguageIrrelevantContent(((ProductLine) i.next()).getConcreteName());
         }
     }
 }

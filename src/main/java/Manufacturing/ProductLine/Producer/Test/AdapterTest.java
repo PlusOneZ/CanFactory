@@ -1,7 +1,7 @@
 package Manufacturing.ProductLine.Producer.Test;
 
 import Manufacturing.ProductLine.Producer.AppleProducer;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 
 /**
  * 适配器模式测试类
@@ -11,7 +11,7 @@ import Presentation.Protocol.OutputManager;
  */
 public class AdapterTest {
     public static void main(String[] args) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "#利用适配器模式适配不同生产方式:",
                 "#利用適配器模式適配不同生產方式：",
                 "#Use adapter pattern to adapt to different production manners:");

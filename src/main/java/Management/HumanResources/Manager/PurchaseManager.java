@@ -3,7 +3,7 @@ package Management.HumanResources.Manager;
 
 import Management.HumanResources.TeamLeader.PurchaseAgent;
 import Marketing.Scheme.PurchaseScheme;
-import Presentation.Protocol.OutputManager;
+import Presentation.Protocol.IOManager;
 import org.json.JSONArray;
 
 /**
@@ -33,7 +33,7 @@ public class PurchaseManager extends Manager {
      * 设计采购方案
      */
     public void designPurchaseScheme(JSONArray demand) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "采购部经理制定采购计划。",
                 "採購部經理制定採購計劃。",
                 "Purchasing Manager designs the purchase scheme."
@@ -52,7 +52,7 @@ public class PurchaseManager extends Manager {
      * @return 实际购买量
      */
     public boolean delegatePurchase(PurchaseAgent agent) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "正在将采购计划转交给采购负责人.....",
                 "正在將採購計劃轉交給採購部長.....",
                 "Transferring purchasing scheme to purchaseAgent...."
@@ -67,12 +67,12 @@ public class PurchaseManager extends Manager {
      * @return 实际购买量
      */
     public boolean purchase(JSONArray demand) {
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "# 使用委派模式，采购部经理安排采购",
                 "# 使用委派模式，採購部經理安排採購",
                 "# using delegate pattern, purchase manager begins to dispatch purchasing"
         );
-        OutputManager.getInstance().print(
+        IOManager.getInstance().print(
                 "采购部经理收到采购需求。",
                 "採購部經理收到採購需求。",
                 "Purchasing Manager receives the purchase demand."
