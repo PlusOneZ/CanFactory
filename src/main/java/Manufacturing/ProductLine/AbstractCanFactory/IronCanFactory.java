@@ -1,9 +1,7 @@
 package Manufacturing.ProductLine.AbstractCanFactory;
 
 import Manufacturing.CanEntity.*;
-import Manufacturing.CanEntity.ConcreteCan.CandiedAppleCan;
 import Manufacturing.CanEntity.ConcreteCan.HerringCan;
-import Manufacturing.CanEntity.ConcreteCan.PeachCan;
 import Manufacturing.CanEntity.ConcreteCan.SalmonCan;
 import Manufacturing.CanEntity.Material.IronMaterial;
 import Manufacturing.CanEntity.Size.BigSize;
@@ -12,7 +10,7 @@ import Presentation.Protocol.OutputManager;
 
 /**
  * 铁制罐头工厂
- * 享元模式、抽象工厂模式、单例模式
+ * 原型模式、抽象工厂模式、单例模式
  * @author 汪明杰
  */
 public class IronCanFactory extends AbstractCanFactory {
@@ -63,13 +61,13 @@ public class IronCanFactory extends AbstractCanFactory {
             if (IronCanFactory.smallSalmonCan == null){
                 IronCanFactory.smallSalmonCan= new SalmonCan(SmallSize.getInstance(), IronMaterial.getInstance());
             }
-                return IronCanFactory.smallSalmonCan.Clone();
+                return IronCanFactory.smallSalmonCan.clone();
         }
         else if (type.equalsIgnoreCase("Herring")){
             if (IronCanFactory.smallHerringCan == null){
                 IronCanFactory.smallHerringCan= new HerringCan(SmallSize.getInstance(), IronMaterial.getInstance());
             }
-                return IronCanFactory.smallHerringCan.Clone();
+                return IronCanFactory.smallHerringCan.clone();
         }
 
         OutputManager.getInstance().errorMassage(
@@ -92,13 +90,13 @@ public class IronCanFactory extends AbstractCanFactory {
             if (IronCanFactory.bigSalmonCan == null){
                 IronCanFactory.bigSalmonCan= new SalmonCan(BigSize.getInstance(), IronMaterial.getInstance());
             }
-            return IronCanFactory.bigSalmonCan.Clone();
+            return IronCanFactory.bigSalmonCan.clone();
         }
         else if (type.equalsIgnoreCase("Herring")){
             if (IronCanFactory.bigHerringCan == null){
                 IronCanFactory.bigHerringCan= new HerringCan(BigSize.getInstance(), IronMaterial.getInstance());
             }
-            return IronCanFactory.bigHerringCan.Clone();
+            return IronCanFactory.bigHerringCan.clone();
         }
 
         OutputManager.getInstance().errorMassage(
