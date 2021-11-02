@@ -28,7 +28,8 @@ public class DecoratorTest {
         OutputManager.getInstance().printBrief(
                 "基础原料：",
                 "基礎原料：",
-                "Base ingredient: "
+                "Base ingredient: ",
+                apple.showContents()
         );
 
         Ingredient cookedApple = new Cook(apple);
