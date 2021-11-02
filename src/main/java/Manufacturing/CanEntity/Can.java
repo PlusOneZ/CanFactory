@@ -31,10 +31,11 @@ import java.util.List;
  * </ol>
  *
  * <b>实现了 State 模式</b> <br>
- * <b>内含了 Composite 模式实体</b> <br>
- * <b>实现了 Decorator 模式</b>
  * <b>实现了 Servant 模式</b>
  * <b>实现了 Template Method 模式</b>
+ * <b>实现了 Prototype 模式</b>
+ * <b>内含了 Composite 模式</b> <br>
+ * <b>内含了 Decorator 模式</b>
  *
  * @author 卓正一
  */
@@ -345,19 +346,25 @@ public abstract class Can implements Testable, Cloneable, MultiLanguageDescripti
 
     /**
      * 克隆一个罐头
-     * 享元模式
+     * 原型模式
      * @return : Can
      * @author 汪明杰
      * @since 2021-10-29 9:02 PM
      */
-    public Can Clone(){
+    @Override
+    public Can clone(){
         try {
-            Can newCan = (Can)this.clone();
+            Can newCan = (Can)super.clone();
 
             // 深拷贝原料
             newCan.ingredients = new ArrayList<>();
             newCan.shelfTime = new Date();
             newCan.manufactureTime = new Date();
+
+            OutputManager.getInstance().printPattern(
+                        "# 使用原型模式： 克隆了一个罐头",
+                    "# 使用原型模式：尅隆了一個罐頭",
+                    "# Using Prototype Pattern: Clone a can");
 
             return newCan;
         } catch (CloneNotSupportedException e) {

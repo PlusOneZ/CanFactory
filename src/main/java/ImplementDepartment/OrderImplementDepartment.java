@@ -24,18 +24,19 @@ import java.util.regex.Pattern;
 
 /**
  * 订单创建业务执行部门，单例模式
+ *
  * @author 梁乔
- * @date 2021/10/30 13:02 
+ * @date 2021/10/30 13:02
  */
 public class OrderImplementDepartment {
 
     private static OrderImplementDepartment orderImplementDepartment = new OrderImplementDepartment();
 
-    private OrderImplementDepartment(){
+    private OrderImplementDepartment() {
 
     }
 
-    public static OrderImplementDepartment getInstance(){
+    public static OrderImplementDepartment getInstance() {
         return orderImplementDepartment;
     }
 
@@ -52,66 +53,62 @@ public class OrderImplementDepartment {
                 "請輸入創建訂單相關信息。",
                 "Please enter the relevant information to create the order."
         );
-        while(true){
+        while (true) {
             ArrayList<OrderCanInformation> orderCanInformationArrayList = new ArrayList<OrderCanInformation>();
-            while(true) {
+            while (true) {
                 String canName;
                 OutputManager.getInstance().print(
-                        "输入需要的订单罐头类型，1表示"+CanInfoController.getInstance().getCanList().get(0)+",2表示"+
-                                CanInfoController.getInstance().getCanList().get(1)+
-                                ",3表示"+ CanInfoController.getInstance().getCanList().get(2)+",4表示"+CanInfoController.getInstance().getCanList().get(3),
-                        "輸入需要的訂單罐頭類型，1表示"+CanInfoController.getInstance().getCanList().get(0)+",2表示"+
-                                CanInfoController.getInstance().getCanList().get(1)+",3表示"+
-                                CanInfoController.getInstance().getCanList().get(2)+"，4表示"+CanInfoController.getInstance().getCanList().get(3),
-                        "Enter the type of canned food you need, 1 means"+CanInfoController.getInstance().getCanList().get(0)+
-                                ", 2 means"+CanInfoController.getInstance().getCanList().get(1)+", 3 means"
-                        +CanInfoController.getInstance().getCanList().get(2)+", 4 means"+CanInfoController.getInstance().getCanList().get(3)
+                        "输入需要的订单罐头类型，1表示" + CanInfoController.getInstance().getCanList().get(0) + ",2表示" +
+                                CanInfoController.getInstance().getCanList().get(1) +
+                                ",3表示" + CanInfoController.getInstance().getCanList().get(2) + ",4表示" + CanInfoController.getInstance().getCanList().get(3),
+                        "輸入需要的訂單罐頭類型，1表示" + CanInfoController.getInstance().getCanList().get(0) + ",2表示" +
+                                CanInfoController.getInstance().getCanList().get(1) + ",3表示" +
+                                CanInfoController.getInstance().getCanList().get(2) + "，4表示" + CanInfoController.getInstance().getCanList().get(3),
+                        "Enter the type of canned food you need, 1 means" + CanInfoController.getInstance().getCanList().get(0) +
+                                ", 2 means" + CanInfoController.getInstance().getCanList().get(1) + ", 3 means"
+                                + CanInfoController.getInstance().getCanList().get(2) + ", 4 means" + CanInfoController.getInstance().getCanList().get(3)
                 );
                 double canPrice;//订单中罐头的单价
-                while(true) {
+                while (true) {
                     Scanner inputScanner = new Scanner(System.in);
                     String canType = inputScanner.next();
                     if (Objects.equals(canType, "1")) {
                         canName = CanInfoController.getInstance().getCanList().get(0);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为"+canName,
-                                "您輸入的該子訂單的罐頭類型為"+canName,
-                                "The canned food type of the sub-order you entered is"+canName
+                                "您输入的该子订单的罐头类型为" + canName,
+                                "您輸入的該子訂單的罐頭類型為" + canName,
+                                "The canned food type of the sub-order you entered is" + canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(0));
                         break;
-                    } else if (Objects.equals(canType,"2")) {
+                    } else if (Objects.equals(canType, "2")) {
                         canName = CanInfoController.getInstance().getCanList().get(1);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为"+canName,
-                                "您輸入的該子訂單的罐頭類型為"+canName,
-                                "The canned food type of this sub-order you entered is"+canName
+                                "您输入的该子订单的罐头类型为" + canName,
+                                "您輸入的該子訂單的罐頭類型為" + canName,
+                                "The canned food type of this sub-order you entered is" + canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(1));
                         break;
-                    }
-                    else if(Objects.equals(canType,"3")){
+                    } else if (Objects.equals(canType, "3")) {
                         canName = CanInfoController.getInstance().getCanList().get(2);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为"+canName,
-                                "您輸入的該子訂單的罐頭類型為"+canName,
-                                "The canned food type of this sub-order you entered is"+canName
+                                "您输入的该子订单的罐头类型为" + canName,
+                                "您輸入的該子訂單的罐頭類型為" + canName,
+                                "The canned food type of this sub-order you entered is" + canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(2));
                         break;
-                    }
-                    else if(Objects.equals(canType,"4")){
+                    } else if (Objects.equals(canType, "4")) {
                         canName = CanInfoController.getInstance().getCanList().get(3);
                         OutputManager.getInstance().print(
-                                "您输入的该子订单的罐头类型为"+canName,
-                                "您輸入的該子訂單的罐頭類型為"+canName,
-                                "The canned food type of this sub-order you entered is"+canName
+                                "您输入的该子订单的罐头类型为" + canName,
+                                "您輸入的該子訂單的罐頭類型為" + canName,
+                                "The canned food type of this sub-order you entered is" + canName
                         );
                         canPrice = CanInfoController.getInstance().getCanPriceByName(CanInfoController.getInstance().getCanList().get(3));
                         break;
-                    }
-                    else
-                     {
+                    } else {
                         OutputManager.getInstance().errorMassage(
                                 "输入了错误的罐头类型！请重新输入！",
                                 "輸入了錯誤的罐頭類型！請重新輸入！",
@@ -127,11 +124,11 @@ public class OrderImplementDepartment {
                 String canCount;
                 Integer canCountOfInt;
                 Scanner scanner = new Scanner(System.in);
-                while(true) {
+                while (true) {
                     //获取对应的价格
-                    while(true) {
+                    while (true) {
                         canCount = scanner.next();
-                        if(canCount.length()>=6){
+                        if (canCount.length() >= 6) {
                             OutputManager.getInstance().errorMassage(
                                     "您输入的数字过大！请重新输入！",
                                     "您輸入的數字過大！請重新輸入！",
@@ -142,7 +139,7 @@ public class OrderImplementDepartment {
                         //使用正则表达式判断字符串内是否是数字
                         Pattern pattern = Pattern.compile("[0-9]*");
                         Matcher isNum = pattern.matcher(canCount);
-                        if(!isNum.matches()){
+                        if (!isNum.matches()) {
                             OutputManager.getInstance().errorMassage(
                                     "您输入了错误的字符！请输入数字！",
                                     "您輸入了錯誤的字符！ 請輸入號碼！",
@@ -153,7 +150,7 @@ public class OrderImplementDepartment {
                         break;
                     }
                     canCountOfInt = Integer.parseInt(canCount);
-                    if(canCountOfInt <= 0){
+                    if (canCountOfInt <= 0) {
                         OutputManager.getInstance().errorMassage(
                                 "您输入了错误的罐头数量！请重新输入！",
                                 "您輸入了錯誤的罐頭數量！請重新輸入！",
@@ -163,14 +160,14 @@ public class OrderImplementDepartment {
                     }
                     break;
                 }
-                OrderCanInformation orderCanInformation = new OrderCanInformation(canName, canCountOfInt,canPrice);
+                OrderCanInformation orderCanInformation = new OrderCanInformation(canName, canCountOfInt, canPrice);
                 orderCanInformationArrayList.add(orderCanInformation);
                 //加入一个新的订单罐头信息
                 boolean loopFlag = false;
-                while (true){
+                while (true) {
                     OutputManager.getInstance().print(
                             "是否继续加入子订单？y表示是，n表示否：",
-                            "是否繼續加入子訂單？ y表示是，n表示否：",
+                            "是否繼續加入子訂單？y表示是，n表示否：",
                             "Do you want to continue to add sub-orders? y means yes, n means no:"
                     );
                     String inputChr = scanner.next();
@@ -192,13 +189,13 @@ public class OrderImplementDepartment {
                         break;
                     } else {
                         OutputManager.getInstance().errorMassage(
-                                "输入错误.请重新输入！",
-                                "輸入錯誤.請重新輸入！",
+                                "输入错误，请重新输入！",
+                                "輸入錯誤，請重新輸入！",
                                 "Input errors, please re-enter!"
                         );
                     }
                 }
-                if(!loopFlag){
+                if (!loopFlag) {
                     break;
                 }
             }
@@ -208,19 +205,19 @@ public class OrderImplementDepartment {
                     "Please enter the latest completion time of the order, in the form of'yyyy-MM-dd':"
             );
             String latestDeliveryTime;
-            while(true) {
+            while (true) {
                 latestDeliveryTime = new Scanner(System.in).next();
                 //判断输入的日期是否符合条件的正则表达式
-                if (!isDate(latestDeliveryTime)){
+                if (!isDate(latestDeliveryTime)) {
                     OutputManager.getInstance().errorMassage(
-                            "您输入的日期格式有误？请重新输入！",
-                            "您輸入的日期格式有誤？請重新輸入！",
-                            "The date format you entered is wrong? please enter again!"
+                            "您输入的日期格式有误，请重新输入！",
+                            "您輸入的日期格式有誤，請重新輸入！",
+                            "The date format you entered is wrong, please enter again!"
                     );
                     continue;
                 }
                 //需要判断输入的日期是否晚于当前的日期
-                if(!laterThanNowDate(latestDeliveryTime)){
+                if (!laterThanNowDate(latestDeliveryTime)) {
                     OutputManager.getInstance().errorMassage(
                             "您输入的日期不能早于当前日期！请重新输入！",
                             "您輸入的日期不能早於當前日期！請重新輸入！",
@@ -240,19 +237,18 @@ public class OrderImplementDepartment {
             String customerAddress = new Scanner(System.in).next();
             double randomChoice = Math.random();
             Coupon coupon;
-            if(randomChoice <0.5) {
+            if (randomChoice < 0.5) {
                 coupon = new Coupon(new TwentyPercentOff());
-            }
-            else {
+            } else {
                 coupon = new Coupon(new TwoHundredMinusTwenty());
             }
             OrderCenter.getInstance().createOneOrder(orderCanInformationArrayList, coupon, date, customerAddress);
 
             boolean loopFlag = false;
-            for(;;) {
+            for (; ; ) {
                 OutputManager.getInstance().print(
                         "是否继续创建新的订单？y表示是，n表示否",
-                        "是否繼續創建新的訂單？ y表示是，n表否",
+                        "是否繼續創建新的訂單？y表示是，n表否",
                         "Do you want to continue to create new orders? y means yes, n means no."
                 );
                 String inputChoice = new Scanner(System.in).next();
@@ -281,7 +277,7 @@ public class OrderImplementDepartment {
                     );
                 }
             }
-            if(!loopFlag)
+            if (!loopFlag)
                 break;
         }
         OrderCenter.getInstance().displayOrderData();//显示当前所有订单的数据
@@ -295,9 +291,19 @@ public class OrderImplementDepartment {
 
 
     //判断数日的字符串是否符合日期的格式
-    public boolean isDate(String dateStr){
-        String regularExpression = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";
-        return(dateStr.matches(regularExpression));
+    public boolean isDate(String dateStr) {
+        String regularExpression =
+                "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]" +
+                        "?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])" +
+                        "|([1-2][0-9])|(3[01])))|(((0?[469])|(11))" +
+                        "[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|" +
+                        "(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|" +
+                        "(\\d{2}(([02468][1235679])|([13579][01345789]))" +
+                        "[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?" +
+                        "((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|" +
+                        "(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|" +
+                        "(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";
+        return (dateStr.matches(regularExpression));
     }
 
     //判断输入的日期是否晚于当前日期
