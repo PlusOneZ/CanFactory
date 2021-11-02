@@ -56,16 +56,17 @@ public class OrderImplementDepartment {
             ArrayList<OrderCanInformation> orderCanInformationArrayList = new ArrayList<OrderCanInformation>();
             while (true) {
                 String canName;
+                //[1 - 订单系统]	[2 - 管理系统]	[3 - 30个设计模式测试]
                 OutputManager.getInstance().print(
-                        "输入需要的订单罐头类型，1表示" + CanInfoController.getInstance().getCanList().get(0) + ",2表示" +
-                                CanInfoController.getInstance().getCanList().get(1) +
-                                ",3表示" + CanInfoController.getInstance().getCanList().get(2) + ",4表示" + CanInfoController.getInstance().getCanList().get(3),
-                        "輸入需要的訂單罐頭類型，1表示" + CanInfoController.getInstance().getCanList().get(0) + ",2表示" +
-                                CanInfoController.getInstance().getCanList().get(1) + ",3表示" +
-                                CanInfoController.getInstance().getCanList().get(2) + "，4表示" + CanInfoController.getInstance().getCanList().get(3),
-                        "Enter the type of canned food you need, 1 means" + CanInfoController.getInstance().getCanList().get(0) +
-                                ", 2 means" + CanInfoController.getInstance().getCanList().get(1) + ", 3 means"
-                                + CanInfoController.getInstance().getCanList().get(2) + ", 4 means" + CanInfoController.getInstance().getCanList().get(3)
+                        "输入需要的订单罐头类型：",
+                        "輸入需要的訂單罐頭類型：",
+                        "Enter the type of canned food you need:"
+                );
+                OutputManager.getInstance().printLanguageIrrelevantContent(
+                        "[1 - "+CanInfoController.getInstance().getCanList().get(0)+ "]\t"+
+                                "[2 - "+CanInfoController.getInstance().getCanList().get(1)+ "]\t"+
+                                "[3 - "+CanInfoController.getInstance().getCanList().get(2)+ "]\t"+
+                                "[4 - "+CanInfoController.getInstance().getCanList().get(3)+ "]"
                 );
                 double canPrice;//订单中罐头的单价
 
@@ -166,9 +167,14 @@ public class OrderImplementDepartment {
                 boolean loopFlag = false;
                 while (true) {
                     OutputManager.getInstance().print(
-                            "是否继续加入子订单？y表示是，n表示否：",
-                            "是否繼續加入子訂單？y表示是，n表示否：",
-                            "Do you want to continue to add sub-orders? y means yes, n means no:"
+                            "是否继续加入子订单？",
+                            "是否繼續加入子訂單？",
+                            "Do you want to continue to add sub-orders?"
+                    );
+                    OutputManager.getInstance().print(
+                            "[y - 是]\t[n - 否]",
+                            "[y - 是]\t[n - 否]",
+                            "[y - Yes]\t[n - No]"
                     );
                     String inputChr = OutputManager.getInstance().input();
                     inputChr = inputChr.toLowerCase();//先转化为小写
@@ -249,9 +255,16 @@ public class OrderImplementDepartment {
             boolean loopFlag = false;
             while(true) {
                 OutputManager.getInstance().print(
-                        "是否继续创建新的订单？y表示是，n表示否",
-                        "是否繼續創建新的訂單？y表示是，n表否",
-                        "Do you want to continue to create new orders? y means yes, n means no."
+                        "是否继续创建新的订单？",
+                        "是否繼續創建新的訂單？",
+                        "Do you want to continue to create new orders? "
+                );
+
+
+                OutputManager.getInstance().print(
+                        "[y - 是]\t[n - 否]",
+                        "[y - 是]\t[n - 否]",
+                        "[y - Yes]\t[n - No]"
                 );
                 String inputChoice = OutputManager.getInstance().input();
                 inputChoice = inputChoice.toLowerCase();

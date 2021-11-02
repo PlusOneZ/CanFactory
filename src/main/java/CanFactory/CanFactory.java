@@ -92,44 +92,36 @@ public class CanFactory {
                 break;
         }
 
+        try{
+            loadingInput();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         OutputManager.getInstance().print(
-                "请选择系统：",
-                "",
-                "Please select the system:"
+                "请选择要运行的系统：",
+                "請選擇要運行的系統：",
+                "Please select the system to run:"
         );
 
         OutputManager.getInstance().print(
-                "[1 - 中文（简体）]\t[2 - 中文（繁體）]\t[3 - English]",
-                "",
-                ""
+                "[1 - 订单系统]\t[2 - 管理系统]\t[3 - 30个设计模式测试]",
+                "[1 -訂單系統]\t[2 -管理系統]\t[3 - 30個設計模式測試]",
+                "[1 - Order System]\t[2 - Management System]\t[3 - 30 Design Patterns Test]"
         );
 
         int selectedSystem=-1;
         while((selectedSystem = this.intputInteger())==-1 || selectedSystem<1 ||selectedSystem>3){
-            OutputManager.getInstance().printLanguageIrrelevantContent(
-                    "无效输入，请重新输入 /無效輸入，请重新輸入/ Invalid input, please input again"
+            OutputManager.getInstance().errorMassage(
+                    "无效输入，请重新输入",
+                    "無效輸入，请重新輸入",
+                    "Invalid input, please input again"
             );
         }
 
         switch (selectedSystem){
             case 1:
-                //首先提示客户创建订单
-                ArrayList<Order> pendingOrders = null;
-                try {
-                    pendingOrders = OrderImplementDepartment.getInstance().CreateOrder();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    OutputManager.getInstance().errorMassage(
-                            "出现异常！",
-                            "出現異常",
-                            "Abnormal!"
-                    );
-                }
-                //然后通知库存部门作后续处理
-                for(Order order : pendingOrders){
-                    //对于每一个订单，进行相应的处理
-                    DepartmentMediator.getInstance().handleOrder(order);
-                }
+                this.orderManage();
                 break;
             case 2:
                 try{
@@ -155,21 +147,38 @@ public class CanFactory {
     public static void loadingInput() throws InterruptedException {
         for (int i = 0; i <= 100; i++) {
             OutputManager.getInstance().printLoading(
-                    "公司管理系统加载中：" + i + "%",
-                    "公司管理系統加載中：" + i + "%",
-                    "Loading company management system：" + i + "%"
+                    "罐头工厂加载中：" + i + "%",
+                    "罐頭工廠加載中：" + i + "%",
+                    "Loading Can Factory：" + i + "%"
             );
             Thread.sleep(20);
             OutputManager.getInstance().printLoading("\r","\r","\r");
         }
     }
 
-    public void companyManage() throws IOException {
-        try{
-            loadingInput();
-        } catch (InterruptedException e) {
+
+    public void orderManage(){
+        //首先提示客户创建订单
+        ArrayList<Order> pendingOrders = null;
+        try {
+            pendingOrders = OrderImplementDepartment.getInstance().CreateOrder();
+        } catch (ParseException e) {
             e.printStackTrace();
+            OutputManager.getInstance().errorMassage(
+                    "出现异常！",
+                    "出現異常",
+                    "Abnormal!"
+            );
         }
+        //然后通知库存部门作后续处理
+        for(Order order : pendingOrders){
+            //对于每一个订单，进行相应的处理
+            DepartmentMediator.getInstance().handleOrder(order);
+        }
+    }
+
+    public void companyManage() throws IOException {
+
 
         // 获取QualityAssurance部门的实例
         QualityAssuranceDepartment qualityTestingDepartment = QualityAssuranceDepartment.getInstance();
