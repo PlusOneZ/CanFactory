@@ -5,6 +5,7 @@ import Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl;
 import Management.HumanResources.FinancialSystem.FinancialDepartment;
 import Management.HumanResources.FinancialSystem.Permission;
 import Management.HumanResources.Manager.TestingManager;
+import Management.HumanResources.Staff.Accountant;
 import Management.HumanResources.Staff.Auditor;
 import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
@@ -45,7 +46,6 @@ public class FinancialDepartmentTest {
         Auditor auditor2=new Auditor("哈梅特",100.0);
         if(auditor1 instanceof Permission){
             financialDepartment.register(auditor1,true);
-
         } else{
             OutputManager.getInstance().errorMassage(
                     "没有权限访问财务系统，访问已被拒绝",
@@ -53,7 +53,19 @@ public class FinancialDepartmentTest {
                     "The access to financial system is rejected"
             );
         }
+        // 创建一个会计
+        Accountant accountant = new Accountant();
 
+        accountant.setName("垂丝海棠");
+        if(accountant instanceof Permission) {
+                accountant.accessFinancialSystem();
+        } else {
+                OutputManager.getInstance().errorMassage(
+                        accountant.getName()+ "没有权限访问财务系统，访问已被拒绝",
+                        accountant.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
+                        accountant.getName()+"The access to financial system is rejected"
+                );
+            }
         if(auditor2 instanceof Permission){
             financialDepartment.register(auditor2,true);
         } else{
@@ -63,8 +75,11 @@ public class FinancialDepartmentTest {
                     "The access to financial system is rejected"
             );
         }
+        // //创建经济部门的审计员等
+        // Auditor auditor1=new Auditor("怀特菲尔德", 201.0);
+        // Auditor auditor2=new Auditor("哈梅特",100.0);
 
-
+//        financialDepartment.register(accountant
 
         testingManager.setName("Bear");
 
@@ -75,7 +90,7 @@ public class FinancialDepartmentTest {
         testingWorker.setLeader(testingTeamLeader1);
 
         if(testingWorker instanceof Permission){
-            financialDepartment.register(testingWorker,true);
+            testingWorker.stealMoney();
         } else{
             OutputManager.getInstance().errorMassage(
                     testingWorker.getName()+ "没有权限访问财务系统，访问已被拒绝",
@@ -83,6 +98,8 @@ public class FinancialDepartmentTest {
                     testingWorker.getName()+"The access to financial system is rejected"
             );
         }
+//        financialDepartment.register(testingWorker);
+
         // 分别将其注册到该部门
         qualityTestingDepartment.register(testingManager,true);
         qualityTestingDepartment.register(testingTeamLeader1,true);

@@ -2,6 +2,7 @@ package Management.HumanResources.FinancialSystem.DataAccessObject;
 
 import Management.HumanResources.BaseDepartment;
 import Management.HumanResources.BaseEmployee;
+import Presentation.Protocol.OutputManager;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -49,10 +50,11 @@ public class SalaryDaoImpl implements SalaryDao{
 
 
         if (!file.exists()){
-            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+
             file.createNewFile();
-            csvWriter.writeRecord(headers);
         }
+        String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+        csvWriter.writeRecord(headers);
     }
 
     /**
@@ -95,6 +97,11 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public Double getSumActualSalary(BaseDepartment department){
+        OutputManager.getInstance().printPattern(
+                "# 使用了数据访问对象模式",
+                "# 使用了數據訪問對像模式",
+                "Adopted Data Access Object pattern"
+        );
         Double sum = 0.0;
         try{
             CsvReader csvReader = new CsvReader(filePath);
@@ -118,6 +125,11 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void setSalary(BaseDepartment department, String name, Double salary){
+        OutputManager.getInstance().printPattern(
+                "# 使用了数据访问对象模式",
+                "# 使用了數據訪問對像模式",
+                "Adopted Data Access Object pattern"
+        );
         BaseEmployee employee = department.getEmployee(name);
 
         employee.setSalary(salary);
@@ -130,13 +142,17 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void saveSalary(BaseDepartment department) throws IOException {
+        OutputManager.getInstance().printPattern(
+                "# 使用了数据访问对象模式",
+                "# 使用了數據訪問對像模式",
+                "Adopted Data Access Object pattern"
+        );
 //        File file = new File(filePath);
-//        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
-//        if (!file.exists()){
-//            String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
-//            file.createNewFile();
-//            csvWriter.writeRecord(headers);
-//        }
+//
+//        String[] headers = {"姓名", "部门", "时薪", "工作时长", "税金", "实发工资"};
+//
+//        csvWriter.writeRecord(headers);
+
 
         List<BaseEmployee> employees = department.getAllEmployees();
 
@@ -162,6 +178,11 @@ public class SalaryDaoImpl implements SalaryDao{
      */
     @Override
     public void updateSalary(BaseEmployee employee) throws IOException {
+        OutputManager.getInstance().printPattern(
+                "# 使用了数据访问对象模式",
+                "# 使用了數據訪問對像模式",
+                "Adopted Data Access Object pattern"
+        );
 //        File file = new File(filePath);
 //        CsvWriter csvWriter = new CsvWriter(filePath, ',', Charset.forName("UTF-8"));
 //

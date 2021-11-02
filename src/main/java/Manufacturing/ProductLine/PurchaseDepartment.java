@@ -66,9 +66,9 @@ public class PurchaseDepartment extends BaseDepartment {
      */
     public JSONArray generateMaterialList() {
         JSONArray material = new JSONArray();
-        JSONObject apple = new JSONObject();
-        apple.put("ingredientType", "candiedapple");
-        apple.put("count", 30);
+        JSONObject candiedApple = new JSONObject();
+        candiedApple.put("ingredientType", "candiedapple");
+        candiedApple.put("count", 30);
         JSONObject clove = new JSONObject();
         clove.put("ingredientType", "herring");
         clove.put("count", 0);
@@ -79,7 +79,7 @@ public class PurchaseDepartment extends BaseDepartment {
         salmon.put("ingredientType", "salmon");
         salmon.put("count", 0);
 
-        material.put(apple);
+        material.put(candiedApple);
         material.put(clove);
         material.put(peach);
         material.put(salmon);
@@ -97,6 +97,11 @@ public class PurchaseDepartment extends BaseDepartment {
     public static PurchaseDepartment getInstance() {
         if (instance == null) {
             instance = new PurchaseDepartment();
+            OutputManager.getInstance().printPattern(
+                    "# 使用单例模式，创建采购部门",
+                    "# 使用單例模式，創建采購部門",
+                    "# Using singleton mode, create a purchasing department"
+            );
         }
         return instance;
     }
@@ -150,6 +155,11 @@ public class PurchaseDepartment extends BaseDepartment {
      * @since 13:43 2021-10-19
      */
     public boolean purchaseIngredient(JSONArray material) {
+        OutputManager.getInstance().printBrief(
+                "采购部门处理需求...",
+                "采購部門處理需求...",
+                "Purchasing department processing requirements..."
+        );
         OutputManager.getInstance().print(
                 "正在将采购需求交给采购部经理.....",
                 "正在將採購需求交給採購部經理....",
@@ -240,26 +250,22 @@ public class PurchaseDepartment extends BaseDepartment {
                 //创建购买需求
                 JSONArray demand = new JSONArray();
 
-                JSONObject apple = new JSONObject();
-                apple.put("ingredientType", "candiedapple");
-                apple.put("count", 10);
+                JSONObject candiedApple = new JSONObject();
+                candiedApple.put("ingredientType", "candiedapple");
+                candiedApple.put("count", 10);
                 JSONObject clove = new JSONObject();
                 clove.put("ingredientType", "herring");
                 clove.put("count", 20);
                 JSONObject peach = new JSONObject();
                 peach.put("ingredientType", "peach");
                 peach.put("count", 21);
-                JSONObject pear = new JSONObject();
-                pear.put("ingredientType", "pear");
-                pear.put("count", 23);
                 JSONObject salmon = new JSONObject();
                 salmon.put("ingredientType", "salmon");
                 salmon.put("count", 24);
 
-                demand.put(apple);
+                demand.put(candiedApple);
                 demand.put(clove);
                 demand.put(peach);
-                demand.put(pear);
                 demand.put(salmon);
 
                 //购买
@@ -284,8 +290,6 @@ public class PurchaseDepartment extends BaseDepartment {
                 continue;
             }
         }
-
-
     }
 
 }

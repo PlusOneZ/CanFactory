@@ -123,9 +123,9 @@ public class DepartmentMediator {
         /**
          * 利用中介者来告诉库存管理部门这个未处理的订单;
          */
-        OutputManager.getInstance().print("实现中介者模式: 已经通知库存管理部门处理订单,订单编号为 "+order.getOrderId(),
-                "實現中介者模式: 已經通知庫存管理部門處理訂單,訂單編號為 "+order.getOrderId(),
-                "Implement the intermediary pattern: The inventory management department has been notified to process the order, the order number is "+order.getOrderId());
+        OutputManager.getInstance().print("# 使用中介者模式: 已经通知库存管理部门处理订单,订单编号为 "+order.getOrderId(),
+                "# 使用中介者模式: 已經通知庫存管理部門處理訂單,訂單編號為 "+order.getOrderId(),
+                "# Using the intermediary pattern: The inventory management department has been notified to process the order, the order number is "+order.getOrderId());
         inventoryDepartment.addOrder(order);
 
         /**
