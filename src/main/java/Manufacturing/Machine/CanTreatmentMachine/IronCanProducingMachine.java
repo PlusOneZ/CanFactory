@@ -67,16 +67,4 @@ public class IronCanProducingMachine extends CanMachine {
             canMachines.add(new IronCanProducingMachine());
         }
     }
-
-    /**
-     * 多例测试
-     *
-     * @author 卓正一
-     * @since 2021-10-31 1:49 AM
-     */
-    public static void main(String[] args) {
-        CanMachine machine = IronCanProducingMachine.getInstance();
-        CanMachine machine1 = IronCanProducingMachine.getInstance();
-        System.out.println(machine == machine1);
-    }
 }

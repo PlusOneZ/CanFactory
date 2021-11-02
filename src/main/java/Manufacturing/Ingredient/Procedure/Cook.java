@@ -20,16 +20,11 @@ public class Cook extends Procedure {
                 "煮",
                 "Cooked"
         );
-    }
-
-    /**
-     * 测试函数
-     * @author 卓正一
-     * @since 2021-10-24 3:42 PM
-     */
-    public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.en);
-        Ingredient i = new Cook(new Apple());
-        System.out.println(i.showContents());
+        OutputManager.getInstance().print(
+                "使用了装饰器模式，煮了一个",
+                "使用了裝飾器模式，煮了一個",
+                "Using the decorator mode, cook a ",
+                ingredient.showContents()
+        );
     }
 }
