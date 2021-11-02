@@ -14,6 +14,12 @@ import java.util.TimerTask;
  */
 public class OutputManager {
 
+    public enum IOSystem{
+        MAC,WIN
+    }
+
+    public static IOSystem system;
+
     /**
      * <b>私有构造函数</b>
      */
@@ -204,6 +210,6 @@ public class OutputManager {
     static {
         instance = new OutputManager();
         instance.run();
-
+        system = IOSystem.MAC;
     }
 }
