@@ -15,10 +15,7 @@ import Management.HumanResources.Staff.Announcer;
 import Management.HumanResources.Staff.Auditor;
 import Management.HumanResources.Staff.Worker;
 import Management.HumanResources.TeamLeader.TestingTeamLeader;
-import Management.HumanResources.test.ChainOfResponsibilityTest;
-import Management.HumanResources.test.CompanyManagementTest;
-import Management.HumanResources.test.FinancialDepartmentTest;
-import Management.HumanResources.test.TransportDepartmentTest;
+import Management.HumanResources.test.*;
 import Management.QualityTesting.QualityAssuranceDepartment;
 import Management.QuantityTesting.VisitorTest;
 import Manufacturing.CanEntity.Can;
@@ -27,6 +24,7 @@ import Manufacturing.CanEntity.ConcreteCan.PrototypeTest;
 import Manufacturing.Ingredient.CompositeTest;
 import Manufacturing.Machine.CanTreatmentMachine.MultitonTest;
 import Manufacturing.ProductLine.Producer.Test.AdapterTest;
+import Manufacturing.ProductLine.PurchaseDepartment;
 import Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory;
 import Manufacturing.ProductLine.test.ProductDepartment;
 import Marketing.OrderEnity.Order;
@@ -229,9 +227,9 @@ public class CanFactory {
         Worker testingWorker2 = new Worker();
 
         //创建经济部门的审计员等
-        Auditor auditor1 = new Auditor("法克", 201.0);
-        Auditor auditor2 = new Auditor("尤尔", 100.0);
-        Auditor auditor3 = new Auditor("马泽尔", 100.0);
+        Auditor auditor1 = new Auditor("刘平", 201.0);
+        Auditor auditor2 = new Auditor("张婧", 100.0);
+        Auditor auditor3 = new Auditor("安婷", 100.0);
         financialDepartment.register(auditor1, false);
         financialDepartment.register(auditor2, false);
         financialDepartment.register(auditor3, false);
@@ -826,16 +824,20 @@ public class CanFactory {
                     }
                     break;
                 case 16:
-                    // TODO: 尚未添加Auditor
+                    AuditTest.main(args);
                     break;
                 case 17:
                     ChainOfResponsibilityTest.main(args);
                     break;
                 case 18:
-                    // TODO: 命令模式
+                    AuditTest.main(args);
                     break;
                 case 19:
-                    // TODO: 解释器模式
+                    OutputManager.getInstance().print(
+                            "# 使用解释器模式： 当您输入并得到这条输出的时候，您就已经使用了解释器模式",
+                            "# 使用解譯器模式：當您輸入並得到這條輸出的時候，您就已經使用了解譯器模式",
+                            "# Using Interpreter Pattern: when you input and get this output, you have already used interpreter pattern"
+                    );
                     break;
                 case 20:
                     // TODO: 迭代器模式
@@ -844,10 +846,10 @@ public class CanFactory {
                     InventoryDriver.main(args);
                     break;
                 case 22:
-                    // TODO: 备忘录模式
+                    AuditTest.main(args);
                     break;
                 case 23:
-                    // TODO: 观察者模式
+                    PurchaseDepartment.main(args);
                     break;
                 case 24:
                     // TODO: 状态模式
@@ -868,7 +870,7 @@ public class CanFactory {
                     TransportDepartmentTest.main(args);
                     break;
                 case 30:
-                    //TODO: 委派模式
+                    PurchaseDepartment.main(args);
                     break;
             }
 
