@@ -255,4 +255,12 @@ public class OutputManager {
         instance.run();
         IOsystem = IOSystem.MAC;
     }
+
+    public static void main(String[] args) {
+        OutputManager.getInstance().print(
+                "# 使用单例模式: 直接使用了单例输入/输出管理者",
+                "# 使用單例模式: 直接使用了單例輸入/輸出管理者",
+                "# Using Singleton Pattern: directly use the singleton input/output manager"
+        );
+    }
 }
