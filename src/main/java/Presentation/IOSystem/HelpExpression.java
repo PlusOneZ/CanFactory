@@ -7,7 +7,8 @@ public class HelpExpression implements AbstractExpression
         String[] constructions = context.split(" ");
         for(String construction : constructions)
             switch (construction) {
-                default -> IOSystem.getInstance().SystemOut("帮助");
+                default:
+                    IOSystem.getInstance().SystemOut("帮助");
             }
     }
 }

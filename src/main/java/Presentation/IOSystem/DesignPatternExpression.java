@@ -7,7 +7,8 @@ public class DesignPatternExpression implements AbstractExpression
         String[] constructions = context.split(" ");
         for(String construction : constructions)
             switch (construction) {
-                default -> IOSystem.getInstance().SystemOut("设计模式");
+                default:
+                    IOSystem.getInstance().SystemOut("设计模式");
             }
     }
 }

@@ -7,7 +7,8 @@ public class LanguageExpression implements AbstractExpression
         String[] constructions = context.split(" ");
         for(String construction : constructions)
             switch (construction) {
-                default -> IOSystem.getInstance().SystemOut("语言");
+                default:
+                    IOSystem.getInstance().SystemOut("语言");
             }
     }
 }
