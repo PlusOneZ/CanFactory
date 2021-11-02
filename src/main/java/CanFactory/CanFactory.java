@@ -723,8 +723,8 @@ public class CanFactory {
 
             OutputManager.getInstance().print(
                     "[31 - 退出]",
-                    "[31 - 退出",
-                    "[31 - Exit"
+                    "[31 - 退出]",
+                    "[31 - Exit]"
             );
 
 
