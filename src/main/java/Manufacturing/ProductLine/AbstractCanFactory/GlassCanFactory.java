@@ -10,7 +10,7 @@ import Presentation.Protocol.OutputManager;
 
 /**
  * 玻璃罐头工厂
- * 享元模式、抽象工厂模式、单例模式
+ * 原型模式、抽象工厂模式、单例模式
  * @author 汪明杰
  */
 public class GlassCanFactory extends AbstractCanFactory {
@@ -61,13 +61,13 @@ public class GlassCanFactory extends AbstractCanFactory {
             if (GlassCanFactory.smallPeachCan == null){
                 GlassCanFactory.smallPeachCan = new PeachCan(SmallSize.getInstance(), GlassMaterial.getInstance());
             }
-                return GlassCanFactory.smallPeachCan.Clone();
+                return GlassCanFactory.smallPeachCan.clone();
         }
         else if (type.equalsIgnoreCase("CandiedApple")){
             if (GlassCanFactory.smallCandiedAppleCan == null){
                 GlassCanFactory.smallCandiedAppleCan = new CandiedAppleCan(SmallSize.getInstance(), GlassMaterial.getInstance());
             }
-                return GlassCanFactory.smallCandiedAppleCan.Clone();
+                return GlassCanFactory.smallCandiedAppleCan.clone();
         }
 
         OutputManager.getInstance().errorMassage(
@@ -90,13 +90,13 @@ public class GlassCanFactory extends AbstractCanFactory {
             if (GlassCanFactory.bigPeachCan == null){
                 GlassCanFactory.bigPeachCan = new PeachCan(BigSize.getInstance(), GlassMaterial.getInstance());
             }
-                return GlassCanFactory.bigPeachCan.Clone();
+                return GlassCanFactory.bigPeachCan.clone();
         }
         else if (type.equalsIgnoreCase("CandiedApple")){
             if (GlassCanFactory.bigCandiedAppleCan == null){
                 GlassCanFactory.bigCandiedAppleCan = new CandiedAppleCan(BigSize.getInstance(), GlassMaterial.getInstance());
             }
-                return GlassCanFactory.bigCandiedAppleCan.Clone();
+                return GlassCanFactory.bigCandiedAppleCan.clone();
         }
 
         OutputManager.getInstance().errorMassage(
