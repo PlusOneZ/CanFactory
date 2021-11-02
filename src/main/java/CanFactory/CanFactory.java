@@ -119,6 +119,15 @@ public class CanFactory {
         }
         if(IOManager.operatingSystem == IOManager.OperatingSystem.MAC)
             AsciiPic.macHelloPic();
+
+        IOManager.getInstance().print(
+                "欢迎进入罐头工厂",
+                "歡迎進入罐頭工廠",
+                "Welcome to Can Factory"
+        );
+
+        IOManager.getInstance().printLanguageIrrelevantContent("");
+
         IOManager.getInstance().print(
                 "请选择要运行的系统：",
                 "請選擇要運行的系統：",
