@@ -31,10 +31,11 @@ import java.util.List;
  * </ol>
  *
  * <b>实现了 State 模式</b> <br>
- * <b>内含了 Composite 模式实体</b> <br>
- * <b>实现了 Decorator 模式</b>
  * <b>实现了 Servant 模式</b>
  * <b>实现了 Template Method 模式</b>
+ * <b>实现了 Prototype 模式</b>
+ * <b>内含了 Composite 模式</b> <br>
+ * <b>内含了 Decorator 模式</b>
  *
  * @author 卓正一
  */

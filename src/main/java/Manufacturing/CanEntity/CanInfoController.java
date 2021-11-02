@@ -38,6 +38,13 @@ public class CanInfoController {
         this.registry = new HashMap<>();
         this.canKind = new HashMap<>();
         this.enNameMap = new HashMap<>();
+
+        OutputManager.getInstance().print(
+                "*初始化所有罐头信息，所有生产线正在生产样品。",
+                "*初始化所有罐頭資訊，所有生產線正在生產樣品。",
+                "Initialize all can information, all production lines are producing samples."
+        );
+
         /*
         * 注册糖渍苹果罐头;
         */
