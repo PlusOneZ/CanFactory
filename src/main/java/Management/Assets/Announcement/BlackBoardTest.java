@@ -12,7 +12,6 @@ import Presentation.Protocol.OutputManager;
  */
 public class BlackBoardTest {
     public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         Cleaner staff1 = new Cleaner("李华");
         staff1.subscribe();
         Announcer.getInstance().addMessage("今日特供午饭铁板烧");

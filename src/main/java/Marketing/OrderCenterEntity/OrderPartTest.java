@@ -21,7 +21,6 @@ import java.util.Scanner;
 public class OrderPartTest {
     //首先，创建若干订单
     public static void main(String[] args) throws ParseException {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         OutputManager.getInstance().print(
                 "进入订单创建系统。",
                 "進入訂單創建系統。",

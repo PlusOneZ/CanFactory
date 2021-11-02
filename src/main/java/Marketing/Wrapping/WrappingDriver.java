@@ -29,8 +29,6 @@ public class WrappingDriver {
         //初始化包装部门;
         WrappingDepartment wrappingDepartment = WrappingDepartment.getInstance();
 
-        //设置语言
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
 
         //进行初始化输出;
         printMenu();
