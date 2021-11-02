@@ -51,10 +51,11 @@ public class Auditor extends Staff implements Permission {
 
         //report的脏标记已访问过的话，则无需继续
         if(salaryTable.getVisited()){
-            OutputManager.getInstance().print(
-                    "员工薪水表已经被审阅过，无需重复审阅",
-                    "員工薪水表已經被審閱過，無需重復審閱",
-                    "The employee salary report has been reviewed, extra audition is unnecessary."
+
+            OutputManager.getInstance().printPattern(
+                    "# 使用了脏标记模式  员工薪水表已经被审阅过，无需重复审阅",
+                    "# 使用了臟標記模式  員工薪水表已經被審閱過，無需重復審閱",
+                    "# Adopted Dirty Flag pattern  The employee salary report has been reviewed, extra audition is unnecessary."
             );
             return false;
         }
