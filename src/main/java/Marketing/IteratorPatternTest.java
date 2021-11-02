@@ -54,9 +54,9 @@ public class IteratorPatternTest {
             OrderCenter.getInstance().createOneOrder(orderCanInformations,coupon,date,"同济大学");
         }
         IOManager.getInstance().print(
-                "使用迭代器获取订单列表。",
-                "使用迭代器獲取訂單列表。",
-                "Use an iterator to get a list of orders."
+                "# 使用迭代器模式：获取订单列表。",
+                "# 使用迭代器模式：獲取訂單列表。",
+                "# Using Iterator Pattern: get a list of orders."
         );
         for(Iterator iter = OrderCenter.getInstance().getIterator();iter.hasNext();)
         {

@@ -24,10 +24,13 @@ import Manufacturing.Machine.CanTreatmentMachine.MultitonTest;
 import Manufacturing.ProductLine.Producer.Test.AdapterTest;
 import Manufacturing.ProductLine.PurchaseDepartment;
 import Manufacturing.ProductLine.test.ProductDepartment;
+import Marketing.IteratorPatternTest;
 import Marketing.OrderEnity.Order;
+import Marketing.OrderEnity.StatePatternTest;
 import Marketing.Promotion.SaleTest;
 import Marketing.Wrapping.WrappingDriver;
 import Mediator.DepartmentMediator;
+import Mediator.MediatorPatternTest;
 import Presentation.Protocol.IOManager;
 import Storage.InventoryDriver;
 
@@ -834,7 +837,7 @@ public class CanFactory {
                     );
                     break;
                 case 20:
-                    // TODO: 迭代器模式
+                    IteratorPatternTest.main(args);
                     break;
                 case 21:
                     InventoryDriver.main(args);
@@ -846,13 +849,13 @@ public class CanFactory {
                     PurchaseDepartment.main(args);
                     break;
                 case 24:
-                    // TODO: 状态模式
+                    StatePatternTest.main(args);
                     break;
                 case 25:
                     SaleTest.main(args);
                     break;
                 case 26:
-                    //TODO: 模板方法模式
+                    ProductDepartment.main(args);
                     break;
                 case 27:
                     VisitorTest.main(args);
