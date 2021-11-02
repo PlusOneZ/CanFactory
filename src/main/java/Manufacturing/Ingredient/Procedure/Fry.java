@@ -29,7 +29,6 @@ public class Fry extends Procedure {
      * @since 2021-10-24 3:42 PM
      */
     public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         Ingredient i = new Fry(new CandiedApple(new Apple(), new Sugar()));
         System.out.println(i.showContents());
     }

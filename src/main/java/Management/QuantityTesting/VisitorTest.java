@@ -16,7 +16,6 @@ public class VisitorTest {
         Cleaner cleaner = new Cleaner("张三", 4000.0);
         SecurityStaff securityStaff = new SecurityStaff("李四", 4500.0);
 
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         OutputManager.getInstance().print(
                 "CEO开始观察",
                 "CEO開始觀察",

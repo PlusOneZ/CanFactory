@@ -212,7 +212,6 @@ public class CanInfoController {
     private HashMap<String, String> enNameMap;
 
     public static void main(String[] args) {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         CanInfoController canInfoController = CanInfoController.getInstance();
         System.out.println(canInfoController.getCanPriceByName("糖渍苹果罐头"));
     }

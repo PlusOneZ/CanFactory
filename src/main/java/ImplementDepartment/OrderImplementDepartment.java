@@ -42,7 +42,6 @@ public class OrderImplementDepartment {
 
 
     public ArrayList<Order> CreateOrder() throws ParseException {
-        OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
         OutputManager.getInstance().print(
                 "进入订单创建系统。",
                 "進入訂單創建系統。",
@@ -69,9 +68,10 @@ public class OrderImplementDepartment {
                                 + CanInfoController.getInstance().getCanList().get(2) + ", 4 means" + CanInfoController.getInstance().getCanList().get(3)
                 );
                 double canPrice;//订单中罐头的单价
-                while (true) {
-                    Scanner inputScanner = new Scanner(System.in);
-                    String canType = inputScanner.next();
+
+                while(true) {
+                    String canType = OutputManager.getInstance().input();
+
                     if (Objects.equals(canType, "1")) {
                         canName = CanInfoController.getInstance().getCanList().get(0);
                         OutputManager.getInstance().print(
@@ -123,12 +123,12 @@ public class OrderImplementDepartment {
                 );
                 String canCount;
                 Integer canCountOfInt;
-                Scanner scanner = new Scanner(System.in);
-                while (true) {
+
+                while(true) {
                     //获取对应的价格
-                    while (true) {
-                        canCount = scanner.next();
-                        if (canCount.length() >= 6) {
+                    while(true) {
+                        canCount = OutputManager.getInstance().input();
+                        if(canCount.length()>=6){
                             OutputManager.getInstance().errorMassage(
                                     "您输入的数字过大！请重新输入！",
                                     "您輸入的數字過大！請重新輸入！",
@@ -170,7 +170,7 @@ public class OrderImplementDepartment {
                             "是否繼續加入子訂單？y表示是，n表示否：",
                             "Do you want to continue to add sub-orders? y means yes, n means no:"
                     );
-                    String inputChr = scanner.next();
+                    String inputChr = OutputManager.getInstance().input();
                     inputChr = inputChr.toLowerCase();//先转化为小写
                     if (inputChr.equals("y")) {
                         loopFlag = true;
@@ -205,8 +205,10 @@ public class OrderImplementDepartment {
                     "Please enter the latest completion time of the order, in the form of'yyyy-MM-dd':"
             );
             String latestDeliveryTime;
-            while (true) {
-                latestDeliveryTime = new Scanner(System.in).next();
+
+            while(true) {
+                latestDeliveryTime = OutputManager.getInstance().input();
+
                 //判断输入的日期是否符合条件的正则表达式
                 if (!isDate(latestDeliveryTime)) {
                     OutputManager.getInstance().errorMassage(
@@ -234,7 +236,7 @@ public class OrderImplementDepartment {
                     "請輸入該訂單的運送地址：",
                     "Please enter the shipping address of this order:"
             );
-            String customerAddress = new Scanner(System.in).next();
+            String customerAddress = OutputManager.getInstance().input();
             double randomChoice = Math.random();
             Coupon coupon;
             if (randomChoice < 0.5) {
@@ -245,13 +247,13 @@ public class OrderImplementDepartment {
             OrderCenter.getInstance().createOneOrder(orderCanInformationArrayList, coupon, date, customerAddress);
 
             boolean loopFlag = false;
-            for (; ; ) {
+            while(true) {
                 OutputManager.getInstance().print(
                         "是否继续创建新的订单？y表示是，n表示否",
                         "是否繼續創建新的訂單？y表示是，n表否",
                         "Do you want to continue to create new orders? y means yes, n means no."
                 );
-                String inputChoice = new Scanner(System.in).next();
+                String inputChoice = OutputManager.getInstance().input();
                 inputChoice = inputChoice.toLowerCase();
                 if (inputChoice.equals("y")) {
                     loopFlag = true;

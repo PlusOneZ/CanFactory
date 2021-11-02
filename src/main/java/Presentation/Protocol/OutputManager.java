@@ -1,10 +1,7 @@
 package Presentation.Protocol;
 
 import java.io.PrintStream;
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * 实现多语言打印的输出控制器。
@@ -13,6 +10,12 @@ import java.util.TimerTask;
  * <b>实现了单例模式</b>
  */
 public class OutputManager {
+
+    public enum IOSystem{
+        MAC,WIN
+    }
+
+    public static IOSystem IOsystem;
 
     /**
      * <b>私有构造函数</b>
@@ -109,6 +112,23 @@ public class OutputManager {
         }
     }
 
+
+    public void printLoading(String zh_cn, String zh_tw ,String en) {
+        if (mode != Mode.brief && mode != Mode.patternOnly) {
+            if (language == Lang.zh_CN) {
+                ps.print(zh_cn);
+            } else if (language == Lang.zh_TW) {
+                ps.print(zh_tw);
+            } else if (language == Lang.en) {
+                ps.print(en);
+            } else {
+                System.err.println(
+                        "未设置语言 / 未設定語言 / Output Language Not Designated"
+                );
+            }
+        }
+    }
+
     /**
      * 向标准输出打印多语言信息
      * <i>功能委托给 outputToStream 函数</i>
@@ -126,6 +146,8 @@ public class OutputManager {
 //        );
         addToQueue(zh_cn + appendix, zh_tw + appendix, en + appendix);
     }
+
+
 
     /**
      * 向标准输出打印多语言信息
@@ -201,9 +223,23 @@ public class OutputManager {
         return "";
     }
 
+    /**
+     * 接受输入
+     * @return
+     */
+    public String input(){
+        if(IOsystem == IOSystem.MAC){
+            Scanner inputScanner = new Scanner(System.in);
+            return inputScanner.nextLine();
+        }
+        else{
+            return null;
+        }
+    }
+
     static {
         instance = new OutputManager();
         instance.run();
-
+        IOsystem = IOSystem.MAC;
     }
 }

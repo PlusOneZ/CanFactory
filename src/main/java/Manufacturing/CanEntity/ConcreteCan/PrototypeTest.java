@@ -19,6 +19,6 @@ public class PrototypeTest {
         for(int i=0;i<10;++i){
             cans.add(GlassCanFactory.getInstance().createBigCan("Peach"));
         }
-        
+
     }
 }

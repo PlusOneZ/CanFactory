@@ -31,7 +31,6 @@ public class CannedWorker extends BaseWorker {
             CannedCanState ccs = new CannedCanState();
             CanState gcs = can.getCanState();
             gcs = ccs;
-            OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
             OutputManager.getInstance().print(
                     "工人"+this.WorkerId+"已经成功将罐头封罐！",
                     "工人"+this.WorkerId+"已經成功將罐頭封罐！",
@@ -39,7 +38,6 @@ public class CannedWorker extends BaseWorker {
             );
         }
         else{
-            OutputManager.getInstance().setLanguage(OutputManager.Lang.zh_CN);
             OutputManager.getInstance().print(
                     "工人"+this.WorkerId+"封罐失败！封罐前的状态错误！",
                     "工人"+this.WorkerId+"封罐失敗！封罐前的狀態錯誤！",
