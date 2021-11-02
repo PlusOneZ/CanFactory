@@ -31,6 +31,8 @@ import Marketing.Promotion.SaleTest;
 import Marketing.Wrapping.WrappingDriver;
 import Mediator.DepartmentMediator;
 import Mediator.MediatorPatternTest;
+import Presentation.AsciiVid.AsciiPic;
+import Presentation.IOSystem.IOSystem;
 import Presentation.Protocol.IOManager;
 import Storage.InventoryDriver;
 
@@ -115,7 +117,8 @@ public class CanFactory {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        if(IOManager.operatingSystem == IOManager.OperatingSystem.MAC)
+            AsciiPic.macHelloPic();
         IOManager.getInstance().print(
                 "请选择要运行的系统：",
                 "請選擇要運行的系統：",
