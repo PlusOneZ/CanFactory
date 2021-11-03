@@ -27,7 +27,7 @@ public class IronCanFactory extends AbstractCanFactory {
         IOManager.getInstance().print(
                 "# 使用抽象工厂模式",
                 "# 使用抽象工廠模式",
-                "# Using Abstract Factory mode"
+                "# Using Abstract Factory Pattern"
         );
 
         IronCanFactory.smallHerringCan = null;

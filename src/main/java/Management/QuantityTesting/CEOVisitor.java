@@ -9,7 +9,7 @@ public class CEOVisitor implements FactoryVisitor{
         IOManager.getInstance().print(
                 "# 使用访问者模式",
                 "# 使用訪問者模式",
-                "# Using Visitor Mode"
+                "# Using Visitor Pattern"
         );
     }
 

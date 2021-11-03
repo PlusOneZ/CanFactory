@@ -76,7 +76,7 @@ public class OrderCenter implements Container {
         IOManager.getInstance().print(
                 "订单中心使用到了单例模式，订单迭代使用了迭代器模式." ,
                 "訂單中心使用到了單例模式，訂單迭代使用了迭代器模式.",
-                "The order center uses the singleton mode, and the order iteration uses the iterator mode."
+                "The order center uses the singleton pattern, and the order iteration uses the iterator pattern."
         );
         IOManager.getInstance().print(
                 "订单数目："+factoryOrderList.size() ,

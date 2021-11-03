@@ -54,7 +54,7 @@ public class Announcer extends Staff{
         IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
-                "# Using Proxy mode"
+                "# Using Proxy Pattern"
         );
 
 
@@ -80,13 +80,13 @@ public class Announcer extends Staff{
         IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
-                "# Using Proxy mode"
+                "# Using Proxy Pattern"
         );
 
         IOManager.getInstance().print(
                 "# 使用黑板模式",
                 "# 使用黑板模式",
-                "# Using Blackboard mode"
+                "# Using Blackboard Pattern"
         );
 
         if (this.sendingState){

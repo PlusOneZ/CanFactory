@@ -13,11 +13,6 @@ import Presentation.Protocol.IOManager;
  */
 public class CompositeTest {
     public static void main(String[] args) {
-        IOManager.getInstance().printBrief(
-                "---组合模式测试---",
-                "---組合模式測試---",
-                "---Composite Pattern Test---"
-        );
 
         Ingredient apple = new Apple();
         Ingredient sugar = new Sugar();
@@ -44,10 +39,6 @@ public class CompositeTest {
                 "Composite ingredient: ",
                 candiedApple.showContents()
         );
-        IOManager.getInstance().printBrief(
-                "---组合模式测试结束---",
-                "---組合模式測試結束---",
-                "---Composite Pattern Test End---"
-        );
+
     }
 }

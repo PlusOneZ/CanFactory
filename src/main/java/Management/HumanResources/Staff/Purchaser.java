@@ -50,7 +50,7 @@ public class Purchaser extends Staff implements BasePurchaser {
         IOManager.getInstance().printPattern(
                 "# 使用观察者模式，对上游工厂原材料进行购买",
                 "# 使用觀察者模式，對上遊工廠原材料進行購買",
-                "# Use the observer pattern to purchase raw materials from upstream factories"
+                "# Using Observer Pattern: purchase raw materials from upstream factories"
         );
 
         IOManager.getInstance().printBrief(

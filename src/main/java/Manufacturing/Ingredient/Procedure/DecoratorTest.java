@@ -18,11 +18,7 @@ public class DecoratorTest {
      * @since 2021-10-24 3:42 PM
      */
     public static void main(String[] args) {
-        IOManager.getInstance().printBrief(
-                "---装饰器模式测试---",
-                "---裝飾器模式測試---",
-                "---Decorator Pattern Test---"
-        );
+
         Ingredient apple = new Apple();
 
         IOManager.getInstance().printBrief(
@@ -40,10 +36,6 @@ public class DecoratorTest {
                 "Processed ingredient: ",
                 cookedApple.showContents()
         );
-        IOManager.getInstance().printBrief(
-                "---装饰器模式测试结束---",
-                "---裝飾器模式測試結束---",
-                "---Decorator Pattern Test End---"
-        );
+
     }
 }

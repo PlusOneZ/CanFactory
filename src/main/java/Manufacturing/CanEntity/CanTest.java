@@ -18,7 +18,7 @@ public class CanTest {
         IOManager.getInstance().print(
                 "# 使用桥接模式",
                 "# 使用橋接模式",
-                "# Using Bridge mode"
+                "# Using Bridge Pattern"
         );
         Can vegetableCan = new VegetableCan(BigSize.getInstance(), IronMaterial.getInstance());
         vegetableCan.setName(

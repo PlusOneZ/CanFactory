@@ -20,7 +20,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
     private String[] ingredientType = new String[]{"candiedapple", "herring", "peach", "pear", "salmon"};
 
     /**
-     * TODO:随机生成上游工厂的种类和数量
+     * 随机生成上游工厂的种类和数量
      * @author 香宁雨
      * @since 16:42 2021-10-24
      */
@@ -32,7 +32,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
     }
 
     /**
-     * TODO:从上游工厂购买产品并且将上游工厂中数量设置为0
+     * 从上游工厂购买产品并且将上游工厂中数量设置为0
      * @author 香宁雨
      * @since 16:44 2021-10-24
      */
@@ -46,7 +46,7 @@ public class ConcreteUpstreamFactory implements UpstreamFactory {
     }
 
     /**
-     * TODO:获取上游工厂所拥有的原材料信息
+     * 获取上游工厂所拥有的原材料信息
      * @return : org.json.JSONObject
      * @author 香宁雨
      * @since 16:08 2021-10-24
