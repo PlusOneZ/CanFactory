@@ -172,11 +172,11 @@ public class IOSystem
         switch (language) {
             case "zh_CN":
                 info = "design_pattern 打印设计模式|help 获取帮助信息|input 与程序进行交互|language 切换语言|process 进入系统|sudo 强制执行";
-                screenWidth -= 27;
+                screenWidth -= 31;
                 break;
             case "zh_TW":
                 info = "design_pattern 打印設計模式|help 獲取幫助信息|input 與程序進行交互|language 切換語言|process 進入系統|sudo 强制执行";
-                screenWidth -= 27;
+                screenWidth -= 31;
                 break;
             default:
                 info = "design_pattern: print design pattern|help: gain help information|input: Interaction with programs|"
