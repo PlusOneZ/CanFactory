@@ -1,5 +1,7 @@
 package Presentation.IOSystem;
 
+import Presentation.WindowsLibrary;
+
 public class InputGetter extends Getter
 {
     private static final InputGetter instance = new InputGetter();

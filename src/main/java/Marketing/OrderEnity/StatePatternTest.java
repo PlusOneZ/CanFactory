@@ -22,7 +22,6 @@ public class StatePatternTest {
                 "狀態模式開始：",
                 "State pattern starts:"
         );
-        IOManager.getInstance().setLanguage(IOManager.Lang.zh_CN);
         //首先随机创建一个订单
         IOManager.getInstance().print(
                 "随机创建一个订单。",
