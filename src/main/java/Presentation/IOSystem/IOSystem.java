@@ -12,7 +12,7 @@ public class IOSystem
     private final ReentrantLock outputLock = new ReentrantLock(true);
     private final Condition canOutput = outputLock.newCondition();
     private final Object inLock = new Object();
-    private String helpInfo = "这是一条帮助信息\n";
+    private String helpInfo = "\n";
     private String in = "";
     private Thread lastThread;
     private long id;
@@ -147,9 +147,19 @@ public class IOSystem
     public void init() {
         WindowsLibrary.Console.fullScreen();
         WindowsLibrary.Console.initScreen(helpInfo);
+        initHelpInfo();
         startGetInput();
         startRefreshScreen();
         setId();
         updateLastThread();
+    }
+
+    private void initHelpInfo() {
+        final String znInfo = "请输入language选择语言";
+        final String enInfo = "Please input language to select language";
+        final String twInfo = "請輸入language選擇語言";
+        int width = WindowsLibrary.Console.getScreenWidth();
+        width = (width - znInfo.length() - enInfo.length() - twInfo.length() - 16) / 2;
+        helpInfo = "-".repeat(width) + znInfo + '|' + enInfo + '|' + twInfo + "-".repeat(width) + "\n";
     }
 }

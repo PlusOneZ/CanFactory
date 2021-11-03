@@ -53,7 +53,7 @@ public class IOManager {
 
     public Lang getLanguage() { return language; }
 
-    private Lang language = Lang.zh_CN;
+    private Lang language = null;
 
     /**
      * 输出模式，可以选择详细、简单和只有设计模式输出。

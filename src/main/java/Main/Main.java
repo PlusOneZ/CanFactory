@@ -10,11 +10,11 @@ public class Main {
         System.out.println("请选择使用系統 / 請選擇使用系统 / Please select the system");
         System.out.println("[1 - Mac]\t[2 - Win]");
 
-        int selectedLanguage = -1;
-        while ((selectedLanguage = CanFactory.getInstance().inputInteger()) == -1 || selectedLanguage < 1 || selectedLanguage > 2) {
+        int selectedSystem = -1;
+        while ((selectedSystem = CanFactory.getInstance().inputInteger()) == -1 || selectedSystem < 1 || selectedSystem > 2) {
             System.out.println("无效输入，请重新输入 / 無效輸入，请重新輸入 / Invalid input, please input again");
         }
-        if(selectedLanguage == 2)
+        if(selectedSystem == 2)
             IOManager.operatingSystem = IOManager.OperatingSystem.WIN;
         else {
             IOManager.getInstance().run();

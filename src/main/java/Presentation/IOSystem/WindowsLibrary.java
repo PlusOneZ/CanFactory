@@ -12,4 +12,5 @@ public interface WindowsLibrary extends Library
     void initScreen(String helpInfo);
     void refreshScreen(String output, String input, String helpInfo);
     char getInput();
+    int getScreenWidth();
 }
