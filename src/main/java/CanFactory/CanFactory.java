@@ -87,9 +87,9 @@ public class CanFactory {
 
     public void run() {
 
-        IOManager.getInstance().printLanguageIrrelevantContent("请选择使用语言 /請選擇使用語言 /Please select the language");
+        System.out.println("请选择使用语言 /請選擇使用語言 /Please select the language");
 
-        IOManager.getInstance().printLanguageIrrelevantContent("[1 - 中文（简体）]\t[2 - 中文（繁體）]\t[3 - English]");
+        System.out.println("[1 - 中文（简体）]\t[2 - 中文（繁體）]\t[3 - English]");
 
         int selectedLanguage = -1;
         while ((selectedLanguage = this.inputInteger()) == -1 || selectedLanguage < 1 || selectedLanguage > 3) {
