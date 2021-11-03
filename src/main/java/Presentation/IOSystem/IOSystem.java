@@ -12,7 +12,7 @@ public class IOSystem
     private final ReentrantLock outputLock = new ReentrantLock(true);
     private final Condition canOutput = outputLock.newCondition();
     private final Object inLock = new Object();
-    private String helpInfo = "这是一条帮助信息\n";
+    private String helpInfo = "\n";
     private String in = "";
     private Thread lastThread;
     private long id;
@@ -147,9 +147,45 @@ public class IOSystem
     public void init() {
         WindowsLibrary.Console.fullScreen();
         WindowsLibrary.Console.initScreen(helpInfo);
+        initHelpInfo();
         startGetInput();
         startRefreshScreen();
         setId();
         updateLastThread();
+        IOSystem.getInstance().out("欢迎使用罐头工厂|歡迎使用罐頭工廠|Welcome to use CanFactory\n");
+    }
+
+    private void initHelpInfo() {
+        final String znInfo = "请输入language选择语言";
+        final String enInfo = "Please input language to select language";
+        final String twInfo = "請輸入language選擇語言";
+        int screenWidth = WindowsLibrary.Console.getScreenWidth();
+        int width = (screenWidth - znInfo.length() - enInfo.length() - twInfo.length() - 16) / 2;
+        helpInfo = "-".repeat(width) + znInfo + '|' + enInfo + '|' + twInfo + "-".repeat(width);
+        if(helpInfo.length() < screenWidth)
+            helpInfo += '-';
+    }
+
+    public void changeHelpInfo(String language) {
+        String info;
+        int screenWidth = WindowsLibrary.Console.getScreenWidth();
+        switch (language) {
+            case "zh_CN":
+                info = "design_pattern 打印设计模式|help 获取帮助信息|input 与程序进行交互|language 切换语言|process 进入系统|sudo 强制执行";
+                screenWidth -= 31;
+                break;
+            case "zh_TW":
+                info = "design_pattern 打印設計模式|help 獲取幫助信息|input 與程序進行交互|language 切換語言|process 進入系統|sudo 强制执行";
+                screenWidth -= 31;
+                break;
+            default:
+                info = "design_pattern: print design pattern|help: gain help information|input: Interaction with programs|"
+                +"language: change language|process: run process|sudo: force to run";
+                break;
+        }
+        int width = (screenWidth - info.length()) / 2;
+        helpInfo = "-".repeat(width) + info + "-".repeat(width);
+        if(helpInfo.length() < screenWidth)
+            helpInfo += '-';
     }
 }

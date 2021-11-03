@@ -1,5 +1,7 @@
 package Presentation.IOSystem;
 
+import Presentation.Protocol.IOManager;
+
 public class ControlExpression implements AbstractExpression
 {
     private final DesignPatternExpression designPatternExpression = new DesignPatternExpression();
@@ -12,6 +14,12 @@ public class ControlExpression implements AbstractExpression
         String instruction = context.toLowerCase();
         if(instruction.indexOf(' ') > 0)
             instruction = instruction.substring(0, instruction.indexOf(' '));
+        if(IOManager.getInstance().getLanguage() == null && !instruction.equals("language"))
+        {
+            IOSystem.getInstance().SystemOut("language zh_CN\t设置语言为中文\n" +
+                    "language zh_TW\t設置語言為臺灣繁體中文\nlanguage en\tset language to English\n");
+            return;
+        }
         if(instruction.equals("sudo"))
             superDo(context);
         else if(instruction.equals("input"))
