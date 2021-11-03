@@ -30,9 +30,7 @@ import Marketing.OrderEnity.StatePatternTest;
 import Marketing.Promotion.SaleTest;
 import Marketing.Wrapping.WrappingDriver;
 import Mediator.DepartmentMediator;
-import Mediator.MediatorPatternTest;
 import Presentation.AsciiVid.AsciiPic;
-import Presentation.IOSystem.IOSystem;
 import Presentation.Protocol.IOManager;
 import Storage.InventoryDriver;
 
@@ -73,7 +71,7 @@ public class CanFactory {
 
     }
 
-    public int intputInteger() {
+    public int inputInteger() {
         String inputStr = IOManager.getInstance().input();
         if (inputStr == "") {
             return -1;
@@ -94,7 +92,7 @@ public class CanFactory {
         IOManager.getInstance().printLanguageIrrelevantContent("[1 - 中文（简体）]\t[2 - 中文（繁體）]\t[3 - English]");
 
         int selectedLanguage = -1;
-        while ((selectedLanguage = this.intputInteger()) == -1 || selectedLanguage < 1 || selectedLanguage > 3) {
+        while ((selectedLanguage = this.inputInteger()) == -1 || selectedLanguage < 1 || selectedLanguage > 3) {
             IOManager.getInstance().printLanguageIrrelevantContent(
                     "无效输入，请重新输入 /無效輸入，请重新輸入/ Invalid input, please input again"
             );
@@ -119,11 +117,6 @@ public class CanFactory {
         }
         if(IOManager.operatingSystem == IOManager.OperatingSystem.MAC)
             AsciiPic.macHelloPic();
-        IOManager.getInstance().print(
-                "请选择要运行的系统：",
-                "請選擇要運行的系統：",
-                "Please select the system to run:"
-        );
 
         IOManager.getInstance().print(
                 "[1 - 订单系统]\t[2 - 管理系统]\t[3 - 30个设计模式测试]",
@@ -132,7 +125,7 @@ public class CanFactory {
         );
 
         int selectedSystem = -1;
-        while ((selectedSystem = this.intputInteger()) == -1 || selectedSystem < 1 || selectedSystem > 3) {
+        while ((selectedSystem = this.inputInteger()) == -1 || selectedSystem < 1 || selectedSystem > 3) {
             IOManager.getInstance().errorMassage(
                     "无效输入，请重新输入",
                     "無效輸入，请重新輸入",
@@ -145,11 +138,7 @@ public class CanFactory {
                 this.orderManage();
                 break;
             case 2:
-                try {
-                    this.companyManage();
-                } catch (IOException err) {
-
-                }
+                this.companyManage();
                 break;
             case 3:
                 this.designPatternTest();
@@ -203,7 +192,7 @@ public class CanFactory {
      * 管理系统测试
      * @throws IOException
      */
-    public void companyManage() throws IOException {
+    public void companyManage() {
 
 
         // 获取QualityAssurance部门的实例
@@ -237,7 +226,11 @@ public class CanFactory {
 
         SalaryDaoImpl salaryDaoImpl = SalaryDaoImpl.getInstance();
 
-        salaryDaoImpl.saveSalary(financialDepartment);
+        try {
+            salaryDaoImpl.saveSalary(financialDepartment);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        salaryDaoImpl.closeFile();
 
@@ -288,7 +281,7 @@ public class CanFactory {
             );
 
             int selectedOperation = -1;
-            while ((selectedOperation = this.intputInteger()) == -1) {
+            while ((selectedOperation = this.inputInteger()) == -1) {
                 IOManager.getInstance().errorMassage(
                         "无效输入，请重新输入：",
                         "無效輸入，请重新輸入：",
@@ -305,7 +298,7 @@ public class CanFactory {
                 );
 
                 Integer numOfEmployees;
-                while ((numOfEmployees = CompanyManagementTest.intputInteger()) == -1) {
+                while ((numOfEmployees = CompanyManagementTest.inputInteger()) == -1) {
                     IOManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -368,7 +361,11 @@ public class CanFactory {
                     );
                 }
 
-                salaryDaoImpl.saveSalary(qualityTestingDepartment);
+                try {
+                    salaryDaoImpl.saveSalary(qualityTestingDepartment);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             } else if (selectedOperation == 2) {
                 IOManager.getInstance().print(
@@ -378,7 +375,7 @@ public class CanFactory {
                 );
 
                 Integer auditorNum;
-                while ((auditorNum = CompanyManagementTest.intputInteger()) == -1) {
+                while ((auditorNum = CompanyManagementTest.inputInteger()) == -1) {
                     IOManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -461,7 +458,7 @@ public class CanFactory {
                 );
 
                 Integer days;
-                while ((days = CompanyManagementTest.intputInteger()) == -1) {
+                while ((days = CompanyManagementTest.inputInteger()) == -1) {
                     IOManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -589,7 +586,7 @@ public class CanFactory {
 
                 int option;
 
-                while ((option = CompanyManagementTest.intputInteger()) == -1) {
+                while ((option = CompanyManagementTest.inputInteger()) == -1) {
                     IOManager.getInstance().errorMassage(
                             "无效输入，请重新输入：",
                             "無效輸入，请重新輸入：",
@@ -729,7 +726,7 @@ public class CanFactory {
 
 
             int selectedOperation = -1;
-            while ((selectedOperation = this.intputInteger()) == -1 || selectedOperation < 1
+            while ((selectedOperation = this.inputInteger()) == -1 || selectedOperation < 1
             ||selectedOperation > 31) {
                 IOManager.getInstance().errorMassage(
                         "无效输入，请重新输入：",
@@ -759,15 +756,10 @@ public class CanFactory {
                     ProductDepartment.main(args);
                     break;
                 case 2:
+                case 6:
                     try {
                         WrappingDriver.main(args);
-                    } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    } catch (InstantiationException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
+                    } catch (NoSuchMethodException | InvocationTargetException  | InstantiationException | IllegalAccessException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -779,19 +771,6 @@ public class CanFactory {
                     break;
                 case 5:
                     IOManager.main(args);
-                    break;
-                case 6:
-                    try {
-                        WrappingDriver.main(args);
-                    } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    } catch (InstantiationException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
                     break;
                 case 7:
                     MultitonTest.main(args);

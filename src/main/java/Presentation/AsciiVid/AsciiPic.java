@@ -1,8 +1,13 @@
 package Presentation.AsciiVid;
+import Main.Main;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
@@ -70,8 +75,12 @@ public class AsciiPic
 
     public static void macHelloPic()
     {
+        String fileName;
+        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
+                StandardCharsets.UTF_8);
+        fileName = fileName.substring(0, fileName.lastIndexOf('/')) + "/macHello.png";
         try {
-            AsciiPic.printAsciiPic(ImageIO.read(new File("D:\\TestPic\\testa.png")));
+            AsciiPic.printAsciiPic(ImageIO.read(new File(fileName)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,8 +88,12 @@ public class AsciiPic
 
     public static void winHelloPic()
     {
+        String fileName = "";
+        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
+                StandardCharsets.UTF_8);
+        fileName = fileName.substring(0,fileName.lastIndexOf('/')) + "/winHello.jpg";
         try {
-            AsciiPic.printColorfulAsciiPic(ImageIO.read(new File("D:\\TestPic\\test.jpg")));
+            AsciiPic.printColorfulAsciiPic(ImageIO.read(new File(fileName)));
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
