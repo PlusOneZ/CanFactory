@@ -1,11 +1,11 @@
 package Presentation.AsciiVid;
 import Main.Main;
+import Presentation.WindowsLibrary;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -75,10 +75,7 @@ public class AsciiPic
 
     public static void macHelloPic()
     {
-        String fileName;
-        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
-                StandardCharsets.UTF_8);
-        fileName = fileName.substring(0, fileName.lastIndexOf('/')) + "/macHello.png";
+        String fileName = "src/main/java/macHello.png";
         try {
             AsciiPic.printAsciiPic(ImageIO.read(new File(fileName)));
         } catch (IOException e) {
@@ -88,7 +85,7 @@ public class AsciiPic
 
     public static void winHelloPic()
     {
-        String fileName = "";
+        String fileName;
         fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
                 StandardCharsets.UTF_8);
         fileName = fileName.substring(0,fileName.lastIndexOf('/')) + "/winHello.jpg";
