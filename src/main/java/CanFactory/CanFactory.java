@@ -684,7 +684,7 @@ public class CanFactory {
             IOManager.getInstance().print(
                     "请输入序号选择要测试的设计模式：",
                     "請輸入序號選擇要測試的設計模式：",
-                    "Please enter the index to select the design mode to test:"
+                    "Please enter the index to select the design pattern to test:"
             );
 
             IOManager.getInstance().print(

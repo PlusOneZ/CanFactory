@@ -44,7 +44,7 @@ public class ChainOfResponsibilityTest {
         LeaveRequest request = new LeaveRequest();
         request.setRequestee(testingWorker);
         request.setDays(15);
-        request.setReason("要去当山本");
+        request.setReason("要去医院看病");
 
         IOManager.getInstance().print(
                 request.toString(IOManager.Lang.zh_CN),

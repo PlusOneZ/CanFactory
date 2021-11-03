@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * TODO:生鲜罐头生产线工厂类,获取具体生鲜罐头生产线.<br>
+ * 生鲜罐头生产线工厂类,获取具体生鲜罐头生产线.
  * <b>应用了工厂模式、享元模式</b>
  *
  * @author 孟繁霖
@@ -17,7 +17,7 @@ import java.util.Map;
 public class FreshLineFactory extends Factory {
 
     /**
-     * TODO:生产线Map.<br>
+     * 生产线Map.
      * <b>应用享元模式，存储已有生产线对象，防止重复创建</b>
      */
     private static final HashMap<String, FreshLine> freshLineMap = new HashMap<>();
@@ -40,7 +40,7 @@ public class FreshLineFactory extends Factory {
 
 
     /**
-     * TODO:获取指定类型的生鲜罐头生产线.<br>
+     * 获取指定类型的生鲜罐头生产线.
      * <i>已有的生产线从map中获取，没有的新建并存储在map中</i>
      *
      * @param freshLineType :  需要使用的生鲜罐头生产线类型(salmon,clove)

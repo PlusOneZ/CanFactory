@@ -12,7 +12,7 @@ public interface AnnouncementManager {
         IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
-                "# Using Proxy mode"
+                "# Using Proxy Pattern"
         );
 
         IOManager.getInstance().errorMassage(
@@ -37,7 +37,7 @@ public interface AnnouncementManager {
         IOManager.getInstance().print(
                 "# 使用代理模式",
                 "# 使用代理模式",
-                "# Using Proxy mode"
+                "# Using Proxy Pattern"
         );
 
         IOManager.getInstance().errorMassage(

@@ -13,7 +13,7 @@ import java.util.List;
 
 
 /**
- * TODO:供应商
+ * 供应商
  *
  * @author 孟繁霖
  * @date 2021-10-11 23:51
@@ -21,7 +21,7 @@ import java.util.List;
 public class Supplier {
 
     /**
-     * TODO:提供原料
+     * 提供原料
      *
      * @param canName  : 原料
      * @param count :  原料数量

@@ -7,7 +7,7 @@ import Manufacturing.ProductLine.Pretreatment.PretreatmentApp;
 import java.util.List;
 
 /**
- * TODO:水果罐头生产线接口,预处理原料、产生罐头产品.
+ * 水果罐头生产线接口,预处理原料、产生罐头产品.
  *
  * @author 孟繁霖
  * @date 2021-10-11 23:47
@@ -15,7 +15,7 @@ import java.util.List;
 public interface FruitLine extends ProductLine{
 
     /**
-     * TODO:预处理
+     * 预处理
      *
      * @param baseIngredientList :  原料列表
      * @return : java.util.List<Manufacturing.ProductLine.Fruit.RawMaterial>

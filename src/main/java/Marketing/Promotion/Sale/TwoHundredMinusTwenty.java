@@ -11,9 +11,9 @@ public class TwoHundredMinusTwenty implements Sale {
     @Override
     public Double discount(Double originalPrice) {
         IOManager.getInstance().print(
-                "# 使用策略模式，计算产品优惠价格",
-                "# 使用策略模式，計算產品優惠價格",
-                "# using strategy pattern,calculating the price");
+                "# 使用策略模式：计算产品优惠价格",
+                "# 使用策略模式：計算產品優惠價格",
+                "# Using strategy pattern: calculating the price");
         IOManager.getInstance().print(
                 "产品原价为:" + String.format("%.2f",originalPrice),
                 "產品原價爲:" + String.format("%.2f",originalPrice),
