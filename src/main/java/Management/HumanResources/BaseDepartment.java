@@ -17,7 +17,7 @@ import java.util.List;
 
 public abstract class BaseDepartment {
 
-    protected List<BaseEmployee> employees = new ArrayList<BaseEmployee>();
+    protected List<BaseEmployee> employees = new ArrayList<>();
 
     protected Manager manager = null;
 

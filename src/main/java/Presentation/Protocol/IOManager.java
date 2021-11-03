@@ -75,7 +75,7 @@ public class IOManager {
 
     private int delay;
 
-    private Timer timer;
+    public Timer timer;
 
     public void setDelay(int delay) {
         this.delay = delay;
