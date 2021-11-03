@@ -11,7 +11,7 @@ public class Main {
         System.out.println("[1 - Mac]\t[2 - Win]");
 
         int selectedLanguage = -1;
-        while ((selectedLanguage = CanFactory.getInstance().intputInteger()) == -1 || selectedLanguage < 1 || selectedLanguage > 2) {
+        while ((selectedLanguage = CanFactory.getInstance().inputInteger()) == -1 || selectedLanguage < 1 || selectedLanguage > 2) {
             System.out.println("无效输入，请重新输入 / 無效輸入，请重新輸入 / Invalid input, please input again");
         }
         if(selectedLanguage == 2)
