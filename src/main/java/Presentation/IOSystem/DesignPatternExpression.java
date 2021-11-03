@@ -118,7 +118,9 @@ public class DesignPatternExpression implements AbstractExpression
                     TransportDepartmentTest.main(args);
                     break;
                 default:
-                    IOSystem.getInstance().out("输入help design_pattern获取帮助");
+                    IOManager.getInstance().print("输入 'help design_pattern' 获取帮助\n",
+                            "輸入 'help design_pattern' 獲取幫助\n",
+                            "input 'help design_pattern' gain help\n");
             }
     }
 }

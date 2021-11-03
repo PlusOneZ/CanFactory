@@ -11,14 +11,17 @@ public class LanguageExpression implements AbstractExpression
             switch (construction) {
                 case "zh_CN":
                     IOManager.getInstance().setLanguage(IOManager.Lang.zh_CN);
+                    IOSystem.getInstance().changeHelpInfo("zh_CN");
                     IOSystem.getInstance().out("当前语言为简体中文");
                     break;
                 case "zh_TW":
                     IOManager.getInstance().setLanguage(IOManager.Lang.zh_TW);
+                    IOSystem.getInstance().changeHelpInfo("zh_TW");
                     IOSystem.getInstance().out("當前語言為臺灣繁體中文");
                     break;
                 case "en":
                     IOManager.getInstance().setLanguage(IOManager.Lang.en);
+                    IOSystem.getInstance().changeHelpInfo("en");
                     IOSystem.getInstance().out("Current language is English");
                     break;
                 default:

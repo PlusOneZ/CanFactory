@@ -1,6 +1,7 @@
 package Presentation.IOSystem;
 
 import CanFactory.CanFactory;
+import Presentation.Protocol.IOManager;
 
 public class ProcessExpression implements AbstractExpression
 {
@@ -16,7 +17,9 @@ public class ProcessExpression implements AbstractExpression
                     CanFactory.getInstance().companyManage();
                     break;
                 default:
-                    IOSystem.getInstance().out("输入help process以获取帮助信息");
+                    IOManager.getInstance().print("输入 'help process' 以获取帮助信息\n",
+                            "輸入 'help process' 獲取幫助\n",
+                            "input 'help process' gain help\n");
             }
     }
 }
