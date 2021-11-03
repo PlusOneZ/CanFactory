@@ -1,3 +1,4 @@
+package Main;
 import CanFactory.CanFactory;
 import Presentation.AsciiVid.AsciiPic;
 import Presentation.IOSystem.IOSystem;
@@ -27,8 +28,6 @@ public class Main {
             AsciiPic.winHelloPic();
             Runnable main = () ->{
                 IOSystem.getInstance().init();
-                CanFactory factory = CanFactory.getInstance();
-                factory.run();
             };
             new Thread(main).start();
         }

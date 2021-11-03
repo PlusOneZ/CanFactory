@@ -31,18 +31,8 @@ public class ControlExpression implements AbstractExpression
                 case "process":
                     processExpression.interpret(context.substring(context.indexOf(' ') + 1));
                     break;
-                default:
-                    helpInformation(instruction);
-                    break;
             }
         }
-    }
-    private void helpInformation(String context)
-    {
-        if(context.equalsIgnoreCase("help"))
-            IOSystem.getInstance().SystemOut("帮助信息\n");
-        else
-            IOSystem.getInstance().SystemOut("错误的输入：" + context + "\n请输入help获取帮助信息。\n");
     }
     private void superDo(String instruction){
         IOSystem.getInstance().setId();
