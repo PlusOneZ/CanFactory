@@ -130,7 +130,7 @@ public class ProductDepartment {
     }
 
     /**
-    * 抽象工厂、工厂、迭代器、享元模式测试方法
+    * 抽象工厂、工厂、模板方法、迭代器、享元模式测试方法
     * @param args 1
     * @author 孟繁霖
     * @date 2021-11-01 22:50
@@ -140,9 +140,9 @@ public class ProductDepartment {
         List<List<Can>> productList = new ArrayList<>();
 
         IOManager.getInstance().print(
-                "#使用抽象工厂模式和工厂模式创建生产工厂、生产线来进行生产",
-                "#使用抽象工廠模式和工廠模式創建生產工廠、生產線來進行生產",
-                "#Use abstract factory pattern and factory pattern to create production factories and production lines for production");
+                "#使用抽象工厂模式、工厂模式创建生产工厂、生产线并按照模板方法进行生产",
+                "#使用抽象工廠模式、工廠模式創建生產工廠、生產線並按照模板方法進行生產",
+                "#Use abstract factory pattern and factory pattern to create production factories and production lines and perform production in accordance with the template method");
         Factory factory = FactoryProducer.getAbstractFactory("fresh");
         if (factory != null) {
             productList.add(factory.produceCan("fresh", "salmon", 6, "fine"));

@@ -7,7 +7,7 @@ import Presentation.Protocol.IOManager;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("请选择使用系統 /請選擇使用語言 /Please select the system");
+        System.out.println("请选择使用系統 /請選擇使用系统 /Please select the system");
         System.out.println("[1 - Mac]\t[2 - Win]");
 
         int selectedLanguage = -1;

@@ -19,10 +19,28 @@ public class ControlExpression implements AbstractExpression
         else{
             join();
             switch (instruction) {
+<<<<<<< HEAD
                 case "design_pattern" -> designPatternExpression.interpret(context.substring(context.indexOf(' ') + 1));
                 case "help" -> helpExpression.interpret(context.substring(context.indexOf(' ') + 1));
                 case "language" -> languageExpression.interpret(context.substring(context.indexOf(' ') + 1));
                 case "process" -> processExpression.interpret(context.substring(context.indexOf(' ') + 1));
+=======
+                case "design_pattern" :
+                    designPatternExpression.interpret(context.substring(context.indexOf(' ') + 1));
+                    break;
+                case "help":
+                    helpExpression.interpret(context.substring(context.indexOf(' ') + 1));
+                    break;
+                case "language":
+                    languageExpression.interpret(context.substring(context.indexOf(' ') + 1));
+                    break;
+                case "process":
+                    processExpression.interpret(context.substring(context.indexOf(' ') + 1));
+                    break;
+                default:
+                    helpInformation(instruction);
+                    break;
+>>>>>>> master
             }
         }
     }
