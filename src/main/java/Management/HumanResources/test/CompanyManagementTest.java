@@ -15,22 +15,19 @@ import java.util.regex.Pattern;
  */
 
 public class CompanyManagementTest {
-
-    public static int intputInteger(){
+    public static int inputInteger() {
         String inputStr = IOManager.getInstance().input();
-        if(inputStr==""){
+        if (inputStr == "") {
             return -1;
         }
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(inputStr);
-        if(!isNum.matches()){
+        if (!isNum.matches()) {
             return -1;
-        }
-        else{
+        } else {
             return Integer.parseInt(inputStr);
         }
     }
-
     public static void main(String[] args) throws IOException {
         CanFactory factory = CanFactory.getInstance();
         factory.companyManage();

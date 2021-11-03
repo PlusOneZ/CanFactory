@@ -34,7 +34,7 @@ public class WrappingDriver {
         printMenu();
         //对操作进行选择并且根据对应的操作生成相应的罐头实例,以标识测试;
         int choice;
-        while ((choice = CanFactory.getInstance().intputInteger()) ==-1 ||
+        while ((choice = CanFactory.getInstance().inputInteger()) ==-1 ||
         choice <1 ||choice >4) {
             IOManager.getInstance().errorMassage(
                     "输入序号非法,请重新输入!",

@@ -1,5 +1,6 @@
 package Management.HumanResources.FinancialSystem.DataAccessObject;
 
+import Main.Main;
 import Management.HumanResources.BaseDepartment;
 import Management.HumanResources.BaseEmployee;
 import Presentation.Protocol.IOManager;
@@ -8,6 +9,7 @@ import com.csvreader.CsvWriter;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -21,8 +23,9 @@ import java.util.List;
  */
 
 public class SalaryDaoImpl implements SalaryDao{
-    String filePath = "./src/main/java/Management/HumanResources/FinancialSystem/Salary.csv";
-    File file = new File(filePath);
+    String filePath = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
+                "UTF-8");
+    File file = new File(filePath.substring(0,filePath.lastIndexOf('/')) + "/Salary.csv");
     CsvWriter csvWriter = new CsvWriter(filePath, ',', StandardCharsets.UTF_8);
 
     /**
