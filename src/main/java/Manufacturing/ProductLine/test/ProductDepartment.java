@@ -78,9 +78,9 @@ public class ProductDepartment {
             return null;
         }
         IOManager.getInstance().print(
-                "实现中介者模式: 调用包装部门对" + canList.get(0).getCanName() + "进行封面包装",
-                "實現中介者模式: 調用包裝部門對" + canList.get(0).getCanName() + "進行封麵包裝",
-                "Implement the intermediary pattern: Call the packaging department to cover " + canList.get(0).getCanName()
+                "# 使用中介者模式: 调用包装部门对" + canList.get(0).getCanName() + "进行封面包装",
+                "# 使用中介者模式: 調用包裝部門對" + canList.get(0).getCanName() + "進行封麵包裝",
+                "# Using Intermediary Pattern: Call the packaging department to cover " + canList.get(0).getCanName()
         );
         wrappedCan = DepartmentMediator.getInstance().wrapCan(canList.get(0));
         IOManager.getInstance().print(
@@ -140,9 +140,9 @@ public class ProductDepartment {
         List<List<Can>> productList = new ArrayList<>();
 
         IOManager.getInstance().print(
-                "#使用抽象工厂模式、工厂模式创建生产工厂、生产线并按照模板方法进行生产",
-                "#使用抽象工廠模式、工廠模式創建生產工廠、生產線並按照模板方法進行生產",
-                "#Use abstract factory pattern and factory pattern to create production factories and production lines and perform production in accordance with the template method");
+                "# 使用抽象工厂模式、工厂模式：创建生产工厂、生产线并按照模板方法进行生产",
+                "# 使用抽象工廠模式、工廠模式：創建生產工廠、生產線並按照模板方法進行生產",
+                "# Using abstract factory pattern and factory pattern: create production factories and production lines and perform production in accordance with the template method");
         Factory factory = FactoryProducer.getAbstractFactory("fresh");
         if (factory != null) {
             productList.add(factory.produceCan("fresh", "salmon", 6, "fine"));
@@ -156,9 +156,9 @@ public class ProductDepartment {
         }
 
         IOManager.getInstance().print(
-                "#迭代器模式和享元模式测试",
-                "#叠代器模式和享元模式測試",
-                "#Iterator Pattern and Flyweight Pattern test");
+                "# 迭代器模式和享元模式",
+                "# 叠代器模式和享元模式",
+                "# Iterator Pattern and Flyweight Pattern");
         //迭代器模式、享元模式测试，打印已有生产线，虽然生产两次salmon罐头，生产线只用一条
         Iterator i = factory.iterator();
         while (i.hasNext()) {

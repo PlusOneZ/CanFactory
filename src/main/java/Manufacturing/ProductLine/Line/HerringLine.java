@@ -54,9 +54,9 @@ public class HerringLine implements FreshLine {
         List<Can> product=new ArrayList<>();
 
         IOManager.getInstance().print(
-                "# 使用享元模式生产铁制罐头",
-                "# 使用享元模式生產鐵製罐頭",
-                "# Production of iron cans using Flyweight Pattern"
+                "# 使用享元模式：生产铁制罐头",
+                "# 使用享元模式：生產鐵製罐頭",
+                "# Using Flyweight Pattern: Production of iron cans"
         );
         for(int i=0;i<count;i++){
             Ingredient ingredient = ingredients.get(i);

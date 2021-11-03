@@ -54,9 +54,9 @@ public class IronCanProducingMachine extends CanMachine {
 
     static public IronCanProducingMachine getInstance() {
         IOManager.getInstance().printPattern(
-                "# 使用多例模式，返回第" + (current+1) + "个铁罐头处理机器。",
-                "# 使用多例模式，返回第" + (current+1) + "個鐵罐頭處理機器。",
-                "# Using Multiton Pattern, return No." + (current+1) + " Iron Can Producing Machine."
+                "# 使用多例模式：返回第" + (current+1) + "个铁罐头处理机器。",
+                "# 使用多例模式：返回第" + (current+1) + "個鐵罐頭處理機器。",
+                "# Using Multiton Pattern: return No." + (current+1) + " Iron Can Producing Machine."
                 );
         return canMachines.get(getNextPosition());
     }

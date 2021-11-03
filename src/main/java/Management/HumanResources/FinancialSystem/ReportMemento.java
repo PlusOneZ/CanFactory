@@ -15,12 +15,13 @@ public class ReportMemento {
 
     private Auditor auditorState;
 
-    private  Date dateState;
+    private Date dateState;
 
-    public ReportMemento(Auditor auditorState, Date dateState){
-        this.auditorState=auditorState;
-        this.dateState=dateState;
+    public ReportMemento(Auditor auditorState, Date dateState) {
+        this.auditorState = auditorState;
+        this.dateState = dateState;
     }
+
     /**
      * 获取审阅者状态
      */

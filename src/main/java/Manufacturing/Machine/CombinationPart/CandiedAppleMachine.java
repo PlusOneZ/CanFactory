@@ -31,14 +31,7 @@ public class CandiedAppleMachine implements IngredientMachine {
         Ingredient[] ingredientList = ingredients.clone();
         return new CandiedApple(ingredientList[0], ingredientList[1]);
 
-
-//        OutputManager.getInstance().errorMassage(
-//                "检测到错误，不能生产糖渍苹果！",
-//                "檢測到錯誤，不能生產糖漬蘋果！",
-//                "Error detected, cannot produce candied apple!"
-//        );
-//
-//        return null;
+        
     }
 
 

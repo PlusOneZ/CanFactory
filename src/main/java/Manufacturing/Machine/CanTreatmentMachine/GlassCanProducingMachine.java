@@ -50,9 +50,9 @@ public class GlassCanProducingMachine extends CanMachine {
 
     static public GlassCanProducingMachine getInstance() {
         IOManager.getInstance().printPattern(
-                "# 使用多例模式，返回第" + (current+1) + "个玻璃罐头处理机器。",
-                "# 使用多例模式，返回第" + (current+1) + "個玻璃罐頭處理機器。",
-                "# Using Multiton Pattern, return No." + (current+1) + " Iron Can Producing Machine."
+                "# 使用多例模式：返回第" + (current+1) + "个玻璃罐头处理机器。",
+                "# 使用多例模式：返回第" + (current+1) + "個玻璃罐頭處理機器。",
+                "# Using Multiton Pattern: return No." + (current+1) + " Iron Can Producing Machine."
         );
         return canMachines.get(getNextPosition());
     }

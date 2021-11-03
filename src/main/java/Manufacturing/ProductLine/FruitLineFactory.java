@@ -9,7 +9,7 @@ import java.util.Map;
 
 
 /**
- * TODO:水果罐头生产线工厂类，获取具体水果罐头生产线.<br>
+ * 水果罐头生产线工厂类，获取具体水果罐头生产线.
  * <b>应用了工厂模式、享元模式</b>
  *
  * @author 孟繁霖
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class FruitLineFactory extends Factory {
     /**
-     * TODO:水果罐头生产线map
+     * 水果罐头生产线map
      * <b>应用享元模式，存储已有生产线对象，防止重复创建</b>
      */
     private static final HashMap<String, FruitLine> fruitLineMap = new HashMap<>();
@@ -35,7 +35,7 @@ public class FruitLineFactory extends Factory {
     }
 
     /**
-     * TODO:获取指定类型的水果罐头生产线方法.<br>
+     * 获取指定类型的水果罐头生产线方法.
      * <i>已有的生产线从map中获取，没有的新建并存储在map中</i>
      *
      * @param fruitLineType :  需要使用的水果罐头生产线类型（apple,peach,pear）

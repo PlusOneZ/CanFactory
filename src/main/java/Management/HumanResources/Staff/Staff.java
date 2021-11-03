@@ -22,7 +22,7 @@ public abstract class Staff extends BaseEmployee {
         IOManager.getInstance().printPattern(
                 "# 使用了责任链模式",
                 "# 使用了責任鏈模式",
-                "# Adopted Chain of Responsibility pattern"
+                "# Using Chain of Responsibility Pattern"
                 );
 
         IOManager.getInstance().print(

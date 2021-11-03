@@ -17,7 +17,7 @@ public abstract class StaffWithClothes extends Staff {
         IOManager.getInstance().print(
                 "# 使用装饰器模式",
                 "# 使用裝潢器模式",
-                "# Using Decorator mode"
+                "# Using Decorator Pattern"
         );
     }
 
