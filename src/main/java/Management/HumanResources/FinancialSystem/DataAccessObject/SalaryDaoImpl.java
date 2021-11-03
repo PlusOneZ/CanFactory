@@ -23,10 +23,9 @@ import java.util.List;
  */
 
 public class SalaryDaoImpl implements SalaryDao{
-    String filePath = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
-                "UTF-8");
-    File file = new File(filePath.substring(0,filePath.lastIndexOf('/')) + "/Salary.csv");
-    CsvWriter csvWriter = new CsvWriter(filePath, ',', StandardCharsets.UTF_8);
+    String filePath;
+    File file;
+    CsvWriter csvWriter;
 
     /**
      * SalaryDao接口的全局单例
@@ -47,6 +46,12 @@ public class SalaryDaoImpl implements SalaryDao{
      * @since 2021-10-24 3:07 下午
      */
     private SalaryDaoImpl() throws IOException {
+        filePath = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
+                "UTF-8");
+        filePath = filePath.substring(0,filePath.lastIndexOf('/')) + "/Salary.csv";
+        file = new File(filePath);
+        csvWriter = new CsvWriter(filePath, ',', StandardCharsets.UTF_8);
+
         //设置脏标记为已访问
         this.visited=true;
 
