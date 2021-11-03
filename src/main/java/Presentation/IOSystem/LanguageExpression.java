@@ -26,7 +26,7 @@ public class LanguageExpression implements AbstractExpression
                     break;
                 default:
                     IOSystem.getInstance().out("language zh_CN\t设置语言为中文\n" +
-                            "language zh_TW\t設置語言為臺灣繁體中文\nlanguage en\tset language to language\n");
+                            "language zh_TW\t設置語言為臺灣繁體中文\nlanguage en\tset language to English\n");
             }
     }
 }
