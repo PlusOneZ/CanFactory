@@ -82,7 +82,7 @@ public class AsciiPic
         try {
             AsciiPic.printAsciiPic(ImageIO.read(new File(fileName)));
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -95,7 +95,7 @@ public class AsciiPic
         try {
             AsciiPic.printColorfulAsciiPic(ImageIO.read(new File(fileName)));
         } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
