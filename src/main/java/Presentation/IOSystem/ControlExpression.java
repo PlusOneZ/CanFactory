@@ -1,60 +1,51 @@
 package Presentation.IOSystem;
 
-import Presentation.Protocol.IOManager;
-
+//控制非终结表达式，用于解释控制符
 public class ControlExpression implements AbstractExpression
 {
-    private final DesignPatternExpression designPatternExpression = new DesignPatternExpression();
-    private final HelpExpression helpExpression = new HelpExpression();
+    private final DesignPatternTerminalExpression designPatternTerminalExpression = new DesignPatternTerminalExpression();
+    private final HelpTerminalExpression helpExpression = new HelpTerminalExpression();
     private final InputTerminalExpression inputTerminalExpression = new InputTerminalExpression();
-    private final LanguageExpression languageExpression = new LanguageExpression();
-    private final ProcessExpression processExpression = new ProcessExpression();
+    private final LanguageTerminalExpression languageExpression = new LanguageTerminalExpression();
+    private final ProcessTerminalExpression processExpression = new ProcessTerminalExpression();
+    //解释控制符
     @Override
-    public void interpret(String context){
-        String instruction = context.toLowerCase();
-        if(instruction.indexOf(' ') > 0)
-            instruction = instruction.substring(0, instruction.indexOf(' '));
-        if(IOManager.getInstance().getLanguage() == null && !instruction.equals("language"))
+    public void interpret(Instruction instruction){
+        switch (instruction.handleNoLanguage())
         {
-            IOSystem.getInstance().SystemOut("language zh_CN\t设置语言为中文\n" +
-                    "language zh_TW\t設置語言為臺灣繁體中文\nlanguage en\tset language to English\n");
-            return;
-        }
-        if(instruction.equals("sudo"))
-            superDo(context);
-        else if(instruction.equals("input"))
-            inputTerminalExpression.interpret(context.substring(context.indexOf(' ') + 1));
-        else{
-            join();
-            switch (instruction) {
-                case "design_pattern" :
-                    designPatternExpression.interpret(context.substring(context.indexOf(' ') + 1));
-                    break;
-                case "help":
-                    helpExpression.interpret(context.substring(context.indexOf(' ') + 1));
-                    break;
-                case "language":
-                    languageExpression.interpret(context.substring(context.indexOf(' ') + 1));
-                    break;
-                case "process":
-                    processExpression.interpret(context.substring(context.indexOf(' ') + 1));
-                    break;
-            }
+            case "sudo":
+                superDo(instruction);
+                break;
+            case "input":
+                inputTerminalExpression.interpret(instruction);
+                break;
+            case "design_pattern" :
+                join(designPatternTerminalExpression, instruction);
+                break;
+            case "help":
+                join(helpExpression, instruction);
+                break;
+            case "language":
+                join(languageExpression, instruction);
+                break;
+            case "no_language":
+                IOSystem.getInstance().SystemOut("language zh_CN\t设置语言为中文\n" +
+                        "language zh_TW\t設置語言為臺灣繁體中文\nlanguage en\tset language to English\n");
+            case "process":
+                join(processExpression, instruction);
+                break;
         }
     }
-    private void superDo(String instruction){
+    //立即执行
+    private void superDo(Instruction instruction){
         IOSystem.getInstance().setId();
         IOSystem.getInstance().updateLastThread();
         IOSystem.getInstance().resetSystem();
-        Runnable newThread = () ->
-        {
-            if(instruction.indexOf(' ') > 0)
-                interpret(instruction.substring(instruction.indexOf(' ') + 1));
-        };
+        Runnable newThread = () -> interpret(instruction);
         new Thread(newThread).start();
     }
-
-    private void join() {
+    //待当前线程执行完后执行
+    private void join(AbstractExpression terminalExpression, Instruction instruction) {
         Thread waitThread = IOSystem.getInstance().getLastThread();
         IOSystem.getInstance().updateLastThread();
         try {
@@ -65,5 +56,8 @@ public class ControlExpression implements AbstractExpression
         }
         if(waitThread.getId() == IOSystem.getInstance().getId())
             IOSystem.getInstance().setId();
+        do {
+            terminalExpression.interpret(instruction.getFirstWord());
+        } while (instruction.notEmpty());
     }
 }

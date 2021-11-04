@@ -11,8 +11,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
+//处理字符图片的类
 public class AsciiPic
 {
+    //彩色图片信息
     private static class PixelInfo {
         PixelInfo() { }
         PixelInfo(char ch){
@@ -22,7 +24,7 @@ public class AsciiPic
         int r, g, b;
         char ch;
     }
-
+    //生产彩色图片
     private static ArrayList<PixelInfo> createColorfulAsciiPic(BufferedImage image) {
         final String base = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.  ";
         final int vCharNum = 100, hCharNum = image.getWidth() * vCharNum * 2 / image.getHeight();
@@ -43,6 +45,7 @@ public class AsciiPic
         }
         return result;
     }
+    //打印彩色图片
     private static void printColorfulAsciiPic(BufferedImage image) throws InterruptedException{
         ArrayList<PixelInfo> picInfo = createColorfulAsciiPic(image);
         WindowsLibrary.Console.changeBackground();
@@ -54,7 +57,7 @@ public class AsciiPic
         WindowsLibrary.Console.recoveryBackground();
         WindowsLibrary.Console.recoveryScreen();
     }
-
+    //打印黑白图片
     private static void printAsciiPic(BufferedImage image) {
         final String base = "@$%*o!;. ";
         final int vCharNum = 30, hCharNum = image.getWidth() * vCharNum * 2 / image.getHeight();
@@ -72,23 +75,28 @@ public class AsciiPic
         }
         System.out.print(result);
     }
-
+    //打印mac下的欢迎图片
     public static void macHelloPic()
     {
-        String fileName = "src/main/java/macHello.png";
+        String fileName = "/src/main/java/macHello.png";
+//        String fileName;
+//        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
+//                StandardCharsets.UTF_8);
+//        fileName = fileName.substring(0,fileName.lastIndexOf('/')) + "/macHello.png";
         try {
             AsciiPic.printAsciiPic(ImageIO.read(new File(fileName)));
         } catch (IOException e) {
             //e.printStackTrace();
         }
     }
-
+    //打印win下的欢迎图片
     public static void winHelloPic()
     {
-        String fileName;
-        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
-                StandardCharsets.UTF_8);
-        fileName = fileName.substring(0,fileName.lastIndexOf('/')) + "/winHello.jpg";
+        String fileName = "/src/main/java/winHello.png";
+//        String fileName;
+//        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
+//                StandardCharsets.UTF_8);
+//        fileName = fileName.substring(0,fileName.lastIndexOf('/')) + "/winHello.jpg";
         try {
             AsciiPic.printColorfulAsciiPic(ImageIO.read(new File(fileName)));
         } catch (InterruptedException | IOException e) {

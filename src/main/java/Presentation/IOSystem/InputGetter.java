@@ -2,6 +2,7 @@ package Presentation.IOSystem;
 
 import Presentation.WindowsLibrary;
 
+//被观察者，获取键盘输入
 public class InputGetter extends Getter
 {
     private static final InputGetter instance = new InputGetter();
@@ -11,7 +12,7 @@ public class InputGetter extends Getter
     public static InputGetter getInstance() {
         return instance;
     }
-
+    //读取键盘输入
     private InputGetter() {
         Runnable getInputTask = () ->
         {

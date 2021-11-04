@@ -3,7 +3,7 @@ package Presentation.IOSystem;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
-
+//打印输出处理
 public class PrintInputHandler implements InputHandler
 {
     boolean isLasted = false;
@@ -11,7 +11,7 @@ public class PrintInputHandler implements InputHandler
     String printString = ">";
     private final SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss ");
     private int lineNum = 0;
-
+    //处理要打印的信息
     @Override
     public void handle(char ch) {
         final int maxLineNum = 3;
@@ -33,6 +33,7 @@ public class PrintInputHandler implements InputHandler
             printString = printString.substring(0, printString.length() - 1);
         setIsLasted(false);
     }
+    //获取要打印的信息
     public String getPrintString() {
         return printString;
     }

@@ -1,17 +1,16 @@
 package Presentation.IOSystem;
 
+//观察者，处理交互信息
 public class InterpretInputHandler implements InputHandler
 {
     ControlExpression controlExpression = new ControlExpression();
     String input = "";
+    //处理交互信息
     public void handle(char ch) {
         if(ch == '\r')
         {
-            String expression = input;
-            Runnable controlTask = () ->
-            {
-                controlExpression.interpret(expression);
-            };
+            Instruction instruction = new Instruction(input);
+            Runnable controlTask = () -> controlExpression.interpret(instruction);
             new Thread(controlTask).start();
             input = "";
         }

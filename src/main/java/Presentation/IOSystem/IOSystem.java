@@ -5,6 +5,7 @@ import Presentation.WindowsLibrary;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+//输入输出系统
 public class IOSystem
 {
     private static final IOSystem instance = new IOSystem();
@@ -38,7 +39,7 @@ public class IOSystem
     public void setId() {
         id = Thread.currentThread().getId();
     }
-
+    //重置系统
     public void resetSystem() {
         outputLock.lock();
         try{
@@ -56,7 +57,7 @@ public class IOSystem
     }
 
 
-
+    //输入
     public String in() {
         synchronized (inLock)
         {
@@ -70,14 +71,14 @@ public class IOSystem
             return in;
         }
     }
-
+    //完成输入
     public void completeIn(String in){
         synchronized (inLock) {
             this.in = in;
             inLock.notify();
         }
     }
-
+    //系统输出
     public void SystemOut(String output){
         outputLock.lock();
         try{
@@ -93,13 +94,13 @@ public class IOSystem
             outputLock.unlock();
         }
     }
-
+    //输出
     public void out(String output){
         if(Thread.currentThread().getId() != id)
             return;
         SystemOut(output);
     }
-
+    //开始获取输入
     private void startGetInput(){
         inputGetter = InputGetter.getInstance();
         printInputHandler = new PrintInputHandler();
@@ -107,7 +108,7 @@ public class IOSystem
         InterpretInputHandler interpretInputHandler = new InterpretInputHandler();
         inputGetter.attach(interpretInputHandler);
     }
-
+    //开始刷新屏幕
     private void startRefreshScreen() {
         Runnable refreshScreenTask = () ->
         {
@@ -136,7 +137,7 @@ public class IOSystem
         };
         new Thread(refreshScreenTask).start();
     }
-
+    //复原屏幕
     private void recoveryScreen() {
         WindowsLibrary.Console.recoveryScreen();
         WindowsLibrary.Console.cls();
@@ -145,7 +146,7 @@ public class IOSystem
     private IOSystem() {
 
     }
-
+    //初始化
     public void init() {
         WindowsLibrary.Console.fullScreen();
         WindowsLibrary.Console.initScreen(helpInfo);
@@ -156,7 +157,7 @@ public class IOSystem
         updateLastThread();
         IOSystem.getInstance().out("欢迎使用罐头工厂|歡迎使用罐頭工廠|Welcome to use CanFactory\n");
     }
-
+    //初始化帮助信息
     private void initHelpInfo() {
         final String znInfo = "请输入language选择语言";
         final String enInfo = "Please input language to select language";
@@ -167,7 +168,7 @@ public class IOSystem
         if(helpInfo.length() < screenWidth)
             helpInfo += '-';
     }
-
+    //改变帮助信息
     public void changeHelpInfo(String language) {
         String info;
         int screenWidth = WindowsLibrary.Console.getScreenWidth();
