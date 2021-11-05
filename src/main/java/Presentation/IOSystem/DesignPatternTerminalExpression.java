@@ -76,7 +76,6 @@ public class DesignPatternTerminalExpression implements AbstractExpression
                 try {
                     FinancialDepartmentTest.main(args);
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
                 break;
             case "dirty_flag":
@@ -94,10 +93,10 @@ public class DesignPatternTerminalExpression implements AbstractExpression
                         "# Using Interpreter Pattern: when you input and get this output, you have already used interpreter pattern"
                 );
                 break;
-            case "Iterator":
+            case "iterator":
                 IteratorPatternTest.main(args);
                 break;
-            case "Mediator":
+            case "mediator":
                 InventoryDriver.main(args);
                 break;
             case "observer":

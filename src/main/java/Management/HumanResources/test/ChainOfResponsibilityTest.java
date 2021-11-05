@@ -29,10 +29,10 @@ public class ChainOfResponsibilityTest {
 
         testingManager.setName("Bear");
 
-        testingTeamLeader1.setName("梁乔");
+        testingTeamLeader1.setName("Joe");
         testingTeamLeader1.setLeader(testingManager);
 
-        testingWorker.setName("桥梁");
+        testingWorker.setName("Eoj");
         testingWorker.setLeader(testingTeamLeader1);
 
         // 分别将其注册到该部门

@@ -6,6 +6,6 @@ public class InputTerminalExpression implements AbstractExpression
     //处理输入
     @Override
     public void interpret(Instruction instruction) {
-        IOSystem.getInstance().completeIn(instruction.getString());
+        IOSystem.getInstance().completeIn(instruction.getSourceString());
     }
 }

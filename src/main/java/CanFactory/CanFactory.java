@@ -234,7 +234,7 @@ public class CanFactory {
 
         testingManager.setName("Bear");
 
-        testingTeamLeader1.setName("梁乔");
+        testingTeamLeader1.setName("Joe");
         testingTeamLeader1.setLeader(testingManager);
 
         testingTeamLeader2.setName("Trios");
@@ -243,7 +243,7 @@ public class CanFactory {
         testingWorker1.setName("Hamilton");
         testingWorker1.setLeader(testingTeamLeader1);
 
-        testingWorker.setName("桥梁");
+        testingWorker.setName("Eoj");
         testingWorker.setLeader(testingTeamLeader1);
 
         testingWorker2.setName("Zimmerman");
@@ -800,7 +800,7 @@ public class CanFactory {
                     try {
                         FinancialDepartmentTest.main(args);
                     } catch (IOException e) {
-                        e.printStackTrace();
+
                     }
                     break;
                 case 16:

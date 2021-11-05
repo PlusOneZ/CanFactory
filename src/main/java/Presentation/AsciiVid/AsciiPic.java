@@ -80,6 +80,8 @@ public class AsciiPic
     {
         String fileName = "src/main/java/macHello.png";
 //        String fileName;
+//        fileName = System.getProperty("exe.path") + "/macHello.png";
+//        String fileName;
 //        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
 //                StandardCharsets.UTF_8);
 //        fileName = fileName.substring(0,fileName.lastIndexOf('/')) + "/macHello.png";
@@ -93,6 +95,8 @@ public class AsciiPic
     public static void winHelloPic()
     {
         String fileName = "src/main/java/winHello.jpg";
+//        String fileName;
+//        fileName = System.getProperty("exe.path") + "/winHello.jpg";
 //        String fileName;
 //        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
 //                StandardCharsets.UTF_8);
