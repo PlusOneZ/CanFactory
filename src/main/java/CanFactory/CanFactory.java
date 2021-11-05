@@ -737,6 +737,7 @@ public class CanFactory {
             String[] args={"test"};
 
             if(selectedOperation == 31){
+                SalaryDaoImpl.getInstance().closeFile();
                 break;
             }
 
@@ -852,7 +853,6 @@ public class CanFactory {
                     PurchaseDepartment.main(args);
                     break;
             }
-
             IOManager.getInstance().print(
                     "------------------结束测试------------------",
                     "------------------結束測試------------------",
@@ -863,5 +863,6 @@ public class CanFactory {
                 IOManager.getInstance().printLanguageIrrelevantContent("");
             }
         }
+
     }
 }

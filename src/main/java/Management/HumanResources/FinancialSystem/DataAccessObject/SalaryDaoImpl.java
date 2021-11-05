@@ -72,7 +72,15 @@ public class SalaryDaoImpl implements SalaryDao{
      * @since 2021-10-24 下午
      */
     public void closeFile(){
-        csvWriter.close();
+        try {
+            csvWriter.close();
+        }catch (Exception e){
+            IOManager.getInstance().errorMassage(
+                    "请勿多次写入",
+                    "請勿多次寫入",
+                    "Please do not write file multiple times."
+            );
+        }
     }
 
     /**

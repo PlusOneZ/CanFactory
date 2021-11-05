@@ -121,7 +121,7 @@ public class FinancialDepartmentTest {
         salaryDaoImpl.saveSalary(qualityTestingDepartment);
         salaryDaoImpl.saveSalary(financialDepartment);
 
-        salaryDaoImpl.closeFile();
+//        salaryDaoImpl.closeFile();
 
         financialDepartment.giveCommand();
         //理论输出: 审计
