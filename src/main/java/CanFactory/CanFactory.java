@@ -144,8 +144,6 @@ public class CanFactory {
                 this.designPatternTest();
                 break;
         }
-
-
     }
 
     /**
@@ -185,8 +183,6 @@ public class CanFactory {
             //对于每一个订单，进行相应的处理
             DepartmentMediator.getInstance().handleOrder(order);
         }
-        if(IOManager.getInstance().operatingSystem == IOManager.OperatingSystem.MAC)
-            IOManager.getInstance().timer.cancel();
     }
 
 
@@ -278,7 +274,8 @@ public class CanFactory {
                             "[7 - 退出系統]\n" +
                             "您的輸入：",
                     "Please input the following number for corresponding mission:\n" +
-                            "[1 - employee registration]\t[2 - salary report audit]\t[3 - view history memento]\t[4 - leave request procedure]\t[5 - check employee authority]\t[6 - exit system]\n" +
+                            "[1 - employee registration]\t[2 - salary report audit]\t[3 - view history memento]\t[4 - leave request procedure]\n" +
+                            "[5 - check employee authority]\t[6 - announcement ]\t[7 - exit system]\n" +
                             "Your input: "
             );
 
@@ -670,9 +667,6 @@ public class CanFactory {
                 "已退出公司管理系統",
                 "Exit company management system."
         );
-
-        if(IOManager.getInstance().operatingSystem == IOManager.OperatingSystem.MAC)
-            IOManager.getInstance().timer.cancel();
     }
 
     /**
@@ -868,7 +862,5 @@ public class CanFactory {
                 IOManager.getInstance().printLanguageIrrelevantContent("");
             }
         }
-        if(IOManager.getInstance().operatingSystem == IOManager.OperatingSystem.MAC)
-            IOManager.getInstance().timer.cancel();
     }
 }

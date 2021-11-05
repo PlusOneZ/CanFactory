@@ -9,10 +9,10 @@ public class ProcessTerminalExpression implements AbstractExpression
     @Override
     public void interpret(Instruction instruction) {
         switch (instruction.getString()) {
-            case "orderManage":
+            case "order_manage":
                 CanFactory.getInstance().orderManage();
                 break;
-            case "companyManage":
+            case "company_manage":
                 CanFactory.getInstance().companyManage();
                 break;
             default:
