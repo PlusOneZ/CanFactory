@@ -49,7 +49,7 @@ public class SalaryDaoImpl implements SalaryDao{
 //        filePath = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
 //                "UTF-8");
 //        filePath = filePath.substring(0,filePath.lastIndexOf('/')) + "/Salary.csv";
-        filePath = "src/main/java/Salary.csv";
+        filePath = "src/main/java/Main/Salary.csv";
         file = new File(filePath);
         csvWriter = new CsvWriter(filePath, ',', StandardCharsets.UTF_8);
 
