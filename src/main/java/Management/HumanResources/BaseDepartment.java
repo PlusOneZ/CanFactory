@@ -36,11 +36,14 @@ public abstract class BaseDepartment {
                 this.employees.add(employee);
             }
             else{
-                IOManager.getInstance().errorMassage(
-                        "错误：" + type + "部门已经有经理，请勿重复添加",
-                        "錯誤：" + type + "部門已經有經理，請勿重複添加",
-                        "Fatal: The manager of " + type +" department already exists."
-                );
+                if (needOutputMananger) {
+                    IOManager.getInstance().errorMassage(
+                            "错误：" + type + "部门已经有经理，请勿重复添加",
+                            "錯誤：" + type + "部門已經有經理，請勿重複添加",
+                            "Fatal: The manager of " + type + " department already exists."
+                    );
+                }
+
             }
         }
         else{

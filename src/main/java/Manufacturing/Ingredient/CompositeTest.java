@@ -34,9 +34,9 @@ public class CompositeTest {
         Ingredient candiedApple = new CandiedApple(apple, sugar);
 
         IOManager.getInstance().printBrief(
-                "组合的原料：",
-                "組合的原料：",
-                "Composite ingredient: ",
+                "# 使用组合模式: 组合的原料：",
+                "# 使用組合模式: 組合的原料：",
+                "# Use combination pattern: Composite ingredient: ",
                 candiedApple.showContents()
         );
 

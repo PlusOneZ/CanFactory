@@ -15,11 +15,12 @@ import java.util.Random;
 
 /**
  * 迭代器模式的测试类
+ *
  * @author 梁乔
- * @date 2021/11/2 14:57 
+ * @date 2021/11/2 14:57
  */
 public class IteratorPatternTest {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //迭代器需要创建一系列订单
         IOManager.getInstance().print(
                 "迭代器模式开始。",
@@ -33,10 +34,10 @@ public class IteratorPatternTest {
         );
         Random r = new Random();
         int orderNum = r.nextInt(10);
-        for(int i = 0; i < orderNum; i++){
+        for (int i = 0; i < orderNum; i++) {
             int orderCanInfoNum = r.nextInt(5);
             ArrayList<OrderCanInformation> orderCanInformations = new ArrayList<OrderCanInformation>();
-            for(int j = 0; j < orderCanInfoNum; j++){
+            for (int j = 0; j < orderCanInfoNum; j++) {
                 //随机获取罐头类型
                 int canType = r.nextInt(4);
                 //随机获取罐头数量
@@ -46,25 +47,24 @@ public class IteratorPatternTest {
                 //获取罐头价格
                 double price = CanInfoController.getInstance().getCanPriceByName(canName);
                 //生成一个子订单
-                OrderCanInformation orderCanInformation = new OrderCanInformation(canName,count,price);
+                OrderCanInformation orderCanInformation = new OrderCanInformation(canName, count, price);
                 orderCanInformations.add(orderCanInformation);
             }
             Date date = new Date();
             Coupon coupon = new Coupon(new TwentyPercentOff());
-            OrderCenter.getInstance().createOneOrder(orderCanInformations,coupon,date,"同济大学");
+            OrderCenter.getInstance().createOneOrder(orderCanInformations, coupon, date, "同济大学");
         }
         IOManager.getInstance().print(
                 "# 使用迭代器模式：获取订单列表。",
                 "# 使用迭代器模式：獲取訂單列表。",
                 "# Using Iterator Pattern: get a list of orders."
         );
-        for(Iterator iter = OrderCenter.getInstance().getIterator();iter.hasNext();)
-        {
-            Order od = (Order)iter.next();
+        for (Iterator iter = OrderCenter.getInstance().getIterator(); iter.hasNext(); ) {
+            Order od = (Order) iter.next();
             IOManager.getInstance().print(
-                    "订单ID："+ od.getOrderId(),
-                    "訂單ID："+ od.getOrderState(),
-                    "Order Id:"+ od.getOrderId()
+                    "订单ID：" + od.getOrderId(),
+                    "訂單ID：" + od.getOrderId(),
+                    "Order Id:" + od.getOrderId()
             );
         }
     }
