@@ -11,6 +11,7 @@ import Marketing.Promotion.Coupon;
 import Marketing.Promotion.Sale.TwentyPercentOff;
 import Marketing.Wrapping.WrappedCan;
 import Marketing.Wrapping.WrappingDepartment;
+import Mediator.DepartmentMediator;
 import Presentation.Protocol.IOManager;
 
 import java.util.ArrayList;
@@ -30,29 +31,10 @@ public class InventoryDriver {
         InventoryDepartment inventoryDepartment = InventoryDepartment.getInstance();
 
         //首先准备stub.
-        WrappedCan wrappedCan = WrappingDepartment.getInstance().wrapCan(getStubCan());
-        ArrayList<StockCan> stockCans = new ArrayList<>();
-        StockCan stockCan = new StockCan(wrappedCan, 1);
-        stockCans.add(stockCan);
+        IOManager.getInstance().print("# 实现中介者模式: 通知包装部门对罐头进行包装","# 實現中介者模式: 通知包裝部門對罐頭進行包裝","# Realize Mediator pattern: notify the packaging department to package the cans");
+        WrappedCan wrappedCan = DepartmentMediator.getInstance().wrapCan(getStubCan());
+        IOManager.getInstance().print("# 调用包装部门完成","# 調用包裝部門完成","# Call the packaging department to complete");
 
-        //准备订单的stub
-        //首先准备一个canInformation,coupon,latestDeliveryTime,customerAddress
-        ArrayList<OrderCanInformation> orderCanInformations = new ArrayList<>();
-        OrderCanInformation orderCanInformation =
-                new OrderCanInformation(IOManager.getInstance().selectStringForCurrentLanguage("黄桃罐头", "黃桃罐頭", "Peach Can"),4,
-                        CanInfoController.getInstance().getCanPriceByName(IOManager.getInstance().selectStringForCurrentLanguage("黄桃罐头", "黃桃罐頭", "Peach Can")));
-        orderCanInformations.add(orderCanInformation);
-        orderCanInformation = new OrderCanInformation(IOManager.getInstance().selectStringForCurrentLanguage("糖渍苹果罐头", "糖漬蘋果罐頭", "Candied Apple Can"), 5,
-                CanInfoController.getInstance().getCanPriceByName(IOManager.getInstance().selectStringForCurrentLanguage("糖渍苹果罐头", "糖漬蘋果罐頭", "Candied Apple Can")));
-        orderCanInformations.add(orderCanInformation);
-        Coupon coupon = new Coupon(new TwentyPercentOff());
-        Date lastestDeliveryTime = new Date(2021,11,13);
-        String customerAddress = new String("上海市嘉定区同济大学20号楼");
-        Order order = new Order(orderCanInformations, coupon, lastestDeliveryTime, customerAddress);
-
-
-        inventoryDepartment.addOrder(order);
-        inventoryDepartment.reviewOrder();
     }
 
     public static Can getStubCan(){
