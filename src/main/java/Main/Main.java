@@ -20,9 +20,7 @@ public class Main {
             IOManager.getInstance().stop();
             IOManager.operatingSystem = IOManager.OperatingSystem.WIN;
         }
-        else {
-            IOManager.getInstance().run();
-        }
+
 
         if (IOManager.operatingSystem == IOManager.OperatingSystem.MAC) {
             CanFactory factory = CanFactory.getInstance();
