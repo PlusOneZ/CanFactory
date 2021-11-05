@@ -127,18 +127,27 @@ public class OrderCenter implements Container {
                 );
             }
             else if(Objects.equals(od.getOrderState().getCNStateName(), "已交付")){
-                String deliverTime = sft.format(od.getCompletionTime());
-                String sendingTime = sft.format(od.getSendingTime());
-                IOManager.getInstance().print(
-                        "订单发货时间:"+sendingTime,
-                        "訂單發貨時間:。"+sendingTime,
-                        "The delivery time of the order:"+sendingTime
-                );
-                IOManager.getInstance().print(
-                        "订单交付时间:"+deliverTime,
-                        "訂單交付時間:。"+deliverTime,
-                        "The Completion time of the order:"+deliverTime
-                );
+                String deliverTime ="";
+                String sendingTime ="";
+                if(od.getCompletionTime() != null){
+                deliverTime = sft.format(od.getCompletionTime());}
+                if(od.getSendingTime() != null) {
+                    sendingTime = sft.format(od.getSendingTime());
+                }
+                if(od.getCompletionTime() != null) {
+                    IOManager.getInstance().print(
+                            "订单发货时间:" + sendingTime,
+                            "訂單發貨時間:。" + sendingTime,
+                            "The delivery time of the order:" + sendingTime
+                    );
+                }
+                if(od.getCompletionTime() != null) {
+                    IOManager.getInstance().print(
+                            "订单交付时间:" + deliverTime,
+                            "訂單交付時間:。" + deliverTime,
+                            "The Completion time of the order:" + deliverTime
+                    );
+                }
             }
             IOManager.getInstance().print(
                     "订单明细:",
