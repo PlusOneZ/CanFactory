@@ -145,9 +145,7 @@ public class ProductDepartment {
                 "# Using abstract factory pattern and factory pattern: create production factories and production lines and perform production in accordance with the template method");
         Factory factory = FactoryProducer.getAbstractFactory("fresh");
         if (factory != null) {
-            productList.add(factory.produceCan("fresh", "salmon", 6, "fine"));
             productList.add(factory.produceCan("fresh", "herring", 6, "fine"));
-            productList.add(factory.produceCan("fresh", "salmon", 6, "fine"));
         } else {
             IOManager.getInstance().print(
                     "莫得工厂",

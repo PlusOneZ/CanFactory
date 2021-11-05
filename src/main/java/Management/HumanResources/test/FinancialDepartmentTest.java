@@ -54,24 +54,24 @@ public class FinancialDepartmentTest {
         Accountant accountant = new Accountant();
 
         accountant.setName("垂丝海棠");
-        if(accountant instanceof Permission) {
-                accountant.accessFinancialSystem();
-        } else {
-                IOManager.getInstance().errorMassage(
-                        accountant.getName()+ "没有权限访问财务系统，访问已被拒绝",
-                        accountant.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
-                        accountant.getName()+"The access to financial system is rejected"
-                );
-            }
-        if(auditor2 instanceof Permission){
-            financialDepartment.register(auditor2,true);
-        } else{
-            IOManager.getInstance().errorMassage(
-                    "没有权限访问财务系统，访问已被拒绝",
-                    "沒有權限訪問財務系統，訪問已被拒絕",
-                    "The access to financial system is rejected"
-            );
-        }
+//        if(accountant instanceof Permission) {
+//                accountant.accessFinancialSystem();
+//        } else {
+//                IOManager.getInstance().errorMassage(
+//                        accountant.getName()+ "没有权限访问财务系统，访问已被拒绝",
+//                        accountant.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
+//                        accountant.getName()+"The access to financial system is rejected"
+//                );
+//            }
+//        if(auditor2 instanceof Permission){
+//            financialDepartment.register(auditor2,true);
+//        } else{
+//            IOManager.getInstance().errorMassage(
+//                    "没有权限访问财务系统，访问已被拒绝",
+//                    "沒有權限訪問財務系統，訪問已被拒絕",
+//                    "The access to financial system is rejected"
+//            );
+//        }
         // //创建经济部门的审计员等
         // Auditor auditor1=new Auditor("怀特菲尔德", 201.0);
         // Auditor auditor2=new Auditor("哈梅特",100.0);
@@ -86,15 +86,15 @@ public class FinancialDepartmentTest {
         testingWorker.setName("桥梁");
         testingWorker.setLeader(testingTeamLeader1);
 
-        if(testingWorker instanceof Permission){
-            testingWorker.stealMoney();
-        } else{
-            IOManager.getInstance().errorMassage(
-                    testingWorker.getName()+ "没有权限访问财务系统，访问已被拒绝",
-                    testingWorker.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
-                    testingWorker.getName()+"The access to financial system is rejected"
-            );
-        }
+//        if(testingWorker instanceof Permission){
+//            testingWorker.stealMoney();
+//        } else{
+//            IOManager.getInstance().errorMassage(
+//                    testingWorker.getName()+ "没有权限访问财务系统，访问已被拒绝",
+//                    testingWorker.getName()+"沒有權限訪問財務系統，訪問已被拒絕",
+//                    testingWorker.getName()+"The access to financial system is rejected"
+//            );
+//        }
 //        financialDepartment.register(testingWorker);
 
         // 分别将其注册到该部门
