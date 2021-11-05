@@ -14,12 +14,12 @@ public class HelpTerminalExpression implements AbstractExpression
                 "language zh_TW\t設置語言為繁體中文\nlanguage en\t設置語言為英文\n";
         String language_en = "language zh_CN\tset language to Chinese\n" +
                 "language zh_TW\tset language to traditional Chinese\nlanguage en\tset language to English\n";
-        String process_zh_CN = "process orderManage\t进入订单系统\n" +
-                "process companyManage\t进入管理系统\n";
-        String process_zh_TW = "process orderManage\t進入訂單系統\n" +
-                "process companyManage\t進入管理系統\n";
-        String process_en = "process orderManage\t run order process\n" +
-                "process companyManage\t run company process";
+        String process_zh_CN = "process order_manage\t进入订单系统\n" +
+                "process company_manage\t进入管理系统\n";
+        String process_zh_TW = "process order_manage\t進入訂單系統\n" +
+                "process company_manage\t進入管理系統\n";
+        String process_en = "process order_manage\t run order process\n" +
+                "process company_manage\t run company process";
         String design_pattern_zh_CN = "design_pattern abstract_factory\t抽象工厂模式\t\t" +
                 "design_pattern builder\t\t建造者模式\n" + "design_pattern factory_method\t工厂方法模式\t\t" +
                 "design_pattern prototype\t原型模式\n" + "design_pattern singleton\t单例模式\t\t" +

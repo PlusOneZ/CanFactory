@@ -53,7 +53,7 @@ public class IOManager {
 
     public Lang getLanguage() { return language; }
 
-    private Lang language = null;
+    private Lang language = Lang.zh_CN;
 
     /**
      * 输出模式，可以选择详细、简单和只有设计模式输出。
@@ -356,6 +356,8 @@ public class IOManager {
         instance = new IOManager();
 
         operatingSystem = OperatingSystem.MAC;
+
+        instance.run();
     }
 
     public static void main(String[] args) {
