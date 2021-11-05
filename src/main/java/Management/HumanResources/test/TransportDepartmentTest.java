@@ -47,9 +47,7 @@ public class TransportDepartmentTest {
             ArrayList<StockCan> stockCans = new ArrayList<StockCan>();
             transportationCan.setStockCans(stockCans);
             //运输罐头
-            order.getOrderState().handleProduction(order);
-            order.getOrderState().handleTransportation(order);
-            order.getOrderState().handleDelivery(order);
+            departmentMediator.completeProductionOfOneOrder(order.getOrderId());
             departmentMediator.transportCans(transportationCan);
 
         }
