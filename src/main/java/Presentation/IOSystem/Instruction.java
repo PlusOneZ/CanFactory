@@ -2,6 +2,8 @@ package Presentation.IOSystem;
 
 import Presentation.Protocol.IOManager;
 
+import java.util.Locale;
+
 //解释器模式的环境类
 public class Instruction {
     private String instruction;
@@ -14,6 +16,7 @@ public class Instruction {
     String getString() {
         return instruction.toLowerCase();
     }
+    String getSourceString() {return instruction;}
     Instruction getFirstWord() {
         int index = instruction.indexOf(' ') < 0 ? instruction.length() : instruction.indexOf(' ');
         String firstWord = instruction.substring(0, index);

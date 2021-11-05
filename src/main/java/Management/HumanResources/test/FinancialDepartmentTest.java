@@ -53,7 +53,7 @@ public class FinancialDepartmentTest {
         // 创建一个会计
         Accountant accountant = new Accountant();
 
-        accountant.setName("垂丝海棠");
+        accountant.setName("Trisbox");
 //        if(accountant instanceof Permission) {
 //                accountant.accessFinancialSystem();
 //        } else {
@@ -80,10 +80,10 @@ public class FinancialDepartmentTest {
 
         testingManager.setName("Bear");
 
-        testingTeamLeader1.setName("梁乔");
+        testingTeamLeader1.setName("Joe");
         testingTeamLeader1.setLeader(testingManager);
 
-        testingWorker.setName("桥梁");
+        testingWorker.setName("Eoj");
         testingWorker.setLeader(testingTeamLeader1);
 
 //        if(testingWorker instanceof Permission){

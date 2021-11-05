@@ -166,7 +166,7 @@ public class IOSystem
         int width = (screenWidth - znInfo.length() - enInfo.length() - twInfo.length() - 16) / 2;
         helpInfo = "-".repeat(width) + znInfo + '|' + enInfo + '|' + twInfo + "-".repeat(width);
         if(helpInfo.length() < screenWidth)
-            helpInfo += '-';
+            helpInfo += '\n';
     }
     //改变帮助信息
     public void changeHelpInfo(String language) {
@@ -182,13 +182,13 @@ public class IOSystem
                 screenWidth -= 31;
                 break;
             default:
-                info = "design_pattern: print design pattern|help: gain help information|input: Interaction with programs|"
-                +"language: change language|process: run process|sudo: force to run";
+                info = "design_pattern | help | input | language | process | sudo | esc";
                 break;
         }
         int width = (screenWidth - info.length()) / 2;
+
         helpInfo = "-".repeat(width) + info + "-".repeat(width);
         if(helpInfo.length() < screenWidth)
-            helpInfo += '-';
+            helpInfo += '\n';
     }
 }
