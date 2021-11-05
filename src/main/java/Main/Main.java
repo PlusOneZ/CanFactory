@@ -16,8 +16,10 @@ public class Main {
         while ((selectedSystem = CanFactory.getInstance().inputInteger()) == -1 || selectedSystem < 1 || selectedSystem > 2) {
             System.out.println("无效输入，请重新输入 / 無效輸入，请重新輸入 / Invalid input, please input again");
         }
-        if (selectedSystem == 2)
+        if (selectedSystem == 2){
+            IOManager.getInstance().stop();
             IOManager.operatingSystem = IOManager.OperatingSystem.WIN;
+        }
         else {
             IOManager.getInstance().run();
         }
