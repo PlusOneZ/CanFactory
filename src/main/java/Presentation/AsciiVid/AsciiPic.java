@@ -78,7 +78,7 @@ public class AsciiPic
     //打印mac下的欢迎图片
     public static void macHelloPic()
     {
-        String fileName = "/src/main/java/macHello.png";
+        String fileName = "src/main/java/macHello.png";
 //        String fileName;
 //        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
 //                StandardCharsets.UTF_8);
@@ -92,7 +92,7 @@ public class AsciiPic
     //打印win下的欢迎图片
     public static void winHelloPic()
     {
-        String fileName = "/src/main/java/winHello.png";
+        String fileName = "src/main/java/winHello.jpg";
 //        String fileName;
 //        fileName = URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().getFile(),
 //                StandardCharsets.UTF_8);
