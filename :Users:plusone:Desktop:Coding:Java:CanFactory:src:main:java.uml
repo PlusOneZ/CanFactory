@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/plusone/Desktop/Coding/Java/CanFactory/src/main/java</OriginalElement>
+  <nodes>
+    <node x="2067.181818181818" y="5087.0">Manufacturing.CanEntity.Material.Material</node>
+    <node x="2851.5" y="3655.0">Manufacturing.ProductLine.FreshLine</node>
+    <node x="674.5" y="4790.0">Mutex.Mutex</node>
+    <node x="4199.0" y="5358.0">Marketing.Wrapping.WrappedCan</node>
+    <node x="1601.0" y="4423.0">Presentation.WindowsLibrary</node>
+    <node x="2299.0" y="5199.0">Manufacturing.CanEntity.Material.GlassMaterial</node>
+    <node x="1771.0" y="5199.0">Manufacturing.CanEntity.Material.Material.MATERIAL</node>
+    <node x="3308.0" y="5577.0">Storage.InventoryConverter.OrderToTransportationCanConverter</node>
+    <node x="2861.0" y="2416.0">Management.HumanResources.Staff.Cleaner</node>
+    <node x="3721.0" y="4587.0">Manufacturing.Machine.GeneralMachine.PeachFilterMachine</node>
+    <node x="2569.0" y="5199.0">Manufacturing.CanEntity.Material.IronMaterial</node>
+    <node x="1017.0" y="2390.0">Management.HumanResources.Manager.TransportManager</node>
+    <node x="1863.9999999999995" y="4269.0">Marketing.Scheme.TransportScheme.TransportType</node>
+    <node x="3188.0" y="5225.0">Presentation.IOSystem.InputGetter</node>
+    <node x="3667.9999999999995" y="4902.0">Presentation.IOSystem.ControlExpression</node>
+    <node x="4126.5" y="2606.0">Management.HumanResources.Staff.Driver.EngineMan</node>
+    <node x="922.25" y="5358.0">Marketing.Promotion.Sale.Sale</node>
+    <node x="4453.0" y="3033.0">Management.HumanResources.TransportDepartment</node>
+    <node x="1490.0" y="5087.0">CanFactory.CanFactory</node>
+    <node x="229.0" y="3332.0">Presentation.Protocol.IOManager.OperatingSystem</node>
+    <node x="114.0" y="5470.0">Storage.InventoryConverter.CanToOrderConverter.FromCanEntityFunction</node>
+    <node x="538.0" y="3332.0">Presentation.Protocol.IOManager.Lang</node>
+    <node x="1880.7464285714286" y="1558.5">Manufacturing.Ingredient.Procedure.Pretreat.Clean</node>
+    <node x="2272.0" y="2377.0">Management.HumanResources.Staff.Purchaser</node>
+    <node x="3287.5" y="4423.0">Manufacturing.Machine.IngredientMachine</node>
+    <node x="3187.0" y="5087.0">Presentation.IOSystem.Getter</node>
+    <node x="588.0" y="1558.5">Manufacturing.CanEntity.ConcreteCan.SalmonCan</node>
+    <node x="2661.0" y="3767.0">Manufacturing.ProductLine.Line.SalmonLine</node>
+    <node x="2437.0" y="3072.0">Marketing.OrderEnity.OrderedOrderState</node>
+    <node x="865.0" y="3733.0">Manufacturing.CanEntity.CanState.CannedCanState</node>
+    <node x="811.0" y="5087.0">Management.QuantityTesting.FactoryVisitor</node>
+    <node x="0.0" y="4423.0">Mediator.DepartmentMediator</node>
+    <node x="3943.0" y="2726.0">Management.HumanResources.BaseDepartment</node>
+    <node x="4466.0" y="4290.0">Marketing.Wrapping.Cover.CandiedAppleCanWrappingCover</node>
+    <node x="1465.5" y="1651.0">Management.Assets.Announcement.AnnouncementManager</node>
+    <node x="3102.0" y="5358.0">Marketing.Observable</node>
+    <node x="150.5" y="5087.0">Management.HumanResources.DepartmentCommand.Command</node>
+    <node x="1913.3249999999998" y="1328.0">Manufacturing.Ingredient.Procedure.Procedure</node>
+    <node x="1896.5" y="5006.0">Presentation.AsciiVid.AsciiPic.PixelInfo</node>
+    <node x="1808.9999999999998" y="4079.0">Marketing.Scheme.TransportScheme</node>
+    <node x="1789.3249999999998" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Beef</node>
+    <node x="2244.0" y="4790.0">Marketing.Wrapping.WrappingDepartment</node>
+    <node x="4024.0" y="3707.0">Manufacturing.ProductLine.FruitLineFactory</node>
+    <node x="650.0" y="5577.0">Marketing.OrderEnity.OrderIdGenerator</node>
+    <node x="3400.5" y="3655.0">Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine</node>
+    <node x="3806.5" y="3517.0">Manufacturing.ProductLine.Iterator</node>
+    <node x="1335.3249999999998" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Salmon</node>
+    <node x="4834.0" y="4290.0">Marketing.Wrapping.Cover.PeachCanWrappingCover</node>
+    <node x="268.0" y="4902.0">Presentation.IOSystem.PrintInputHandler</node>
+    <node x="336.8571428571429" y="244.0">Management.QualityTesting.Protocol.Testable</node>
+    <node x="1486.5" y="3314.0">Marketing.OrderCenterEntity.OrderCenter.OrderIterator</node>
+    <node x="1104.0" y="4790.0">Manufacturing.CanEntity.Size.Size</node>
+    <node x="788.0" y="2838.0">Marketing.OrderEnity.Order</node>
+    <node x="2603.0" y="4587.0">Manufacturing.Machine.GeneralMachine.SalmonFilterMachine</node>
+    <node x="2695.0" y="4790.0">Storage.TransportationCan</node>
+    <node x="3470.0" y="5087.0">Manufacturing.ProductLine.test.ProductDepartment</node>
+    <node x="3042.0" y="3767.0">Manufacturing.ProductLine.Line.HerringLine</node>
+    <node x="1457.0" y="1841.0">Management.HumanResources.BaseEmployee</node>
+    <node x="2873.0" y="4587.0">Manufacturing.Machine.GeneralMachine.PeelMachine</node>
+    <node x="1437.0" y="2390.0">Management.HumanResources.Manager.PurchaseManager</node>
+    <node x="350.0" y="5225.0">Management.HumanResources.DepartmentCommand.AuditSalaryTableCommand</node>
+    <node x="295.0" y="5577.0">Marketing.Promotion.Coupon</node>
+    <node x="4064.875" y="3465.0">Manufacturing.ProductLine.Factory</node>
+    <node x="824.0" y="4423.0">Marketing.Wrapping.WrappingFactoryInfo</node>
+    <node x="2033.0" y="5199.0">Manufacturing.CanEntity.Material.AlloyMaterial</node>
+    <node x="3757.0" y="3020.0">Management.QualityTesting.QualityAssuranceDepartment</node>
+    <node x="669.0" y="3996.0">Marketing.Wrapping.Builder.WrappingBuilder</node>
+    <node x="1170.0" y="4423.0">Manufacturing.CanEntity.CanInfoController</node>
+    <node x="4263.0" y="3996.0">Marketing.Wrapping.Cover.WrappingCover</node>
+    <node x="2151.25" y="2593.0">Management.Assets.ClothingDecoraor.CleanerWithClothes</node>
+    <node x="0.0" y="5358.0">Storage.InventoryConverter.CanToOrderConverter</node>
+    <node x="0.0" y="5577.0">Presentation.IOSystem.Instruction</node>
+    <node x="3445.5" y="3780.0">Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine</node>
+    <node x="0.0" y="1558.5">Manufacturing.CanEntity.ConcreteCan.PeachCan</node>
+    <node x="1980.0" y="3465.0">Presentation.IOSystem.IOSystem</node>
+    <node x="2013.7464285714286" y="1544.0">Manufacturing.Ingredient.Procedure.Decoct</node>
+    <node x="576.0" y="3733.0">Manufacturing.CanEntity.CanState.NotDisinfectedCanState</node>
+    <node x="3809.5" y="2606.0">Management.HumanResources.Staff.Driver.Shipmaster</node>
+    <node x="2280.0" y="3767.0">Manufacturing.ProductLine.Line.PeachLine</node>
+    <node x="3725.0" y="2429.0">Management.HumanResources.Staff.QualityExaminer</node>
+    <node x="1379.9964285714286" y="722.0">Manufacturing.Ingredient.BaseIngredient</node>
+    <node x="553.0" y="4902.0">Mutex.MachineMutex</node>
+    <node x="4704.5" y="4423.0">Manufacturing.ProductLine.AbstractCanFactory.AbstractCanFactory</node>
+    <node x="4667.5" y="2253.5">Management.HumanResources.FinancialSystem.Permission</node>
+    <node x="3968.0" y="2429.0">Management.HumanResources.Staff.Driver.Driver</node>
+    <node x="4605.0" y="5199.0">Manufacturing.ProductLine.Producer.FruitAdapter</node>
+    <node x="1921.25" y="2593.0">Management.Assets.ClothingDecoraor.SecurityClothes</node>
+    <node x="4192.0" y="5577.0">Manufacturing.ProductLine.Supplier</node>
+    <node x="3991.0" y="4587.0">Manufacturing.Machine.GeneralMachine.CleanMachine</node>
+    <node x="0.0" y="4941.0">Presentation.IOSystem.InterpretInputHandler</node>
+    <node x="2211.0" y="4092.0">Marketing.Scheme.PurchaseScheme</node>
+    <node x="1820.0" y="2443.5">Management.HumanResources.Manager.TestingManager</node>
+    <node x="2225.7464285714286" y="1544.0">Manufacturing.Ingredient.Procedure.Fry</node>
+    <node x="1338.0" y="4212.0">Marketing.Wrapping.Builder.PeachCanWrappingBuilder</node>
+    <node x="2234.0" y="5577.0">Marketing.Wrapping.WrappingDriver</node>
+    <node x="2072.0" y="5470.0">Manufacturing.ProductLine.Producer.RoughProducer</node>
+    <node x="649.3571428571429" y="709.0">Manufacturing.Ingredient.MixedIngredient</node>
+    <node x="2280.0" y="3655.0">Manufacturing.ProductLine.FruitLine</node>
+    <node x="4319.0" y="3707.0">Manufacturing.ProductLine.FreshLineFactory</node>
+    <node x="941.0" y="5577.0">Storage.CanWareHouse</node>
+    <node x="1202.0" y="5087.0">Marketing.OrderEnity.OrderCanInformation</node>
+    <node x="1205.0" y="4928.0">Manufacturing.CanEntity.Size.SmallSize</node>
+    <node x="170.0" y="1558.5">Manufacturing.CanEntity.ConcreteCan.CandiedAppleCan</node>
+    <node x="3251.25" y="2239.0">Management.HumanResources.Staff.Staff</node>
+    <node x="1988.0" y="4423.0">Management.HumanResources.LeaveRequest</node>
+    <node x="3460.0" y="3236.0">Manufacturing.ProductLine.PurchaseDepartment.Status</node>
+    <node x="2562.0" y="2726.0">Marketing.OrderEnity.OrderState</node>
+    <node x="133.5" y="2726.0">Presentation.Protocol.IOManager</node>
+    <node x="825.4964285714286" y="0.0">Presentation.Protocol.MultiLanguageDescription</node>
+    <node x="3451.0" y="4587.0">Manufacturing.Machine.GeneralMachine.FilterMachine</node>
+    <node x="3061.0" y="3072.0">Marketing.OrderEnity.DeliveredOrderState</node>
+    <node x="4032.9999999999995" y="4928.0">Presentation.IOSystem.ProcessTerminalExpression</node>
+    <node x="1304.0" y="2726.0">Marketing.Container</node>
+    <node x="4942.0" y="5358.0">Storage.StockCan</node>
+    <node x="4154.0" y="4290.0">Marketing.Wrapping.Cover.SalmonCanWrappingCover</node>
+    <node x="1446.5" y="4790.0">Management.BaseWorker</node>
+    <node x="2437.7464285714286" y="1558.5">Manufacturing.Ingredient.Procedure.Cook</node>
+    <node x="1546.0" y="3655.0">Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl</node>
+    <node x="4180.0" y="5199.0">Manufacturing.ProductLine.Producer.AppleProducer</node>
+    <node x="1099.0" y="3314.0">Marketing.OrderEnity.Order.CanTypeIterator</node>
+    <node x="1967.0" y="5358.0">Manufacturing.ProductLine.Producer.ProduceManner</node>
+    <node x="892.0" y="4212.0">Marketing.Wrapping.Builder.HerringCanWrappingBuilder</node>
+    <node x="253.0" y="2429.0">Management.HumanResources.TeamLeader.Carrier</node>
+    <node x="2749.0" y="3072.0">Marketing.OrderEnity.ProducedOrderState</node>
+    <node x="3399.0" y="2403.0">Management.HumanResources.Staff.Announcer</node>
+    <node x="3390.0" y="5358.0">Manufacturing.ProductLine.Pretreatment.PretreatmentApp</node>
+    <node x="2537.0" y="3996.0">Storage.InventoryDepartment</node>
+    <node x="4609.0" y="2416.0">Management.HumanResources.Staff.Auditor</node>
+    <node x="1415.0595238095239" y="2239.0">Management.HumanResources.Manager.Manager</node>
+    <node x="1076.3249999999998" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar</node>
+    <node x="1546.0" y="3465.0">Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDao</node>
+    <node x="1453.0" y="5470.0">Marketing.Wrapping.Converter.WrappingConverter.FromCanEntityFunction</node>
+    <node x="1437.0" y="4954.0">Management.HumanResources.CannedWorker</node>
+    <node x="4351.0" y="4928.0">Presentation.IOSystem.LanguageTerminalExpression</node>
+    <node x="3143.0" y="4561.0">Manufacturing.Machine.CombinationPart.CandiedAppleMachine</node>
+    <node x="1617.3249999999998" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.LotusRoot</node>
+    <node x="2477.0" y="5577.0">Storage.InventoryDriver</node>
+    <node x="3805.0" y="5358.0">ImplementDepartment.OrderImplementDepartment</node>
+    <node x="2125.0" y="3072.0">Marketing.OrderEnity.TransportingOrderState</node>
+    <node x="3398.0" y="2968.0">Manufacturing.ProductLine.PurchaseDepartment</node>
+    <node x="4838.0" y="4561.0">Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory</node>
+    <node x="446.0" y="4212.0">Marketing.Wrapping.Builder.CandiedAppleCanWrappingBuilder</node>
+    <node x="108.25" y="1394.5">Manufacturing.CanEntity.FruitCan</node>
+    <node x="2718.0" y="5577.0">Marketing.Wrapping.Builder.WrappingDirector</node>
+    <node x="3325.75" y="3996.0">Manufacturing.Machine.CanMachine</node>
+    <node x="1282.0" y="3007.0">Marketing.Iterator</node>
+    <node x="265.80952380952385" y="2239.0">Management.HumanResources.TeamLeader.TeamLeader</node>
+    <node x="4545.0" y="5577.0">Main.Main</node>
+    <node x="505.0" y="1394.5">Manufacturing.CanEntity.FreshCan</node>
+    <node x="1062.0" y="5470.0">Marketing.Promotion.Sale.TwentyPercentOff</node>
+    <node x="1732.0" y="4790.0">Presentation.AsciiVid.AsciiPic</node>
+    <node x="3379.0" y="4928.0">Presentation.IOSystem.HelpTerminalExpression</node>
+    <node x="4584.0" y="5358.0">Management.HumanResources.FinancialSystem.ReportAuditHistoryList</node>
+    <node x="3841.0" y="4290.0">Marketing.Wrapping.Cover.HerringCanWrappingCover</node>
+    <node x="271.4964285714286" y="462.0">Manufacturing.CanEntity.Can</node>
+    <node x="0.0" y="2443.5">Management.HumanResources.TeamLeader.TestingTeamLeader</node>
+    <node x="939.3249999999999" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Peach</node>
+    <node x="1211.3249999999998" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Pear</node>
+    <node x="933.0" y="5225.0">Management.QuantityTesting.CEOVisitor</node>
+    <node x="3837.0" y="5577.0">Manufacturing.ProductLine.FactoryProducer</node>
+    <node x="4556.0" y="4561.0">Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory</node>
+    <node x="277.5" y="1394.5">Manufacturing.CanEntity.VegetableCan</node>
+    <node x="998.0" y="4928.0">Manufacturing.CanEntity.Size.BigSize</node>
+    <node x="756.0" y="5470.0">Marketing.Promotion.Sale.TwoHundredMinusTwenty</node>
+    <node x="2851.5" y="3465.0">Manufacturing.ProductLine.ProductLine</node>
+    <node x="1023.4964285714286" y="166.0">Manufacturing.Ingredient.Ingredient</node>
+    <node x="288.0" y="3733.0">Manufacturing.CanEntity.CanState.ErrorCanState</node>
+    <node x="1925.1746031746034" y="2213.0">Management.HumanResources.Staff.BasePurchaser</node>
+    <node x="2042.0" y="2416.0">Management.Assets.ClothingDecoraor.StaffWithClothes</node>
+    <node x="407.0" y="1558.5">Manufacturing.CanEntity.ConcreteCan.HerringCan</node>
+    <node x="626.0" y="2416.0">Management.HumanResources.TeamLeader.PurchaseAgent</node>
+    <node x="4391.0" y="5199.0">Manufacturing.ProductLine.Producer.PeachProducer</node>
+    <node x="1153.0" y="3733.0">Manufacturing.CanEntity.CanState.DisinfectedAndNotFilledCanState</node>
+    <node x="3891.7499999999995" y="4790.0">Presentation.IOSystem.AbstractExpression</node>
+    <node x="1304.0" y="5577.0">Management.HumanResources.DepartmentType</node>
+    <node x="1340.0" y="5358.0">Marketing.Wrapping.Converter.WrappingConverter</node>
+    <node x="3979.0" y="5199.0">Manufacturing.ProductLine.Producer.PearProducer</node>
+    <node x="2167.325" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Herring</node>
+    <node x="3807.0" y="3746.0">Manufacturing.ProductLine.LineIterator</node>
+    <node x="164.5" y="4790.0">Presentation.IOSystem.InputHandler</node>
+    <node x="2853.0" y="5199.0">Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory</node>
+    <node x="4134.0" y="3020.0">Management.HumanResources.FinancialSystem.FinancialDepartment</node>
+    <node x="1634.0" y="5577.0">Management.HumanResources.WorkerCache</node>
+    <node x="2730.0" y="5358.0">Marketing.OrderEnity.OrderAmount</node>
+    <node x="4285.0" y="2416.0">Management.HumanResources.Staff.Accountant</node>
+    <node x="576.5" y="3465.0">Manufacturing.CanEntity.CanState.CanState</node>
+    <node x="1425.607142857143" y="1558.5">Manufacturing.Ingredient.Procedure.Pretreat.Disinfect</node>
+    <node x="3459.0" y="4160.0">Manufacturing.Machine.CanTreatmentMachine.IronCanProducingMachine</node>
+    <node x="1490.0" y="2903.0">Marketing.OrderCenterEntity.OrderCenter</node>
+    <node x="3091.0" y="4160.0">Manufacturing.Machine.CanTreatmentMachine.GlassCanProducingMachine</node>
+    <node x="0.0" y="3733.0">Manufacturing.CanEntity.CanState.FilledCanState</node>
+    <node x="1483.3249999999998" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Apple</node>
+    <node x="4261.0" y="4587.0">Manufacturing.Machine.GeneralMachine.DisinfectMachine</node>
+    <node x="2656.0" y="2429.0">Management.HumanResources.Staff.Worker</node>
+    <node x="1874.0" y="5470.0">Manufacturing.ProductLine.Producer.FineProducer</node>
+    <node x="0.0" y="5225.0">Management.HumanResources.DepartmentCommand.QualityTestingCommand</node>
+    <node x="0.0" y="3332.0">Presentation.Protocol.IOManager.Mode</node>
+    <node x="3130.0" y="2416.0">Management.HumanResources.Staff.SecurityStaff</node>
+    <node x="462.0" y="4423.0">Marketing.Wrapping.WrappingCanInfo</node>
+    <node x="1953.0" y="5577.0">Management.HumanResources.FinancialSystem.ReportMemento</node>
+    <node x="710.8571428571429" y="1394.5">Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple</node>
+    <node x="4684.0" y="4928.0">Presentation.IOSystem.DesignPatternTerminalExpression</node>
+    <node x="3085.0" y="4928.0">Presentation.IOSystem.InputTerminalExpression</node>
+    <node x="1303.607142857143" y="1558.5">Manufacturing.Ingredient.Procedure.Pretreat.Peel</node>
+    <node x="2109.25" y="3996.0">Marketing.Scheme.Scheme</node>
+    <node x="2892.0" y="5087.0">Manufacturing.ProductLine.Upstream.UpstreamFactory</node>
+    <node x="0.0" y="4212.0">Marketing.Wrapping.Builder.SalmonCanWrappingBuilder</node>
+    <node x="2333.0" y="4587.0">Manufacturing.Machine.GeneralMachine.HerringFilterMachine</node>
+    <node x="2313.0" y="5358.0">Management.HumanResources.FinancialSystem.ReportOriginator</node>
+    <node x="689.0" y="5225.0">Management.QuantityTesting.ManagerVisitor</node>
+    <node x="4291.25" y="5087.0">Manufacturing.ProductLine.Producer.FruitProducer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Marketing.OrderCenterEntity.OrderCenter" target="Marketing.Container" relationship="REALIZATION">
+      <point x="-295.0" y="-66.5" />
+      <point x="1283.0" y="2984.5" />
+      <point x="1283.0" y="2757.0" />
+      <point x="-101.0" y="0.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Purchaser" target="Management.HumanResources.Staff.BasePurchaser" relationship="REALIZATION">
+      <point x="-174.5" y="-83.0" />
+      <point x="172.32539682539664" y="57.0" />
+    </edge>
+    <edge source="Management.Assets.ClothingDecoraor.CleanerWithClothes" target="Management.Assets.ClothingDecoraor.StaffWithClothes" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2267.75" y="2568.0" />
+      <point x="2147.0" y="2568.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Management.HumanResources.Manager.TransportManager" target="Management.HumanResources.Manager.Manager" relationship="GENERALIZATION">
+      <point x="0.0" y="-70.0" />
+      <point x="1217.0" y="2359.0" />
+      <point x="1567.06" y="2359.0" />
+      <point x="4.7619047609259724E-4" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Size.SmallSize" target="Manufacturing.CanEntity.Size.Size" relationship="REALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="1298.5" y="4903.0" />
+      <point x="1195.0" y="4903.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Procedure.Cook" target="Manufacturing.Ingredient.Procedure.Procedure" relationship="GENERALIZATION">
+      <point x="-4.2857142852881225E-4" y="-16.5" />
+      <point x="2492.246" y="1519.0" />
+      <point x="2030.325" y="1519.0" />
+      <point x="2.2737367544323206E-13" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.CanState.DisinfectedAndNotFilledCanState" target="Manufacturing.CanEntity.CanState.CanState" relationship="GENERALIZATION">
+      <point x="0.0" y="-109.0" />
+      <point x="1327.0" y="3708.0" />
+      <point x="710.5" y="3708.0" />
+      <point x="0.0" y="109.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.MixedIngredient" target="Manufacturing.Ingredient.Ingredient" relationship="REALIZATION">
+      <point x="153.49985714285708" y="0.0" />
+      <point x="1344.5" y="870.0" />
+      <point x="1344.5" y="701.0" />
+      <point x="1176.996" y="701.0" />
+      <point x="-4.2857142852881225E-4" y="122.0" />
+    </edge>
+    <edge source="Management.HumanResources.FinancialSystem.FinancialDepartment" target="Management.HumanResources.BaseDepartment" relationship="GENERALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="4283.5" y="2979.0" />
+      <point x="4091.0" y="2979.0" />
+      <point x="4091.0" y="2943.0" />
+      <point x="4109.5" y="2943.0" />
+      <point x="0.0" y="96.0" />
+    </edge>
+    <edge source="Management.Assets.ClothingDecoraor.StaffWithClothes" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2147.0" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.BaseIngredient" target="Manufacturing.Ingredient.Ingredient" relationship="REALIZATION">
+      <point x="-4.2857142852881225E-4" y="-148.0" />
+      <point x="1533.496" y="701.0" />
+      <point x="1176.996" y="701.0" />
+      <point x="-4.2857142852881225E-4" y="122.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.ControlExpression" target="Presentation.IOSystem.AbstractExpression" relationship="REALIZATION">
+      <point x="4.547473508864641E-13" y="-57.0" />
+      <point x="3840.5" y="4877.0" />
+      <point x="4011.25" y="4877.0" />
+      <point x="4.547473508864641E-13" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.FruitLineFactory" target="Manufacturing.ProductLine.Factory" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="4161.5" y="3682.0" />
+      <point x="4262.875" y="3682.0" />
+      <point x="0.0" y="96.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Procedure.Pretreat.Clean" target="Manufacturing.Ingredient.Procedure.Procedure" relationship="GENERALIZATION">
+      <point x="-4.2857142852881225E-4" y="-16.5" />
+      <point x="1937.246" y="1519.0" />
+      <point x="2030.325" y="1519.0" />
+      <point x="2.2737367544323206E-13" y="83.0" />
+    </edge>
+    <edge source="Management.HumanResources.CannedWorker" target="Management.BaseWorker" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="0.0" y="57.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.PurchaseDepartment" target="Management.HumanResources.BaseDepartment" relationship="GENERALIZATION">
+      <point x="0.0" y="-109.0" />
+      <point x="3567.5" y="2943.0" />
+      <point x="4109.5" y="2943.0" />
+      <point x="0.0" y="96.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.AbstractCanFactory.IronCanFactory" target="Manufacturing.ProductLine.AbstractCanFactory.AbstractCanFactory" relationship="GENERALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="4687.0" y="4536.0" />
+      <point x="4831.0" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Marketing.OrderCenterEntity.OrderCenter.OrderIterator" target="Marketing.Iterator" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="1580.5" y="3289.0" />
+      <point x="1376.0" y="3289.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.InputGetter" target="Presentation.IOSystem.Getter" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Management.HumanResources.TransportDepartment" target="Management.HumanResources.BaseDepartment" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="4618.5" y="2979.0" />
+      <point x="4091.0" y="2979.0" />
+      <point x="4091.0" y="2943.0" />
+      <point x="4109.5" y="2943.0" />
+      <point x="0.0" y="96.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.SecurityStaff" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="3254.5" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Presentation.Protocol.IOManager.Mode" target="Presentation.Protocol.IOManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-44.0" />
+      <point x="104.5" y="3307.0" />
+      <point x="373.5" y="3307.0" />
+      <point x="0.0" y="278.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Line.HerringLine" target="Manufacturing.ProductLine.FreshLine" relationship="REALIZATION">
+      <point x="0.0" y="-70.0" />
+      <point x="3222.5" y="3742.0" />
+      <point x="3032.0" y="3742.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Seasoning.Sugar" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-16.5" />
+      <point x="1133.825" y="1347.0" />
+      <point x="1414.325" y="1347.0" />
+      <point x="1414.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Producer.AppleProducer" target="Manufacturing.ProductLine.Producer.FruitProducer" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4275.5" y="5174.0" />
+      <point x="4381.75" y="5174.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.CombinationPart.CandiedAppleMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="3287.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.PurchaseDepartment.Status" target="Manufacturing.ProductLine.PurchaseDepartment" relationship="INNER_CLASS">
+      <point x="0.0" y="-44.0" />
+      <point x="0.0" y="109.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.GeneralMachine.PeachFilterMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3846.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.LineIterator" target="Manufacturing.ProductLine.Iterator" relationship="REALIZATION">
+      <point x="-5.0" y="-44.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Can" target="Presentation.Protocol.MultiLanguageDescription" relationship="REALIZATION">
+      <point x="-107.63928571428573" y="-408.0" />
+      <point x="319.3571428571429" y="57.0" />
+      <point x="-143.0" y="0.0" />
+    </edge>
+    <edge source="Marketing.OrderEnity.TransportingOrderState" target="Marketing.OrderEnity.OrderState" relationship="GENERALIZATION">
+      <point x="0.0" y="-135.0" />
+      <point x="2271.0" y="3047.0" />
+      <point x="2739.0" y="3047.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.GeneralMachine.FilterMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3576.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Mixed.CandiedApple" target="Manufacturing.Ingredient.MixedIngredient" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="0.0" y="161.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.FruitCan" target="Manufacturing.CanEntity.Can" relationship="GENERALIZATION">
+      <point x="68.5" y="0.0" />
+      <point x="262.0" y="1411.0" />
+      <point x="262.0" y="1375.5" />
+      <point x="426.996" y="1375.5" />
+      <point x="-4.285714286424991E-4" y="408.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Size.BigSize" target="Manufacturing.CanEntity.Size.Size" relationship="REALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="1091.5" y="4903.0" />
+      <point x="1195.0" y="4903.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Builder.CandiedAppleCanWrappingBuilder" target="Marketing.Wrapping.Builder.WrappingBuilder" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="659.0" y="4187.0" />
+      <point x="882.0" y="4187.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Producer.FineProducer" target="Manufacturing.ProductLine.Producer.ProduceManner" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="1963.0" y="5445.0" />
+      <point x="2066.5" y="5445.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Management.HumanResources.TeamLeader.TestingTeamLeader" target="Management.HumanResources.TeamLeader.TeamLeader" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="116.5" y="2388.0" />
+      <point x="417.81" y="2388.0" />
+      <point x="4.7619047614944066E-4" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.CanTreatmentMachine.GlassCanProducingMachine" target="Manufacturing.Machine.CanMachine" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="3265.0" y="4135.0" />
+      <point x="3446.25" y="4135.0" />
+      <point x="0.0" y="57.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.VegetableCan" target="Manufacturing.CanEntity.Can" relationship="GENERALIZATION">
+      <point x="-92.0" y="0.0" />
+      <point x="262.0" y="1411.0" />
+      <point x="262.0" y="1375.5" />
+      <point x="426.996" y="1375.5" />
+      <point x="-4.285714286424991E-4" y="408.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.GeneralMachine.DisinfectMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4386.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Builder.PeachCanWrappingBuilder" target="Marketing.Wrapping.Builder.WrappingBuilder" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="1551.0" y="4187.0" />
+      <point x="882.0" y="4187.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.QualityExaminer" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3836.5" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Storage.InventoryConverter.CanToOrderConverter.FromCanEntityFunction" target="Storage.InventoryConverter.CanToOrderConverter" relationship="INNER_CLASS">
+      <point x="0.0" y="-31.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Material.Material.MATERIAL" target="Manufacturing.CanEntity.Material.Material" relationship="INNER_CLASS">
+      <point x="12.0" y="-44.0" />
+      <point x="1904.0" y="5118.0" />
+      <point x="-103.0" y="0.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.LanguageTerminalExpression" target="Presentation.IOSystem.AbstractExpression" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4507.5" y="4877.0" />
+      <point x="4011.25" y="4877.0" />
+      <point x="4.547473508864641E-13" y="31.0" />
+    </edge>
+    <edge source="Marketing.OrderEnity.DeliveredOrderState" target="Marketing.OrderEnity.OrderState" relationship="GENERALIZATION">
+      <point x="0.0" y="-135.0" />
+      <point x="3207.0" y="3047.0" />
+      <point x="2739.0" y="3047.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.FreshLine" target="Manufacturing.ProductLine.ProductLine" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="Marketing.Scheme.PurchaseScheme" target="Marketing.Scheme.Scheme" relationship="GENERALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="2351.5" y="4054.0" />
+      <point x="2175.75" y="4054.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.FreshLineFactory" target="Manufacturing.ProductLine.Factory" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="4456.5" y="3682.0" />
+      <point x="4262.875" y="3682.0" />
+      <point x="0.0" y="96.0" />
+    </edge>
+    <edge source="Management.HumanResources.TeamLeader.PurchaseAgent" target="Management.HumanResources.TeamLeader.TeamLeader" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="811.5" y="2388.0" />
+      <point x="417.81" y="2388.0" />
+      <point x="4.7619047614944066E-4" y="31.0" />
+    </edge>
+    <edge source="Marketing.Scheme.TransportScheme.TransportType" target="Marketing.Scheme.TransportScheme" relationship="INNER_CLASS">
+      <point x="2.2737367544323206E-13" y="-44.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.ConcreteCan.CandiedAppleCan" target="Manufacturing.CanEntity.FruitCan" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="278.5" y="1493.0" />
+      <point x="176.75" y="1493.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="Marketing.OrderEnity.Order.CanTypeIterator" target="Marketing.Iterator" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="1200.5" y="3289.0" />
+      <point x="1376.0" y="3289.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.GeneralMachine.HerringFilterMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="2458.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Management.QuantityTesting.ManagerVisitor" target="Management.QuantityTesting.FactoryVisitor" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="801.0" y="5200.0" />
+      <point x="923.0" y="5200.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Upstream.ConcreteUpstreamFactory" target="Manufacturing.ProductLine.Upstream.UpstreamFactory" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Producer.PearProducer" target="Manufacturing.ProductLine.Producer.FruitProducer" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4069.5" y="5174.0" />
+      <point x="4381.75" y="5174.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Cover.SalmonCanWrappingCover" target="Marketing.Wrapping.Cover.WrappingCover" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="4300.0" y="4265.0" />
+      <point x="4470.0" y="4265.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="Marketing.OrderCenterEntity.OrderCenter.OrderIterator" target="Marketing.OrderCenterEntity.OrderCenter" relationship="INNER_CLASS">
+      <point x="15.0" y="-44.0" />
+      <point x="-189.5" y="148.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.InterpretInputHandler" target="Presentation.IOSystem.InputHandler" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="124.0" y="4877.0" />
+      <point x="256.0" y="4877.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.DesignPatternTerminalExpression" target="Presentation.IOSystem.AbstractExpression" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4859.0" y="4877.0" />
+      <point x="4011.25" y="4877.0" />
+      <point x="4.547473508864641E-13" y="31.0" />
+    </edge>
+    <edge source="Marketing.OrderEnity.Order" target="Marketing.Container" relationship="REALIZATION">
+      <point x="237.0" y="-205.5" />
+      <point x="1283.0" y="2845.5" />
+      <point x="1283.0" y="2757.0" />
+      <point x="-101.0" y="0.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Cover.CandiedAppleCanWrappingCover" target="Marketing.Wrapping.Cover.WrappingCover" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="4640.0" y="4265.0" />
+      <point x="4470.0" y="4265.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Driver.Shipmaster" target="Management.HumanResources.Staff.Driver.Driver" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3958.0" y="2555.0" />
+      <point x="4116.5" y="2555.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Salmon" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-16.5" />
+      <point x="1399.325" y="1347.0" />
+      <point x="1414.325" y="1347.0" />
+      <point x="1414.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.FruitLine" target="Manufacturing.ProductLine.ProductLine" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="2460.5" y="3630.0" />
+      <point x="3032.0" y="3630.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Purchaser" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="2454.0" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.CanState.ErrorCanState" target="Manufacturing.CanEntity.CanState.CanState" relationship="GENERALIZATION">
+      <point x="0.0" y="-109.0" />
+      <point x="422.0" y="3708.0" />
+      <point x="710.5" y="3708.0" />
+      <point x="0.0" y="109.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Accountant" target="Management.HumanResources.FinancialSystem.Permission" relationship="REALIZATION">
+      <point x="-15.0" y="-44.0" />
+      <point x="4422.0" y="2384.0" />
+      <point x="4756.5" y="2384.0" />
+      <point x="10.0" y="16.5" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Beef" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-16.5" />
+      <point x="1841.325" y="1347.0" />
+      <point x="1414.325" y="1347.0" />
+      <point x="1414.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.InputTerminalExpression" target="Presentation.IOSystem.AbstractExpression" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3222.0" y="4877.0" />
+      <point x="4011.25" y="4877.0" />
+      <point x="4.547473508864641E-13" y="31.0" />
+    </edge>
+    <edge source="Management.HumanResources.TeamLeader.Carrier" target="Management.HumanResources.TeamLeader.TeamLeader" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="429.5" y="2388.0" />
+      <point x="417.81" y="2388.0" />
+      <point x="4.7619047614944066E-4" y="31.0" />
+    </edge>
+    <edge source="Management.Assets.ClothingDecoraor.SecurityClothes" target="Management.Assets.ClothingDecoraor.StaffWithClothes" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2026.25" y="2568.0" />
+      <point x="2147.0" y="2568.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Auditor" target="Management.HumanResources.FinancialSystem.Permission" relationship="REALIZATION">
+      <point x="-15.0" y="-44.0" />
+      <point x="4726.5" y="2384.0" />
+      <point x="4756.5" y="2384.0" />
+      <point x="10.0" y="16.5" />
+    </edge>
+    <edge source="Manufacturing.Machine.GeneralMachine.CleanMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4116.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.CanState.NotDisinfectedCanState" target="Manufacturing.CanEntity.CanState.CanState" relationship="GENERALIZATION">
+      <point x="0.0" y="-109.0" />
+      <point x="0.0" y="109.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.CanState.FilledCanState" target="Manufacturing.CanEntity.CanState.CanState" relationship="GENERALIZATION">
+      <point x="0.0" y="-109.0" />
+      <point x="134.0" y="3708.0" />
+      <point x="710.5" y="3708.0" />
+      <point x="0.0" y="109.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Can" target="Management.QualityTesting.Protocol.Testable" relationship="REALIZATION">
+      <point x="26.360714285714266" y="-408.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Marketing.Promotion.Sale.TwentyPercentOff" target="Marketing.Promotion.Sale.Sale" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="1178.5" y="5445.0" />
+      <point x="1038.75" y="5445.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Procedure.Decoct" target="Manufacturing.Ingredient.Procedure.Procedure" relationship="GENERALIZATION">
+      <point x="-4.2857142852881225E-4" y="-31.0" />
+      <point x="2109.746" y="1519.0" />
+      <point x="2030.325" y="1519.0" />
+      <point x="2.2737367544323206E-13" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Peach" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="1.1368683772161603E-13" y="-16.5" />
+      <point x="997.825" y="1347.0" />
+      <point x="1414.325" y="1347.0" />
+      <point x="1414.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Driver.EngineMan" target="Management.HumanResources.Staff.Driver.Driver" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4275.0" y="2555.0" />
+      <point x="4116.5" y="2555.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Builder.SalmonCanWrappingBuilder" target="Marketing.Wrapping.Builder.WrappingBuilder" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="213.0" y="4187.0" />
+      <point x="882.0" y="4187.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine" target="Manufacturing.ProductLine.ProductLine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3581.0" y="3535.0" />
+      <point x="180.5" y="0.0" />
+    </edge>
+    <edge source="Management.HumanResources.DepartmentCommand.AuditSalaryTableCommand" target="Management.HumanResources.DepartmentCommand.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="497.0" y="5200.0" />
+      <point x="331.0" y="5200.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Announcer" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="3552.0" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Presentation.Protocol.IOManager.Lang" target="Presentation.Protocol.IOManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-44.0" />
+      <point x="640.5" y="3307.0" />
+      <point x="373.5" y="3307.0" />
+      <point x="0.0" y="278.0" />
+    </edge>
+    <edge source="Management.QualityTesting.Protocol.Testable" target="Presentation.Protocol.MultiLanguageDescription" relationship="INTERFACE_GENERALIZATION">
+      <point x="-1.4285714286188522E-4" y="-44.0" />
+      <point x="453.357" y="140.0" />
+      <point x="968.496" y="140.0" />
+      <point x="-4.285714286424991E-4" y="57.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Worker" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="2748.5" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Management.HumanResources.BaseEmployee" target="Management.Assets.Announcement.AnnouncementManager" relationship="REALIZATION">
+      <point x="0.0" y="-161.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Herring" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="2231.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Cover.PeachCanWrappingCover" target="Marketing.Wrapping.Cover.WrappingCover" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="4975.0" y="4265.0" />
+      <point x="4470.0" y="4265.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Procedure.Fry" target="Manufacturing.Ingredient.Procedure.Procedure" relationship="GENERALIZATION">
+      <point x="-4.2857142852881225E-4" y="-31.0" />
+      <point x="2321.746" y="1519.0" />
+      <point x="2030.325" y="1519.0" />
+      <point x="2.2737367544323206E-13" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Ingredient" target="Presentation.Protocol.MultiLanguageDescription" relationship="INTERFACE_GENERALIZATION">
+      <point x="-4.2857142852881225E-4" y="-122.0" />
+      <point x="1176.996" y="140.0" />
+      <point x="968.496" y="140.0" />
+      <point x="-4.285714286424991E-4" y="57.0" />
+    </edge>
+    <edge source="Management.HumanResources.Manager.TestingManager" target="Management.HumanResources.Manager.Manager" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="1921.0" y="2359.0" />
+      <point x="1567.06" y="2359.0" />
+      <point x="4.7619047609259724E-4" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.ConcreteCan.HerringCan" target="Manufacturing.CanEntity.FreshCan" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="487.5" y="1493.0" />
+      <point x="578.0" y="1493.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Pear" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-16.5" />
+      <point x="1263.325" y="1347.0" />
+      <point x="1414.325" y="1347.0" />
+      <point x="1414.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.CanState.CannedCanState" target="Manufacturing.CanEntity.CanState.CanState" relationship="GENERALIZATION">
+      <point x="0.0" y="-109.0" />
+      <point x="999.0" y="3708.0" />
+      <point x="710.5" y="3708.0" />
+      <point x="0.0" y="109.0" />
+    </edge>
+    <edge source="Management.HumanResources.DepartmentCommand.QualityTestingCommand" target="Management.HumanResources.DepartmentCommand.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="165.0" y="5200.0" />
+      <point x="331.0" y="5200.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.PrintInputHandler" target="Presentation.IOSystem.InputHandler" relationship="REALIZATION">
+      <point x="0.0" y="-70.0" />
+      <point x="388.0" y="4877.0" />
+      <point x="256.0" y="4877.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Producer.PeachProducer" target="Manufacturing.ProductLine.Producer.FruitProducer" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4488.0" y="5174.0" />
+      <point x="4381.75" y="5174.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Producer.RoughProducer" target="Manufacturing.ProductLine.Producer.ProduceManner" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="2170.0" y="5445.0" />
+      <point x="2066.5" y="5445.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Staff" target="Management.HumanResources.BaseEmployee" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3403.25" y="2188.0" />
+      <point x="1618.5" y="2188.0" />
+      <point x="0.0" y="161.0" />
+    </edge>
+    <edge source="Marketing.OrderEnity.ProducedOrderState" target="Marketing.OrderEnity.OrderState" relationship="GENERALIZATION">
+      <point x="0.0" y="-135.0" />
+      <point x="2895.0" y="3047.0" />
+      <point x="2739.0" y="3047.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Cleaner" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2985.5" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Management.HumanResources.TeamLeader.TeamLeader" target="Management.HumanResources.BaseEmployee" relationship="GENERALIZATION">
+      <point x="4.7619047614944066E-4" y="-31.0" />
+      <point x="417.81" y="2188.0" />
+      <point x="1618.5" y="2188.0" />
+      <point x="0.0" y="161.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Driver.Driver" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4116.5" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Procedure.Procedure" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-83.0" />
+      <point x="2030.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Converter.WrappingConverter.FromCanEntityFunction" target="Marketing.Wrapping.Converter.WrappingConverter" relationship="INNER_CLASS">
+      <point x="0.0" y="-31.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.FreshCan" target="Manufacturing.CanEntity.Can" relationship="GENERALIZATION">
+      <point x="-3.004000000000019" y="-16.5" />
+      <point x="574.996" y="1375.5" />
+      <point x="426.996" y="1375.5" />
+      <point x="-4.285714286424991E-4" y="408.0" />
+    </edge>
+    <edge source="Marketing.Promotion.Sale.TwoHundredMinusTwenty" target="Marketing.Promotion.Sale.Sale" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="899.0" y="5445.0" />
+      <point x="1038.75" y="5445.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Cover.HerringCanWrappingCover" target="Marketing.Wrapping.Cover.WrappingCover" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="3987.5" y="4265.0" />
+      <point x="4470.0" y="4265.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.CanTreatmentMachine.IronCanProducingMachine" target="Manufacturing.Machine.CanMachine" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="3627.5" y="4135.0" />
+      <point x="3446.25" y="4135.0" />
+      <point x="0.0" y="57.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.HelpTerminalExpression" target="Presentation.IOSystem.AbstractExpression" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="3513.5" y="4877.0" />
+      <point x="4011.25" y="4877.0" />
+      <point x="4.547473508864641E-13" y="31.0" />
+    </edge>
+    <edge source="Marketing.Wrapping.Builder.HerringCanWrappingBuilder" target="Marketing.Wrapping.Builder.WrappingBuilder" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.0" />
+      <point x="1105.0" y="4187.0" />
+      <point x="882.0" y="4187.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.LotusRoot" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-16.5" />
+      <point x="1693.325" y="1347.0" />
+      <point x="1414.325" y="1347.0" />
+      <point x="1414.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Procedure.Pretreat.Disinfect" target="Manufacturing.Ingredient.Procedure.Procedure" relationship="GENERALIZATION">
+      <point x="-1.4285714291872864E-4" y="-16.5" />
+      <point x="1495.607" y="1519.0" />
+      <point x="2030.325" y="1519.0" />
+      <point x="2.2737367544323206E-13" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Producer.FruitAdapter" target="Manufacturing.ProductLine.Producer.FruitProducer" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4690.5" y="5174.0" />
+      <point x="4381.75" y="5174.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Marketing.Scheme.TransportScheme" target="Marketing.Scheme.Scheme" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-70.0" />
+      <point x="2000.0" y="4054.0" />
+      <point x="2175.75" y="4054.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDaoImpl" target="Management.HumanResources.FinancialSystem.DataAccessObject.SalaryDao" relationship="REALIZATION">
+      <point x="0.0" y="-135.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="Marketing.OrderEnity.OrderedOrderState" target="Marketing.OrderEnity.OrderState" relationship="GENERALIZATION">
+      <point x="0.0" y="-135.0" />
+      <point x="2583.0" y="3047.0" />
+      <point x="2739.0" y="3047.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.LineIterator" target="Manufacturing.ProductLine.Factory" relationship="DEPENDENCY">
+      <point x="10.0" y="-44.0" />
+      <point x="3915.5" y="3630.0" />
+      <point x="-198.0" y="69.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Line.SalmonLine" target="Manufacturing.ProductLine.FreshLine" relationship="REALIZATION">
+      <point x="0.0" y="-70.0" />
+      <point x="2841.5" y="3742.0" />
+      <point x="3032.0" y="3742.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.Procedure.Pretreat.Peel" target="Manufacturing.Ingredient.Procedure.Procedure" relationship="GENERALIZATION">
+      <point x="-1.4285714291872864E-4" y="-16.5" />
+      <point x="1354.607" y="1519.0" />
+      <point x="2030.325" y="1519.0" />
+      <point x="2.2737367544323206E-13" y="83.0" />
+    </edge>
+    <edge source="Presentation.Protocol.IOManager.OperatingSystem" target="Presentation.Protocol.IOManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-44.0" />
+      <point x="0.0" y="278.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Line.PeachLine" target="Manufacturing.ProductLine.FruitLine" relationship="REALIZATION">
+      <point x="0.0" y="-70.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.AbstractCanFactory.GlassCanFactory" target="Manufacturing.ProductLine.AbstractCanFactory.AbstractCanFactory" relationship="GENERALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="4975.0" y="4536.0" />
+      <point x="4831.0" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Marketing.OrderEnity.Order.CanTypeIterator" target="Marketing.OrderEnity.Order" relationship="INNER_CLASS">
+      <point x="-15.0" y="-44.0" />
+      <point x="160.5" y="213.0" />
+    </edge>
+    <edge source="Management.QualityTesting.QualityAssuranceDepartment" target="Management.HumanResources.BaseDepartment" relationship="GENERALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="3935.5" y="2979.0" />
+      <point x="4091.0" y="2979.0" />
+      <point x="4091.0" y="2943.0" />
+      <point x="4109.5" y="2943.0" />
+      <point x="0.0" y="96.0" />
+    </edge>
+    <edge source="Presentation.IOSystem.ProcessTerminalExpression" target="Presentation.IOSystem.AbstractExpression" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="4182.0" y="4877.0" />
+      <point x="4011.25" y="4877.0" />
+      <point x="4.547473508864641E-13" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.ConcreteCan.PeachCan" target="Manufacturing.CanEntity.FruitCan" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="75.0" y="1493.0" />
+      <point x="176.75" y="1493.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="Mutex.MachineMutex" target="Mutex.Mutex" relationship="REALIZATION">
+      <point x="0.0" y="-70.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.ProductLine.Line.AutomatedLine.CandiedAppleLine" target="Manufacturing.ProductLine.Line.AutomatedLine.AutomatedLine" relationship="GENERALIZATION">
+      <point x="0.0" y="-57.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Management.QuantityTesting.CEOVisitor" target="Management.QuantityTesting.FactoryVisitor" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="1045.0" y="5200.0" />
+      <point x="923.0" y="5200.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Material.IronMaterial" target="Manufacturing.CanEntity.Material.Material" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2688.5" y="5174.0" />
+      <point x="2170.182" y="5174.0" />
+      <point x="1.8181818177254172E-4" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.GeneralMachine.PeelMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="2998.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.Machine.GeneralMachine.SalmonFilterMachine" target="Manufacturing.Machine.IngredientMachine" relationship="REALIZATION">
+      <point x="0.0" y="-31.0" />
+      <point x="2728.0" y="4536.0" />
+      <point x="3431.5" y="4536.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="Manufacturing.Ingredient.ConcreteIngredient.Apple" target="Manufacturing.Ingredient.BaseIngredient" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="-16.5" />
+      <point x="1540.325" y="1347.0" />
+      <point x="1414.325" y="1347.0" />
+      <point x="1414.325" y="1180.0" />
+      <point x="1533.496" y="1180.0" />
+      <point x="-4.2857142852881225E-4" y="148.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Accountant" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="4437.0" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.ConcreteCan.SalmonCan" target="Manufacturing.CanEntity.FreshCan" relationship="GENERALIZATION">
+      <point x="0.0" y="-16.5" />
+      <point x="668.5" y="1493.0" />
+      <point x="578.0" y="1493.0" />
+      <point x="0.0" y="16.5" />
+    </edge>
+    <edge source="Management.HumanResources.Manager.PurchaseManager" target="Management.HumanResources.Manager.Manager" relationship="GENERALIZATION">
+      <point x="0.0" y="-70.0" />
+      <point x="1618.5" y="2359.0" />
+      <point x="1567.06" y="2359.0" />
+      <point x="4.7619047609259724E-4" y="31.0" />
+    </edge>
+    <edge source="Management.HumanResources.Staff.Auditor" target="Management.HumanResources.Staff.Staff" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="4741.5" y="2352.0" />
+      <point x="3403.25" y="2352.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="Presentation.AsciiVid.AsciiPic.PixelInfo" target="Presentation.AsciiVid.AsciiPic" relationship="INNER_CLASS">
+      <point x="0.0" y="-16.5" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Material.AlloyMaterial" target="Manufacturing.CanEntity.Material.Material" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2156.0" y="5174.0" />
+      <point x="2170.182" y="5174.0" />
+      <point x="1.8181818177254172E-4" y="31.0" />
+    </edge>
+    <edge source="Manufacturing.CanEntity.Material.GlassMaterial" target="Manufacturing.CanEntity.Material.Material" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2424.0" y="5174.0" />
+      <point x="2170.182" y="5174.0" />
+      <point x="1.8181818177254172E-4" y="31.0" />
+    </edge>
+    <edge source="Management.HumanResources.Manager.Manager" target="Management.HumanResources.BaseEmployee" relationship="GENERALIZATION">
+      <point x="4.7619047609259724E-4" y="-31.0" />
+      <point x="1567.06" y="2188.0" />
+      <point x="1618.5" y="2188.0" />
+      <point x="0.0" y="161.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.11260240543838243" showDependencies="false" x="2623.5" y="2858.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
