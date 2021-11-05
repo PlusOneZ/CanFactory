@@ -1,6 +1,8 @@
 package Marketing.Wrapping;
 
 
+import Presentation.Protocol.IOManager;
+
 /**
  * @Author 王立友
  * 包装纸中表现得厂家基础属性信息
@@ -17,11 +19,12 @@ public class WrappingFactoryInfo {
     private static final WrappingFactoryInfo instance = new WrappingFactoryInfo();
 
     private WrappingFactoryInfo(){
-        this.factoryName = "罐头加工厂";
+        this.factoryName = IOManager.getInstance().selectStringForCurrentLanguage("罐头加工厂","罐頭加工廠","Can Factory") ;
         this.factoryPhone = "400-8888888";
-        this.factoryAddress = "上海市嘉定区";
+        this.factoryAddress = IOManager.getInstance().selectStringForCurrentLanguage("上海市嘉定区","上海市嘉定區","\"Jiading District, Shanghai\"");
         this.factoryWebsite = "www.tongji.edu.cn";
-        this.factoryTip = "适合常温或冷藏食用，避免曝晒、高温或冰冻。";
+        this.factoryTip = IOManager.getInstance().selectStringForCurrentLanguage("适合常温或冷藏食用，避免曝晒、高温或冰冻。","適合常溫或冷藏食用，避免曝曬、高溫或冰凍。",
+                "Suitable for eating at room temperature or refrigerated, avoid exposure to the sun, high temperature or freezing.");
     }
 
     public static WrappingFactoryInfo getInstance(){

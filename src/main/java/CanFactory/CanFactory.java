@@ -694,7 +694,7 @@ public class CanFactory {
 
             IOManager.getInstance().print(
                     "[11 - 装饰器模式]\t[12 - 外观模式]\t[13 - 享元模式]\t[14 - 代理模式]\t[15 - 数据访问对象模式]",
-                    "[6 - 裝潢器模式]\t[7 - 外觀模式]\t[8 - 享元模式]\t[9 - 代理模式]\t[10 - 數據訪問對象模式]",
+                    "[11 - 裝潢器模式]\t[12 - 外觀模式]\t[13 - 享元模式]\t[14 - 代理模式]\t[15- 數據訪問對象模式]",
                     "[11 - Decorator]\t[12 - Facade]\t[13 - Flyweight]\t[14 - Proxy]\t[15 - DAO]"
             );
 
@@ -781,6 +781,7 @@ public class CanFactory {
                     break;
                 case 10:
                     CompositeTest.main(args);
+                    break;
                 case 11:
                     DecoratorTest.main(args);
                     break;
