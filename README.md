@@ -16,7 +16,7 @@
 
 ## 项目简介
 
-本项目选题为罐头加工厂。罐头加工厂励志为所有人提供最美味的罐头，全世界的人也慕名而来在加工厂里定制罐头，送给亲朋好友。罐头加工厂里有各种各样的罐头供大家随意挑选，糖渍苹果罐头、黄桃罐头、鲱鱼罐头、三文鱼罐头，每一种都是罐头加工厂的招牌。
+本项目选题为罐头加工厂。罐头加工厂立志为所有人提供最美味的罐头，全世界的人也慕名而来在加工厂里定制罐头，送给亲朋好友。罐头加工厂里有各种各样的罐头供大家随意挑选，糖渍苹果罐头、黄桃罐头、鲱鱼罐头、三文鱼罐头，每一种都是罐头加工厂的招牌。
 
 想要进行订购的客户可以在订单创建系统中进行订单的创建，按需求订购自己喜欢的罐头。在网络上进行订单创建不仅方便快捷，个性化的定制更在满足客户的个性化需求的同时减少了浪费。急需罐头作为伴手礼或售卖的客户也不需要为紧迫的时间而感到担心，只需要告诉加工厂需要罐头的时间就可以如期拿到大家想要的罐头了。
 
@@ -63,7 +63,7 @@
 |      |                                      | 结构型设计模式                                               |                                                              |                                                              |
 | 8    | 适配器模式  Adapter                     | [Manufacturing/ProductLine/Producer/Test/AdapterTest.java   ](src/main/java/Manufacturing/ProductLine/Producer/Test/AdapterTest.java   )  | 罐头生产时可以应用已有精细或粗糙生产流程，运用适配器适配不通生产方式 | 23个经典设计模式之一                                         |
 | 9    | 桥接模式  Bridge                       | [Manufacturing/CanEntity/CanTest.java                       ](src/main/java/Manufacturing/CanEntity/CanTest.java                       )  | 实现罐头的大小和包装材料                                     | 23个经典设计模式之一                                         |
-| 10   | 组合模式  Composite                    | [Ingredient/CompositeTest.java                              ](src/main/java/Ingredient/CompositeTest.java                              )  | 罐头内原材料的组合情况                                       | 23个经典设计模式之一                                         |
+| 10   | 组合模式                      | [Ingredient/CompositeTest.java                              ](src/main/java/Ingredient/CompositeTest.java                              )  | 罐头内原材料的组合情况                                       | 23个经典设计模式之一                                         |
 | 11   | 装饰器模式  Decorator                   | [Manufacturing.Ingredient.Procedure/DecoratorTest.java      ](src/main/java/Manufacturing.Ingredient.Procedure/DecoratorTest.java      )  | 员工上下班时需要分别穿上和脱下工作服                         | 23个经典设计模式之一                                         |
 | 12   | 外观模式  Facade                       | [Manufacturing/ProductLine/Pretreatment/Test/FacadeTest.java](src/main/java/Manufacturing/ProductLine/Pretreatment/Test/FacadeTest.java)  | 罐头预处理需要筛选、消毒、削皮、等多个复杂工序，需要一个统一访问接口 | 23个经典设计模式之一                                         |
 | 13   | 享元模式  Flyweight                    | [Manufacturing/ProductLine/test/ProductDepartment.java      ](src/main/java/Manufacturing/ProductLine/test/ProductDepartment.java      )  | 生产线工厂初次提供的每种生产线对象会保存下来避免频繁创建     | 23个经典设计模式之一                                         |
@@ -84,7 +84,7 @@
 | 27   | 访问者模式  Visitor                     | [Management/QuantityTesting/VisitorTest.java                  ](src/main/java/Management/QuantityTesting/VisitorTest.java                  )| CEO和经理了解保洁员和保安的工作质量                          | 23个经典设计模式之一                                         |
 | 28   | 黑板模式  Blackboard                   | [Management/Assets/Announcement/BlackBoardTest.java           ](src/main/java/Management/Assets/Announcement/BlackBoardTest.java           )| 工厂中公告的发布                                             |                                                              |
 | 29   | 委派模式  Delegate                     | [Management/HumanResources/test/TransportDepartmentTest.java  ](src/main/java/Management/HumanResources/test/TransportDepartmentTest.java  )| 经理安排人员采购和运输                                       | 《J2EE Design  Patterns: Patterns in the Real World》Author:William  Crawford, Jonathan Kaplan |
-| 30   | 过滤器模式  Filter                      | [Manufacturing/ProductLine/Pretreatment/Test/FacadeTest.java  ](src/main/java/Manufacturing/ProductLine/Pretreatment/Test/FacadeTest.java  )| 生产原料预处理过程中需要过滤不合格原料                       | 《Patterns in Java:  A Catalog of Reusable Design Patterns Illustrated with UML》Author：Mark Grand |
+| 30   | 过滤器模式  Filter                      | [Manufacturing/ProductLine/Pretreatment/Test/FacadeTest.java  ](src/main/java/Manufacturing/ProductLine/Pretreatment/Test/FacadeTest.java  )| 生产原料预处理过程中需要过滤不合格原料                       | 《Patterns in Java:  A  of Reusable Design Patterns Illustrated with UML》Author：Mark Grand |
 
 
 
@@ -98,4 +98,4 @@
 
 [4] William Crawford, Jonathan Kaplan. J2EE Design Patterns - Patterns in the Real World.[M]DBLP:William Crawford,2003.37:50
 
-[5] Grand M . Patterns in Java: A Catalog of Reusable Design Patterns Illustrated with UML, 2nd Edition, Volume 1[J]. computer bookshops, 2002, 21(9):153-162.
+[5] Grand M . Patterns in Java: A  of Reusable Design Patterns Illustrated with UML, 2nd Edition, Volume 1[J]. computer bookshops, 2002, 21(9):153-162.
